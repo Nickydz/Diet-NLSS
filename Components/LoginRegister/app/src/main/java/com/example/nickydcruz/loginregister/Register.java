@@ -42,10 +42,8 @@ public class Register extends AppCompatActivity {
 
                     @Override
                     public void onResponse(String response) {
-                        try {
-                            JSONObject jsonResponse = new JSONObject(response);
-                            boolean success = jsonResponse.getBoolean("success");
-                            if(success){
+
+                            if(response.equals("?Successfully Registered")){
                                 Intent i = new Intent(Register.this,LoginActivity.class);
                                 Register.this.startActivity(i);
                             }
@@ -58,9 +56,6 @@ public class Register extends AppCompatActivity {
                             }
 
 
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
                     }
 
                 };
