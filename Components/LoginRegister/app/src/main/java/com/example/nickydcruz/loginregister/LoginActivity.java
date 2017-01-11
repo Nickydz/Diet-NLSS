@@ -56,13 +56,29 @@ public class LoginActivity extends AppCompatActivity {
                             if(success){
                                 String username = jsonResponse.getString("username");
                                 String dob = jsonResponse.getString("dob");
-                                Intent intent = new Intent(LoginActivity.this,Homescreen.class);
-                                intent.putExtra("username",username);
-                                intent.putExtra("dob",dob);
-                                LoginActivity.this.startActivity(intent);
+                                String basicDone = jsonResponse.getString("basicDone");
+
+
+                                if(basicDone.equals("1")) {
+                                    Intent intent = new Intent(LoginActivity.this, Homescreen.class);
+                                    intent.putExtra("username", username);
+                                    intent.putExtra("dob", dob);
+                                    LoginActivity.this.startActivity(intent);
+                                }
+                                else {
+                                    Intent intent1   =new Intent(LoginActivity.this, BasicSurvey1.class);
+                                    intent1.putExtra("username", username);
+                                    intent1.putExtra("dob", dob);
+                                    LoginActivity.this.startActivity(intent1);
+
+                                }
                             }
                             else{
-
+                                AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
+                                builder.setMessage("Login Failed")
+                                        .setNegativeButton("Retry", null)
+                                        .create()
+                                        .show();
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
