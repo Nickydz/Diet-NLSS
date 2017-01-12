@@ -17,7 +17,7 @@
         android:id="@+id/spScale"
         android:layout_toEndOf="@+id/textView5"
         android:layout_below="@+id/tvHeight"
-        android:layout_alignBottom="@+id/editText8" />
+        android:layout_alignBottom="@+id/etHeight" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -40,7 +40,8 @@
         android:id="@+id/etWeight"
         android:layout_below="@+id/textView5"
         android:layout_alignParentStart="true"
-        android:layout_toStartOf="@+id/spWScale" />
+        android:layout_toStartOf="@+id/spWScale"
+        android:hint="in kg" />
 
     <Spinner
         android:layout_width="match_parent"
@@ -69,24 +70,16 @@
         android:inputType="numberSigned"
         android:ems="10"
         android:layout_below="@+id/textView8"
-        android:id="@+id/editText7" />
+        android:id="@+id/etWristCir"
+        android:hint="in inches" />
 
     <Spinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/spinner5"
-        android:layout_alignBottom="@+id/editText7"
+        android:layout_alignBottom="@+id/etWristCir"
         android:layout_below="@+id/textView8"
         android:layout_alignStart="@+id/spWScale" />
-
-    <Button
-        android:text="Submit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:id="@+id/btSubmit"
-        android:layout_below="@+id/editText7"
-        android:layout_alignEnd="@+id/tvGender" />
 
     <TextView
         android:layout_height="wrap_content"
@@ -117,7 +110,8 @@
             android:layout_height="wrap_content"
             android:text="Male                    "
             android:textSize="35px"
-            android:id="@+id/rbMale" />
+            android:id="@+id/rbMale"
+            android:checked="true" />
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -134,7 +128,8 @@
         android:ems="10"
         android:layout_below="@+id/tvHeight"
         android:layout_alignParentStart="true"
-        android:id="@+id/editText8" />
+        android:id="@+id/etHeight"
+        android:hint="in meter" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -161,5 +156,14 @@
         android:layout_below="@+id/heading"
         android:layout_alignParentStart="true"
         android:layout_marginTop="15dp" />
+
+    <Button
+        android:text="Submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:id="@+id/btSubmit"
+        android:layout_below="@+id/etWristCir"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

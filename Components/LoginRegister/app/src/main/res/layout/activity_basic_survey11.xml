@@ -31,7 +31,7 @@
         android:layout_alignStart="@+id/textView2"
         android:layout_below="@+id/textView2"
         android:layout_marginLeft="23dp"
-        android:layout_marginTop="18dp" />
+        android:layout_marginTop="18dp" >
 
     <RadioButton
         android:id="@+id/radioButton"
@@ -50,6 +50,7 @@
         android:layout_toEndOf="@+id/radioButton"
         android:text="Female" />
 
+    </RadioGroup>
     <TextView
         android:text="Please enter your height"
         android:layout_width="wrap_content"
@@ -168,7 +169,7 @@
         android:id="@+id/button" />
 
 
-</RadioGroup>
+
 
 
 
