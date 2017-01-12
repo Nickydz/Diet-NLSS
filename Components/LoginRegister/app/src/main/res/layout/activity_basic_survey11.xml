@@ -30,8 +30,12 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView2"
         android:layout_marginLeft="23dp"
+<<<<<<< HEAD
         android:layout_marginTop="18dp"
         android:layout_alignStart="@+id/textView2">
+=======
+        android:layout_marginTop="18dp" >
+>>>>>>> e4946802d74ca3391418638ae55f631c4f23e94c
 
     <RadioButton
         android:id="@+id/radioButton1"
@@ -51,6 +55,7 @@
 
     </RadioGroup>
 
+    </RadioGroup>
     <TextView
         android:text="Please enter your height"
         android:layout_width="wrap_content"
@@ -165,7 +170,19 @@
         android:layout_height="wrap_content"
         android:id="@+id/button"
         android:layout_below="@+id/editText2"
+<<<<<<< HEAD
         android:layout_toEndOf="@+id/spinner3" />
+=======
+        android:layout_toEndOf="@+id/spinner1"
+        android:layout_marginTop="23dp"
+        android:id="@+id/button" />
+
+
+
+
+
+
+>>>>>>> e4946802d74ca3391418638ae55f631c4f23e94c
 
 
 </RelativeLayout>
