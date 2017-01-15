@@ -57,13 +57,12 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="date"
-        android:ems="10"
         android:layout_below="@+id/etConfirmPassword"
         android:id="@+id/etDOB"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:hint="Date of Birth" />
+        android:hint="Date of Birth"
+        android:focusable="false"/>
 
     <Button
         android:text="Register"

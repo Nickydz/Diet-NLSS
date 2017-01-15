@@ -1,11 +1,13 @@
 package com.example.nickydcruz.loginregister;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 
 import com.android.volley.RequestQueue;
@@ -14,6 +16,8 @@ import com.android.volley.toolbox.Volley;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.Calendar;
 
 public class Register extends AppCompatActivity {
 
@@ -28,6 +32,33 @@ public class Register extends AppCompatActivity {
         final EditText etConfirmPassword = (EditText) findViewById(R.id.etConfirmPassword);
         final EditText etDOB = (EditText) findViewById(R.id.etDOB);
         final Button btRegister = (Button) findViewById(R.id.btRegister);
+
+
+
+        final Calendar myCalendar = Calendar.getInstance();
+        final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
+
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear,
+                                  int dayOfMonth) {
+                // TODO Auto-generated method stub
+                myCalendar.set(Calendar.YEAR, year);
+                myCalendar.set(Calendar.MONTH, monthOfYear);
+                myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                monthOfYear++;
+                etDOB.setText(year+"-"+monthOfYear+"-"+dayOfMonth);
+            }
+
+        };
+
+        etDOB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new DatePickerDialog(Register.this, date,2000 , 0,
+                        1).show();
+            }
+        });
+
 
         btRegister.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -73,7 +73,7 @@ public class BasicSurvey1 extends AppCompatActivity {
                 int selectedId = radioSexGroup.getCheckedRadioButtonId();
                 radioSexButton = (RadioButton) findViewById(selectedId);
                 String gender;
-                if(radioSexButton.getText().equals("Male                    "))
+                if(radioSexButton.getText().equals("Male"))
                     gender = "M";
                 else
                     gender = "F";
