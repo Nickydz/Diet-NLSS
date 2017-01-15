@@ -47,13 +47,8 @@ public class BasicSurvey1 extends AppCompatActivity {
         final NumberPicker numpic = (NumberPicker) findViewById(R.id.numpick_bs) ;
         numpic.setMinValue(1);
         numpic.setMaxValue(10);
-        numpic.setWrapSelectorWheel(true);
-        numpic.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
-            @Override
-            public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
+        numpic.setWrapSelectorWheel(false);
 
-            }
-        });
         final EditText etWeight = (EditText) findViewById(R.id.etWeight);
         final EditText etWristCir = (EditText) findViewById(R.id.etWristCir);
         final Button submit =(Button) findViewById(R.id.btSubmit);
@@ -91,10 +86,15 @@ public class BasicSurvey1 extends AppCompatActivity {
                         try {
                             JSONObject jsonResponse1 = new JSONObject(response);
                             boolean success = jsonResponse1.getBoolean("success");
+                            String username1 = jsonResponse1.getString("username");
+                            String height1 = jsonResponse1.getString("height");
                             if(success){
                                 Intent int1 = new Intent(BasicSurvey1.this,Homescreen.class);
-                                int1.putExtra("BMR",BMR);
-                                int1.putExtra("BMI",BMI);
+                                int1.putExtra("BMR",BMR+"");
+                                int1.putExtra("BMI",BMI+"");
+                                int1.putExtra("age",age+"");
+                                int1.putExtra("username",username1);
+                                int1.putExtra("height",height1);
                                 BasicSurvey1.this.startActivity(int1);
                             }
                             else {
