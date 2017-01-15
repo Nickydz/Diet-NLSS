@@ -106,7 +106,7 @@
         android:layout_below="@+id/textView5"
         android:layout_alignStart="@+id/textView2"
         android:layout_marginTop="1dp"
-        android:id="@+id/editText1"
+        android:id="@+id/etWeight"
         android:layout_alignEnd="@+id/numberPicker5" />
 
     <!--<NumberPicker-->
@@ -127,7 +127,7 @@
         android:layout_below="@+id/textView5"
         android:layout_marginTop="13dp"
         android:layout_marginStart="80dp"
-        android:layout_alignStart="@+id/editText1"
+        android:layout_alignStart="@+id/etWeight"
         android:layout_marginRight="100dp"
         android:id="@+id/spinner2" />
 
@@ -136,8 +136,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView6"
-        android:layout_below="@+id/editText1"
-        android:layout_alignStart="@+id/editText1"
+        android:layout_below="@+id/etWeight"
+        android:layout_alignStart="@+id/etWeight"
         android:textStyle="bold"
         android:layout_marginBottom="5dp"/>
 
@@ -148,17 +148,17 @@
         android:layout_below="@+id/textView6"
         android:layout_alignStart="@+id/textView6"
         android:layout_marginTop="2dp"
-        android:id="@+id/editText2"
-        android:layout_alignEnd="@+id/editText1" />
+        android:id="@+id/etWristCir"
+        android:layout_alignEnd="@+id/etWeight" />
 
     <Spinner
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/editText2"
+        android:layout_alignRight="@+id/etWristCir"
         android:layout_below="@+id/textView6"
         android:layout_marginTop="13dp"
         android:layout_marginStart="80dp"
-        android:layout_alignStart="@+id/editText2"
+        android:layout_alignStart="@+id/etWristCir"
         android:layout_marginRight="100dp"
         android:id="@+id/spinner3" />
 
@@ -167,7 +167,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/button"
-        android:layout_below="@+id/editText2"
+        android:layout_below="@+id/etWristCir"
         android:layout_toEndOf="@+id/spinner3" />
 
 

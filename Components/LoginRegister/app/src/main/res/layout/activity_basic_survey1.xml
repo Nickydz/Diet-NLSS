@@ -16,19 +16,11 @@
         android:layout_marginTop="27dp"
         android:text="Basic Survey"
         android:textSize="38px"
-<<<<<<< HEAD
-        android:layout_below="@+id/etHeight"
-        android:textAppearance="@style/TextAppearance.AppCompat"
-        android:layout_centerVertical="true"
-        android:layout_alignParentStart="true" />
 
-    <EditText
-=======
         android:textStyle="bold" />
 
     <TextView
         android:id="@+id/tv_gender"
->>>>>>> 36ed686132fcd11a349e18f0ce59867558f6d8e9
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -45,7 +37,8 @@
         android:layout_below="@+id/tv_gender"
         android:layout_marginLeft="23dp"
         android:layout_marginTop="18dp"
-        android:layout_alignStart="@+id/tv_gender">
+        android:layout_alignStart="@+id/tv_gender"
+        >
 
         <RadioButton
             android:id="@+id/radioButton1"
@@ -53,7 +46,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv_gender"
             android:layout_toStartOf="@+id/tv_gender"
-            android:text="Male" />
+            android:text="Male"
+            android:checked="true"/>
 
         <RadioButton
             android:text="Female"
@@ -112,36 +106,13 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-<<<<<<< HEAD
-        android:orientation="horizontal"
-        android:id="@+id/rGender"
-        android:layout_below="@+id/tvGender"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="10dp">
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Male"
-            android:textSize="35px"
-            android:id="@+id/rbMale"
-            android:checked="true"
-            android:paddingRight="25dp"/>
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Female"
-            android:textSize="35px"
-            android:id="@+id/rbFemale"
-            />
-=======
         android:inputType="numberSigned"
->>>>>>> 36ed686132fcd11a349e18f0ce59867558f6d8e9
-
         android:layout_below="@+id/tv_bsWeight"
         android:layout_alignStart="@+id/tv_gender"
         android:layout_marginTop="1dp"
-        android:id="@+id/editText1"
-        android:layout_alignEnd="@+id/numpick_bs" />
+        android:id="@+id/etWeight"
+        android:layout_alignEnd="@+id/numpick_bs"
+        android:hint="in kg" />
 
     <!--<NumberPicker-->
     <!--android:layout_width="wrap_content"-->
@@ -161,7 +132,7 @@
         android:layout_below="@+id/tv_bsWeight"
         android:layout_marginTop="13dp"
         android:layout_marginStart="80dp"
-        android:layout_alignStart="@+id/editText1"
+        android:layout_alignStart="@+id/etWeight"
         android:layout_marginRight="100dp"
         android:id="@+id/spin_bsWeight" />
 
@@ -170,8 +141,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/tv_bsWrist"
-        android:layout_below="@+id/editText1"
-        android:layout_alignStart="@+id/editText1"
+        android:layout_below="@+id/etWeight"
+        android:layout_alignStart="@+id/etWeight"
         android:textStyle="bold"
         android:layout_marginBottom="5dp"/>
 
@@ -182,26 +153,26 @@
         android:layout_below="@+id/tv_bsWrist"
         android:layout_alignStart="@+id/tv_bsWrist"
         android:layout_marginTop="2dp"
-        android:id="@+id/editText2"
-        android:layout_alignEnd="@+id/editText1" />
+        android:id="@+id/etWristCir"
+        android:layout_alignEnd="@+id/etWeight" />
 
     <Spinner
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/editText2"
+        android:layout_alignRight="@+id/etWristCir"
         android:layout_below="@+id/tv_bsWrist"
         android:layout_marginTop="13dp"
         android:layout_marginStart="80dp"
-        android:layout_alignStart="@+id/editText2"
+        android:layout_alignStart="@+id/etWristCir"
         android:layout_marginRight="100dp"
         android:id="@+id/spin_bsWrist" />
 
     <Button
-        android:text="subbut_bs"
+        android:text="Submit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/button"
-        android:layout_below="@+id/editText2"
+        android:id="@+id/btSubmit"
+        android:layout_below="@+id/etWristCir"
         android:layout_toEndOf="@+id/spin_bsWrist" />
 
 

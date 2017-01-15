@@ -1,7 +1,29 @@
 package com.example.nickydcruz.loginregister;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.NumberPicker;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Toast;
+
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 public class BasicSurvey1 extends AppCompatActivity {
 
@@ -9,7 +31,7 @@ public class BasicSurvey1 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_basic_survey1);
-<<<<<<< HEAD
+
 
         final FormulaClass f = new FormulaClass();
 
@@ -20,21 +42,28 @@ public class BasicSurvey1 extends AppCompatActivity {
         final int age = f.calculateAge(dob);
 
 
-        Toast.makeText(BasicSurvey1.this,
-                username + "" + age, Toast.LENGTH_SHORT).show();
 
-        radioSexGroup = (RadioGroup)findViewById(R.id.rGender);
-        etHeight = (EditText) findViewById(R.id.etHeight);
-        etWeight = (EditText) findViewById(R.id.etWeight);
-        etWristCir = (EditText) findViewById(R.id.etWristCir);
-        submit =(Button) findViewById(R.id.btSubmit);
+        final RadioGroup radioSexGroup = (RadioGroup)findViewById(R.id.radgrp);
+        final NumberPicker numpic = (NumberPicker) findViewById(R.id.numpick_bs) ;
+        numpic.setMinValue(1);
+        numpic.setMaxValue(10);
+        numpic.setWrapSelectorWheel(true);
+        numpic.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
+            @Override
+            public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
+
+            }
+        });
+        final EditText etWeight = (EditText) findViewById(R.id.etWeight);
+        final EditText etWristCir = (EditText) findViewById(R.id.etWristCir);
+        final Button submit =(Button) findViewById(R.id.btSubmit);
 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
 
-                final String height =etHeight.getText().toString();
+                final String height = numpic.getValue()+"";
                 final String weight =etWeight.getText().toString();
                 final String wristCir =etWristCir.getText().toString();
 
@@ -44,13 +73,14 @@ public class BasicSurvey1 extends AppCompatActivity {
 
 
                 int selectedId = radioSexGroup.getCheckedRadioButtonId();
-                radioSexButton = (RadioButton) findViewById(selectedId);
+                RadioButton radioSexButton = (RadioButton) findViewById(selectedId);
                 String gender;
                 if(radioSexButton.getText().equals("Male"))
                     gender = "M";
                 else
                     gender = "F";
 
+                Toast.makeText(BasicSurvey1.this,gender, Toast.LENGTH_SHORT).show();
         final float BMI = f.bmi( hieght,wieght);
         final double BMR = f.bmr(gender,age,wieght,hieght);
 
@@ -87,7 +117,7 @@ public class BasicSurvey1 extends AppCompatActivity {
 
 
 
-=======
->>>>>>> 36ed686132fcd11a349e18f0ce59867558f6d8e9
     }
+
+
 }
