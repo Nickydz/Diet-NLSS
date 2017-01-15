@@ -8,29 +8,22 @@
 
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tv_bsSurvey"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-<<<<<<< HEAD
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="27dp"
         android:text="Basic Survey"
         android:textSize="38px"
         android:textStyle="bold" />
-=======
-        android:id="@+id/spScale"
-        android:layout_toEndOf="@+id/textView5"
-        android:layout_below="@+id/tvHeight"
-        android:layout_alignBottom="@+id/etHeight" />
->>>>>>> e4946802d74ca3391418638ae55f631c4f23e94c
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/tv_gender"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/textView"
+        android:layout_below="@+id/tv_bsSurvey"
         android:layout_marginLeft="23dp"
         android:layout_marginTop="26dp"
         android:textStyle="bold"
@@ -40,17 +33,17 @@
         android:id="@+id/radgrp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView2"
+        android:layout_below="@+id/tv_gender"
         android:layout_marginLeft="23dp"
         android:layout_marginTop="18dp"
-        android:layout_alignStart="@+id/textView2">
+        android:layout_alignStart="@+id/tv_gender">
 
         <RadioButton
             android:id="@+id/radioButton1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/textView2"
-            android:layout_toStartOf="@+id/textView2"
+            android:layout_below="@+id/tv_gender"
+            android:layout_toStartOf="@+id/tv_gender"
             android:text="Male" />
 
         <RadioButton
@@ -67,9 +60,8 @@
         android:text="Please enter your height"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-<<<<<<< HEAD
         android:layout_marginTop="33dp"
-        android:id="@+id/textView4"
+        android:id="@+id/tv_bsHeight"
         android:layout_below="@+id/radgrp"
         android:layout_toEndOf="@+id/radioGroup"
         android:textStyle="bold"
@@ -78,41 +70,32 @@
     <NumberPicker
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:scaleX="0.50"
-        android:scaleY="0.25"
-        android:layout_marginTop="1dp"
-        android:id="@+id/numberPicker5"
-        android:layout_below="@+id/textView4"
-        android:layout_above="@+id/textView5"
+        android:scaleX="0.90"
+        android:scaleY="0.80"
+        android:layout_marginTop="12dp"
+        android:id="@+id/numpick_bs"
+        android:layout_below="@+id/tv_bsHeight"
+        android:layout_above="@+id/tv_bsWeight"
         android:layout_marginStart="21dp"/>
-=======
-        android:inputType="numberSigned"
-        android:ems="10"
-        android:id="@+id/etWeight"
-        android:layout_below="@+id/textView5"
-        android:layout_alignParentStart="true"
-        android:layout_toStartOf="@+id/spWScale"
-        android:hint="in kg" />
->>>>>>> e4946802d74ca3391418638ae55f631c4f23e94c
 
     <Spinner
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/numberPicker5"
-        android:layout_below="@+id/textView4"
+        android:layout_alignRight="@+id/numpick_bs"
+        android:layout_below="@+id/tv_bsHeight"
         android:layout_marginTop="13dp"
         android:layout_marginStart="80dp"
-        android:layout_alignStart="@+id/numberPicker5"
+        android:layout_alignStart="@+id/numpick_bs"
         android:layout_marginRight="100dp"
-        android:id="@+id/spinner1" />
+        android:id="@+id/spin_bsHeight" />
 
     <TextView
         android:text="Please enter your weight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:id="@+id/textView5"
-        android:layout_below="@+id/spinner1"
+        android:id="@+id/tv_bsWeight"
+        android:layout_below="@+id/spin_bsHeight"
         android:layout_toEndOf="@+id/radioGroup"
         android:textStyle="bold"
         android:layout_marginStart="21dp" />
@@ -121,14 +104,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="numberSigned"
-<<<<<<< HEAD
-        android:scaleX="4"
-        android:scaleY="0.5"
-        android:layout_below="@+id/textView5"
-        android:layout_alignStart="@+id/textView2"
-        android:layout_marginTop="14dp"
+
+        android:layout_below="@+id/tv_bsWeight"
+        android:layout_alignStart="@+id/tv_gender"
+        android:layout_marginTop="1dp"
         android:id="@+id/editText1"
-        android:layout_alignEnd="@+id/numberPicker5" />
+        android:layout_alignEnd="@+id/numpick_bs" />
 
     <!--<NumberPicker-->
     <!--android:layout_width="wrap_content"-->
@@ -138,118 +119,58 @@
     <!--android:layout_marginTop="0dp"-->
     <!--android:id="@+id/numberPicker6"-->
     <!--android:layout_centerHorizontal="true"-->
-    <!--android:layout_below="@+id/textView5"-->
+    <!--android:layout_below="@+id/tv_bsWeight"-->
     <!--android:layout_marginStart="21dp"/>-->
 
     <Spinner
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignRight="@+id/editText"
-        android:layout_below="@+id/textView5"
+        android:layout_below="@+id/tv_bsWeight"
         android:layout_marginTop="13dp"
         android:layout_marginStart="80dp"
         android:layout_alignStart="@+id/editText1"
         android:layout_marginRight="100dp"
-        android:id="@+id/spinner2" />
-=======
-        android:ems="10"
-        android:layout_below="@+id/textView8"
-        android:id="@+id/etWristCir"
-        android:hint="in inches" />
-
-    <Spinner
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/spinner5"
-        android:layout_alignBottom="@+id/etWristCir"
-        android:layout_below="@+id/textView8"
-        android:layout_alignStart="@+id/spWScale" />
->>>>>>> e4946802d74ca3391418638ae55f631c4f23e94c
+        android:id="@+id/spin_bsWeight" />
 
     <TextView
         android:text="Enter your wrist circumference"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-<<<<<<< HEAD
-        android:id="@+id/textView6"
+        android:id="@+id/tv_bsWrist"
         android:layout_below="@+id/editText1"
         android:layout_alignStart="@+id/editText1"
         android:textStyle="bold"
         android:layout_marginBottom="5dp"/>
-=======
-        android:orientation="horizontal"
-        android:id="@+id/rGender"
-        android:layout_below="@+id/tvGender"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="10dp">
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Male                    "
-            android:textSize="35px"
-            android:id="@+id/rbMale"
-            android:checked="true" />
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Female   "
-            android:textSize="35px"
-            android:id="@+id/rbFemale" />
-
-    </RadioGroup>
->>>>>>> e4946802d74ca3391418638ae55f631c4f23e94c
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="numberSigned"
-<<<<<<< HEAD
-        android:scaleX="4"
-        android:scaleY="0.5"
-        android:layout_below="@+id/textView6"
-        android:layout_alignStart="@+id/textView6"
-        android:layout_marginTop="14dp"
+        android:layout_below="@+id/tv_bsWrist"
+        android:layout_alignStart="@+id/tv_bsWrist"
+        android:layout_marginTop="2dp"
         android:id="@+id/editText2"
         android:layout_alignEnd="@+id/editText1" />
-=======
-        android:ems="10"
-        android:layout_below="@+id/tvHeight"
-        android:layout_alignParentStart="true"
-        android:id="@+id/etHeight"
-        android:hint="in meter" />
->>>>>>> e4946802d74ca3391418638ae55f631c4f23e94c
 
     <Spinner
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignRight="@+id/editText2"
-        android:layout_below="@+id/textView6"
+        android:layout_below="@+id/tv_bsWrist"
         android:layout_marginTop="13dp"
         android:layout_marginStart="80dp"
         android:layout_alignStart="@+id/editText2"
         android:layout_marginRight="100dp"
-        android:id="@+id/spinner3" />
+        android:id="@+id/spin_bsWrist" />
 
     <Button
-        android:text="Submit"
+        android:text="subbut_bs"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/button"
         android:layout_below="@+id/editText2"
-        android:layout_toEndOf="@+id/spinner3" />
+        android:layout_toEndOf="@+id/spin_bsWrist" />
 
-
-<<<<<<< HEAD
-</RelativeLayout>
-=======
-    <Button
-        android:text="Submit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:id="@+id/btSubmit"
-        android:layout_below="@+id/etWristCir"
-        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
->>>>>>> e4946802d74ca3391418638ae55f631c4f23e94c
