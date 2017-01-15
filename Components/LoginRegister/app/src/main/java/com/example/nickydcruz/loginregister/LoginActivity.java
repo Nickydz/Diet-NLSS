@@ -58,11 +58,7 @@ public class LoginActivity extends AppCompatActivity {
                                 String username = jsonResponse.getString("username");
                                 String dob = jsonResponse.getString("dob");
                                 String basicDone = jsonResponse.getString("basicDone");
-                                AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
-                                builder.setMessage("Login Failed123")
-                                        .setNegativeButton("Retry", null)
-                                        .create()
-                                        .show();
+
 
                                 if(basicDone.equals("1")) {
                                     Intent intent = new Intent(LoginActivity.this, Homescreen.class);

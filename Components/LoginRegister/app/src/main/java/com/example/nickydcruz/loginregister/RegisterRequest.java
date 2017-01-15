@@ -22,7 +22,7 @@ public class RegisterRequest extends StringRequest {
         super(Method.POST, REGISTER_REQUEST_URL, listener, null);
         params = new HashMap<>();
         params.put("username",username);
-        params.put("email",email);
+        params.put("email",email.toString());
         params.put("password",password);
         params.put("dob", dob);
     }

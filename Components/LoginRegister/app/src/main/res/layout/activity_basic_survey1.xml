@@ -4,102 +4,115 @@
     android:id="@+id/activity_basic_survey1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.nickydcruz.loginregister.BasicSurvey1">
 
 
-    <Spinner
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/spScale"
-        android:layout_toEndOf="@+id/textView5"
-        android:layout_below="@+id/tvHeight"
-        android:layout_alignBottom="@+id/etHeight" />
-
     <TextView
+        android:id="@+id/tv_bsSurvey"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textView5"
-        android:text="Please enter your weight"
-        android:textStyle="bold"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="27dp"
+        android:text="Basic Survey"
         android:textSize="38px"
+<<<<<<< HEAD
         android:layout_below="@+id/etHeight"
         android:textAppearance="@style/TextAppearance.AppCompat"
         android:layout_centerVertical="true"
         android:layout_alignParentStart="true" />
 
     <EditText
-        android:layout_width="wrap_content"
-        android:maxWidth="25dp"
-        android:layout_height="wrap_content"
-        android:inputType="numberSigned"
-        android:ems="10"
-        android:id="@+id/etWeight"
-        android:layout_below="@+id/textView5"
-        android:layout_alignParentStart="true"
-        android:layout_toStartOf="@+id/spWScale"
-        android:hint="in kg" />
-
-    <Spinner
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/spWScale"
-        android:layout_toEndOf="@+id/textView5"
-        android:layout_below="@+id/textView5"
-        android:layout_alignBottom="@+id/etWeight" />
+=======
+        android:textStyle="bold" />
 
     <TextView
+        android:id="@+id/tv_gender"
+>>>>>>> 36ed686132fcd11a349e18f0ce59867558f6d8e9
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textView8"
-        android:text="Please enter your wrist circumference"
-        android:textStyle="bold"
-        android:textSize="38px"
-
-        android:textAppearance="@style/TextAppearance.AppCompat"
-        android:layout_below="@+id/etWeight"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="15dp" />
+        android:layout_below="@+id/tv_bsSurvey"
+        android:layout_marginLeft="23dp"
+        android:layout_marginTop="26dp"
+        android:textStyle="bold"
+        android:text="Gender" />
+
+    <RadioGroup
+        android:id="@+id/radgrp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_gender"
+        android:layout_marginLeft="23dp"
+        android:layout_marginTop="18dp"
+        android:layout_alignStart="@+id/tv_gender">
+
+        <RadioButton
+            android:id="@+id/radioButton1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_gender"
+            android:layout_toStartOf="@+id/tv_gender"
+            android:text="Male" />
+
+        <RadioButton
+            android:text="Female"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/radgrp"
+            android:layout_alignStart="@+id/radgrp"
+            android:id="@+id/radioButton2" />
+
+    </RadioGroup>
+
+    <TextView
+        android:text="Please enter your height"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="33dp"
+        android:id="@+id/tv_bsHeight"
+        android:layout_below="@+id/radgrp"
+        android:layout_toEndOf="@+id/radioGroup"
+        android:textStyle="bold"
+        android:layout_marginStart="21dp" />
+
+    <NumberPicker
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleX="0.90"
+        android:scaleY="0.80"
+        android:layout_marginTop="12dp"
+        android:id="@+id/numpick_bs"
+        android:layout_below="@+id/tv_bsHeight"
+        android:layout_above="@+id/tv_bsWeight"
+        android:layout_marginStart="21dp"/>
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/numpick_bs"
+        android:layout_below="@+id/tv_bsHeight"
+        android:layout_marginTop="13dp"
+        android:layout_marginStart="80dp"
+        android:layout_alignStart="@+id/numpick_bs"
+        android:layout_marginRight="100dp"
+        android:id="@+id/spin_bsHeight" />
+
+    <TextView
+        android:text="Please enter your weight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:id="@+id/tv_bsWeight"
+        android:layout_below="@+id/spin_bsHeight"
+        android:layout_toEndOf="@+id/radioGroup"
+        android:textStyle="bold"
+        android:layout_marginStart="21dp" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="numberSigned"
-        android:ems="10"
-        android:layout_below="@+id/textView8"
-        android:id="@+id/etWristCir"
-        android:hint="in inches" />
-
-    <Spinner
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/spinner5"
-        android:layout_alignBottom="@+id/etWristCir"
-        android:layout_below="@+id/textView8"
-        android:layout_alignStart="@+id/spWScale" />
-
-    <TextView
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:inputType="textNoSuggestions|textPersonName"
-        android:text="Basic Survey"
-        android:textStyle="bold"
-        android:ems="10"
-        android:id="@+id/heading"
-        android:elevation="1dp"
-        android:textAlignment="center"
-        android:minWidth="10dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:textSize="30sp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
-
-    <RadioGroup
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+<<<<<<< HEAD
         android:orientation="horizontal"
         android:id="@+id/rGender"
         android:layout_below="@+id/tvGender"
@@ -120,52 +133,76 @@
             android:textSize="35px"
             android:id="@+id/rbFemale"
             />
+=======
+        android:inputType="numberSigned"
+>>>>>>> 36ed686132fcd11a349e18f0ce59867558f6d8e9
 
-    </RadioGroup>
+        android:layout_below="@+id/tv_bsWeight"
+        android:layout_alignStart="@+id/tv_gender"
+        android:layout_marginTop="1dp"
+        android:id="@+id/editText1"
+        android:layout_alignEnd="@+id/numpick_bs" />
+
+    <!--<NumberPicker-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:scaleX="0.50"-->
+    <!--android:scaleY="0.25"-->
+    <!--android:layout_marginTop="0dp"-->
+    <!--android:id="@+id/numberPicker6"-->
+    <!--android:layout_centerHorizontal="true"-->
+    <!--android:layout_below="@+id/tv_bsWeight"-->
+    <!--android:layout_marginStart="21dp"/>-->
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/editText"
+        android:layout_below="@+id/tv_bsWeight"
+        android:layout_marginTop="13dp"
+        android:layout_marginStart="80dp"
+        android:layout_alignStart="@+id/editText1"
+        android:layout_marginRight="100dp"
+        android:id="@+id/spin_bsWeight" />
+
+    <TextView
+        android:text="Enter your wrist circumference"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_bsWrist"
+        android:layout_below="@+id/editText1"
+        android:layout_alignStart="@+id/editText1"
+        android:textStyle="bold"
+        android:layout_marginBottom="5dp"/>
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="numberSigned"
-        android:ems="10"
-        android:layout_below="@+id/tvHeight"
-        android:layout_alignParentStart="true"
-        android:id="@+id/etHeight"
-        android:hint="in meter" />
+        android:layout_below="@+id/tv_bsWrist"
+        android:layout_alignStart="@+id/tv_bsWrist"
+        android:layout_marginTop="2dp"
+        android:id="@+id/editText2"
+        android:layout_alignEnd="@+id/editText1" />
 
-    <TextView
+    <Spinner
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/tvHeight"
-        android:text="Please enter your height"
-        android:textStyle="bold"
-        android:textSize="38px"
-        android:layout_marginTop="32dp"
-
-        android:textAppearance="@style/TextAppearance.AppCompat"
-        android:layout_below="@+id/rGender"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        android:id="@+id/tvGender"
-        android:text="Gender"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:layout_below="@+id/heading"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="15dp" />
+        android:layout_alignRight="@+id/editText2"
+        android:layout_below="@+id/tv_bsWrist"
+        android:layout_marginTop="13dp"
+        android:layout_marginStart="80dp"
+        android:layout_alignStart="@+id/editText2"
+        android:layout_marginRight="100dp"
+        android:id="@+id/spin_bsWrist" />
 
     <Button
-        android:text="Submit"
+        android:text="subbut_bs"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:id="@+id/btSubmit"
-        android:layout_below="@+id/etWristCir"
-        android:layout_centerHorizontal="true" />
+        android:id="@+id/button"
+        android:layout_below="@+id/editText2"
+        android:layout_toEndOf="@+id/spin_bsWrist" />
+
 
 </RelativeLayout>

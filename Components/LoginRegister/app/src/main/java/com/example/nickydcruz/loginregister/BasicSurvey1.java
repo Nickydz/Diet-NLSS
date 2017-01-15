@@ -1,42 +1,15 @@
 package com.example.nickydcruz.loginregister;
 
-import android.content.Intent;
-import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.Toast;
-
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.toolbox.Volley;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
 
 public class BasicSurvey1 extends AppCompatActivity {
-
-    private RadioGroup radioSexGroup ;
-    private RadioButton radioSexButton;
-    private EditText etHeight;
-    private EditText etWeight;
-    private EditText etWristCir;
-    private Button submit;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_basic_survey1);
+<<<<<<< HEAD
 
         final FormulaClass f = new FormulaClass();
 
@@ -114,9 +87,7 @@ public class BasicSurvey1 extends AppCompatActivity {
 
 
 
+=======
+>>>>>>> 36ed686132fcd11a349e18f0ce59867558f6d8e9
     }
-
-
-
-
 }
