@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Exercise Calculator</string>
+    <string-array name="names">
+        <item>Bicycling(general), MET=8</item>
+        <item>Bicycling(slow), MET=6</item>
+        <item>Bicycling(fast), MET=10</item>
+        <item>running(slow), MET=10 </item>
+        <item>running(general), MET=13.5 </item>
+        <item>running(fast), MET=16 </item>
+        <item>running stairs, MET=15 </item>
+        <item>sitting quietly, MET=1 </item>
+        <item>dancing(ballet or modern), MET=6</item>    <item>standing quietly, MET=1.2</item>    <item>walking(slow), MET=2.5</item>    <item>walking(fast), MET=4.5</item>    <item>walking(general), MET=3.5</item>
+     </string-array>
+
+
+
+</resources>
