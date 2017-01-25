@@ -19,7 +19,8 @@
         </activity>
         <activity android:name=".Register" />
         <activity android:name=".Homescreen" />
-        <activity android:name=".BasicSurvey1"></activity>
+        <activity android:name=".BasicSurvey1" />
+        <activity android:name=".ResultPage"></activity>
     </application>
 
 </manifest>

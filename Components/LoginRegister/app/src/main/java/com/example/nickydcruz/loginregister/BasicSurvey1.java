@@ -89,7 +89,7 @@ public class BasicSurvey1 extends AppCompatActivity {
                             String username1 = jsonResponse1.getString("username");
                             String height1 = jsonResponse1.getString("height");
                             if(success){
-                                Intent int1 = new Intent(BasicSurvey1.this,Homescreen.class);
+                                Intent int1 = new Intent(BasicSurvey1.this,ResultPage.class);
                                 int1.putExtra("BMR",BMR+"");
                                 int1.putExtra("BMI",BMI+"");
                                 int1.putExtra("age",age+"");

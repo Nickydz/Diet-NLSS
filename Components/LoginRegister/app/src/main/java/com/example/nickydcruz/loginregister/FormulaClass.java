@@ -34,7 +34,44 @@ public class FormulaClass {
 
     public float bmi(float hieght, float wieght) {
         float bmi = wieght/(hieght*hieght);
+
         return bmi;
+    }
+
+    public String category(int bmi){
+        String category;
+        if(bmi >0 && bmi<16){
+            category = "You are Very Severely Underweight";
+        }
+        else if (bmi >= 16 && bmi < 17){
+            category = "You are Severely Underweight";
+        }
+        else if (bmi >= 16 && bmi < 17){
+            category = "You are Underweight";
+        }
+        else if (bmi >= 17 && bmi < 18.5){
+            category = "You are Mildly Underweight";
+        }
+        else if (bmi >= 18.5 && bmi < 25){
+            category = "Awesome!! You have a Healthy weight";
+        }
+        else if (bmi >= 25 && bmi < 30){
+            category = "You are Overweight";
+        }
+        else if (bmi >= 30 && bmi < 35){
+            category = "You are Moderately obese";
+        }
+        else if (bmi >= 35 && bmi < 40){
+            category = "You are Severely obese";
+        }
+        else if (bmi >= 40){
+            category = "You are Very Severely obese";
+        }
+        else{
+            category = "You are a very unique specimen in human genealogy";
+        }
+
+        return category;
     }
 
     public double bmr(String gender, int age, float wieght, float hieght) {
@@ -46,5 +83,13 @@ public class FormulaClass {
             bmr =(10*wieght)+(6.25*hieght)+(5*age)-161;
         }
         return bmr;
+    }
+
+    public int[] bmrcal(double bmr){
+        int a[]= new int[3];
+        a[0] = (int) ((bmr *0.5)/4);
+        a[1] = (int) ((bmr *0.3)/4);
+        a[2] = (int)  ((bmr *0.2)/9);
+        return a;
     }
 }

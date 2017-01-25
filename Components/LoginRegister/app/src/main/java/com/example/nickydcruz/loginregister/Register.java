@@ -34,7 +34,6 @@ public class Register extends AppCompatActivity {
         final Button btRegister = (Button) findViewById(R.id.btRegister);
 
 
-
         final Calendar myCalendar = Calendar.getInstance();
         final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
 
@@ -54,8 +53,7 @@ public class Register extends AppCompatActivity {
         etDOB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new DatePickerDialog(Register.this, date,2000 , 0,
-                        1).show();
+                new DatePickerDialog(Register.this, date,2000 , 0,1).show();
             }
         });
 
