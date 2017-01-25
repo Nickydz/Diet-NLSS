@@ -61,7 +61,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
                                 if(basicDone.equals("1")) {
-                                    Intent intent = new Intent(LoginActivity.this, Homescreen.class);
+                                    Intent intent = new Intent(LoginActivity.this, BasicSurvey1.class);
                                     intent.putExtra("username", username);
                                     intent.putExtra("dob", dob);
                                     LoginActivity.this.startActivity(intent);

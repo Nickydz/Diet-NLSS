@@ -1,5 +1,6 @@
 package com.example.nickydcruz.loginregister;
 
+import java.math.RoundingMode;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -38,7 +39,7 @@ public class FormulaClass {
         return bmi;
     }
 
-    public String category(int bmi){
+    public String category(float bmi){
         String category;
         if(bmi >0 && bmi<16){
             category = "You are Very Severely Underweight";
@@ -74,14 +75,15 @@ public class FormulaClass {
         return category;
     }
 
-    public double bmr(String gender, int age, float wieght, float hieght) {
-        double bmr;
+    public int bmr(String gender, int age, float wieght, float hieght) {
+        Double bmr1;
         if (gender.equals("M")){
-            bmr =(10*wieght)+(6.25*hieght)+(5*age)+5;
+            bmr1 = (10*wieght)+(6.25*hieght)+(5*age)+5;
         }
         else {
-            bmr =(10*wieght)+(6.25*hieght)+(5*age)-161;
+            bmr1 =(10*wieght)+(6.25*hieght)+(5*age)-161;
         }
+        int bmr = bmr1.intValue();
         return bmr;
     }
 

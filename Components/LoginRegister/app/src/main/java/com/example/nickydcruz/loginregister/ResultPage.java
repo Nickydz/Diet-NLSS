@@ -7,6 +7,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class ResultPage extends AppCompatActivity {
 
     @Override
@@ -23,9 +30,9 @@ public class ResultPage extends AppCompatActivity {
 
         Intent intent = getIntent();
         final String username = intent.getStringExtra("username");
-        final int age = Integer.parseInt(intent.getStringExtra("age"));
-        int bmi = Integer.parseInt(intent.getStringExtra("BMI"));
-        final int bmr = Integer.parseInt(intent.getStringExtra("BMR"));
+        final int age = intent.getIntExtra("age",0);
+        float bmi = intent.getFloatExtra("BMI",0.0f);
+        final int bmr = intent.getIntExtra("BMR",0);
         final FormulaClass f = new FormulaClass();
         String category = f.category(bmi);
         String expertsMessage = "";
@@ -69,10 +76,7 @@ public class ResultPage extends AppCompatActivity {
                 int bmr1 = bmr + 500;
                 int a[] = f.bmrcal(bmr1*0.25);
                 int b[] = f.bmrcal(bmr1*0.125);
-                Intent int1=new Intent(ResultPage.this,Homescreen.class);
-                int1.putExtra("username",username);
-                int1.putExtra("age",age);
-                startActivity(int1);
+                nextPage(a[0],a[1],a[2],b[0],b[1],b[2]);
             }
         });
 
@@ -84,11 +88,7 @@ public class ResultPage extends AppCompatActivity {
                 bmr1 =bmr -500;
                 int a[] = f.bmrcal(bmr1*0.25);
                 int b[] = f.bmrcal(bmr1*0.125);
-
-                Intent int1=new Intent(ResultPage.this,Homescreen.class);
-                int1.putExtra("username",username);
-                int1.putExtra("age",age);
-                startActivity(int1);
+                nextPage(a[0],a[1],a[2],b[0],b[1],b[2]);
             }
         });
 
@@ -97,11 +97,7 @@ public class ResultPage extends AppCompatActivity {
             public void onClick(View v) {
                 int a[] = f.bmrcal(bmr*0.25);
                 int b[] = f.bmrcal(bmr*0.125);
-
-                Intent int1=new Intent(ResultPage.this,Homescreen.class);
-                int1.putExtra("username",username);
-                int1.putExtra("age",age);
-                startActivity(int1);
+                nextPage(a[0],a[1],a[2],b[0],b[1],b[2]);
 
             }
         });
@@ -110,4 +106,29 @@ public class ResultPage extends AppCompatActivity {
 
 
     }
+
+    private void nextPage(int a,int b,int c,int d,int e,int f){
+        Response.Listener<String> listener = new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject jsonresponse = new JSONObject(response);
+                    boolean success = jsonresponse.getBoolean("success");
+                    if(success){
+                        Intent int1=new Intent(ResultPage.this,Homescreen.class);
+                        startActivity(int1);
+                    }
+                } catch (JSONException e1) {
+                    e1.printStackTrace();
+                }
+            }
+        };
+
+        RpRequest rp = new RpRequest(a+"",b+"",c+"",d+"",e+"",f+"",listener);
+        RequestQueue queue2 = Volley.newRequestQueue(ResultPage.this);
+        queue2.add(rp);
+
+    }
+
 }
+

@@ -77,7 +77,7 @@ public class BasicSurvey1 extends AppCompatActivity {
 
                 Toast.makeText(BasicSurvey1.this,gender, Toast.LENGTH_SHORT).show();
         final float BMI = f.bmi( hieght,wieght);
-        final double BMR = f.bmr(gender,age,wieght,hieght);
+        final int BMR = f.bmr(gender,age,wieght,hieght);
 
                 Response.Listener<String> listener = new Response.Listener<String>(){
 
@@ -86,15 +86,12 @@ public class BasicSurvey1 extends AppCompatActivity {
                         try {
                             JSONObject jsonResponse1 = new JSONObject(response);
                             boolean success = jsonResponse1.getBoolean("success");
-                            String username1 = jsonResponse1.getString("username");
-                            String height1 = jsonResponse1.getString("height");
                             if(success){
                                 Intent int1 = new Intent(BasicSurvey1.this,ResultPage.class);
-                                int1.putExtra("BMR",BMR+"");
-                                int1.putExtra("BMI",BMI+"");
-                                int1.putExtra("age",age+"");
-                                int1.putExtra("username",username1);
-                                int1.putExtra("height",height1);
+                                int1.putExtra("BMR",BMR);
+                                int1.putExtra("BMI",BMI);
+                                int1.putExtra("age",age);
+                                int1.putExtra("username",username);
                                 BasicSurvey1.this.startActivity(int1);
                             }
                             else {
