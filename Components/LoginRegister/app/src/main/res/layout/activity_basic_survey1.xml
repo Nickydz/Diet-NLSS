@@ -70,16 +70,16 @@
         android:textStyle="bold"
         android:layout_marginStart="21dp" />
 
-    <NumberPicker
+    <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:scaleX="0.90"
-        android:scaleY="0.80"
-        android:layout_marginTop="12dp"
+        android:minWidth="70dp"
+        android:minHeight="30dp"
+        android:inputType="numberDecimal|numberSigned"
+        android:layout_marginTop="10dp"
         android:id="@+id/numpick_bs"
         android:layout_below="@+id/tv_bsHeight"
-        android:layout_above="@+id/tv_bsWeight"
-        android:layout_marginStart="21dp"/>
+        android:layout_alignStart="@+id/tv_bsHeight" />
 
     <Spinner
         android:layout_width="wrap_content"
@@ -106,7 +106,7 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="numberSigned"
+        android:inputType="numberDecimal|numberSigned"
         android:layout_below="@+id/tv_bsWeight"
         android:layout_alignStart="@+id/tv_gender"
         android:layout_marginTop="1dp"
@@ -149,7 +149,7 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="numberSigned"
+        android:inputType="numberDecimal|numberSigned"
         android:layout_below="@+id/tv_bsWrist"
         android:layout_alignStart="@+id/tv_bsWrist"
         android:layout_marginTop="2dp"

@@ -1,11 +1,13 @@
 package com.example.nickydcruz.loginregister;
 
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -76,7 +78,36 @@ public class ResultPage extends AppCompatActivity {
                 int bmr1 = bmr + 500;
                 int a[] = f.bmrcal(bmr1*0.25);
                 int b[] = f.bmrcal(bmr1*0.125);
-                nextPage(a[0],a[1],a[2],b[0],b[1],b[2]);
+
+                Toast.makeText(ResultPage.this,a[0]+"", Toast.LENGTH_SHORT).show();
+
+                Response.Listener<String> listener = new Response.Listener<String>() {
+
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject jsonresponse = new JSONObject(response);
+                            boolean success = jsonresponse.getBoolean("success");
+                            if(success){
+                                Intent int1=new Intent(ResultPage.this,Homescreen.class);
+                                startActivity(int1);
+                            }
+                            else {
+                                AlertDialog.Builder builder = new AlertDialog.Builder(ResultPage.this);
+                                builder.setMessage("Registration failed")
+                                        .setNegativeButton("Retry", null)
+                                        .create()
+                                        .show();
+                            }
+                        } catch (JSONException e1) {
+                            e1.printStackTrace();
+                        }
+                    }
+                };
+
+                RpRequest rp = new RpRequest(a[0]+"",a[1]+"",a[2]+"",b[0]+ "",b[1]+"",b[2]+"",listener);
+                RequestQueue queue2 = Volley.newRequestQueue(ResultPage.this);
+                queue2.add(rp);
             }
         });
 
@@ -88,7 +119,35 @@ public class ResultPage extends AppCompatActivity {
                 bmr1 =bmr -500;
                 int a[] = f.bmrcal(bmr1*0.25);
                 int b[] = f.bmrcal(bmr1*0.125);
-                nextPage(a[0],a[1],a[2],b[0],b[1],b[2]);
+                Toast.makeText(ResultPage.this,a[2]+"", Toast.LENGTH_SHORT).show();
+
+                Response.Listener<String> listener = new Response.Listener<String>() {
+
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject jsonresponse = new JSONObject(response);
+                            boolean success = jsonresponse.getBoolean("success");
+                            if(success){
+                                Intent int1=new Intent(ResultPage.this,Homescreen.class);
+                                startActivity(int1);
+                            }
+                            else {
+                                AlertDialog.Builder builder = new AlertDialog.Builder(ResultPage.this);
+                                builder.setMessage("Registration failed")
+                                        .setNegativeButton("Retry", null)
+                                        .create()
+                                        .show();
+                            }
+                        } catch (JSONException e1) {
+                            e1.printStackTrace();
+                        }
+                    }
+                };
+
+                RpRequest rp = new RpRequest(a[0]+"",a[1]+"",a[2]+"",b[0]+"",+b[1]+"",b[2]+"",listener);
+                RequestQueue queue2 = Volley.newRequestQueue(ResultPage.this);
+                queue2.add(rp);
             }
         });
 
@@ -97,7 +156,43 @@ public class ResultPage extends AppCompatActivity {
             public void onClick(View v) {
                 int a[] = f.bmrcal(bmr*0.25);
                 int b[] = f.bmrcal(bmr*0.125);
-                nextPage(a[0],a[1],a[2],b[0],b[1],b[2]);
+
+                Toast.makeText(ResultPage.this,a[0]+"", Toast.LENGTH_SHORT).show();
+
+                Response.Listener<String> listener = new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        if(response.equals("?Error")){
+                            AlertDialog.Builder builder = new AlertDialog.Builder(ResultPage.this);
+                            builder.setMessage("Registration failed")
+                                    .setNegativeButton("Retry", null)
+                                    .create()
+                                    .show();
+                        }
+                        else {
+                            try {
+                                JSONObject jsonresponse = new JSONObject(response);
+                                boolean success = jsonresponse.getBoolean("success");
+                                if (success) {
+                                    Intent int1 = new Intent(ResultPage.this, Homescreen.class);
+                                    startActivity(int1);
+                                } else {
+                                    AlertDialog.Builder builder = new AlertDialog.Builder(ResultPage.this);
+                                    builder.setMessage("Registration failed")
+                                            .setNegativeButton("Retry", null)
+                                            .create()
+                                            .show();
+                                }
+                            } catch (JSONException e1) {
+                                e1.printStackTrace();
+                            }
+                        }
+                    }
+                };
+
+                RpRequest rp = new RpRequest(a[0]+"",a[1]+"",a[2]+"",b[0]+"",b[1]+"",b[2]+"",listener);
+                RequestQueue queue2 = Volley.newRequestQueue(ResultPage.this);
+                queue2.add(rp);
 
             }
         });
@@ -107,28 +202,6 @@ public class ResultPage extends AppCompatActivity {
 
     }
 
-    private void nextPage(int a,int b,int c,int d,int e,int f){
-        Response.Listener<String> listener = new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                try {
-                    JSONObject jsonresponse = new JSONObject(response);
-                    boolean success = jsonresponse.getBoolean("success");
-                    if(success){
-                        Intent int1=new Intent(ResultPage.this,Homescreen.class);
-                        startActivity(int1);
-                    }
-                } catch (JSONException e1) {
-                    e1.printStackTrace();
-                }
-            }
-        };
-
-        RpRequest rp = new RpRequest(a+"",b+"",c+"",d+"",e+"",f+"",listener);
-        RequestQueue queue2 = Volley.newRequestQueue(ResultPage.this);
-        queue2.add(rp);
-
-    }
 
 }
 

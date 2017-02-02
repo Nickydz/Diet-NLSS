@@ -44,11 +44,8 @@ public class BasicSurvey1 extends AppCompatActivity {
 
 
         final RadioGroup radioSexGroup = (RadioGroup)findViewById(R.id.radgrp);
-        final NumberPicker numpic = (NumberPicker) findViewById(R.id.numpick_bs) ;
-        numpic.setMinValue(1);
-        numpic.setMaxValue(10);
-        numpic.setWrapSelectorWheel(false);
 
+        final EditText etHeight = (EditText) findViewById(R.id.numpick_bs);
         final EditText etWeight = (EditText) findViewById(R.id.etWeight);
         final EditText etWristCir = (EditText) findViewById(R.id.etWristCir);
         final Button submit =(Button) findViewById(R.id.btSubmit);
@@ -58,7 +55,7 @@ public class BasicSurvey1 extends AppCompatActivity {
             public void onClick(View v) {
 
 
-                final String height = numpic.getValue()+"";
+                final String height = etHeight.getText().toString();
                 final String weight =etWeight.getText().toString();
                 final String wristCir =etWristCir.getText().toString();
 
@@ -77,7 +74,7 @@ public class BasicSurvey1 extends AppCompatActivity {
 
                 Toast.makeText(BasicSurvey1.this,gender, Toast.LENGTH_SHORT).show();
         final float BMI = f.bmi( hieght,wieght);
-        final int BMR = f.bmr(gender,age,wieght,hieght);
+        final int BMR = f.bmr(gender,age,wieght,hieght*100);
 
                 Response.Listener<String> listener = new Response.Listener<String>(){
 
