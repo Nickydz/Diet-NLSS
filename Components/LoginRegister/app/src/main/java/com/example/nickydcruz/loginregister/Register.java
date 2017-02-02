@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -72,9 +73,12 @@ public class Register extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
 
-                            if(response.equals("?Successfully Registered")){
+                            if(response.equals("Successfully Registered")){
+
+                                Toast.makeText(Register.this,"Registration Successful", Toast.LENGTH_SHORT).show();
                                 Intent i = new Intent(Register.this,LoginActivity.class);
                                 Register.this.startActivity(i);
+
                             }
                             else{
                                 AlertDialog.Builder builder = new AlertDialog.Builder(Register.this);

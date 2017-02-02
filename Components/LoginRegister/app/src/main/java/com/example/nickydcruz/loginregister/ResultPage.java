@@ -90,6 +90,7 @@ public class ResultPage extends AppCompatActivity {
                             boolean success = jsonresponse.getBoolean("success");
                             if(success){
                                 Intent int1=new Intent(ResultPage.this,Homescreen.class);
+                                int1.putExtra("diet",jsonresponse.toString());
                                 startActivity(int1);
                             }
                             else {
@@ -127,9 +128,11 @@ public class ResultPage extends AppCompatActivity {
                     public void onResponse(String response) {
                         try {
                             JSONObject jsonresponse = new JSONObject(response);
+
                             boolean success = jsonresponse.getBoolean("success");
                             if(success){
                                 Intent int1=new Intent(ResultPage.this,Homescreen.class);
+                                int1.putExtra("diet",jsonresponse.toString());
                                 startActivity(int1);
                             }
                             else {
@@ -162,7 +165,7 @@ public class ResultPage extends AppCompatActivity {
                 Response.Listener<String> listener = new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        if(response.equals("?Error")){
+                        if(response.equals("Error")){
                             AlertDialog.Builder builder = new AlertDialog.Builder(ResultPage.this);
                             builder.setMessage("Registration failed")
                                     .setNegativeButton("Retry", null)
@@ -175,6 +178,8 @@ public class ResultPage extends AppCompatActivity {
                                 boolean success = jsonresponse.getBoolean("success");
                                 if (success) {
                                     Intent int1 = new Intent(ResultPage.this, Homescreen.class);
+                                    int1.putExtra("diet",jsonresponse.toString());
+
                                     startActivity(int1);
                                 } else {
                                     AlertDialog.Builder builder = new AlertDialog.Builder(ResultPage.this);
