@@ -1,15 +1,19 @@
 package com.example.nickydcruz.loginregister;
 
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.NumberPicker;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
@@ -26,9 +30,10 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-public class BasicSurvey1 extends AppCompatActivity  {
+public class BasicSurvey1 extends AppCompatActivity implements NumberPicker.OnValueChangeListener
+  {
 
-    private EditText et;
+    public TextView tv;
     static Dialog d ;
     static String s ="";
 
@@ -50,17 +55,28 @@ public class BasicSurvey1 extends AppCompatActivity  {
 
         final RadioGroup radioSexGroup = (RadioGroup)findViewById(R.id.radgrp);
 
-        final EditText etHeight = (EditText) findViewById(R.id.numpick_bs);
+        final TextView etHeight = (TextView) findViewById(R.id.etht);
+        tv = (TextView) findViewById(R.id.etht);
         final EditText etWeight = (EditText) findViewById(R.id.etWeight);
         final EditText etWristCir = (EditText) findViewById(R.id.etWristCir);
         final Button submit =(Button) findViewById(R.id.btSubmit);
+
+        Button b = (Button) findViewById(R.id.button2);// on click of button display the dialog
+        b.setOnClickListener(new View.OnClickListener()
+        {
+
+            @Override
+            public void onClick(View v) {
+                show();
+            }
+        });
 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
 
-                final String height = etHeight.getText().toString();
+                final String height = tv.getText().toString();
                 final String weight =etWeight.getText().toString();
                 final String wristCir =etWristCir.getText().toString();
 
@@ -117,6 +133,90 @@ public class BasicSurvey1 extends AppCompatActivity  {
 
 
     }
+      @Override
+      public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
+
+          Log.i("value is",""+newVal);
+
+      }
+
+//      public void button2 (View v) {
+//
+//          View v1 = getLayoutInflater().inflate(R.layout.dialog_numpick, null);
+//
+//
+//          final NumberPicker picker = (NumberPicker) v1.findViewById(R.id.numpick_bs);
+//          final NumberPicker picker1 = (NumberPicker) v1.findViewById(R.id.numpick2_bs);
+//          picker.setMinValue(1);
+//          picker.setMaxValue(20);
+//          picker1.setMinValue(1);
+//          picker1.setMaxValue(20);
+//          picker.setWrapSelectorWheel(false);
+//          picker1.setWrapSelectorWheel(false);
+//
+//          AlertDialog.Builder builder = new AlertDialog.Builder(this);
+//          builder.setView(v1);
+//          builder.setTitle("Cantidad");
+//          builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+//              public void onClick(DialogInterface dialog, int which) {
+//                  int pickedValue = picker.getValue();
+//                  int pickeValue = picker1.getValue();
+//                  TextView textView = (TextView) findViewById(R.id.etht);
+//                  textView.setText(Integer.parseInt(pickedValue+"."+pickeValue));
+//                  return;
+//              }
+//          });
+//          builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+//              public void onClick(DialogInterface dialog, int which) {
+//                  return;
+//              }
+//          });
+//
+//          AlertDialog dialog = builder.create();
+//          dialog.show();
+//      }
+
+      public String show()
+      {
+
+
+
+          final Dialog d = new Dialog(BasicSurvey1.this);
+          d.setTitle("NumberPicker");
+          d.setContentView(R.layout.dialog_numpick);
+          Button b1 = (Button) d.findViewById(R.id.btset);
+          Button b2 = (Button) d.findViewById(R.id.btCan);
+          final NumberPicker np = (NumberPicker) d.findViewById(R.id.numpick_bs);
+          final NumberPicker np1 = (NumberPicker) d.findViewById(R.id.numpick2_bs);
+          np1.setMaxValue(100);
+          np1.setMinValue(0);
+          np.setMaxValue(100); // max value 100
+          np.setMinValue(0);   // min value 0
+          np.setWrapSelectorWheel(false);
+          np.setOnValueChangedListener(this);
+          b1.setOnClickListener(new View.OnClickListener()
+          {
+              @Override
+              public void onClick(View v) {
+                  s = np.getValue()+"."+np1.getValue();
+                  //tv.setText(s);
+                  //tv.setText(String.valueOf(np.getValue()+"."+np1.getValue())); //set the value to textview
+                  d.dismiss();
+              }
+          });
+          b2.setOnClickListener(new View.OnClickListener()
+          {
+              @Override
+              public void onClick(View v) {
+                  d.dismiss(); // dismiss the dialog
+              }
+          });
+          d.show();
+          return s;
+
+
+      }
+
 
 
 }

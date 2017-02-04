@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_basic_survey1"
@@ -66,18 +72,18 @@
         android:layout_marginTop="33dp"
         android:id="@+id/tv_bsHeight"
         android:layout_below="@+id/radgrp"
-        android:layout_toEndOf="@+id/radioGroup"
+
         android:textStyle="bold"
         android:layout_marginStart="21dp" />
 
-    <EditText
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:minWidth="70dp"
         android:minHeight="30dp"
         android:inputType="numberDecimal|numberSigned"
         android:layout_marginTop="10dp"
-        android:id="@+id/numpick_bs"
+        android:id="@+id/etht"
         android:layout_below="@+id/tv_bsHeight"
         android:layout_alignStart="@+id/tv_bsHeight" />
 
@@ -86,10 +92,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:layout_alignStart="@+id/numpick_bs"
+        android:layout_alignStart="@+id/etht"
+        android:layout_alignTop="@+id/etht"
+        android:onClick="button2"
         android:layout_toEndOf="@+id/tv_gender"
         android:layout_marginStart="80dp"
-        android:layout_alignRight="@+id/numpick_bs"
+        android:layout_alignRight="@+id/etht"
         android:id="@+id/button2" />
 
     <Spinner
@@ -110,7 +118,7 @@
         android:layout_marginTop="20dp"
         android:id="@+id/tv_bsWeight"
         android:layout_below="@+id/spin_bsHeight"
-        android:layout_toEndOf="@+id/radioGroup"
+
         android:textStyle="bold"
         android:layout_marginStart="21dp" />
 
@@ -122,7 +130,7 @@
         android:layout_alignStart="@+id/tv_gender"
         android:layout_marginTop="1dp"
         android:id="@+id/etWeight"
-        android:layout_alignEnd="@+id/numpick_bs"
+        android:layout_alignEnd="@+id/etht"
         android:hint="in kg" />
 
     <!--<NumberPicker-->
@@ -139,7 +147,7 @@
     <Spinner
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/editText"
+
         android:layout_below="@+id/tv_bsWeight"
         android:layout_marginTop="13dp"
         android:layout_marginStart="80dp"
@@ -190,3 +198,4 @@
 
 
 </RelativeLayout>
+</ScrollView>
