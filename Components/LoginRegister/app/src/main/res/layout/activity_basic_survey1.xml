@@ -81,14 +81,25 @@
         android:layout_below="@+id/tv_bsHeight"
         android:layout_alignStart="@+id/tv_bsHeight" />
 
+    <Button
+        android:text="Click"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_alignStart="@+id/numpick_bs"
+        android:layout_toEndOf="@+id/tv_gender"
+        android:layout_marginStart="80dp"
+        android:layout_alignRight="@+id/numpick_bs"
+        android:id="@+id/button2" />
+
     <Spinner
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/numpick_bs"
+        android:layout_alignRight="@+id/button2"
         android:layout_below="@+id/tv_bsHeight"
         android:layout_marginTop="13dp"
         android:layout_marginStart="80dp"
-        android:layout_alignStart="@+id/numpick_bs"
+        android:layout_alignStart="@+id/button2"
         android:layout_marginRight="100dp"
         android:id="@+id/spin_bsHeight" />
 
@@ -174,6 +185,8 @@
         android:id="@+id/btSubmit"
         android:layout_below="@+id/etWristCir"
         android:layout_toEndOf="@+id/spin_bsWrist" />
+
+
 
 
 </RelativeLayout>

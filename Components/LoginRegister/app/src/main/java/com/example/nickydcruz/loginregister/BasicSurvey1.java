@@ -1,5 +1,6 @@
 package com.example.nickydcruz.loginregister;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -25,7 +26,11 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-public class BasicSurvey1 extends AppCompatActivity {
+public class BasicSurvey1 extends AppCompatActivity  {
+
+    private EditText et;
+    static Dialog d ;
+    static String s ="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

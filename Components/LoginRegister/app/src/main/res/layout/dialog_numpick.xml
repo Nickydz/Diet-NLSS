@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <NumberPicker
+        android:id="@+id/numpick_bs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="75dp"
+        android:layout_marginTop="20dp" />
+
+    <Button
+        android:id="@+id/btset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Set"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/btCan"
+        android:layout_marginBottom="116dp" />
+
+    <Button
+        android:id="@+id/btCan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="20dp"
+        android:text="Cancel"
+        android:layout_alignBaseline="@+id/btset"
+        android:layout_alignBottom="@+id/btset"
+        android:layout_alignEnd="@+id/numpick_bs" />
+
+    <NumberPicker
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/numpick_bs"
+        android:layout_alignStart="@+id/btset"
+        android:id="@+id/numpick2_bs" />
+
+</RelativeLayout>
