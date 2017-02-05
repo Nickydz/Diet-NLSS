@@ -19,6 +19,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Calendar;
+import java.util.regex.Pattern;
 
 public class Register extends AppCompatActivity {
 
@@ -67,7 +68,8 @@ public class Register extends AppCompatActivity {
                 final String password =etPassword.getText().toString();
                 final String confirmpassword =etConfirmPassword.getText().toString();
                 final String dob = etDOB.getText().toString();
-                if(confirmpassword.equals(password)){
+                boolean ev = isValidEmaillId(etEmail.getText().toString().trim());
+                if(confirmpassword.equals(password) && ev){
                 Response.Listener<String> listner = new Response.Listener<String>() {
 
                     @Override
@@ -97,6 +99,10 @@ public class Register extends AppCompatActivity {
                     queue.add(registerRequest);
 
                 }
+
+                else if(!ev){
+                    Toast.makeText(getApplicationContext(), "Invalid Email Address.", Toast.LENGTH_SHORT).show();
+                }
                 else{
                     AlertDialog.Builder builder = new AlertDialog.Builder(Register.this);
                     builder.setMessage("Passwords Don't Match")
@@ -110,4 +116,13 @@ public class Register extends AppCompatActivity {
             }
         });
      }
+    private boolean isValidEmaillId(String email){
+
+        return Pattern.compile("^(([\\w-]+\\.)+[\\w-]+|([a-zA-Z]{1}|[\\w-]{2,}))@"
+                + "((([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\.([0-1]?"
+                + "[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\."
+                + "([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\.([0-1]?"
+                + "[0-9]{1,2}|25[0-5]|2[0-4][0-9])){1}|"
+                + "([a-zA-Z]+[\\w-]+\\.)+[a-zA-Z]{2,4})$").matcher(email).matches();
+    }
 }

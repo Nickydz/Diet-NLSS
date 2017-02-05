@@ -188,7 +188,7 @@ public class BasicSurvey1 extends AppCompatActivity implements NumberPicker.OnVa
           Button b2 = (Button) d.findViewById(R.id.btCan);
           final NumberPicker np = (NumberPicker) d.findViewById(R.id.numpick_bs);
           final NumberPicker np1 = (NumberPicker) d.findViewById(R.id.numpick2_bs);
-          np1.setMaxValue(100);
+          np1.setMaxValue(99);
           np1.setMinValue(0);
           np.setMaxValue(100); // max value 100
           np.setMinValue(0);   // min value 0
@@ -199,7 +199,7 @@ public class BasicSurvey1 extends AppCompatActivity implements NumberPicker.OnVa
               @Override
               public void onClick(View v) {
                   s = np.getValue()+"."+np1.getValue();
-                  //tv.setText(s);
+                  tv.setText(s);
                   //tv.setText(String.valueOf(np.getValue()+"."+np1.getValue())); //set the value to textview
                   d.dismiss();
               }

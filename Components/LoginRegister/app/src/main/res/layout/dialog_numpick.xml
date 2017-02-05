@@ -18,10 +18,8 @@
         android:text="Set"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="20dp"
-        android:layout_alignParentBottom="true"
-
-        android:layout_toEndOf="@+id/btCan"
-        android:layout_marginBottom="116dp" />
+        android:layout_below="@+id/numpick2_bs"
+        android:layout_toEndOf="@+id/btCan" />
 
     <Button
         android:id="@+id/btCan"

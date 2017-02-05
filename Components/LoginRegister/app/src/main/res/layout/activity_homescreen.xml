@@ -19,14 +19,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView3"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:textSize="20sp"/>
 
     <TextView
         android:text=""
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView3"
-        android:id="@+id/textbf" />
+        android:id="@+id/textbf"
+        />
 
     <TextView
         android:text="Snacks"
@@ -36,7 +38,7 @@
         android:layout_below="@+id/textbf"
         android:id="@+id/textView5"
         android:textStyle="bold"
-        />
+        android:textSize="20sp"/>
 
     <TextView
         android:text=""
@@ -52,14 +54,16 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/textbsn"
         android:id="@+id/textView7"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:textSize="20sp"/>
 
     <TextView
         android:text=""
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView7"
-        android:id="@+id/textln"/>
+        android:id="@+id/textln"
+        />
 
     <TextView
         android:text="Snacks"
@@ -68,7 +72,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/textln"
         android:id="@+id/textView9"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:textSize="20sp"/>
 
     <TextView
         android:text=""
@@ -84,7 +89,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/textlsn"
         android:id="@+id/textView11"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:textSize="20sp"/>
 
     <TextView
         android:text=""

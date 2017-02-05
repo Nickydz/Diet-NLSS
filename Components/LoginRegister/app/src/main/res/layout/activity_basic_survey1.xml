@@ -83,22 +83,12 @@
         android:minHeight="30dp"
         android:inputType="numberDecimal|numberSigned"
         android:layout_marginTop="10dp"
+        android:layout_marginLeft="15dp"
+        android:textSize="20sp"
         android:id="@+id/etht"
+        android:textStyle="bold"
         android:layout_below="@+id/tv_bsHeight"
         android:layout_alignStart="@+id/tv_bsHeight" />
-
-    <Button
-        android:text="Click"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_alignStart="@+id/etht"
-        android:layout_alignTop="@+id/etht"
-        android:onClick="button2"
-        android:layout_toEndOf="@+id/tv_gender"
-        android:layout_marginStart="80dp"
-        android:layout_alignRight="@+id/etht"
-        android:id="@+id/button2" />
 
     <Spinner
         android:layout_width="wrap_content"
@@ -194,7 +184,15 @@
         android:layout_below="@+id/etWristCir"
         android:layout_toEndOf="@+id/spin_bsWrist" />
 
-
+    <Button
+        android:text="Click"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="button2"
+        android:id="@+id/button2"
+        android:layout_alignBaseline="@+id/etht"
+        android:layout_alignBottom="@+id/etht"
+        android:layout_alignStart="@+id/spin_bsWeight" />
 
 
 </RelativeLayout>
