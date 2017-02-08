@@ -79,8 +79,6 @@ public class ResultPage extends AppCompatActivity {
                 int a[] = f.bmrcal(bmr1*0.25);
                 int b[] = f.bmrcal(bmr1*0.125);
 
-                Toast.makeText(ResultPage.this,a[0]+"", Toast.LENGTH_SHORT).show();
-
                 Response.Listener<String> listener = new Response.Listener<String>() {
 
                     @Override
@@ -120,7 +118,6 @@ public class ResultPage extends AppCompatActivity {
                 bmr1 =bmr -500;
                 int a[] = f.bmrcal(bmr1*0.25);
                 int b[] = f.bmrcal(bmr1*0.125);
-                Toast.makeText(ResultPage.this,a[2]+"", Toast.LENGTH_SHORT).show();
 
                 Response.Listener<String> listener = new Response.Listener<String>() {
 
@@ -160,14 +157,12 @@ public class ResultPage extends AppCompatActivity {
                 int a[] = f.bmrcal(bmr*0.25);
                 int b[] = f.bmrcal(bmr*0.125);
 
-                Toast.makeText(ResultPage.this,a[0]+"", Toast.LENGTH_SHORT).show();
-
                 Response.Listener<String> listener = new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         if(response.equals("Error")){
                             AlertDialog.Builder builder = new AlertDialog.Builder(ResultPage.this);
-                            builder.setMessage("Registration failed")
+                            builder.setMessage("Download failed")
                                     .setNegativeButton("Retry", null)
                                     .create()
                                     .show();

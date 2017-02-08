@@ -69,49 +69,53 @@ public class Register extends AppCompatActivity {
                 final String confirmpassword =etConfirmPassword.getText().toString();
                 final String dob = etDOB.getText().toString();
                 boolean ev = isValidEmaillId(etEmail.getText().toString().trim());
-                if(confirmpassword.equals(password) && ev){
-                Response.Listener<String> listner = new Response.Listener<String>() {
+                if (!(username.equals("")|| password.equals("")||dob.equals(""))) {
+                    if (confirmpassword.equals(password) && ev) {
+                        Response.Listener<String> listner = new Response.Listener<String>() {
 
-                    @Override
-                    public void onResponse(String response) {
+                            @Override
+                            public void onResponse(String response) {
 
-                            if(response.equals("Successfully Registered")){
+                                if (response.equals("Successfully Registered")) {
 
-                                Toast.makeText(Register.this,"Registration Successful", Toast.LENGTH_SHORT).show();
-                                Intent i = new Intent(Register.this,LoginActivity.class);
-                                Register.this.startActivity(i);
+                                    Toast.makeText(Register.this, "Registration Successful", Toast.LENGTH_SHORT).show();
+                                    Intent i = new Intent(Register.this, LoginActivity.class);
+                                    Register.this.startActivity(i);
+
+                                } else {
+                                    AlertDialog.Builder builder = new AlertDialog.Builder(Register.this);
+                                    builder.setMessage("Registration failed")
+                                            .setNegativeButton("Retry", null)
+                                            .create()
+                                            .show();
+                                }
+
 
                             }
-                            else{
-                                AlertDialog.Builder builder = new AlertDialog.Builder(Register.this);
-                                builder.setMessage("Registration failed")
-                                        .setNegativeButton("Retry", null)
-                                        .create()
-                                        .show();
-                            }
 
+                        };
+                        RegisterRequest registerRequest = new RegisterRequest(username, email, password, dob, listner);
+                        RequestQueue queue = Volley.newRequestQueue(Register.this);
+                        queue.add(registerRequest);
+
+                    } else if (!ev) {
+                        Toast.makeText(getApplicationContext(), "Invalid Email Address.", Toast.LENGTH_SHORT).show();
+                    } else {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(Register.this);
+                        builder.setMessage("Passwords Don't Match")
+                                .setNegativeButton("Retry", null)
+                                .create()
+                                .show();
 
                     }
-
-                };
-                    RegisterRequest registerRequest = new RegisterRequest(username,email,password,dob, listner);
-                    RequestQueue queue = Volley.newRequestQueue(Register.this);
-                    queue.add(registerRequest);
-
-                }
-
-                else if(!ev){
-                    Toast.makeText(getApplicationContext(), "Invalid Email Address.", Toast.LENGTH_SHORT).show();
                 }
                 else{
                     AlertDialog.Builder builder = new AlertDialog.Builder(Register.this);
-                    builder.setMessage("Passwords Don't Match")
+                    builder.setMessage("Fields are Empty")
                             .setNegativeButton("Retry", null)
                             .create()
                             .show();
-
                 }
-
 
             }
         });

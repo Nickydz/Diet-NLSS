@@ -2,4 +2,6 @@
     <string name="app_name">LoginRegister</string>
     <string name="title_activity_homescreen">Homescreen</string>
     <string name="emailerror">Enter a valid email</string>
+
+    <string name="beve">Choice of beverage</string>
 </resources>

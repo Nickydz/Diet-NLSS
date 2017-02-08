@@ -25,6 +25,7 @@ if (mysqli_num_rows($result) > 0) {
     while($row = mysqli_fetch_assoc($result)) {
            $i++;
         $response[$i]=$row["Name"];
+		$response[$i+1] = $row["Calories"];
     }
 $response[$i++]= "endbf";
 } else {
@@ -37,7 +38,8 @@ $result = mysqli_query($conn, $sql);
 if (mysqli_num_rows($result) > 0) {
     // output data of each row
     while($row = mysqli_fetch_assoc($result)) {
-        $response[$i]=$row["Name"];   
+        $response[$i]=$row["Name"]; 
+		$response[$i+1] = $row["Calories"];  
           $i++;        
     }
 $response[$i++]= "endln";
@@ -52,6 +54,7 @@ if (mysqli_num_rows($result) > 0) {
     // output data of each row
     while($row = mysqli_fetch_assoc($result)) {
         $response[$i]=$row["Name"];   
+		$response[$i+1] = $row["Calories"];
           $i++;        
     }
 $response[$i++]= "enddn";
@@ -74,6 +77,7 @@ if (mysqli_num_rows($result) > 0) {
     // output data of each row
     while($row = mysqli_fetch_assoc($result)) {
         $response[$i]=$row["Name"];   
+		$response[$i+1] = $row["Calories"];
           $i++;        
     }
 $response[$i++]= "endsn";

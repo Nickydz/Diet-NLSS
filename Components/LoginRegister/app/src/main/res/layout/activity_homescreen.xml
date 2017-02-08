@@ -26,7 +26,9 @@
         android:text=""
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView3"
+        android:layout_below="@+id/spinb"
+        android:layout_marginTop="7dp"
+        android:textSize="15sp"
         android:id="@+id/textbf"
         />
 
@@ -45,6 +47,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView5"
+        android:textSize="15sp"
         android:id="@+id/textbsn"/>
 
     <TextView
@@ -59,6 +62,7 @@
 
     <TextView
         android:text=""
+        android:textSize="15sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView7"
@@ -77,6 +81,7 @@
 
     <TextView
         android:text=""
+        android:textSize="15sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView9"
@@ -94,11 +99,69 @@
 
     <TextView
         android:text=""
+        android:textSize="15sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView11"
         android:id="@+id/textdn" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView3"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="15dp"
+        android:id="@+id/tvCalt" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/spinb"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="15dp"
+        android:layout_marginTop="7dp"
+        android:id="@+id/tvCalbf" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView5"
+
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="15dp"
+        android:id="@+id/tvCalbsn" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView7"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="15dp"
+        android:id="@+id/tvCalln" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView9"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="15dp"
+        android:id="@+id/tvCallsn" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView11"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="15dp"
+        android:id="@+id/tvCaldn" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:prompt="@string/beve"
+        android:id="@+id/spinb"
+        android:layout_below="@+id/textView3"
+        android:layout_alignParentStart="true" />
 
 
 </RelativeLayout>

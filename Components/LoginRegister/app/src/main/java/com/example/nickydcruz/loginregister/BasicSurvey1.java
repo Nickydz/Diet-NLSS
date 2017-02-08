@@ -30,12 +30,11 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-public class BasicSurvey1 extends AppCompatActivity implements NumberPicker.OnValueChangeListener
-  {
+public class BasicSurvey1 extends AppCompatActivity implements NumberPicker.OnValueChangeListener {
 
     public TextView tv;
-    static Dialog d ;
-    static String s ="";
+    static Dialog d;
+    static String s = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,18 +51,16 @@ public class BasicSurvey1 extends AppCompatActivity implements NumberPicker.OnVa
         final int age = f.calculateAge(dob);
 
 
-
-        final RadioGroup radioSexGroup = (RadioGroup)findViewById(R.id.radgrp);
+        final RadioGroup radioSexGroup = (RadioGroup) findViewById(R.id.radgrp);
 
         final TextView etHeight = (TextView) findViewById(R.id.etht);
         tv = (TextView) findViewById(R.id.etht);
         final EditText etWeight = (EditText) findViewById(R.id.etWeight);
         final EditText etWristCir = (EditText) findViewById(R.id.etWristCir);
-        final Button submit =(Button) findViewById(R.id.btSubmit);
+        final Button submit = (Button) findViewById(R.id.btSubmit);
 
         Button b = (Button) findViewById(R.id.button2);// on click of button display the dialog
-        b.setOnClickListener(new View.OnClickListener()
-        {
+        b.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -77,68 +74,68 @@ public class BasicSurvey1 extends AppCompatActivity implements NumberPicker.OnVa
 
 
                 final String height = tv.getText().toString();
-                final String weight =etWeight.getText().toString();
-                final String wristCir =etWristCir.getText().toString();
+                final String weight = etWeight.getText().toString();
+                final String wristCir = etWristCir.getText().toString();
+                if (!(height.equals("")||weight.equals("")||wristCir.equals(""))) {
+                    int wristcri = Integer.parseInt(wristCir);
+                    float wieght = Float.parseFloat(weight);
+                    float hieght = 0.3048f * Float.parseFloat(height);
 
-                int wristcri = Integer.parseInt(wristCir);
-                float wieght = Float.parseFloat(weight);
-                float hieght = Float.parseFloat(height);
 
+                    int selectedId = radioSexGroup.getCheckedRadioButtonId();
+                    RadioButton radioSexButton = (RadioButton) findViewById(selectedId);
+                    String gender;
+                    if (radioSexButton.getText().equals("Male"))
+                        gender = "M";
+                    else
+                        gender = "F";
 
-                int selectedId = radioSexGroup.getCheckedRadioButtonId();
-                RadioButton radioSexButton = (RadioButton) findViewById(selectedId);
-                String gender;
-                if(radioSexButton.getText().equals("Male"))
-                    gender = "M";
-                else
-                    gender = "F";
+                    final float BMI = f.bmi(hieght, wieght);
+                    final int BMR = f.bmr(gender, age, wieght, hieght * 100);
 
-                Toast.makeText(BasicSurvey1.this,gender, Toast.LENGTH_SHORT).show();
-        final float BMI = f.bmi( hieght,wieght);
-        final int BMR = f.bmr(gender,age,wieght,hieght*100);
+                    Response.Listener<String> listener = new Response.Listener<String>() {
 
-                Response.Listener<String> listener = new Response.Listener<String>(){
+                        @Override
+                        public void onResponse(String response) {
+                            try {
+                                JSONObject jsonResponse1 = new JSONObject(response);
+                                boolean success = jsonResponse1.getBoolean("success");
+                                if (success) {
+                                    Intent int1 = new Intent(BasicSurvey1.this, ResultPage.class);
+                                    int1.putExtra("BMR", BMR);
+                                    int1.putExtra("BMI", BMI);
+                                    int1.putExtra("age", age);
+                                    int1.putExtra("username", username);
+                                    BasicSurvey1.this.startActivity(int1);
+                                } else {
 
-                    @Override
-                    public void onResponse(String response) {
-                        try {
-                            JSONObject jsonResponse1 = new JSONObject(response);
-                            boolean success = jsonResponse1.getBoolean("success");
-                            if(success){
-                                Intent int1 = new Intent(BasicSurvey1.this,ResultPage.class);
-                                int1.putExtra("BMR",BMR);
-                                int1.putExtra("BMI",BMI);
-                                int1.putExtra("age",age);
-                                int1.putExtra("username",username);
-                                BasicSurvey1.this.startActivity(int1);
+                                }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
                             }
-                            else {
 
-                            }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
                         }
+                    };
 
-                    }
-                };
-
-                BSurveyRequest brequest = new BSurveyRequest(username,dob,gender,height,weight,wristCir,listener);
-                RequestQueue queue1 = Volley.newRequestQueue(BasicSurvey1.this);
-                queue1.add(brequest);
-
+                    BSurveyRequest brequest = new BSurveyRequest(username, dob, gender, height, weight, wristCir, listener);
+                    RequestQueue queue1 = Volley.newRequestQueue(BasicSurvey1.this);
+                    queue1.add(brequest);
+                }
+                else {
+                    Toast.makeText(BasicSurvey1.this,"Fields are empty",Toast.LENGTH_SHORT);
+                }
             }
         });
 
 
+    }
 
+    @Override
+    public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
+
+        Log.i("value is", "" + newVal);
 
     }
-      @Override
-      public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
-
-          Log.i("value is",""+newVal);
-
-      }
 
 //      public void button2 (View v) {
 //
@@ -176,47 +173,42 @@ public class BasicSurvey1 extends AppCompatActivity implements NumberPicker.OnVa
 //          dialog.show();
 //      }
 
-      public String show()
-      {
+    public String show() {
 
 
-
-          final Dialog d = new Dialog(BasicSurvey1.this);
-          d.setTitle("NumberPicker");
-          d.setContentView(R.layout.dialog_numpick);
-          Button b1 = (Button) d.findViewById(R.id.btset);
-          Button b2 = (Button) d.findViewById(R.id.btCan);
-          final NumberPicker np = (NumberPicker) d.findViewById(R.id.numpick_bs);
-          final NumberPicker np1 = (NumberPicker) d.findViewById(R.id.numpick2_bs);
-          np1.setMaxValue(99);
-          np1.setMinValue(0);
-          np.setMaxValue(100); // max value 100
-          np.setMinValue(0);   // min value 0
-          np.setWrapSelectorWheel(false);
-          np.setOnValueChangedListener(this);
-          b1.setOnClickListener(new View.OnClickListener()
-          {
-              @Override
-              public void onClick(View v) {
-                  s = np.getValue()+"."+np1.getValue();
-                  tv.setText(s);
-                  //tv.setText(String.valueOf(np.getValue()+"."+np1.getValue())); //set the value to textview
-                  d.dismiss();
-              }
-          });
-          b2.setOnClickListener(new View.OnClickListener()
-          {
-              @Override
-              public void onClick(View v) {
-                  d.dismiss(); // dismiss the dialog
-              }
-          });
-          d.show();
-          return s;
+        final Dialog d = new Dialog(BasicSurvey1.this);
+        d.setTitle("NumberPicker");
+        d.setContentView(R.layout.dialog_numpick);
+        Button b1 = (Button) d.findViewById(R.id.btset);
+        Button b2 = (Button) d.findViewById(R.id.btCan);
+        final NumberPicker np = (NumberPicker) d.findViewById(R.id.numpick_bs);
+        final NumberPicker np1 = (NumberPicker) d.findViewById(R.id.numpick2_bs);
+        np1.setMaxValue(99);
+        np1.setMinValue(0);
+        np.setMaxValue(10); // max value 10
+        np.setMinValue(1);   // min value 1
+        np.setWrapSelectorWheel(false);
+        np.setOnValueChangedListener(this);
+        b1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                s = np.getValue() + "." + np1.getValue();
+                tv.setText(s);
+                //tv.setText(String.valueOf(np.getValue()+"."+np1.getValue())); //set the value to textview
+                d.dismiss();
+            }
+        });
+        b2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                d.dismiss(); // dismiss the dialog
+            }
+        });
+        d.show();
+        return s;
 
 
-      }
-
+    }
 
 
 }

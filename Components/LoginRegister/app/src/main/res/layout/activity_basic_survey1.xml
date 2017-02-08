@@ -88,7 +88,8 @@
         android:id="@+id/etht"
         android:textStyle="bold"
         android:layout_below="@+id/tv_bsHeight"
-        android:layout_alignStart="@+id/tv_bsHeight" />
+        android:layout_alignStart="@+id/tv_bsHeight"
+        android:text="1.7" />
 
     <Spinner
         android:layout_width="wrap_content"
@@ -99,7 +100,8 @@
         android:layout_marginStart="80dp"
         android:layout_alignStart="@+id/button2"
         android:layout_marginRight="100dp"
-        android:id="@+id/spin_bsHeight" />
+        android:id="@+id/spin_bsHeight"
+        android:visibility="invisible"/>
 
     <TextView
         android:text="Please enter your weight"
@@ -121,7 +123,8 @@
         android:layout_marginTop="1dp"
         android:id="@+id/etWeight"
         android:layout_alignEnd="@+id/etht"
-        android:hint="in kg" />
+        android:hint="in kg"
+        android:text="60" />
 
     <!--<NumberPicker-->
     <!--android:layout_width="wrap_content"-->
@@ -143,7 +146,9 @@
         android:layout_marginStart="80dp"
         android:layout_alignStart="@+id/etWeight"
         android:layout_marginRight="100dp"
-        android:id="@+id/spin_bsWeight" />
+        android:id="@+id/spin_bsWeight"
+        android:visibility="invisible"
+        />
 
     <TextView
         android:text="Enter your wrist circumference"
@@ -153,7 +158,8 @@
         android:layout_below="@+id/etWeight"
         android:layout_alignStart="@+id/etWeight"
         android:textStyle="bold"
-        android:layout_marginBottom="5dp"/>
+        android:layout_marginBottom="5dp"
+        />
 
     <EditText
         android:layout_width="wrap_content"
@@ -163,7 +169,8 @@
         android:layout_alignStart="@+id/tv_bsWrist"
         android:layout_marginTop="2dp"
         android:id="@+id/etWristCir"
-        android:layout_alignEnd="@+id/etWeight" />
+        android:layout_alignEnd="@+id/etWeight"
+        android:text="5" />
 
     <Spinner
         android:layout_width="wrap_content"
@@ -174,7 +181,8 @@
         android:layout_marginStart="80dp"
         android:layout_alignStart="@+id/etWristCir"
         android:layout_marginRight="100dp"
-        android:id="@+id/spin_bsWrist" />
+        android:id="@+id/spin_bsWrist"
+        android:visibility="invisible"/>
 
     <Button
         android:text="Submit"
