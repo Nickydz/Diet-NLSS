@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_centre"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.nlss.custom_diet.Centre">
+
+
+    <TextView
+        android:text="Breakfast"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:id="@+id/bf"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+    
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bfac"
+        android:layout_alignEnd="@+id/bf"
+        android:layout_marginTop="10dp"
+        android:visibility="gone"
+        android:id="@+id/bftvdisp" />
+
+    <TextView
+        android:text="Lunch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bftvdisp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:id="@+id/ln" />
+
+    <AutoCompleteTextView
+        android:text="AutoCompleteTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:id="@+id/bfac"
+        android:layout_below="@+id/bf"
+        android:layout_centerHorizontal="true" />
+
+    <AutoCompleteTextView
+        android:text="AutoCompleteTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ln"
+        android:layout_alignStart="@+id/bfac"
+        android:layout_marginTop="10dp"
+        android:id="@+id/lnac" />
+
+    <TextView
+        android:text="Dinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lntvdisp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:id="@+id/dn" />
+
+    <AutoCompleteTextView
+        android:text="AutoCompleteTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/dn"
+        android:layout_alignStart="@+id/lnac"
+        android:layout_marginTop="10dp"
+        android:id="@+id/dnac" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/dnac"
+        android:visibility="gone"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:id="@+id/dntvdisp" />
+
+    <TextView
+        android:text="Snacks"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/dntvdisp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:id="@+id/sn" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:id="@+id/lntvdisp"
+        android:layout_below="@+id/lnac"
+        android:layout_alignEnd="@+id/bf"
+        android:layout_marginTop="10dp" />
+
+    <AutoCompleteTextView
+        android:text="AutoCompleteTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/snac"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/sn"
+        android:layout_alignStart="@+id/dnac" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/snac"
+        android:layout_alignStart="@+id/bf"
+        android:layout_marginTop="10dp"
+        android:visibility="gone"
+        android:id="@+id/sntvdisp" />
+</RelativeLayout>
+</ScrollView>
