@@ -27,6 +27,8 @@
         android:layout_alignParentStart="true"
         android:hint="Username" />
 
+
+
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -43,7 +45,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/btLogin"
-        android:layout_below="@+id/etPassword"
+        android:layout_below="@+id/chrem"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true" />
 
@@ -57,5 +59,16 @@
         android:layout_below="@+id/btLogin"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="15dp" />
+
+    <CheckBox
+        android:text="Remember Me"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_below="@+id/etPassword"
+        android:id="@+id/chrem"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:checked="true" />
 </RelativeLayout>
 </ScrollView>

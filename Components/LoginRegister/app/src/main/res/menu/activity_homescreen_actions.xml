@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/diet" android:title="Diet"  app:showAsAction="never"
+        android:icon="@mipmap/ic_launcher">
+
+    </item>
+    <item android:id="@+id/excal" android:title="Exercise Calculator"  app:showAsAction="never"
+        android:icon="@mipmap/ic_fitness_center_black_24dp">
+
+    </item>
+    <item android:id="@+id/superfood" android:title="Superfoods"  app:showAsAction="never"
+        android:icon="@mipmap/ic_import_contacts_black_24dp">
+
+    </item>
+    <item android:id="@+id/foodcravings" android:title="FoodCravings"  app:showAsAction="never"
+        android:icon="@mipmap/ic_import_contacts_black_24dp">
+
+    </item>
+
+    <item android:id="@+id/logout" android:title="Logout"  app:showAsAction="never"
+        android:icon="@mipmap/ic_import_contacts_black_24dp">
+
+    </item>
+</menu>

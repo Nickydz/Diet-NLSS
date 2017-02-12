@@ -76,10 +76,12 @@ public class Register extends AppCompatActivity {
                             @Override
                             public void onResponse(String response) {
 
-                                if (response.equals("Successfully Registered")) {
+                                if (response.contains("Successfully Registered")) {
 
                                     Toast.makeText(Register.this, "Registration Successful", Toast.LENGTH_SHORT).show();
-                                    Intent i = new Intent(Register.this, LoginActivity.class);
+                                    Intent i = new Intent(Register.this, BasicSurvey1.class);
+                                    i.putExtra("username",username);
+                                    i.putExtra("dob",dob+"");
                                     Register.this.startActivity(i);
 
                                 } else {

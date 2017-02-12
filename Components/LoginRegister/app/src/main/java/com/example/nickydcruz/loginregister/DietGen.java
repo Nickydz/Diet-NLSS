@@ -45,7 +45,7 @@ public class DietGen {
         SparseArray<String> snacks = new SparseArray<>();
         int i,j,u=0;
         String s;
-        for (i = 0,j=0; true;i++,j++) {
+        for (i = 0,j=0; j<1000;i++,j++) {
             try {
 
                 if (jsonObject.getString(i + "").equals("endbf")) {
@@ -65,7 +65,7 @@ public class DietGen {
         s = breakfastGen(breakfast, j);
         i++;
         u=0;
-        for ( j = 0; true; i++, j++) {
+        for ( j = 0; j<1000; i++, j++) {
             try {
                 if (jsonObject.getString(i + "").equals("endln")) {
                     break;
@@ -83,7 +83,7 @@ public class DietGen {
 
         s = s + ";" + lunchGen(lunch,j);
         u = 0;
-        for (j = 0; true; i++, j++) {
+        for (j = 0; j<1000; i++, j++) {
             try {
                 if (jsonObject.getString(i + "").equals("enddn")) {
                     break;
@@ -100,7 +100,7 @@ public class DietGen {
         i++;
         s = s + ";" + dinnerGen(dinner,j);
         u=0;
-        for (j = 0; true; i++, j++) {
+        for (j = 0; j<1000; i++, j++) {
             try {
                 if (jsonObject.getString(i + "").equals("endsn")) {
                     break;

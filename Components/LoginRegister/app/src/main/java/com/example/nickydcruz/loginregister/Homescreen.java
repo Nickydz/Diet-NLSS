@@ -1,8 +1,14 @@
 package com.example.nickydcruz.loginregister;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -19,11 +25,12 @@ import java.util.List;
 public class Homescreen extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
 
-
+    SharedPreferences pref;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homescreen);
+        pref = getSharedPreferences("login.conf", Context.MODE_PRIVATE);
         Spinner spn=(Spinner) findViewById(R.id.spinb);
 
         spn.setOnItemSelectedListener(this);
@@ -63,6 +70,10 @@ public class Homescreen extends AppCompatActivity implements AdapterView.OnItemS
 
         String s = d.dietDivider(jsonObject);
         String[] diet = s.split(";");
+        ActionBar actionBar =getSupportActionBar();
+        actionBar.setLogo(R.mipmap.nlss_crop);
+        actionBar.setDisplayUseLogoEnabled(true);
+        actionBar.setDisplayShowHomeEnabled(true);
 
 
         TextView tvbf =(TextView) findViewById(R.id.textbf);
@@ -90,7 +101,40 @@ public class Homescreen extends AppCompatActivity implements AdapterView.OnItemS
 
 
 
+    }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.activity_homescreen_actions,menu);
+        return super.onCreateOptionsMenu(menu);
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        Intent i = new Intent(Homescreen.this,Homescreen.class);
+        switch (item.getItemId()) {
+            case R.id.foodcravings: i = new Intent(Homescreen.this, FoodCravings.class);
+                break;
+
+            case R.id.superfood: i = new Intent(Homescreen.this, superfood_main.class);
+                break;
+
+            case R.id.excal: i = new Intent(Homescreen.this, ExerciseCalculator.class);
+                break;
+
+            case R.id.diet: i = new Intent(Homescreen.this, Homescreen.class);
+                break;
+            case R.id.logout: {
+                pref.edit().clear().commit();
+                i = new Intent(getApplicationContext(), LoginActivity.class);
+                break;
+            }
+
+        }
+        Homescreen.this.startActivity(i);
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
