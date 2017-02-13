@@ -47,8 +47,8 @@
         android:id="@+id/ln" />
 
     <AutoCompleteTextView
-        android:text="AutoCompleteTextView"
-        android:layout_width="wrap_content"
+        android:hint="Select food"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:id="@+id/bfac"
@@ -56,8 +56,8 @@
         android:layout_centerHorizontal="true" />
 
     <AutoCompleteTextView
-        android:text="AutoCompleteTextView"
-        android:layout_width="wrap_content"
+        android:hint="Select food"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/ln"
         android:layout_alignStart="@+id/bfac"
@@ -74,8 +74,8 @@
         android:id="@+id/dn" />
 
     <AutoCompleteTextView
-        android:text="AutoCompleteTextView"
-        android:layout_width="wrap_content"
+        android:hint="Select food"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/dn"
         android:layout_alignStart="@+id/lnac"
@@ -112,8 +112,8 @@
         android:layout_marginTop="10dp" />
 
     <AutoCompleteTextView
-        android:text="AutoCompleteTextView"
-        android:layout_width="wrap_content"
+        android:hint="Select food"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/snac"
         android:layout_marginTop="10dp"
