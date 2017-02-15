@@ -28,6 +28,7 @@ public class LoginActivity extends AppCompatActivity implements CompoundButton.O
     SharedPreferences.Editor editor;
     boolean checkFlag;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

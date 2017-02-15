@@ -8,11 +8,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.NumberPicker;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,11 +29,13 @@ import org.json.JSONObject;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
-public class BasicSurvey1 extends AppCompatActivity implements NumberPicker.OnValueChangeListener {
+public class BasicSurvey1 extends AppCompatActivity implements NumberPicker.OnValueChangeListener, AdapterView.OnItemSelectedListener {
 
     public TextView tv;
     static Dialog d;
@@ -49,6 +54,17 @@ public class BasicSurvey1 extends AppCompatActivity implements NumberPicker.OnVa
         final String username = intent.getStringExtra("username");
         final String dob = intent.getStringExtra("dob");
         final int age = f.calculateAge(dob);
+        Spinner spn=(Spinner) findViewById(R.id.spinb);
+
+        spn.setOnItemSelectedListener(this);
+        List<String> categories = new ArrayList<String>();
+        categories.add("Vegetarian");
+        categories.add("Non-Vegeterian");
+
+
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, categories);
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spn.setAdapter(dataAdapter);
 
 
         final RadioGroup radioSexGroup = (RadioGroup) findViewById(R.id.radgrp);
@@ -183,7 +199,7 @@ public class BasicSurvey1 extends AppCompatActivity implements NumberPicker.OnVa
         Button b2 = (Button) d.findViewById(R.id.btCan);
         final NumberPicker np = (NumberPicker) d.findViewById(R.id.numpick_bs);
         final NumberPicker np1 = (NumberPicker) d.findViewById(R.id.numpick2_bs);
-        np1.setMaxValue(99);
+        np1.setMaxValue(11);
         np1.setMinValue(0);
         np.setMaxValue(10); // max value 10
         np.setMinValue(1);   // min value 1
@@ -211,4 +227,14 @@ public class BasicSurvey1 extends AppCompatActivity implements NumberPicker.OnVa
     }
 
 
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        String item = parent.getItemAtPosition(position).toString();
+        Toast.makeText(this,item,Toast.LENGTH_LONG);
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
+    }
 }

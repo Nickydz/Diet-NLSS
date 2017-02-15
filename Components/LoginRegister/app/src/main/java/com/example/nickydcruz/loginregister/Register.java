@@ -77,7 +77,6 @@ public class Register extends AppCompatActivity {
                             public void onResponse(String response) {
 
                                 if (response.contains("Successfully Registered")) {
-
                                     Toast.makeText(Register.this, "Registration Successful", Toast.LENGTH_SHORT).show();
                                     Intent i = new Intent(Register.this, BasicSurvey1.class);
                                     i.putExtra("username",username);

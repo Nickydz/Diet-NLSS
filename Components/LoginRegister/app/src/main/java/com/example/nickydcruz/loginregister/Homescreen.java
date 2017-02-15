@@ -57,9 +57,10 @@ public class Homescreen extends AppCompatActivity implements AdapterView.OnItemS
     @Override
     protected void onStart() {
         super.onStart();
-
         Intent i = getIntent();
-        final DietGen d = new DietGen();
+        String username = i.getStringExtra("username");
+        DBHelper myDb = new DBHelper(this,username);
+        final DietGen d = new DietGen(username, myDb);
         JSONObject jsonObject = new JSONObject();
         try {
             jsonObject = new JSONObject(i.getStringExtra("diet"));
@@ -68,8 +69,8 @@ public class Homescreen extends AppCompatActivity implements AdapterView.OnItemS
             e.printStackTrace();
         }
 
-        String s = d.dietDivider(jsonObject);
-        String[] diet = s.split(";");
+        //String s = d.dietDivider(jsonObject);
+        //String[] diet = s.split(";");
         ActionBar actionBar =getSupportActionBar();
         actionBar.setLogo(R.mipmap.nlss_crop);
         actionBar.setDisplayUseLogoEnabled(true);
@@ -87,7 +88,7 @@ public class Homescreen extends AppCompatActivity implements AdapterView.OnItemS
         TextView tvCalbsn =(TextView) findViewById(R.id.tvCalbsn);
         TextView tvCallsn =(TextView) findViewById(R.id.tvCallsn);
 
-        tvbf.setText(diet[0]);
+/*      tvbf.setText(diet[0]);
         tvCalbf.setText(diet[1]);
         tvln.setText(diet[2]);
         tvCalln.setText(diet[3]);
@@ -97,7 +98,7 @@ public class Homescreen extends AppCompatActivity implements AdapterView.OnItemS
         tvCalbsn.setText(diet[7]);
         tvlsn.setText(diet[8]);
         tvCallsn.setText(diet[9]);
-
+*/
 
 
 

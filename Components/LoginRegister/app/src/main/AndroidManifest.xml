@@ -33,7 +33,8 @@
             android:configChanges="orientation|keyboardHidden|screenSize" />
         <activity android:name=".superfood_main" />
         <activity android:name=".FoodCravings" />
-        <activity android:name=".ExerciseCalculator"></activity>
+        <activity android:name=".ExerciseCalculator" />
+        <activity android:name=".Advanced_Survey"></activity>
     </application>
 
 </manifest>

@@ -17,7 +17,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class ResultPage extends AppCompatActivity {
-
+    DBHelper mydb;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,10 +29,10 @@ public class ResultPage extends AppCompatActivity {
         Button btLW =(Button)findViewById(R.id.btLW);
         Button btMW =(Button)findViewById(R.id.btMW);
         Button btGW =(Button)findViewById(R.id.btGW);
-
         Intent intent = getIntent();
         final String username = intent.getStringExtra("username");
         final int age = intent.getIntExtra("age",0);
+        final DBHelper myDb= new DBHelper(this,username);
         float bmi = intent.getFloatExtra("BMI",0.0f);
         final int bmr = intent.getIntExtra("BMR",0);
         final FormulaClass f = new FormulaClass();
@@ -88,7 +88,10 @@ public class ResultPage extends AppCompatActivity {
                             boolean success = jsonresponse.getBoolean("success");
                             if(success){
                                 Intent int1=new Intent(ResultPage.this,Homescreen.class);
+                                int1.putExtra("username",username);
                                 int1.putExtra("diet",jsonresponse.toString());
+                                DietGen d =new DietGen(username,myDb);
+                                d.dietDivider(jsonresponse);
                                 startActivity(int1);
                             }
                             else {
@@ -130,6 +133,9 @@ public class ResultPage extends AppCompatActivity {
                             if(success){
                                 Intent int1=new Intent(ResultPage.this,Homescreen.class);
                                 int1.putExtra("diet",jsonresponse.toString());
+                                int1.putExtra("username",username);
+                                DietGen d =new DietGen(username,myDb);
+                                d.dietDivider(jsonresponse);
                                 startActivity(int1);
                             }
                             else {
@@ -174,7 +180,9 @@ public class ResultPage extends AppCompatActivity {
                                 if (success) {
                                     Intent int1 = new Intent(ResultPage.this, Homescreen.class);
                                     int1.putExtra("diet",jsonresponse.toString());
-
+                                    int1.putExtra("username",username);
+                                    DietGen d =new DietGen(username,myDb);
+                                    d.dietDivider(jsonresponse);
                                     startActivity(int1);
                                 } else {
                                     AlertDialog.Builder builder = new AlertDialog.Builder(ResultPage.this);
