@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_second"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.nlss.custom_diet.Second">
+
+    <TextView
+        android:text="Breakfast"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="20dp"
+        android:id="@+id/brfast" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/brfast"
+        android:layout_alignStart="@+id/brfast"
+        android:layout_marginTop="18dp"
+        android:id="@+id/adbf" />
+
+    <TextView
+        android:text="Lunch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/adbf"
+        android:layout_alignStart="@+id/adbf"
+        android:layout_marginTop="18dp"
+        android:id="@+id/lun" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:id="@+id/adlun"
+        android:layout_below="@+id/lun"
+        android:layout_alignStart="@+id/lun" />
+
+    <TextView
+        android:text="Dinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/adlun"
+        android:layout_alignStart="@+id/adlun"
+        android:layout_marginTop="18dp"
+        android:id="@+id/din" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/din"
+        android:layout_alignStart="@+id/din"
+        android:layout_marginTop="18dp"
+        android:id="@+id/addin" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/addin"
+        android:layout_alignStart="@+id/addin"
+        android:layout_marginTop="29dp"
+        android:id="@+id/snack" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/snack"
+        android:layout_alignStart="@+id/snack"
+        android:layout_marginTop="31dp"
+        android:id="@+id/dissnac" />
+</RelativeLayout>

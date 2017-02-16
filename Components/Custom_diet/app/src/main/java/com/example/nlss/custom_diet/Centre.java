@@ -1,9 +1,17 @@
 package com.example.nlss.custom_diet;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.TextView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Toast;
 
 public class Centre extends Activity {
 
@@ -11,6 +19,7 @@ public class Centre extends Activity {
     private AutoCompleteTextView ln;
     private AutoCompleteTextView dn;
     private AutoCompleteTextView sn;
+    private Context context = this;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,5 +49,14 @@ public class Centre extends Activity {
         ArrayAdapter<String> adapter4 = new ArrayAdapter<String>
                 (this,android.R.layout.simple_list_item_1,foo4);
         sn.setAdapter(adapter4);
+
+        bf.setOnItemClickListener(new OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+                Toast.makeText(context, "" + position, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
+
+
+
 }

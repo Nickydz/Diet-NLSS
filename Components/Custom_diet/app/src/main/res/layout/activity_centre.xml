@@ -47,22 +47,22 @@
         android:id="@+id/ln" />
 
     <AutoCompleteTextView
-        android:hint="Select food"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:id="@+id/bfac"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/bf"
-        android:layout_centerHorizontal="true" />
+        android:layout_marginTop="10dp"
+        android:hint="Select food" />
 
     <AutoCompleteTextView
-        android:hint="Select food"
-        android:layout_width="match_parent"
+        android:id="@+id/lnac"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/ln"
         android:layout_alignStart="@+id/bfac"
+        android:layout_below="@+id/ln"
         android:layout_marginTop="10dp"
-        android:id="@+id/lnac" />
+        android:layout_toStartOf="@+id/breakfastAddBT"
+        android:hint="Select food" />
 
     <TextView
         android:text="Dinner"
@@ -74,13 +74,14 @@
         android:id="@+id/dn" />
 
     <AutoCompleteTextView
-        android:hint="Select food"
-        android:layout_width="match_parent"
+        android:id="@+id/dnac"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/dn"
+        android:layout_alignEnd="@+id/lnac"
         android:layout_alignStart="@+id/lnac"
+        android:layout_below="@+id/dn"
         android:layout_marginTop="10dp"
-        android:id="@+id/dnac" />
+        android:hint="Select food" />
 
     <TextView
         android:text="TextView"
@@ -113,12 +114,13 @@
 
     <AutoCompleteTextView
         android:hint="Select food"
-        android:layout_width="match_parent"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:id="@+id/snac"
         android:layout_marginTop="10dp"
         android:layout_below="@+id/sn"
-        android:layout_alignStart="@+id/dnac" />
+        android:layout_alignStart="@+id/dnac"
+        android:layout_alignEnd="@+id/dnac" />
 
     <TextView
         android:text="TextView"
@@ -129,5 +131,39 @@
         android:layout_marginTop="10dp"
         android:visibility="gone"
         android:id="@+id/sntvdisp" />
+
+    <Button
+        android:id="@+id/snacksAddBT"
+        android:layout_width="90dp"
+        android:layout_height="40dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/snac"
+        android:text=""
+        tools:text="Add" />
+
+    <Button
+        android:id="@+id/LunchAddBT"
+        android:layout_width="90dp"
+        android:layout_height="40dp"
+        android:layout_alignStart="@+id/breakfastAddBT"
+        android:layout_alignTop="@+id/lnac"
+        android:text="Add" />
+
+    <Button
+        android:id="@+id/dinnerAddBT"
+        android:layout_width="90dp"
+        android:layout_height="40dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/dnac"
+        android:text="Add" />
+
+    <Button
+        android:id="@+id/breakfastAddBT"
+        android:layout_width="90dp"
+        android:layout_height="40dp"
+        android:layout_alignBottom="@+id/bfac"
+        android:layout_marginStart="14dp"
+        android:layout_toEndOf="@+id/bfac"
+        android:text="Add" />
 </RelativeLayout>
 </ScrollView>
