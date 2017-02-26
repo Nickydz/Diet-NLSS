@@ -1,156 +1,426 @@
 package com.example.nickydcruz.loginregister;
 
-import android.content.Context;
+import android.database.Cursor;
 import android.util.SparseArray;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.HashMap;
 import java.util.Random;
 
 /**
- * Created by Nicky D. Cruz on 2/2/2017.
+ * Created by Nicky D. Cruz on 2/25/2017.
  */
 
 public class DietGen {
 
-    private String username;
-    DBHelper d ;
+    String username;
+    DBHelper dbHelper ;
     DietContract.DietEntry d1 ;
-    public DietGen(String username, DBHelper myDb) {
+
+    public DietGen(String username,DBHelper myDb) {
         this.username = username;
-        d=myDb;
+        dbHelper=myDb;
         d1 = new DietContract.DietEntry(username);
     }
 
-    public void breakfastGen(SparseArray<String> breakfast, int i) {
+    public JSONObject breakfastGen(int bmr1){
+        float bmr = bmr1 * 0.35f;
+        int a[] = new FormulaClass().bmrcal(bmr);
+        Cursor res = dbHelper.getData(d1.BFTableName,a[0],a[1],a[2]) ;
 
-        for (int j=0;j<i;j++){
-            d.insertData(d1.BFTableName,breakfast.get(j++),breakfast.get(j++),breakfast.get(j++),breakfast.get(j++),breakfast.get(j++),breakfast.get(j));
+        if(res.getCount() == 0){
+            //error in data code
         }
+
+
+        SparseArray<String> drinks = new SparseArray<>();
+        SparseArray<String> sides = new SparseArray<>();
+        SparseArray<String> base = new SparseArray<>();
+        SparseArray<String> eggs = new SparseArray<>();
+
+        int d=1,s=1,b=1,e=1;
+
+        while(res.moveToNext()) {
+            if (res.getString(6).equals("d")) {
+                drinks.put(d++, res.getString(1));
+                drinks.put(d++, res.getString(2));
+                drinks.put(d++, res.getString(3));
+                drinks.put(d++, res.getString(4));
+                drinks.put(d++, res.getString(5));
+            } else if (res.getString(6).equals("b")) {
+                base.put(b++, res.getString(1));
+                base.put(b++, res.getString(2));
+                base.put(b++, res.getString(3));
+                base.put(b++, res.getString(4));
+                base.put(b++, res.getString(5));
+            } else if (res.getString(6).equals("e")) {
+                eggs.put(e++, res.getString(1));
+                eggs.put(e++, res.getString(2));
+                eggs.put(e++, res.getString(3));
+                eggs.put(e++, res.getString(4));
+                eggs.put(e++, res.getString(5));
+            } else if (res.getString(6).equals("s")) {
+                sides.put(s++, res.getString(1));
+                sides.put(s++, res.getString(2));
+                sides.put(s++, res.getString(3));
+                sides.put(s++, res.getString(4));
+                sides.put(s++, res.getString(5));
+            }
+        }
+        --d;--e;--s;--b;
+        int cal =(int)Math.round(bmr * 0.5);
+        int i=5,u=cal,p=0;
+        JSONObject jsonObject =new JSONObject();
+
+            if (d >= 0){
+                while(d > i){
+                    if ((cal - Integer.parseInt(drinks.get(i))) < u){
+                        u=cal - Integer.parseInt(drinks.get(i));
+                        p=i-4;
+                    }
+                    i= i+5;
+                }
+
+
+                try {
+                    jsonObject.put("drinkn",drinks.get(p++));
+                    jsonObject.put("drinkp",drinks.get(p++));
+                    jsonObject.put("drinkf",drinks.get(p++));
+                    jsonObject.put("drinkc",drinks.get(p++));
+                    jsonObject.put("drinkcal",drinks.get(p));
+
+                } catch (JSONException e1) {
+                    e1.printStackTrace();
+                }
+                cal = Math.round(bmr) - cal +u;
+                Random r= new Random();
+                i=5;
+                u=cal;
+                p=0;
+                if(b>0){
+                    if(e>0){
+                        if(s>0){
+                            int r1 = r.nextInt(2);
+                            if(r1 == 0){
+                                i=5;
+                                while(b >= i){
+                                    if ((cal - Integer.parseInt(base.get(i))) < u){
+                                        u=cal - Integer.parseInt(base.get(i));
+                                        p=i-4;
+                                    }
+                                    i= i+5;
+                                }
+                                i=5;
+                                cal =u;
+                                if(p != 0) {
+                                    try {
+                                        jsonObject.put("basen", base.get(p++));
+                                        jsonObject.put("basep", base.get(p++));
+                                        jsonObject.put("basef", base.get(p++));
+                                        jsonObject.put("basec", base.get(p++));
+                                        jsonObject.put("basecal", base.get(p));
+
+                                    } catch (JSONException e1) {
+                                        e1.printStackTrace();
+                                    }
+                                }
+                                p=0;
+                                while(s >= i){
+                                    if ((cal - Integer.parseInt(sides.get(i))) < u){
+                                        u=cal - Integer.parseInt(sides.get(i));
+                                        p=i-4;
+                                    }
+                                    i= i+5;
+                                }
+
+                                if(p != 0) {
+                                    try {
+                                        jsonObject.put("sidesn", sides.get(p++));
+                                        jsonObject.put("sidesp", sides.get(p++));
+                                        jsonObject.put("sidesf", sides.get(p++));
+                                        jsonObject.put("sidesc", sides.get(p++));
+                                        jsonObject.put("sidescal", sides.get(p));
+
+                                    } catch (JSONException e1) {
+                                        e1.printStackTrace();
+                                    }
+                                }
+                            }
+                            if(r1 == 1){
+                                i=5;
+                                while(b >= i){
+                                    if ((cal - Integer.parseInt(base.get(i))) < u){
+                                        u=cal - Integer.parseInt(base.get(i));
+                                        p=i-4;
+                                    }
+                                    i= i+5;
+                                }
+                                i=5;
+                                cal=u;
+
+                                if(p != 0) {
+                                    try {
+                                        jsonObject.put("basen", base.get(p++));
+                                        jsonObject.put("basep", base.get(p++));
+                                        jsonObject.put("basef", base.get(p++));
+                                        jsonObject.put("basec", base.get(p++));
+                                        jsonObject.put("basecal", base.get(p));
+
+                                    } catch (JSONException e1) {
+                                        e1.printStackTrace();
+                                    }
+                                }
+                                p=0;
+
+                                while(e >= i){
+                                    if ((cal - Integer.parseInt(eggs.get(i))) < u){
+                                        u=cal - Integer.parseInt(eggs.get(i));
+                                        p=i-4;
+                                    }
+                                    i= i+5;
+                                }
+                                if(p != 0) {
+                                    try {
+                                        jsonObject.put("eggsn", eggs.get(p++));
+                                        jsonObject.put("eggsp", eggs.get(p++));
+                                        jsonObject.put("eggsf", eggs.get(p++));
+                                        jsonObject.put("eggsc", eggs.get(p++));
+                                        jsonObject.put("eggscal", eggs.get(p));
+
+                                    } catch (JSONException e1) {
+                                        e1.printStackTrace();
+                                    }
+                                }
+
+                            }
+                            if(r1 == 2){
+                                i=5;
+                                while(e >= i){
+                                    if ((cal - Integer.parseInt(eggs.get(i))) < u){
+                                        u=cal - Integer.parseInt(eggs.get(i));
+                                        p=i-4;
+                                    }
+                                    i= i+5;
+                                }
+
+                                if(p != 0) {
+                                    try {
+                                        jsonObject.put("eggsn", eggs.get(p++));
+                                        jsonObject.put("eggsp", eggs.get(p++));
+                                        jsonObject.put("eggsf", eggs.get(p++));
+                                        jsonObject.put("eggsc", eggs.get(p++));
+                                        jsonObject.put("eggscal", eggs.get(p));
+
+                                    } catch (JSONException e1) {
+                                        e1.printStackTrace();
+                                    }
+                                }
+
+                            }
+                        }
+                        else{
+                            int r1 = r.nextInt(1);
+
+                            if(r1 == 0){
+                                i=5;
+                                while(b >= i){
+                                    if ((cal - Integer.parseInt(base.get(i))) < u){
+                                        u=cal - Integer.parseInt(base.get(i));
+                                        p=i-4;
+                                    }
+                                    i= i+5;
+                                }
+                                i=5;
+                                cal=u;
+
+                                if(p != 0) {
+                                    try {
+                                        jsonObject.put("basen", base.get(p++));
+                                        jsonObject.put("basep", base.get(p++));
+                                        jsonObject.put("basef", base.get(p++));
+                                        jsonObject.put("basec", base.get(p++));
+                                        jsonObject.put("basecal", base.get(p));
+
+                                    } catch (JSONException e1) {
+                                        e1.printStackTrace();
+                                    }
+                                }
+                                p=0;
+
+                                while(e >= i){
+                                    if ((cal - Integer.parseInt(eggs.get(i))) < u){
+                                        u=cal - Integer.parseInt(eggs.get(i));
+                                        p=i-4;
+                                    }
+                                    i= i+5;
+                                }
+
+                                if(p != 0) {
+                                    try {
+                                        jsonObject.put("eggsn", eggs.get(p++));
+                                        jsonObject.put("eggsp", eggs.get(p++));
+                                        jsonObject.put("eggsf", eggs.get(p++));
+                                        jsonObject.put("eggsc", eggs.get(p++));
+                                        jsonObject.put("eggscal", eggs.get(p));
+
+                                    } catch (JSONException e1) {
+                                        e1.printStackTrace();
+                                    }
+                                }
+                            }
+                            if(r1 == 1){
+                                i=5;
+                                while(e >= i){
+                                    if ((cal - Integer.parseInt(eggs.get(i))) < u){
+                                        u=cal - Integer.parseInt(eggs.get(i));
+                                        p=i-4;
+                                    }
+                                    i= i+5;
+                                }
+
+                                if(p != 0) {
+                                    try {
+                                        jsonObject.put("eggsn", eggs.get(p++));
+                                        jsonObject.put("eggsp", eggs.get(p++));
+                                        jsonObject.put("eggsf", eggs.get(p++));
+                                        jsonObject.put("eggsc", eggs.get(p++));
+                                        jsonObject.put("eggscal", eggs.get(p));
+
+                                    } catch (JSONException e1) {
+                                        e1.printStackTrace();
+                                    }
+                                }
+
+                            }
+                        }
+
+                    }
+                    else {
+                        while(b >= i){
+                            if ((cal - Integer.parseInt(base.get(i))) < u){
+                                u=cal - Integer.parseInt(base.get(i));
+                                p=i-4;
+                            }
+                            i= i+5;
+                        }
+
+                        if(p != 0) {
+                            try {
+                                jsonObject.put("basen", base.get(p++));
+                                jsonObject.put("basep", base.get(p++));
+                                jsonObject.put("basef", base.get(p++));
+                                jsonObject.put("basec", base.get(p++));
+                                jsonObject.put("basecal", base.get(p));
+
+                            } catch (JSONException e1) {
+                                e1.printStackTrace();
+                            }
+                        }
+                        p=0;
+                    }
+
+                }
+                else if(e>0){
+                    i=5;
+                    while(e >= i){
+                        if ((cal - Integer.parseInt(eggs.get(i))) < u){
+                            u=cal - Integer.parseInt(eggs.get(i));
+                            p=i-4;
+                        }
+                        i= i+5;
+                    }
+
+                    if(p != 0) {
+                        try {
+                            jsonObject.put("eggsn", eggs.get(p++));
+                            jsonObject.put("eggsp", eggs.get(p++));
+                            jsonObject.put("eggsf", eggs.get(p++));
+                            jsonObject.put("eggsc", eggs.get(p++));
+                            jsonObject.put("eggscal", eggs.get(p));
+
+                        } catch (JSONException e1) {
+                            e1.printStackTrace();
+                        }
+                    }
+
+                }
+                else if(s>0){
+                    i=5;
+                    while(e >= i){
+                        if ((cal - Integer.parseInt(sides.get(i))) < u){
+                            u=cal - Integer.parseInt(sides.get(i));
+                            p=i-4;
+                        }
+                        i= i+5;
+                    }
+
+                    if(p != 0) {
+                        try {
+                            jsonObject.put("sidesn", sides.get(p++));
+                            jsonObject.put("sidesp", sides.get(p++));
+                            jsonObject.put("sidesf", sides.get(p++));
+                            jsonObject.put("sidesc", sides.get(p++));
+                            jsonObject.put("sidescal", sides.get(p));
+
+                        } catch (JSONException e1) {
+                            e1.printStackTrace();
+                        }
+                    }
+
+                }
+
+            }
+            else{
+             //no data available at the moment
+            }
+           return jsonObject;
+
     }
 
-    public void lunchGen(SparseArray<String> lunch, int i) {
-        for (int j=0;j<i;j++){
-            d.insertData(d1.LNTableName,lunch.get(j++),lunch.get(j++),lunch.get(j++),lunch.get(j++),lunch.get(j++),lunch.get(j));
-        }
-        /*Random r =new Random();
-        int  r1= r.nextInt(i);
-        return lunch.get(r1)+";"+lunch.get(r1+1000);*/
-    }
+    public JSONObject snackGen(int bmr1){
+        float bmr = bmr1 * 0.125f;
+        int a[] = new FormulaClass().bmrcal(bmr);
+        Cursor res = dbHelper.getData(d1.SNTableName,a[0],a[1],a[2]) ;
 
-    public void dinnerGen(SparseArray<String> dinner, int i) {
-        for (int j=0;j<i;j++){
-            d.insertData(d1.DNTableName,dinner.get(j++),dinner.get(j++),dinner.get(j++),dinner.get(j++),dinner.get(j++),dinner.get(j));
+        if(res.getCount() == 0){
+            //error in data code
         }
-        /*Random r =new Random();
-        int  r1= r.nextInt(i);
-        return lunch.get(r1)+";"+lunch.get(r1+1000);*/
-    }
+        int d=1,i=0;
 
-    public void snacksGen(SparseArray<String> snacks, int i) {
-        for (int j=0;j<i;j++){
-            d.insertData(d1.SNTableName,snacks.get(j++),snacks.get(j++),snacks.get(j++),snacks.get(j++),snacks.get(j),"");
-        }
-        /*Random r =new Random();
-        int  r1= r.nextInt(i);
-        return lunch.get(r1)+";"+lunch.get(r1+1000);*/
-    }
-
-    public void dietDivider(JSONObject jsonObject) {
-        SparseArray<String> breakfast = new SparseArray<>();
-        SparseArray<String> lunch = new SparseArray<>();
-        SparseArray<String> dinner = new SparseArray<>();
         SparseArray<String> snacks = new SparseArray<>();
-        int i,j,u=0;
-        String s;
-        for (i = 0,j=0; j<1000;i++,j++) {
-            try {
 
-                if (jsonObject.getString(i + "").equals("endbf")) {
-                    break;
-                } else {
+        while(res.moveToNext()) {
 
-                    breakfast.put(j++, jsonObject.getString(i++ + ""));
-                    u = j +100;
-                    breakfast.put(j++,jsonObject.getString(i++ + ""));
-                    breakfast.put(j++,jsonObject.getString(i++ + ""));
-                    breakfast.put(j++,jsonObject.getString(i++ + ""));
-                    breakfast.put(j++,jsonObject.getString(i++ + ""));
-                    breakfast.put(j,jsonObject.getString(i + ""));
+            snacks.put(d++, res.getString(1));
+            snacks.put(d++, res.getString(2));
+            snacks.put(d++, res.getString(3));
+            snacks.put(d++, res.getString(4));
+            snacks.put(d++, res.getString(5));
+            i++;
 
-                }
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
         }
-        breakfastGen(breakfast,j);
-        i++;
-        u=0;
-        for ( j = 0; j<1000; i++, j++) {
-            try {
-                if (jsonObject.getString(i + "").equals("endln")) {
-                    break;
-                } else {
-                    lunch.put(j++, jsonObject.getString(i++ + ""));
-                    lunch.put(j++, jsonObject.getString(i++ + ""));
-                    lunch.put(j++, jsonObject.getString(i++ + ""));
-                    lunch.put(j++, jsonObject.getString(i++ + ""));
-                    lunch.put(j++, jsonObject.getString(i++ + ""));
-                    u = j +1000;
-                    lunch.put(j,jsonObject.getString(i+""));
-                }
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        }
-        i++;
+        --d;
+        Random r =new Random();
+        int p = r.nextInt(i);
+        if (p==0)
+            p++;
 
-        //s = s + ";" +
-        lunchGen(lunch,j);
-        u = 0;
-        for (j = 0; j<1000; i++, j++) {
-            try {
-                if (jsonObject.getString(i + "").equals("enddn")) {
-                    break;
-                } else {
-                    dinner.put(j++, jsonObject.getString(i++ + ""));
-                    dinner.put(j++, jsonObject.getString(i++ + ""));
-                    dinner.put(j++, jsonObject.getString(i++ + ""));
-                    dinner.put(j++, jsonObject.getString(i++ + ""));
-                    dinner.put(j++, jsonObject.getString(i++ + ""));
-                    u = j +1000;
-                    dinner.put(j,jsonObject.getString(i + ""));
-                }
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        }
-        i++;
-        //s = s + ";" +
-        dinnerGen(dinner,j);
-        u=0;
-        for (j = 0; j<1000; i++, j++) {
-            try {
-                if (jsonObject.getString(i + "").equals("endsn")) {
-                    break;
-                } else {
-                    snacks.put(j++, jsonObject.getString(i++ + ""));
-                    snacks.put(j++, jsonObject.getString(i++ + ""));
-                    snacks.put(j++, jsonObject.getString(i++ + ""));
-                    snacks.put(j++, jsonObject.getString(i++ + ""));
-                    u = j +1000;
-                    snacks.put(j,jsonObject.getString(i+""));
-                }
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        }
-        //s = s + ";"+ snacksGen(snacks,j);
-        //s = s + ";"+
-        snacksGen(snacks,j);
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("snackn",snacks.get(p++));
+            jsonObject.put("snackp",snacks.get(p++));
+            jsonObject.put("snackf",snacks.get(p++));
+            jsonObject.put("snackc",snacks.get(p++));
+            jsonObject.put("snakcal",snacks.get(p));
 
-        //return "a;b;c;d;e;f;g;h;i;j;k;l;m;n;o;p";
+        } catch (JSONException e1) {
+            e1.printStackTrace();
+        }
+
+        return jsonObject;
     }
+//
+
+
 }

@@ -51,10 +51,13 @@ public class LoginActivity extends AppCompatActivity implements CompoundButton.O
 
         chRem.setOnCheckedChangeListener(this);
 
+        //Calling SharedPref variables
         final String pUsername=pref.getString("username","");
         final String pPassword=pref.getString("password","");
+        final String pCF = pref.getString("cf","0");
 
-        if(!(pUsername.equals("") && pPassword.equals(""))){
+        //Checking users last session
+        if(!(pUsername.equals("") && pPassword.equals("") && pCF.equals("0"))){
             Response.Listener<String> responseListener = new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
@@ -64,16 +67,27 @@ public class LoginActivity extends AppCompatActivity implements CompoundButton.O
                         if(success){
                             String dob = jsonResponse.getString("dob");
                             String basicDone = jsonResponse.getString("basicDone");
+                            int age = new FormulaClass().calculateAge(dob);
+                            editor.putInt("age",age);
 
                             if(basicDone.equals("1")) {
                                 Intent intent = new Intent(LoginActivity.this, BasicSurvey1.class);
-                                intent.putExtra("username", pUsername);
                                 intent.putExtra("dob", dob);
+
+                                String height = jsonResponse.getString("height");
+                                String weight = jsonResponse.getString("weight");
+                                String gender = jsonResponse.getString("gender");
+
+                                editor.putString("height",height);
+                                editor.putString("weight",weight);
+                                editor.putString("gender",gender);
+
                                 LoginActivity.this.startActivity(intent);
+
                             }
                             else {
+
                                 Intent intent1   =new Intent(LoginActivity.this, BasicSurvey1.class);
-                                intent1.putExtra("username", pUsername);
                                 intent1.putExtra("dob", dob);
                                 LoginActivity.this.startActivity(intent1);
 
@@ -125,17 +139,41 @@ public class LoginActivity extends AppCompatActivity implements CompoundButton.O
                             if(success){
                                 String dob = jsonResponse.getString("dob");
                                 String basicDone = jsonResponse.getString("basicDone");
+                                int age = new FormulaClass().calculateAge(dob);
 
+
+                                //to check if user clicked remember me
                                 if(checkFlag){
+                                    //Setting Shared Preferences to maintain session
                                     editor.putString("username",username);
                                     editor.putString("password",password);
+                                    editor.putInt("age",age);
+                                    editor.putString("cf","1");
+
+                                    editor.apply();
+                                }
+                                else
+                                {
+                                    //Setting Shared Preferences
+                                    editor.putString("username",username);
+                                    editor.putString("password",password);
+                                    editor.putInt("age",age);
+                                    //Ensuring that session is not maintained
+                                    editor.putString("cf","0");
                                     editor.apply();
                                 }
 
+                                //To check if basic survey already done
                                 if(basicDone.equals("1")) {
                                     Intent intent = new Intent(LoginActivity.this, BasicSurvey1.class);
                                     intent.putExtra("username", username);
                                     intent.putExtra("dob", dob);
+                                    String height = jsonResponse.getString("height");
+                                    String weight = jsonResponse.getString("weight");
+                                    String gender = jsonResponse.getString("gender");
+                                    editor.putString("height",height);
+                                    editor.putString("weight",weight);
+                                    editor.putString("gender",gender);
                                     LoginActivity.this.startActivity(intent);
                                 }
                                 else {

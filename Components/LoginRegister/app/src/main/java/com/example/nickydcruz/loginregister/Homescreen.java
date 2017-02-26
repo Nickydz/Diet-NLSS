@@ -26,28 +26,23 @@ public class Homescreen extends AppCompatActivity implements AdapterView.OnItemS
 
 
     SharedPreferences pref;
+    SharedPreferences.Editor editor;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homescreen);
         pref = getSharedPreferences("login.conf", Context.MODE_PRIVATE);
-        Spinner spn=(Spinner) findViewById(R.id.spinb);
+        /*
+        float height = Float.parseFloat(pref.getString("height","0"));
+        float weight = Float.parseFloat(pref.getString("weight","0"));
+        int age = pref.getInt("age",0);
+        String gender = pref.getString("gender","");
+        */
+        int bmr =new FormulaClass().bmr(pref.getString("gender",""),pref.getInt("age",0),Float.parseFloat(pref.getString("weight","0")),Float.parseFloat(pref.getString("height","0")));
 
-        spn.setOnItemSelectedListener(this);
-        List<String> categories = new ArrayList<String>();
-        categories.add("Black Tea");
-        categories.add("Green Tea");
-        categories.add("Milk");
-        categories.add("Coffee, Black, 1 Sugar");
-        categories.add("Tea, Whole Milk, 1 Sugar");
-        categories.add("Tea, Whole Milk");
-        categories.add("Tea, Semi Skimmed Milk, 1 Sugar");
-
-
-
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, categories);
-        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spn.setAdapter(dataAdapter);
 
 
 
@@ -60,7 +55,7 @@ public class Homescreen extends AppCompatActivity implements AdapterView.OnItemS
         Intent i = getIntent();
         String username = i.getStringExtra("username");
         DBHelper myDb = new DBHelper(this,username);
-        final DietGen d = new DietGen(username, myDb);
+        final DietInsert d = new DietInsert(username, myDb);
         JSONObject jsonObject = new JSONObject();
         try {
             jsonObject = new JSONObject(i.getStringExtra("diet"));

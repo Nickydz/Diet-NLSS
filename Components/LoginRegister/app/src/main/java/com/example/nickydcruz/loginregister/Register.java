@@ -1,7 +1,9 @@
 package com.example.nickydcruz.loginregister;
 
 import android.app.DatePickerDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -81,7 +83,19 @@ public class Register extends AppCompatActivity {
                                     Intent i = new Intent(Register.this, BasicSurvey1.class);
                                     i.putExtra("username",username);
                                     i.putExtra("dob",dob+"");
+                                    int age = new FormulaClass().calculateAge(dob);
+
+                                    //Using Shared Preferences to maintain session
+                                    SharedPreferences pref = getSharedPreferences("login.conf", Context.MODE_PRIVATE);
+                                    SharedPreferences .Editor editor = pref.edit();
+                                    editor.putString("username",username);
+                                    editor.putString("password",password);
+                                    editor.putInt("age",age);
+                                    editor.putString("cf","0");
+                                    editor.apply();
+
                                     Register.this.startActivity(i);
+
 
                                 } else {
                                     AlertDialog.Builder builder = new AlertDialog.Builder(Register.this);

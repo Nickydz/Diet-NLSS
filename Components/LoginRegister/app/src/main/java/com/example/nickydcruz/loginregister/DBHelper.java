@@ -2,6 +2,7 @@ package com.example.nickydcruz.loginregister;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -75,7 +76,7 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_CREATE_LN_DIET_TABLE);
         db.execSQL(SQL_CREATE_DN_DIET_TABLE);
         db.execSQL(SQL_CREATE_SN_DIET_TABLE);
-
+        db.close();
     }
 
     @Override
@@ -99,9 +100,26 @@ public class DBHelper extends SQLiteOpenHelper {
             con.put(DietContract.DietEntry.COLUMN_Flags, Flags);
         }
         long result = db.insert(TableName,null,con);
+        db.close();
         if (result == -1)
             return false;
         else
             return true;
+    }
+
+    public boolean truncate(String table){
+        SQLiteDatabase db = this.getWritableDatabase();
+        long result = db.delete(table,null,null);
+        db.close();
+        if(result == -1)
+        return false;
+
+        return true;
+    }
+
+    public Cursor getData(String TableName,int carbs,int prots,int fats){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor res = db.rawQuery("select * from "+ TableName+" where Carbs <= " + carbs +" and Proteins <= "+ prots +" and Fats <="+fats+" order by Calories",null);
+        return res;
     }
 }

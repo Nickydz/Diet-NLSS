@@ -1,8 +1,10 @@
 package com.example.nickydcruz.loginregister;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -40,18 +42,25 @@ public class BasicSurvey1 extends AppCompatActivity implements NumberPicker.OnVa
     public TextView tv;
     static Dialog d;
     static String s = "";
+    SharedPreferences pref;
+    SharedPreferences.Editor editor;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_basic_survey1);
+        pref = getSharedPreferences("login.conf", Context.MODE_PRIVATE);
+
+
+        editor = pref.edit();
 
 
         final FormulaClass f = new FormulaClass();
 
         final Intent intent = getIntent();
 
-        final String username = intent.getStringExtra("username");
+        final String username = pref.getString("username","");
         final String dob = intent.getStringExtra("dob");
         final int age = f.calculateAge(dob);
         Spinner spn=(Spinner) findViewById(R.id.spinb);
@@ -101,10 +110,14 @@ public class BasicSurvey1 extends AppCompatActivity implements NumberPicker.OnVa
                     int selectedId = radioSexGroup.getCheckedRadioButtonId();
                     RadioButton radioSexButton = (RadioButton) findViewById(selectedId);
                     String gender;
-                    if (radioSexButton.getText().equals("Male"))
+                    if (radioSexButton.getText().equals("Male")) {
                         gender = "M";
-                    else
+                        editor.putString("gender", gender);
+                    }
+                    else {
                         gender = "F";
+                        editor.putString("gender", gender);
+                    }
 
                     final float BMI = f.bmi(hieght, wieght);
                     final int BMR = f.bmr(gender, age, wieght, hieght * 100);
@@ -117,11 +130,11 @@ public class BasicSurvey1 extends AppCompatActivity implements NumberPicker.OnVa
                                 JSONObject jsonResponse1 = new JSONObject(response);
                                 boolean success = jsonResponse1.getBoolean("success");
                                 if (success) {
+
+                                    editor.putString("height",height);
+                                    editor.putString("weight",weight);
+
                                     Intent int1 = new Intent(BasicSurvey1.this, ResultPage.class);
-                                    int1.putExtra("BMR", BMR);
-                                    int1.putExtra("BMI", BMI);
-                                    int1.putExtra("age", age);
-                                    int1.putExtra("username", username);
                                     BasicSurvey1.this.startActivity(int1);
                                 } else {
 

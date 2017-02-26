@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -17,7 +16,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class ResultPage extends AppCompatActivity {
-    DBHelper mydb;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,7 +88,7 @@ public class ResultPage extends AppCompatActivity {
                                 Intent int1=new Intent(ResultPage.this,Homescreen.class);
                                 int1.putExtra("username",username);
                                 int1.putExtra("diet",jsonresponse.toString());
-                                DietGen d =new DietGen(username,myDb);
+                                DietInsert d =new DietInsert(username,myDb);
                                 d.dietDivider(jsonresponse);
                                 startActivity(int1);
                             }
@@ -134,7 +132,7 @@ public class ResultPage extends AppCompatActivity {
                                 Intent int1=new Intent(ResultPage.this,Homescreen.class);
                                 int1.putExtra("diet",jsonresponse.toString());
                                 int1.putExtra("username",username);
-                                DietGen d =new DietGen(username,myDb);
+                                DietInsert d =new DietInsert(username,myDb);
                                 d.dietDivider(jsonresponse);
                                 startActivity(int1);
                             }
@@ -181,7 +179,7 @@ public class ResultPage extends AppCompatActivity {
                                     Intent int1 = new Intent(ResultPage.this, Homescreen.class);
                                     int1.putExtra("diet",jsonresponse.toString());
                                     int1.putExtra("username",username);
-                                    DietGen d =new DietGen(username,myDb);
+                                    DietInsert d =new DietInsert(username,myDb);
                                     d.dietDivider(jsonresponse);
                                     startActivity(int1);
                                 } else {
