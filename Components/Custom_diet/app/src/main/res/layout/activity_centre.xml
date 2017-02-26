@@ -136,10 +136,9 @@
         android:id="@+id/snacksAddBT"
         android:layout_width="90dp"
         android:layout_height="40dp"
-        android:layout_alignParentEnd="true"
+        android:layout_alignStart="@+id/dinnerAddBT"
         android:layout_alignTop="@+id/snac"
-        android:text=""
-        tools:text="Add" />
+        android:text="Add"/>
 
     <Button
         android:id="@+id/LunchAddBT"
@@ -153,7 +152,7 @@
         android:id="@+id/dinnerAddBT"
         android:layout_width="90dp"
         android:layout_height="40dp"
-        android:layout_alignParentEnd="true"
+        android:layout_alignStart="@+id/LunchAddBT"
         android:layout_alignTop="@+id/dnac"
         android:text="Add" />
 
