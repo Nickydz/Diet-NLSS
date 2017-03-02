@@ -23,20 +23,20 @@ public class DBaseHelper extends SQLiteOpenHelper {
 
     public DBaseHelper(Context context) {
         super(context, DATABASE_NAME, null, 1);
-        SQLiteDatabase db = this.getWritableDatabase();
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table " + TABLE_NAME +" (ID INTEGER PRIMARY KEY AUTOINCREMENT,food TEXT NOT NULL,protein TEXT NOT NULL,fat TEXT NOT NULL,carbohydrate TEXT NOT NULL,calorie INTEGER NOT NULL,type TEXT NOT NULL)");
+        db.execSQL("create table " + TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT,food TEXT NOT NULL,protein TEXT NOT NULL,fat TEXT NOT NULL,carbohydrate TEXT NOT NULL,calorie INTEGER NOT NULL,type TEXT NOT NULL)");
+
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS "+TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
         onCreate(db);
     }
-}
+
 
 //public class DBaseHelper extends SQLiteOpenHelper {
 //
@@ -79,20 +79,20 @@ public class DBaseHelper extends SQLiteOpenHelper {
 //        onCreate(db);
 //    }
 
-//    public boolean insertData(String TableName,String food,String protein,String fat,String carbohydrate,String calorie,String type){
-//        SQLiteDatabase db = this.getWritableDatabase();
-//        ContentValues con = new ContentValues();
-//        con.put(DetailContract.Users.COLUMN_food,food);
-//        con.put(DetailContract.Users.COLUMN_protein,protein);
-//        con.put(DetailContract.Users.COLUMN_fat,fat);
-//        con.put(DetailContract.Users.COLUMN_carbohydrate,carbohydrate);
-//        con.put(DetailContract.Users.COLUMN_calorie,calorie);
-//        con.put(DetailContract.Users.COLUMN_type,type);
-//
-//        long result = db.insert(TableName,null,con);
-//        if (result == -1)
-//            return false;
-//        else
-//            return true;
-//    }
+    public boolean insertData( String food, String protein, String fat, String carbohydrate, String calorie, String type) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues con = new ContentValues();
+        con.put(COL_2, food);
+        con.put(COL_3, protein);
+        con.put(COL_4, fat);
+        con.put(COL_5, carbohydrate);
+        con.put(COL_6, calorie);
+        con.put(COL_7, type);
 
+        long result = db.insert(TABLE_NAME, null, con);
+        if (result == -1)
+            return false;
+        else
+            return true;
+    }
+}
