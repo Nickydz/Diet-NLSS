@@ -33,7 +33,7 @@ public class SplashScreen extends AppCompatActivity {
 
         //Set GIFImageView resource
         try{
-            InputStream inputStream = getAssets().open("www.GIFCreator.me_JgbHr1.gif");
+            InputStream inputStream = getAssets().open("www.GIFCreator.me_5yZDHO.gif");
             byte[] bytes = IOUtils.toByteArray(inputStream);
             gifImageView.setBytes(bytes);
             gifImageView.startAnimation();
