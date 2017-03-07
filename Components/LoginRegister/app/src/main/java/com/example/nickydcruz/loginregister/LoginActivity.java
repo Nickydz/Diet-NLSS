@@ -57,7 +57,7 @@ public class LoginActivity extends AppCompatActivity implements CompoundButton.O
         final String pCF = pref.getString("cf","0");
 
         //Checking users last session
-        if(!(pUsername.equals("") && pPassword.equals("") && pCF.equals("0"))){
+        if(!((pUsername.equals("") && pPassword.equals("") )|| pCF.equals("0"))){
             Response.Listener<String> responseListener = new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
@@ -69,6 +69,7 @@ public class LoginActivity extends AppCompatActivity implements CompoundButton.O
                             String basicDone = jsonResponse.getString("basicDone");
                             int age = new FormulaClass().calculateAge(dob);
                             editor.putInt("age",age);
+                            editor.apply();
 
                             if(basicDone.equals("1")) {
                                 Intent intent = new Intent(LoginActivity.this, BasicSurvey1.class);
@@ -81,6 +82,7 @@ public class LoginActivity extends AppCompatActivity implements CompoundButton.O
                                 editor.putString("height",height);
                                 editor.putString("weight",weight);
                                 editor.putString("gender",gender);
+                                editor.apply();
 
                                 LoginActivity.this.startActivity(intent);
 
@@ -174,6 +176,7 @@ public class LoginActivity extends AppCompatActivity implements CompoundButton.O
                                     editor.putString("height",height);
                                     editor.putString("weight",weight);
                                     editor.putString("gender",gender);
+                                    editor.apply();
                                     LoginActivity.this.startActivity(intent);
                                 }
                                 else {

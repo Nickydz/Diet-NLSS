@@ -70,6 +70,35 @@
             android:layout_marginTop="23dp"
             android:text="What are your favorite foods?" />
 
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/question1"
+            android:layout_alignParentStart="true"
+            android:id="@+id/spnprommeal"
+            android:layout_alignParentEnd="true" />
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/question2"
+            android:layout_alignParentStart="true"
+            android:id="@+id/spnofmeal" />
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/question3"
+            android:layout_alignParentStart="true"
+            android:id="@+id/spinner6" />
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/question4"
+            android:layout_alignParentStart="true"
+            android:id="@+id/spinner7" />
+
 
     </RelativeLayout>
 </ScrollView>

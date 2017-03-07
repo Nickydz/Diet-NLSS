@@ -1,9 +1,15 @@
 package com.example.nickydcruz.loginregister;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -16,6 +22,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class ResultPage extends AppCompatActivity {
+
+    SharedPreferences pref;
+    SharedPreferences.Editor editor;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,17 +36,25 @@ public class ResultPage extends AppCompatActivity {
         Button btLW =(Button)findViewById(R.id.btLW);
         Button btMW =(Button)findViewById(R.id.btMW);
         Button btGW =(Button)findViewById(R.id.btGW);
-        Intent intent = getIntent();
-        final String username = intent.getStringExtra("username");
-        final int age = intent.getIntExtra("age",0);
+        pref = getSharedPreferences("login.conf", Context.MODE_PRIVATE);
+        final String username = pref.getString("username","");
+        int age = pref.getInt("age",0);
         final DBHelper myDb= new DBHelper(this,username);
-        float bmi = intent.getFloatExtra("BMI",0.0f);
-        final int bmr = intent.getIntExtra("BMR",0);
+
+        float height = 0.3048f * Float.parseFloat(pref.getString("height","0"));
+        float weight = Float.parseFloat(pref.getString("weight","0"));
+        float bmi = new FormulaClass().bmi(height,weight);
+        final int bmr = new FormulaClass().bmr(pref.getString("gender",""),pref.getInt("age",0),weight, height*100);
         final FormulaClass f = new FormulaClass();
         String category = f.category(bmi);
         String expertsMessage = "";
         tvCategory.setText(category);
         tvBmr.setText("Your Basal metabolic rate (BMR) is " + bmr);
+
+        ActionBar actionBar =getSupportActionBar();
+        actionBar.setLogo(R.mipmap.nlss_crop);
+        actionBar.setDisplayUseLogoEnabled(true);
+        actionBar.setDisplayShowHomeEnabled(true);
 
         if(bmi<18.5) {
             expertsMessage = "Since your weight is lower than ideal we recommend you increase your weight.";
@@ -208,6 +225,39 @@ public class ResultPage extends AppCompatActivity {
 
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.activity_homescreen_actions,menu);
+        return super.onCreateOptionsMenu(menu);
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        Intent i = new Intent(ResultPage.this,Homescreen.class);
+        switch (item.getItemId()) {
+            case R.id.foodcravings: i = new Intent(ResultPage.this, FoodCravings.class);
+                break;
+
+            case R.id.superfood: i = new Intent(ResultPage.this, superfood_main.class);
+                break;
+
+            case R.id.excal: i = new Intent(ResultPage.this, ExerciseCalculator.class);
+                break;
+
+            case R.id.diet: i = new Intent(ResultPage.this, Homescreen.class);
+                break;
+            case R.id.logout: {
+                pref.edit().clear().commit();
+                i = new Intent(getApplicationContext(), LoginActivity.class);
+                break;
+            }
+
+        }
+        ResultPage.this.startActivity(i);
+        return super.onOptionsItemSelected(item);
+    }
 
 }
 

@@ -78,7 +78,7 @@ public class BasicSurvey1 extends AppCompatActivity implements NumberPicker.OnVa
 
         final RadioGroup radioSexGroup = (RadioGroup) findViewById(R.id.radgrp);
 
-        final TextView etHeight = (TextView) findViewById(R.id.etht);
+//        final TextView etHeight = (TextView) findViewById(R.id.etht);
         tv = (TextView) findViewById(R.id.etht);
         final EditText etWeight = (EditText) findViewById(R.id.etWeight);
         final EditText etWristCir = (EditText) findViewById(R.id.etWristCir);
@@ -133,6 +133,7 @@ public class BasicSurvey1 extends AppCompatActivity implements NumberPicker.OnVa
 
                                     editor.putString("height",height);
                                     editor.putString("weight",weight);
+                                    editor.commit();
 
                                     Intent int1 = new Intent(BasicSurvey1.this, ResultPage.class);
                                     BasicSurvey1.this.startActivity(int1);
