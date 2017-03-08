@@ -1,9 +1,9 @@
 package com.example.nlss.custom_diet;
 
-import android.support.v7.app.AppCompatActivity;
+import android.app.Activity;
 import android.os.Bundle;
 
-public class Second extends AppCompatActivity {
+public class Second extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

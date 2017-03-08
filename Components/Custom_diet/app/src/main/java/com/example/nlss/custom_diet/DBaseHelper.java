@@ -2,8 +2,12 @@ package com.example.nlss.custom_diet;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Created by Leo on 2/16/2017.
@@ -95,4 +99,29 @@ public class DBaseHelper extends SQLiteOpenHelper {
         else
             return true;
     }
+
+    public Cursor selectfood(String food_pick){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor res = db.rawQuery("SELECT food,calorie FROM foodDatabase WHERE food = "+food_pick,null);
+        return res;
+    }
+
+//    public ArrayList<HashMap<String, String>> getAllUsers() {
+//        ArrayList<HashMap<String, String>> usersList;
+//        usersList = new ArrayList<HashMap<String, String>>();
+//        String selectQuery = "SELECT  * FROM users";
+//        SQLiteDatabase database = this.getWritableDatabase();
+//        Cursor cursor = database.rawQuery(selectQuery, null);
+//        if (cursor.moveToFirst()) {
+//            do {
+//                HashMap<String, String> map = new HashMap<String, String>();
+//                tv.settext
+//                map.put("userId", cursor.getString(0));
+//                map.put("userName", cursor.getString(1));
+//                usersList.add(map);
+//            } while (cursor.moveToNext());
+//        }
+//        database.close();
+//        return usersList;
+//    }
 }

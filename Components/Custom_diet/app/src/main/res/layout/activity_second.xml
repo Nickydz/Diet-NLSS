@@ -11,16 +11,6 @@
     tools:context="com.example.nlss.custom_diet.Second">
 
     <TextView
-        android:text="Breakfast"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="20dp"
-        android:id="@+id/brfast" />
-
-    <TextView
         android:text="TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -66,12 +56,12 @@
         android:id="@+id/addin" />
 
     <TextView
-        android:text="TextView"
+        android:text="Snack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/addin"
         android:layout_alignStart="@+id/addin"
-        android:layout_marginTop="29dp"
+        android:layout_marginTop="18dp"
         android:id="@+id/snack" />
 
     <TextView
@@ -80,6 +70,16 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/snack"
         android:layout_alignStart="@+id/snack"
-        android:layout_marginTop="31dp"
+        android:layout_marginTop="18dp"
         android:id="@+id/dissnac" />
+
+    <TextView
+        android:text="Breakfast"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="33dp"
+        android:id="@+id/brfast"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
 </RelativeLayout>

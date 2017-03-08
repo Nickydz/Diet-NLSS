@@ -34,14 +34,25 @@
         android:layout_below="@+id/bfac"
         android:layout_alignEnd="@+id/bf"
         android:layout_marginTop="10dp"
+        android:layout_marginLeft="64dp"
         android:visibility="gone"
         android:id="@+id/bftvdisp" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bfac"
+        android:layout_alignStart="@+id/breakfastAddBT"
+        android:visibility="gone"
+        android:layout_marginTop="10dp"
+        android:id="@+id/bfcal" />
 
     <TextView
         android:text="Lunch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/bftvdisp"
+        android:layout_below="@+id/bftvdisp1"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:id="@+id/ln" />
@@ -94,6 +105,17 @@
         android:id="@+id/dntvdisp" />
 
     <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/dnac"
+        android:visibility="gone"
+        android:layout_alignStart="@+id/dinnerAddBT"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:id="@+id/dncal" />
+
+    <TextView
         android:text="Snacks"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -110,6 +132,16 @@
         android:id="@+id/lntvdisp"
         android:layout_below="@+id/lnac"
         android:layout_alignEnd="@+id/bf"
+        android:layout_marginTop="10dp" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:id="@+id/lncal"
+        android:layout_alignStart="@+id/LunchAddBT"
+        android:layout_below="@+id/lnac"
         android:layout_marginTop="10dp" />
 
     <AutoCompleteTextView
@@ -131,6 +163,16 @@
         android:layout_marginTop="10dp"
         android:visibility="gone"
         android:id="@+id/sntvdisp" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/snac"
+        android:layout_alignStart="@+id/snacksAddBT"
+        android:layout_marginTop="10dp"
+        android:visibility="gone"
+        android:id="@+id/sncal" />
 
     <Button
         android:id="@+id/snacksAddBT"
