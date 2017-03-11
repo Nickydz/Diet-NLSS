@@ -48,11 +48,44 @@
         android:layout_marginTop="10dp"
         android:id="@+id/bfcal" />
 
+    <ListView android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/bfListView"
+        android:layout_centerHorizontal="true"
+        android:scrollbarAlwaysDrawVerticalTrack="true"
+        android:layout_below="@+id/bftvdisp">
+    </ListView>
+
+    <ListView android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/lnListView"
+        android:layout_centerHorizontal="true"
+        android:scrollbarAlwaysDrawVerticalTrack="true"
+        android:layout_below="@+id/lntvdisp">
+    </ListView>
+
+    <ListView android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/dnListView"
+        android:layout_centerHorizontal="true"
+        android:scrollbarAlwaysDrawVerticalTrack="true"
+        android:layout_below="@+id/dntvdisp">
+    </ListView>
+
+    <ListView android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/snListView"
+        android:layout_centerHorizontal="true"
+        android:scrollbarAlwaysDrawVerticalTrack="true"
+        android:layout_below="@+id/sntvdisp">
+    </ListView>
+
+
     <TextView
         android:text="Lunch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/bftvdisp1"
+        android:layout_below="@+id/bfListView"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:id="@+id/ln" />
@@ -79,7 +112,7 @@
         android:text="Dinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/lntvdisp"
+        android:layout_below="@+id/lnListView"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:id="@+id/dn" />
@@ -119,7 +152,7 @@
         android:text="Snacks"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/dntvdisp"
+        android:layout_below="@+id/dnListView"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:id="@+id/sn" />
@@ -159,7 +192,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/snac"
-        android:layout_alignStart="@+id/bf"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:visibility="gone"
         android:id="@+id/sntvdisp" />

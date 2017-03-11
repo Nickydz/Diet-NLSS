@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -28,6 +29,7 @@ public class DBaseHelper extends SQLiteOpenHelper {
     public DBaseHelper(Context context) {
         super(context, DATABASE_NAME, null, 1);
     }
+    private DBaseHelper context = this;
 
     @Override
     public void onCreate(SQLiteDatabase db) {
@@ -99,11 +101,27 @@ public class DBaseHelper extends SQLiteOpenHelper {
         else
             return true;
     }
-
-    public Cursor selectfood(String food_pick){
+    String foodname = "";
+    String foodcal = "";
+    public String[] selectfood(String food_pick){
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor res = db.rawQuery("SELECT food,calorie FROM foodDatabase WHERE food = "+food_pick,null);
-        return res;
+        ArrayList<HashMap<String, String>> usersList;
+        usersList = new ArrayList<HashMap<String, String>>();
+        Cursor res = db.rawQuery("SELECT food,calorie FROM food_table WHERE food = '"+food_pick+ "'",null);
+        String[] arr = new String[2];
+        if (res.moveToFirst()) {
+            do {
+                foodname = res.getString(0);
+                foodcal = res.getString(1);
+//                        HashMap<String, String> map = new HashMap<String, String>();
+//                        usersList.add(map);
+            } while (res.moveToNext());
+        }
+        arr[0] = foodname;
+        arr[1] = foodcal;
+        db.close();
+//        return (Cursor) usersList;
+        return arr;
     }
 
 //    public ArrayList<HashMap<String, String>> getAllUsers() {
