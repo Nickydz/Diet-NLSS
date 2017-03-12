@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.venussteve.notify.MainActivity">
+
+
+    <RelativeLayout
+        android:layout_width="362dp"
+        android:layout_height="496dp"
+        tools:layout_editor_absoluteX="11dp"
+        tools:layout_editor_absoluteY="7dp">
+
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignStart="@+id/edtTime"
+            android:layout_marginTop="20dp"
+            android:text="Breakfast"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="25dp" />
+
+        <EditText
+            android:id="@+id/edtTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:onClick="timeOnClick"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="-54dp"
+            android:layout_below="@+id/textView3"
+            android:layout_toStartOf="@+id/button2"
+            android:layout_marginEnd="16dp" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Notify me!"
+            tools:layout_editor_absoluteX="111dp"
+            tools:layout_editor_absoluteY="50dp"
+            android:layout_alignTop="@+id/edtTime"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="13dp" />
+
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>
