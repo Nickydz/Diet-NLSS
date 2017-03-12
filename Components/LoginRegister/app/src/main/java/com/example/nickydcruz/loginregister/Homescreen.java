@@ -29,9 +29,13 @@ public class Homescreen extends AppCompatActivity  {
     TextView tvbf2;
     TextView tvbf3;
     TextView tvbsn;
-    TextView tvln;
+    TextView tvln1;
+    TextView tvln2;
+    TextView tvln3;
     TextView tvlsn;
-    TextView tvdn;
+    TextView tvdn1;
+    TextView tvdn2;
+    TextView tvdn3;
     TextView tvCalbf;
     TextView tvCalln;
     TextView tvCaldn;
@@ -60,9 +64,13 @@ public class Homescreen extends AppCompatActivity  {
         tvbf2 =(TextView) findViewById(R.id.textbf2);
         tvbf3 =(TextView) findViewById(R.id.textbf3);
         tvbsn =(TextView) findViewById(R.id.textbsn);
-        tvln =(TextView) findViewById(R.id.textln);
+        tvln1 =(TextView) findViewById(R.id.textln1);
+        tvln2 =(TextView) findViewById(R.id.textln2);
+        tvln3 =(TextView) findViewById(R.id.textln3);
         tvlsn =(TextView) findViewById(R.id.textlsn);
-        tvdn =(TextView) findViewById(R.id.textdn);
+        tvdn1 =(TextView) findViewById(R.id.textdn1);
+        tvdn2 =(TextView) findViewById(R.id.textdn2);
+        tvdn3 =(TextView) findViewById(R.id.textdn3);
         tvCalbf =(TextView) findViewById(R.id.tvCalbf);
         tvCalln =(TextView) findViewById(R.id.tvCalln);
         tvCaldn =(TextView) findViewById(R.id.tvCaldn);
@@ -140,13 +148,30 @@ public class Homescreen extends AppCompatActivity  {
         lunch = d2.LunchGen(bmr);
         snack2 = d2.snackGen(bmr);
         dinner = d2.DinGen(bmr);
-        int i = Integer.parseInt(breakfast.get("count"));
+
+        int breakfastcount = Integer.parseInt(breakfast.get("count"));
         String s1 = breakfast.get(0+"");
-        for(int j=1;j<=i;j++){
+        for(int j=1;j<=breakfastcount;j++){
             s1 =s1 + ";"+ breakfast.get(j+"");
         }
 
-        myDb.insertUserDietData(de.DietTableName,date,breakfast.get("bf"),breakfast.get("bfcal"),s1,lunch.get("name"),lunch.get("cal"),lunch.get("snac"),dinner.get("name"),dinner.get("cal"), dinner.get("snac"),snack1.get("name"),snack1.get("cal"),snack1.get("snac"),snack2.get("name"),snack2.get("cal"),snack2.get("snac"),i+"",1700+"");
+        int lunchcount = Integer.parseInt(lunch.get("count"));
+        String s2 = lunch.get(0+"");
+        for(int j=1;j<=lunchcount;j++){
+            s2 =s2 + ";"+ lunch.get(j+"");
+        }
+
+        int dinnercount = Integer.parseInt(dinner.get("count"));
+        String s3 = dinner.get(0+"");
+        for(int j=1;j<=dinnercount;j++){
+            s3 =s3 + ";"+ dinner.get(j+"");
+        }
+
+        myDb.insertUserDietData(de.DietTableName,date,breakfast.get("bf"),breakfast.get("bfcal"),s1,lunch.get("ln"),
+                lunch.get("lncal"),s2,dinner.get("dn"),dinner.get("dncal"), s3,snack1.get("name"),snack1.get("cal"),
+                snack1.get("snac"),snack2.get("name"),snack2.get("cal"),snack2.get("snac"),breakfastcount+"",lunchcount+"",
+                dinnercount+"",1700+"");
+
         Cursor res1 = myDb.getDietData(de.DietTableName,date);
         return res1;
 
@@ -158,18 +183,37 @@ public class Homescreen extends AppCompatActivity  {
         breakfast.put("bf",res.getString(2));
         breakfast.put("count",res.getString(17));
         breakfast.put("bfcal",res.getString(3));
-        int i = Integer.parseInt(breakfast.get("count"));
+
+
+        int breakfastcount = Integer.parseInt(breakfast.get("count"));
         String[] bfre = breakfast.get("bf").split(";");
         String[] bfres = res.getString(4).split(";");
-        for(int j=0;j<=i;j++){
+        for(int j=0;j<=breakfastcount;j++){
             breakfast.put(j+"",bfres[j]);
         }
-        lunch.put("name",res.getString(5));
-        lunch.put("cal",res.getString(6));
-        lunch.put("snac",res.getString(7));
-        dinner.put("name",res.getString(8));
-        dinner.put("cal",res.getString(9));
-        dinner.put("snac",res.getString(10));
+
+        lunch.put("ln",res.getString(5));
+        lunch.put("lncal",res.getString(6));
+        lunch.put("count",res.getString(18));
+
+        int lunchcount = Integer.parseInt(lunch.get("count"));
+        String[] lnre = lunch.get("ln").split(";");
+        String[] lnres = res.getString(7).split(";");
+        for(int j=0;j<=lunchcount;j++){
+            lunch.put(j+"",lnres[j]);
+        }
+
+        dinner.put("dn",res.getString(8));
+        dinner.put("dncal",res.getString(9));
+        dinner.put("count",res.getString(19));
+
+        int dinnercount = Integer.parseInt(dinner.get("count"));
+        String[] dnre = dinner.get("dn").split(";");
+        String[] dnres = res.getString(10).split(";");
+        for (int j=0;j<=dinnercount;j++){
+            dinner.put(j+"",dnres[j]);
+        }
+
         snack1.put("name",res.getString(11));
         snack1.put("cal",res.getString(12));
         snack1.put("snac",res.getString(13));
@@ -177,7 +221,7 @@ public class Homescreen extends AppCompatActivity  {
         snack2.put("cal",res.getString(15));
         snack2.put("snac",res.getString(16));
 
-        if(i == 2){
+        if(breakfastcount == 2){
 
             tvbf1.setText(bfre[0]);
             tvbf2.setText(bfre[1]);
@@ -185,8 +229,6 @@ public class Homescreen extends AppCompatActivity  {
             tvbf1.setVisibility(View.VISIBLE);
             tvbf2.setVisibility(View.VISIBLE);
             tvbf3.setVisibility(View.VISIBLE);
-
-
 
 
 
@@ -224,7 +266,7 @@ public class Homescreen extends AppCompatActivity  {
                 }
             });
 
-        }else if(i==1){
+        }else if(breakfastcount==1){
             tvbf1.setText(bfre[0]);
             tvbf2.setText(bfre[1]);
             tvbf1.setVisibility(View.VISIBLE);
@@ -302,33 +344,222 @@ public class Homescreen extends AppCompatActivity  {
 
 
 
-        tvln.setText(lunch.get("name"));
-        tvln.setVisibility(View.VISIBLE);
-        tvln.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(Homescreen.this);
-                builder.setMessage(lunch.get("snac"))
-                        .setNeutralButton("OK",null)
-                        .create()
-                        .show();
-            }
-        });
-        tvCalln.setText(lunch.get("cal"));
+        if(lunchcount == 2){
 
-        tvdn.setText(dinner.get("name"));
-        tvdn.setVisibility(View.VISIBLE);
-        tvdn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(Homescreen.this);
-                builder.setMessage(dinner.get("snac"))
-                        .setNeutralButton("OK",null)
-                        .create()
-                        .show();
-            }
-        });
-        tvCaldn.setText(dinner.get("cal"));
+            tvln1.setText(lnre[0]);
+            tvln2.setText(lnre[1]);
+            tvln3.setText(lnre[2]);
+            tvln1.setVisibility(View.VISIBLE);
+            tvln2.setVisibility(View.VISIBLE);
+            tvln3.setVisibility(View.VISIBLE);
+
+
+
+            tvln1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    AlertDialog.Builder builder = new AlertDialog.Builder(Homescreen.this);
+                    builder.setMessage(lunch.get(0+""))
+                            .setNeutralButton("OK",null)
+                            .create()
+                            .show();
+                }
+            });
+            tvln2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    AlertDialog.Builder builder = new AlertDialog.Builder(Homescreen.this);
+                    builder.setMessage(lunch.get(1+""))
+                            .setNeutralButton("OK",null)
+                            .create()
+                            .show();
+                }
+            });
+            tvln3.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    AlertDialog.Builder builder = new AlertDialog.Builder(Homescreen.this);
+                    builder.setMessage(lunch.get(2+""))
+                            .setNeutralButton("OK",null)
+                            .create()
+                            .show();
+                }
+            });
+
+        }else if(lunchcount==1){
+            tvln1.setText(lnre[0]);
+            tvln2.setText(lnre[1]);
+            tvln1.setVisibility(View.VISIBLE);
+            tvln2.setVisibility(View.VISIBLE);
+
+            tvln1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    AlertDialog.Builder builder = new AlertDialog.Builder(Homescreen.this);
+                    builder.setMessage(lunch.get(0+""))
+                            .setNeutralButton("OK",null)
+                            .create()
+                            .show();
+                }
+            });
+            tvln2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    AlertDialog.Builder builder = new AlertDialog.Builder(Homescreen.this);
+                    builder.setMessage(lunch.get(1+""))
+                            .setNeutralButton("OK",null)
+                            .create()
+                            .show();
+                }
+            });
+        }else{
+            tvln1.setText(lnre[0]);
+            tvln1.setVisibility(View.VISIBLE);
+
+            tvln1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    AlertDialog.Builder builder = new AlertDialog.Builder(Homescreen.this);
+                    builder.setMessage(lunch.get(0+""))
+                            .setNeutralButton("OK",null)
+                            .create()
+                            .show();
+                }
+            });
+        }
+        tvCalln.setText(lunch.get("lncal"));
+        tvCalln.setVisibility(View.VISIBLE);
+
+
+        if(dinnercount == 2){
+
+            tvdn1.setText(dnre[0]);
+            tvdn2.setText(dnre[1]);
+            tvdn3.setText(dnre[2]);
+            tvdn1.setVisibility(View.VISIBLE);
+            tvdn2.setVisibility(View.VISIBLE);
+            tvdn3.setVisibility(View.VISIBLE);
+
+
+
+            tvdn1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    AlertDialog.Builder builder = new AlertDialog.Builder(Homescreen.this);
+                    builder.setMessage(dinner.get(0+""))
+                            .setNeutralButton("OK",null)
+                            .create()
+                            .show();
+                }
+            });
+            tvdn2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    AlertDialog.Builder builder = new AlertDialog.Builder(Homescreen.this);
+                    builder.setMessage(dinner.get(1+""))
+                            .setNeutralButton("OK",null)
+                            .create()
+                            .show();
+                }
+            });
+            tvdn3.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    AlertDialog.Builder builder = new AlertDialog.Builder(Homescreen.this);
+                    builder.setMessage(dinner.get(2+""))
+                            .setNeutralButton("OK",null)
+                            .create()
+                            .show();
+                }
+            });
+
+        }else if(dinnercount==1){
+            tvdn1.setText(dnre[0]);
+            tvdn2.setText(dnre[1]);
+            tvdn1.setVisibility(View.VISIBLE);
+            tvdn2.setVisibility(View.VISIBLE);
+
+            tvdn1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    AlertDialog.Builder builder = new AlertDialog.Builder(Homescreen.this);
+                    builder.setMessage(dinner.get(0+""))
+                            .setNeutralButton("OK",null)
+                            .create()
+                            .show();
+                }
+            });
+            tvdn2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    AlertDialog.Builder builder = new AlertDialog.Builder(Homescreen.this);
+                    builder.setMessage(dinner.get(1+""))
+                            .setNeutralButton("OK",null)
+                            .create()
+                            .show();
+                }
+            });
+        }else{
+            tvdn1.setText(dnre[0]);
+            tvdn1.setVisibility(View.VISIBLE);
+
+            tvdn1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    AlertDialog.Builder builder = new AlertDialog.Builder(Homescreen.this);
+                    builder.setMessage(dinner.get(0+""))
+                            .setNeutralButton("OK",null)
+                            .create()
+                            .show();
+                }
+            });
+        }
+        tvCaldn.setText(dinner.get("dncal"));
+        tvCaldn.setVisibility(View.VISIBLE);
+
+
+
+
+//
+//        tvln.setText(lunch.get("name"));
+//        tvln.setVisibility(View.VISIBLE);
+//        tvln.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                AlertDialog.Builder builder = new AlertDialog.Builder(Homescreen.this);
+//                builder.setMessage(lunch.get("snac"))
+//                        .setNeutralButton("OK",null)
+//                        .create()
+//                        .show();
+//            }
+//        });
+//        tvCalln.setText(lunch.get("cal"));
+//
+//        tvdn.setText(dinner.get("name"));
+//        tvdn.setVisibility(View.VISIBLE);
+//        tvdn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                AlertDialog.Builder builder = new AlertDialog.Builder(Homescreen.this);
+//                builder.setMessage(dinner.get("snac"))
+//                        .setNeutralButton("OK",null)
+//                        .create()
+//                        .show();
+//            }
+//        });
+//        tvCaldn.setText(dinner.get("cal"));
     }
 
     @Override

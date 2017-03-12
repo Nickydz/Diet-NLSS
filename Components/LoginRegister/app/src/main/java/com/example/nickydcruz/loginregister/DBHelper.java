@@ -22,8 +22,8 @@ public class DBHelper extends SQLiteOpenHelper {
         this.username=username;
         d = new DietContract.DietEntry(username);
 
-    }
 
+    }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
@@ -58,7 +58,9 @@ public class DBHelper extends SQLiteOpenHelper {
                 DietContract.DietEntry.COLUMN_Snacks2+ " TEXT NOT NULL,"+
                 DietContract.DietEntry.COLUMN_Scal2+ " TEXT NOT NULL,"+
                 DietContract.DietEntry.COLUMN_Sxpl2+ " TEXT NOT NULL,"+
-                DietContract.DietEntry.COLUMN_Count+ " TEXT NOT NULL,"+
+                DietContract.DietEntry.COLUMN_BCount+ " TEXT NOT NULL,"+
+                DietContract.DietEntry.COLUMN_LCount+ " TEXT NOT NULL,"+
+                DietContract.DietEntry.COLUMN_DCount+ " TEXT NOT NULL,"+
                 DietContract.DietEntry.COLUMN_TotalCal+" TEXT NOT NULL"+
                 ");";
 
@@ -103,12 +105,23 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS "+ d.BFTableName);
-        db.execSQL("DROP TABLE IF EXISTS "+ d.LNTableName);
-        db.execSQL("DROP TABLE IF EXISTS "+ d.DNTableName);
-        db.execSQL("DROP TABLE IF EXISTS "+ d.LNTableName);
-        db.execSQL("DROP TABLE IF EXISTS "+ d.DietTableName);
-        onCreate(db);
+        if(oldVersion < newVersion){
+            db.execSQL("DROP TABLE IF EXISTS " + d.BFTableName);
+            db.execSQL("DROP TABLE IF EXISTS " + d.LNTableName);
+            db.execSQL("DROP TABLE IF EXISTS " + d.DNTableName);
+            db.execSQL("DROP TABLE IF EXISTS " + d.LNTableName);
+            db.execSQL("DROP TABLE IF EXISTS " + d.DietTableName);
+            onCreate(db);
+        }
+        else if(oldVersion>newVersion) {
+            db.execSQL("DROP TABLE IF EXISTS " + d.BFTableName);
+            db.execSQL("DROP TABLE IF EXISTS " + d.LNTableName);
+            db.execSQL("DROP TABLE IF EXISTS " + d.DNTableName);
+            db.execSQL("DROP TABLE IF EXISTS " + d.LNTableName);
+            db.execSQL("DROP TABLE IF EXISTS " + d.DietTableName);
+            onCreate(db);
+        }
+
     }
 
     public boolean insertData(String TableName,String Name,String Proteins,String Fats,String Carbs,String Calories,String Flags){
@@ -130,7 +143,7 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
 
-    public boolean insertUserDietData(String TableName,String Date,String Breakfast,String Bcal,String Bxpl,String Lunch,String Lcal,String Lxpl,String Dinner,String Dcal,String Dxpl,String Snacks1,String Scal1,String Sxpl1,String Snacks2,String Scal2,String Sxpl2,String count,String TotalCal){
+    public boolean insertUserDietData(String TableName,String Date,String Breakfast,String Bcal,String Bxpl,String Lunch,String Lcal,String Lxpl,String Dinner,String Dcal,String Dxpl,String Snacks1,String Scal1,String Sxpl1,String Snacks2,String Scal2,String Sxpl2,String bcount,String lcount,String dcount,String TotalCal){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues con = new ContentValues();
         con.put(DietContract.DietEntry.COLUMN_Date,Date);
@@ -149,7 +162,9 @@ public class DBHelper extends SQLiteOpenHelper {
         con.put(DietContract.DietEntry.COLUMN_Snacks2, Snacks2);
         con.put(DietContract.DietEntry.COLUMN_Scal2, Scal2);
         con.put(DietContract.DietEntry.COLUMN_Sxpl2,Sxpl2);
-        con.put(DietContract.DietEntry.COLUMN_Count, count);
+        con.put(DietContract.DietEntry.COLUMN_BCount, bcount);
+        con.put(DietContract.DietEntry.COLUMN_LCount, lcount);
+        con.put(DietContract.DietEntry.COLUMN_DCount, dcount);
         con.put(DietContract.DietEntry.COLUMN_TotalCal, TotalCal);
 
         long result = db.insert(TableName,null,con);
@@ -173,7 +188,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public Cursor getDietData(String TableName,String date){
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor res = db.rawQuery("select * from "+ d.DietTableName,null);
+        Cursor res = db.rawQuery("select * from "+ TableName,null);
         return res;
     }
 }

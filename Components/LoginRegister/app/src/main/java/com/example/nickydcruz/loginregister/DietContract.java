@@ -47,7 +47,9 @@ public class DietContract {
         public static final String COLUMN_Dxpl = "Dxpl";
         public static final String COLUMN_Sxpl1 = "Sxpl1";
         public static final String COLUMN_Sxpl2 = "Sxpl2";
-        public static final String COLUMN_Count = "Count";
+        public static final String COLUMN_BCount = "BCount";
+        public static final String COLUMN_LCount = "LCount";
+        public static final String COLUMN_DCount = "DCount";
         public static final String COLUMN_TotalCal = "TotalCal";
 
     }
