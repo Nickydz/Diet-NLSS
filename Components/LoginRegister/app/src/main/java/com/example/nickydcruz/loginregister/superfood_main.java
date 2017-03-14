@@ -189,6 +189,9 @@ public class superfood_main extends AppCompatActivity {
 
             case R.id.diet: i = new Intent(getApplicationContext(), Homescreen.class);
                 break;
+
+            case R.id.advanceSurvey: i = new Intent(getApplicationContext(), Advanced_Survey.class);
+                break;
             case R.id.logout: {
                 pref.edit().clear().commit();
                 i = new Intent(getApplicationContext(), LoginActivity.class);

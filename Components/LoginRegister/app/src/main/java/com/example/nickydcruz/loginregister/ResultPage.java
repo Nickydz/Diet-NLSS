@@ -90,7 +90,7 @@ public class ResultPage extends AppCompatActivity {
         btGW.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int bmr1 = bmr + 500;
+                final int bmr1 = bmr + 500;
                 int a[] = f.bmrcal(bmr1*0.25);
                 int b[] = f.bmrcal(bmr1*0.125);
 
@@ -105,6 +105,7 @@ public class ResultPage extends AppCompatActivity {
                                 Intent int1=new Intent(ResultPage.this,Homescreen.class);
                                 int1.putExtra("username",username);
                                 int1.putExtra("diet",jsonresponse.toString());
+                                int1.putExtra("bmr",bmr1+"");
                                 DietInsert d =new DietInsert(username,myDb);
                                 d.dietDivider(jsonresponse);
                                 startActivity(int1);
@@ -134,6 +135,8 @@ public class ResultPage extends AppCompatActivity {
                 int bmr1=bmr;
                 if(bmr > 1700)
                 bmr1 =bmr -500;
+                //to deaal with final stipulation in intent
+                final int bmr2=bmr1;
                 int a[] = f.bmrcal(bmr1*0.25);
                 int b[] = f.bmrcal(bmr1*0.125);
 
@@ -149,6 +152,7 @@ public class ResultPage extends AppCompatActivity {
                                 Intent int1=new Intent(ResultPage.this,Homescreen.class);
                                 int1.putExtra("diet",jsonresponse.toString());
                                 int1.putExtra("username",username);
+                                int1.putExtra("bmr",bmr2+"");
                                 DietInsert d =new DietInsert(username,myDb);
                                 d.dietDivider(jsonresponse);
                                 startActivity(int1);
@@ -196,6 +200,7 @@ public class ResultPage extends AppCompatActivity {
                                     Intent int1 = new Intent(ResultPage.this, Homescreen.class);
                                     int1.putExtra("diet",jsonresponse.toString());
                                     int1.putExtra("username",username);
+                                    int1.putExtra("bmr",bmr+"");
                                     DietInsert d =new DietInsert(username,myDb);
                                     d.dietDivider(jsonresponse);
                                     startActivity(int1);
@@ -247,6 +252,9 @@ public class ResultPage extends AppCompatActivity {
                 break;
 
             case R.id.diet: i = new Intent(ResultPage.this, Homescreen.class);
+                break;
+
+            case R.id.advanceSurvey: i = new Intent(ResultPage.this, Advanced_Survey.class);
                 break;
             case R.id.logout: {
                 pref.edit().clear().commit();

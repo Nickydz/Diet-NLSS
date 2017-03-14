@@ -44,6 +44,7 @@ public class Homescreen extends AppCompatActivity  {
     DietContract.DietEntry de;
     DBHelper myDb;
 
+    int advancedone = pref.getInt("advancedone",0),bmrt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,12 +54,7 @@ public class Homescreen extends AppCompatActivity  {
 
         de = new DietContract.DietEntry(pref.getString("username",""));
         myDb = new DBHelper(this,pref.getString("username",""));
-        /*
-        float height = Float.parseFloat(pref.getString("height","0"));
-        float weight = Float.parseFloat(pref.getString("weight","0"));
-        int age = pref.getInt("age",0);
-        String gender = pref.getString("gender","");
-        */
+
         tvbf1 =(TextView) findViewById(R.id.textbf1);
         tvdat =(TextView) findViewById(R.id.tvdate);
         tvbf2 =(TextView) findViewById(R.id.textbf2);
@@ -77,6 +73,9 @@ public class Homescreen extends AppCompatActivity  {
         tvCalbsn =(TextView) findViewById(R.id.tvCalbsn);
         tvCallsn =(TextView) findViewById(R.id.tvCallsn);
 
+        Intent intent = getIntent();
+
+        bmrt = Integer.parseInt(intent.getStringExtra("bmr"));
 
         ActionBar actionBar =getSupportActionBar();
         actionBar.setLogo(R.mipmap.nlss_crop);
@@ -140,14 +139,64 @@ public class Homescreen extends AppCompatActivity  {
     }
 
     private Cursor insertDiet(String date) {
-        int bmr =new FormulaClass().bmr(pref.getString("gender",""),pref.getInt("age",0),Float.parseFloat(pref.getString("weight","0")),Float.parseFloat(pref.getString("height","0")));
+
         DietGen d2= new DietGen(pref.getString("username",""),myDb);
         final HashMap<String,String> breakfast,lunch,snack1,snack2,dinner;
-        breakfast = d2.breakfastGen(bmr);
-        snack1 = d2.snackGen(bmr);
-        lunch = d2.LunchGen(bmr);
-        snack2 = d2.snackGen(bmr);
-        dinner = d2.DinGen(bmr);
+        float bcal = 0.35f,scal=0.125f,dcal=0.15f,lcal=0.25f;
+        if(advancedone == 1){
+            int noofmeal = pref.getInt("noofmeal",5);
+            String prommeal = pref.getString("prommeal","b");
+            if(prommeal.equals("b")){
+                bcal = 0.50f;
+                lcal = 0.30f;
+                dcal = 0.20f;
+            }
+            else if(prommeal.equals("l")){
+                bcal= 0.30f;
+                lcal= 0.50f;
+                dcal= 0.20f;
+            }
+            else if(prommeal.equals("d")){
+                bcal= 0.30f;
+                lcal = 0.30f;
+                dcal = 0.40f;
+            }
+
+            if(noofmeal == 5){
+
+                snack1 = d2.snackGen(bmrt, scal);
+                snack2 = d2.snackGen(bmrt, scal);
+
+                bmrt = Math.round(bmrt - (2*scal*bmrt));
+                breakfast = d2.breakfastGen(bmrt,bcal);
+                lunch = d2.LunchGen(bmrt,lcal);
+                dinner = d2.DinGen(bmrt,dcal);
+            }
+            else if(noofmeal == 4){
+                snack1 = d2.snackGen(bmrt, scal);
+                snack2 = d2.snackGen(bmrt, 0);
+                bmrt = Math.round(bmrt - (scal*bmrt));
+                breakfast = d2.breakfastGen(bmrt,bcal);
+                lunch = d2.LunchGen(bmrt,lcal);
+                dinner = d2.DinGen(bmrt,dcal);
+            }
+            else {
+                snack1 = d2.snackGen(bmrt, 0);
+                snack2 = d2.snackGen(bmrt, 0);
+                breakfast = d2.breakfastGen(bmrt,bcal);
+                lunch = d2.LunchGen(bmrt,lcal);
+                dinner = d2.DinGen(bmrt,dcal);
+            }
+
+        }
+        else {
+            breakfast = d2.breakfastGen(bmrt,bcal);
+            snack1 = d2.snackGen(bmrt,scal);
+            lunch = d2.LunchGen(bmrt,lcal);
+            snack2 = d2.snackGen(bmrt,scal);
+            dinner = d2.DinGen(bmrt,dcal);
+        }
+
 
         int breakfastcount = Integer.parseInt(breakfast.get("count"));
         String s1 = breakfast.get(0+"");
@@ -313,34 +362,43 @@ public class Homescreen extends AppCompatActivity  {
         tvCalbf.setText(breakfast.get("bfcal"));
         tvCalbf.setVisibility(View.VISIBLE);
 
-        tvbsn.setText(snack1.get("name"));
-        tvbsn.setVisibility(View.VISIBLE);
-        tvbsn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(Homescreen.this);
-                builder.setMessage(snack1.get("snac"))
-                        .setNeutralButton("OK",null)
-                        .create()
-                        .show();
-            }
-        });
-        tvCalbsn.setText(snack1.get("cal"));
+        if(!(snack1.get("name").equals("-") || snack1.get("cal").equals("-"))) {
+            tvbsn.setText(snack1.get("name"));
+            tvbsn.setVisibility(View.VISIBLE);
+            tvbsn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(Homescreen.this);
+                    builder.setMessage(snack1.get("snac"))
+                            .setNeutralButton("OK", null)
+                            .create()
+                            .show();
+                }
+            });
+            tvCalbsn.setText(snack1.get("cal"));
+        }
+        else {
 
+        }
+        if(!(snack2.get("name").equals("-") || snack2.get("cal").equals("-"))){
+            tvlsn.setText(snack2.get("name"));
+            tvlsn.setVisibility(View.VISIBLE);
+            tvlsn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(Homescreen.this);
+                    builder.setMessage(snack2.get("snac"))
+                            .setNeutralButton("OK",null)
+                            .create()
+                            .show();
+                }
+            });
+            tvCallsn.setText(snack2.get("cal"));
+        }
+        else{
 
-        tvlsn.setText(snack2.get("name"));
-        tvlsn.setVisibility(View.VISIBLE);
-        tvlsn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(Homescreen.this);
-                builder.setMessage(snack2.get("snac"))
-                        .setNeutralButton("OK",null)
-                        .create()
-                        .show();
-            }
-        });
-        tvCallsn.setText(snack2.get("cal"));
+        }
+
 
 
 
@@ -585,6 +643,10 @@ public class Homescreen extends AppCompatActivity  {
 
             case R.id.diet: i = new Intent(Homescreen.this, Homescreen.class);
                 break;
+
+            case R.id.advanceSurvey: i = new Intent(Homescreen.this, Advanced_Survey.class);
+                break;
+
             case R.id.logout: {
                 pref.edit().clear().commit();
                 i = new Intent(getApplicationContext(), LoginActivity.class);

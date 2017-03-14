@@ -188,7 +188,24 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public Cursor getDietData(String TableName,String date){
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor res = db.rawQuery("select * from "+ TableName,null);
+        String[] columns ={DietContract.DietEntry._ID,DietContract.DietEntry.COLUMN_Date,DietContract.DietEntry.COLUMN_Breakfast,
+                DietContract.DietEntry.COLUMN_Bcal, DietContract.DietEntry.COLUMN_Bxpl, DietContract.DietEntry.COLUMN_Lunch, DietContract.DietEntry.COLUMN_Lcal,
+                DietContract.DietEntry.COLUMN_Lxpl, DietContract.DietEntry.COLUMN_Dinner, DietContract.DietEntry.COLUMN_Dcal, DietContract.DietEntry.COLUMN_Dxpl, DietContract.DietEntry.COLUMN_Snacks1, DietContract.DietEntry.COLUMN_Scal1,
+                DietContract.DietEntry.COLUMN_Sxpl1, DietContract.DietEntry.COLUMN_Snacks2, DietContract.DietEntry.COLUMN_Scal2, DietContract.DietEntry.COLUMN_Sxpl2, DietContract.DietEntry.COLUMN_BCount, DietContract.DietEntry.COLUMN_LCount,
+                DietContract.DietEntry.COLUMN_DCount,DietContract.DietEntry.COLUMN_TotalCal};
+
+        String[] selectionargs = {date};
+
+        Cursor res = db.query(TableName,columns, DietContract.DietEntry.COLUMN_Date+" =?",selectionargs,null,null,null);
+        return res;
+    }
+
+    public Cursor getDrinks() {
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        String[] columns = {"_id",DietContract.DietEntry.COLUMN_Name};
+        String[] selectionargs = {"d"};
+        Cursor res = db.query(d.BFTableName,columns, DietContract.DietEntry.COLUMN_Flags+" =?",selectionargs,null,null,null);
         return res;
     }
 }

@@ -65,6 +65,10 @@ public class ExerciseCalculator extends AppCompatActivity implements OnClickList
 
             case R.id.diet: i = new Intent(ExerciseCalculator.this, Homescreen.class);
                 break;
+
+            case R.id.advanceSurvey: i = new Intent(getApplicationContext(), Advanced_Survey.class);
+                break;
+
             case R.id.logout: {
                 pref.edit().clear().commit();
                 i = new Intent(ExerciseCalculator.this, LoginActivity.class);

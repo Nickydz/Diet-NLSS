@@ -65,7 +65,6 @@ public class BasicSurvey1 extends AppCompatActivity implements NumberPicker.OnVa
         final int age = f.calculateAge(dob);
         Spinner spn=(Spinner) findViewById(R.id.spinb);
 
-        spn.setOnItemSelectedListener(this);
         List<String> categories = new ArrayList<String>();
         categories.add("Vegetarian");
         categories.add("Non-Vegeterian");
@@ -75,6 +74,7 @@ public class BasicSurvey1 extends AppCompatActivity implements NumberPicker.OnVa
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spn.setAdapter(dataAdapter);
 
+        spn.setOnItemSelectedListener(this);
 
         final RadioGroup radioSexGroup = (RadioGroup) findViewById(R.id.radgrp);
 
@@ -244,7 +244,7 @@ public class BasicSurvey1 extends AppCompatActivity implements NumberPicker.OnVa
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         String item = parent.getItemAtPosition(position).toString();
-        Toast.makeText(this,item,Toast.LENGTH_LONG);
+        Toast.makeText(getApplicationContext(),item,Toast.LENGTH_LONG).show();
     }
 
     @Override

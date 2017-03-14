@@ -24,8 +24,8 @@ public class DietGen {
         d1 = new DietContract.DietEntry(username);
     }
 
-    public HashMap<String, String> breakfastGen(int bmr1){
-        float bmr = bmr1 * 0.35f;
+    public HashMap<String, String> breakfastGen(int bmr1,float bcal){
+        float bmr = bmr1 * bcal;
         int a[] = new FormulaClass().bmrcal(bmr);
         Cursor res = dbHelper.getData(d1.BFTableName,a[0],a[1],a[2]) ;
 
@@ -470,70 +470,78 @@ public class DietGen {
 
     }
 
-    public HashMap<String, String> snackGen(int bmr1){
-        float bmr = bmr1 * 0.125f;
-        int a[] = new FormulaClass().bmrcal(bmr);
-        Cursor res = dbHelper.getData(d1.SNTableName,a[0],a[1],a[2]) ;
+    public HashMap<String, String> snackGen(int bmr1, float scal){
 
-        if(res.getCount() == 0){
-            //error in data code
-        }
-        int d=1,i=0;
+        HashMap<String, String> snacking = new HashMap<>();
+        if(scal != 0) {
+            float bmr = bmr1 * scal;
+            int a[] = new FormulaClass().bmrcal(bmr);
+            Cursor res = dbHelper.getData(d1.SNTableName, a[0], a[1], a[2]);
 
-        SparseArray<String> snacks = new SparseArray<>();
-        HashMap<String,String> snacking = new HashMap<>();
-
-        while(res.moveToNext()) {
-
-            snacks.put(d++, res.getString(1));
-            snacks.put(d++, res.getString(2));
-            snacks.put(d++, res.getString(3));
-            snacks.put(d++, res.getString(4));
-            snacks.put(d++, res.getString(5));
-
-
-        }
-        --d;
-
-        int cal =(int)Math.round(bmr * 0.5);
-        int u=cal,p=0;
-        i=5;
-        while(d >= i){
-            if ((cal - Integer.parseInt(snacks.get(i))) < u){
-                u=cal - Integer.parseInt(snacks.get(i));
-                p=i-4;
+            if (res.getCount() == 0) {
+                //error in data code
             }
-            i= i+5;
+            int d = 1, i = 0;
+
+            SparseArray<String> snacks = new SparseArray<>();
+
+            while (res.moveToNext()) {
+
+                snacks.put(d++, res.getString(1));
+                snacks.put(d++, res.getString(2));
+                snacks.put(d++, res.getString(3));
+                snacks.put(d++, res.getString(4));
+                snacks.put(d++, res.getString(5));
+
+
+            }
+            --d;
+
+            int cal = (int) Math.round(bmr * 0.5);
+            int u = cal, p = 0;
+            i = 5;
+            while (d >= i) {
+                if ((cal - Integer.parseInt(snacks.get(i))) < u) {
+                    u = cal - Integer.parseInt(snacks.get(i));
+                    p = i - 4;
+                }
+                i = i + 5;
+            }
+
+            String sna = snacks.get(p);
+            String snacal = snacks.get(p + 4);
+            String snac = snacks.get(p) + "\n Proteins: " + snacks.get(p + 1) + "\n Fats: " + snacks.get(p + 2) + "\n Carbohydrates: " + snacks.get(p + 3) + "\n Calories: " + snacks.get(p + 4);
+            snacking.put("name", sna);
+            snacking.put("cal", snacal);
+            snacking.put("snac", snac);
+//        /*
+//        Random r =new Random();
+//        int p = r.nextInt(i);
+//        if (p==0)
+//            p++;
+//
+//        JSONObject jsonObject = new JSONObject();
+//        try {
+//            jsonObject.put("snackn",snacks.get(p++));
+//            jsonObject.put("snackp",snacks.get(p++));
+//            jsonObject.put("snackf",snacks.get(p++));
+//            jsonObject.put("snackc",snacks.get(p++));
+//            jsonObject.put("snakcal",snacks.get(p));
+//
+//        } catch (JSONException e1) {
+//            e1.printStackTrace();
+//        }
+//        */}
         }
-
-        String sna = snacks.get(p);
-        String snacal = snacks.get(p+4);
-        String snac = snacks.get(p)+"\n Proteins: "+snacks.get(p+1)+"\n Fats: "+snacks.get(p+2)+"\n Carbohydrates: "+snacks.get(p+3)+"\n Calories: "+snacks.get(p+4);
-        snacking.put("name",sna);
-        snacking.put("cal",snacal);
-        snacking.put("snac",snac);
-        /*
-        Random r =new Random();
-        int p = r.nextInt(i);
-        if (p==0)
-            p++;
-
-        JSONObject jsonObject = new JSONObject();
-        try {
-            jsonObject.put("snackn",snacks.get(p++));
-            jsonObject.put("snackp",snacks.get(p++));
-            jsonObject.put("snackf",snacks.get(p++));
-            jsonObject.put("snackc",snacks.get(p++));
-            jsonObject.put("snakcal",snacks.get(p));
-
-        } catch (JSONException e1) {
-            e1.printStackTrace();
+        else{
+            snacking.put("name", "-");
+            snacking.put("cal", "-");
+            snacking.put("snac", "-");
         }
-        */
 
         return snacking;
     }
-    public HashMap<String, String> LunchGen(int bmr1){
+    public HashMap<String, String> LunchGen(int bmr1,float lcal){
 //        float bmr = bmr1 * 0.25f;
 //        int a[] = new FormulaClass().bmrcal(bmr);
 //        Cursor res = dbHelper.getData(d1.LNTableName,a[0],a[1],a[2]) ;
@@ -597,8 +605,7 @@ public class DietGen {
 //        return snacking;
 
 
-
-        float bmr = bmr1 * 0.15f;
+        float bmr = bmr1 * lcal;
         int a[] = new FormulaClass().bmrcal(bmr);
         Cursor res = dbHelper.getData(d1.LNTableName,a[0],a[1],a[2]) ;
 
@@ -1255,8 +1262,8 @@ public class DietGen {
 
 
 
-    public HashMap<String, String> DinGen(int bmr1){
-        float bmr = bmr1 * 0.15f;
+    public HashMap<String, String> DinGen(int bmr1, float dcal){
+        float bmr = bmr1 * dcal;
         int a[] = new FormulaClass().bmrcal(bmr);
         Cursor res = dbHelper.getData(d1.DNTableName,a[0],a[1],a[2]) ;
 

@@ -169,6 +169,9 @@ public class FoodCravings extends AppCompatActivity {
 
             case R.id.diet: i = new Intent(FoodCravings.this, Homescreen.class);
                 break;
+
+            case R.id.advanceSurvey: i = new Intent(FoodCravings.this, Advanced_Survey.class);
+                break;
             case R.id.logout: {
                 pref.edit().clear().commit();
                 i = new Intent(getApplicationContext(), LoginActivity.class);
