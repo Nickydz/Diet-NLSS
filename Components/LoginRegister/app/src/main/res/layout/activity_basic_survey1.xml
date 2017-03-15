@@ -221,6 +221,18 @@
         android:layout_alignBottom="@+id/etht"
         android:layout_alignStart="@+id/spin_bsWeight" />
 
+    <Button
+        android:text="\u0241"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="button3"
+        android:minHeight="0dp"
+        android:minWidth="0dp"
+        android:id="@+id/button3"
+        android:layout_alignTop="@+id/button2"
+        android:layout_alignStart="@+id/button2"
+        android:layout_marginLeft="88dp"/>
+
 
 </RelativeLayout>
 </ScrollView>

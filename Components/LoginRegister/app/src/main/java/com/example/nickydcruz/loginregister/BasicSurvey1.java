@@ -9,11 +9,13 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.NumberPicker;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -63,6 +65,44 @@ public class BasicSurvey1 extends AppCompatActivity implements NumberPicker.OnVa
         final String username = pref.getString("username","");
         final String dob = intent.getStringExtra("dob");
         final int age = f.calculateAge(dob);
+
+        //for the intuitive measurements
+
+        Button question = (Button) findViewById(R.id.button3);// on click of button display the dialog
+        question.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder alertadd = new AlertDialog.Builder(BasicSurvey1.this); //this one
+                LayoutInflater factory = LayoutInflater.from(BasicSurvey1.this);
+                final View view = factory.inflate(R.layout.heightmeasure, null);
+                alertadd.setMessage("Stretch your arms out and measure the span using a measuring tape to find your height.");
+                alertadd.setView(view);
+                alertadd.show();
+
+            }
+        });
+
+//    AlertDialog.Builder alertadd = new AlertDialog.Builder(BasicSurvey1.this); //this one
+//    LayoutInflater factory = LayoutInflater.from(BasicSurvey1.this);
+//    final View view = factory.inflate(R.layout.heightmeasure, null);
+//    alertadd.setView(view);
+//    alertadd.show();
+
+//        ImageView image = new ImageView(this); //or this inside show();
+//        image.setImageResource(R.mipmap.heightmeasure);
+
+//        AlertDialog.Builder builder =
+//                new AlertDialog.Builder(this).
+//                        setMessage("Message above the image").
+//                        setPositiveButton("OK", new DialogInterface.OnClickListener() {
+//                            @Override
+//                            public void onClick(DialogInterface dialog, int which) {
+//                                dialog.dismiss();
+//                            }
+//                        }).
+//                        setView(image);
+//        builder.create().show();
+
         Spinner spn=(Spinner) findViewById(R.id.spinb);
 
         List<String> categories = new ArrayList<String>();
@@ -239,6 +279,9 @@ public class BasicSurvey1 extends AppCompatActivity implements NumberPicker.OnVa
 
 
     }
+
+
+    // <<<---->>>
 
 
     @Override
