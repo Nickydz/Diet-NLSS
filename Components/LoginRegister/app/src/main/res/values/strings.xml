@@ -7,6 +7,236 @@
 
     <string name="beve">Choice of beverage</string>
     <string name="title_activity_bbbf">bbbf</string>
+    <string-array name="names">
+        <item>Bicycling, less than 10 mph (16 km/h)),leisure, to work or for pleasure, MET:4 </item>
+        <item>Bicycling, stationary, 50 watts, very light effort, MET:3</item>
+        <item>Bicycling, stationary, 100 watts, light effort, MET:5</item>
+        <item>sleeping, MET:0.9</item>
+        <item>Sexual activity, MET:5.8</item>
+        <item>watching television, MET:1</item>
+        <item>writing, desk work, typing, MET:1.5</item>
+        <item>Bicycling, on flat, 14 to 16 mph(22.5 to 25.7 km/h), fast, MET:10</item>
+        <item>jogging(general), MET:7 </item>
+        <item>jogging at 5 mph(8 km/h), MET:8 </item>
+        <item>running jogging, in place, MET:8</item>
+        <item>jogging at 6 mph(9.6 km/h), MET:10</item>
+        <item>rope jumping, MET:10</item>
+        <item>running at 6 mph(9.6 km/h), MET:10 </item>
+        <item>running at 8 mph(12.9 km/h), MET:13.5 </item>
+        <item>running at 10 mph(16.1 km/h), MET:16 </item>
+        <item>climbing stairs, MET:4 </item>
+        <item>sitting quietly, MET:1 </item>
+        <item>dancing(ballet or modern), MET:6</item>
+        <item>walking 3.4 mph(5.5 km/h), MET:3.6</item>
+        <item>calisthenics(eg. pushups, situps, pullups, jumping jacks),heavy, vigorous effort, MET:8</item>
+        <item>calisthenics, home exercise,light or moderate effort, general, MET:3.5</item>
+        <item>standing quietly, MET:1.2</item>
+        <item>walking,1.7 mph(2.7km/h),level ground,strolling,very slow, MET:2.3</item>
+        <item>walking, 2.5 mph(4 km/h), MET:2.9</item>
+        <item>walking,very brisk pace, 4.5 mph(7.2 km/h), MET:6.3 </item>
+        <item>walking 3.0 mph(4.8 km/h), MET:3.3</item>
+        <item>sitting -using computer work at desk using light hand tools, MET:1.5 </item>
+        <item>standing and making bed, MET:2</item>
+        <item>standing and washing dishes, MET:2.3 </item>
+        <item>standing and ironing, MET:2 </item>
+        <item>standing and preparing food or cooking, MET:2.5 </item>
+        <item>Arts and crafts, MET:1.5 </item>
+        <item>playing cards MET:1.5 </item>
+        <item>playing Billiards, MET:2.5 </item>
+        <item>boating - power, MET:2.5 </item>
+        <item>Croquet, MET:2.5 </item>
+        <item>playing darts, MET:2.5 </item>
+        <item>sitting and fising, MET:2.5 </item>
+        <item>washing windows , MET:3 </item>
+        <item>washing car, MET:3 </item>
+        <item>sweeping floors or carpet, MET:3.3 </item>
+        <item>vaccuming, MET:3.2 </item>
+        <item>mopping, MET:3.3 </item>
+        <item>carpentry(general), MET:3.6 </item>
+        <item>carrying and stacking wood, MET:5.5 </item>
+        <item>Mowing lawn- walk power mower, MET:5.5 </item>
+        <item>shoveling sand, coal, etc, MET:7 </item>
+        <item>carrying bricks, MET:7.5 </item>
+        <item>heavy farming(bailing hay), MET:8 </item>
+        <item>shoveling, digging ditches, MET:8.5 </item>
+        <item>driving heavy tractor, MET:3 </item>
+        <item>driving bus or truck, MET:3 </item>
+        <item>moderately vigorous playing with children, MET:3 </item>
+        <item>sweeping outside house, MET:3 </item>
+        <item>dancing (moderately fast), MET:4 </item>
+        <item>dancing (more rapid), MET:5 </item>
+        <item>cleaning gutters, MET:5 </item>
+        <item>chopping wood, MET:5 </item>
+        <item>dancing (vigorous), MET:7 </item>
+        <item>singles tennis, MET:10 </item>
+        <item>squash, MET:12 </item>
+        <item>archery, MET:4.3 </item>
+        <item>aerobic dancing(light), MET:4 </item>
+        <item>aerobic dancing(moderate), MET:6 </item>
+        <item>aerobic dancing(heavy), MET:9 </item>
+        <item>badminton (light), MET:3 </item>
+        <item>badminton (moderate), MET:6 </item>
+        <item>badminton (heavy), MET:9 </item>
+        <item>ice skating at (18 km/h), MET:4 </item>
+        <item>ice skating at (25 km/h), MET:4.8 </item>
+        <item>ice skating at (28 km/h), MET:9.2 </item>
+        <item>ice skating at (32 km/h), MET:10.8 </item>
+        <item>ice skating at (36 km/h), MET:15.2 </item>
+        <item>squash (light), MET:6 </item>
+        <item>squash (moderate), MET:9 </item>
+        <item>squash (heavy), MET:12 </item>
+        <item>swimming in pool at (2 km/h), MET:4.3 </item>
+        <item>swimming in pool at (2.5 km/h), MET:6.8 </item>
+        <item>swimming in pool at (3 km/h), MET:8.9 </item>
+        <item>swimming in pool at (3.5 km/h), MET:11.5 </item>
+        <item>swimming in pool at (4 km/h), MET:13.6 </item>
+        <item>synchronized swimming, only legs, MET:8.7 </item>
+        <item>synchronized swimming, only arms, MET:9.8 </item>
+        <item>table tennis(light), MET:4 </item>
+        <item>table tennis(moderate), MET:6 </item>
+        <item>table tennis(heavy), MET:9 </item>
+        <item>tennis, singles, MET:6.5 </item>
+        <item>tennis, doubles, MET:4.5 </item>
+        <item>marathon, MET:13.3 </item>
+        <item>high jump, MET:4.1 </item>
+        <item>long jump, MET:15 </item>
+        <item>shot put, MET:3.8 </item>
+        <item>volleyball (light), MET:5 </item>
+        <item>volleyball (moderate), MET:6 </item>
+        <item>volleyball (heavy), MET:8 </item>
+        <item>yoga, MET:3.6 </item>
+        <item>wrestling (light), MET:6 </item>
+        <item>wrestling (moderate), MET:9 </item>
+        <item>wrestling (heavy), MET:12 </item>
+        <item>weightlifting (light), MET:3 </item>
+        <item>weightlifting (moderate), MET:5 </item>
+        <item>weightlifting (heavy), MET:7 </item>
+        <item>hunting (light), MET:3 </item>
+        <item>hunting (moderate), MET:5 </item>
+        <item>hunting (heavy), MET:7 </item>
+        <item>ice hockey(light), MET:6 </item>
+        <item>ice hockey(moderate), MET:8 </item>
+        <item>ice hockey(heavy), MET:10 </item>
+
+
+    </string-array>
+
+    <string-array name="foods">
+        <item>Dal (0.5 cup)</item>
+        <item>White rice,medium grain(1 cup)</item>
+        <item>Coconut chicken curry(1 serving)</item>
+        <item>Chapati with oil</item>
+        <item>Chapati without oil (Roti)</item>
+        <item>1 egg omlet with onions, tomato, bell pepper</item>
+        <item>white rice, large grain(1 cup)</item>
+        <item>Palak paneer,1/2 cup</item>
+        <item>aloo mutter(1 cup cooked)</item>
+        <item>Dal khichdi ,1 cup</item>
+        <item>Mutter paneer</item>
+        <item>Paneer malai</item>
+        <item>Paneer darbari</item>
+        <item>Palak chole</item>
+        <item>Chettinad chicken curry</item>
+        <item>Beef chettinad curry</item>
+        <item>Paneer malai</item>
+        <item>Paneer darbari</item>
+        <item>Palak chole</item>
+        <item>Fried fish nuggets (catfish)</item>
+        <item>Vegetable chettinad</item>
+        <item>Paneer chettinad</item>
+        <item>Fried cod fish</item>
+        <item>Mutton curry</item>
+        <item>Paneer chettinad</item>
+        <item>Fried cod fish</item>
+        <item>Mutton curry</item>
+        <item>Mutton biryani</item>
+        <item>Mutton roast</item>
+        <item>Mutton pulao</item>
+        <item>Mutton sausage</item>
+        <item>Mutton soup</item>
+        <item>Mutton biryani</item>
+        <item>Tomato basil soup</item>
+        <item>Veg manchow soup</item>
+        <item>Carrot and orange soup</item>
+        <item>Mushroom soup</item>
+        <item>Broccolli soup</item>
+        <item>Tomato basil soup</item>
+        <item>Veg manchow soup</item>
+        <item>Carrot and orange soup</item>
+        <item>Mushroom soup</item>
+        <item>Chicken noodle soup</item>
+        <item>Parmesan (chicken)</item>
+        <item>Chicken tandoori</item>
+        <item>Chicken 65</item>
+        <item>Butter chicken</item>
+        <item>Chicken makhani</item>
+        <item>Paneer makhani</item>
+        <item>Chicken tandoori</item>
+        <item>Paneer makhani</item>
+        <item>Vegetable makhani</item>
+        <item>Dal makhani</item>
+        <item>Corn soup</item>
+        <item>Wheat, bread(white)</item>
+        <item>Wheat, bread(brown)</item>
+        <item>Dosa</item>
+        <item>Paratha, homemade</item>
+        <item>Aalo paratha, homemade</item>
+        <item>Boiled egg</item>
+        <item>Dal (0.5 cup)</item>
+        <item>White rice,medium grain(1 cup)</item>
+        <item>Palak (1 cup)</item>
+        <item>Coconut chicken curry</item>
+        <item>1 egg omlet with onions, tomato, bell pepper</item>
+        <item>white rice, large grain(1 cup)</item>
+        <item>Palak paneer,1/2 cup (kitchens of India)</item>
+        <item>aloo mutter, 1/2 pack serving (truly indian)</item>
+        <item>pav bhaji, 1 serving</item>
+        <item>Khichdi ,1 cup</item>
+        <item>Cheetos (60 gms)</item>
+        <item>Oreo (120 gms)</item>
+        <item>Banana (1 medium sized)</item>
+        <item>Sandwich (2 pieces of bread)</item>
+        <item>Apple (1 medium sized)</item>
+        <item>Mango (1 medium sized)</item>
+        <item>Masala munch (Kurkure) (50 gms)</item>
+        <item>Popcorn (30 gms)</item>
+        <item> Banana chips (100 gms)</item>
+        <item>Pav bhaji (1 serving)</item>
+        <item>Wada pav (single)</item>
+        <item>Paani puri (1 piece)</item>
+        <item>Samosa (single)</item>
+        <item>Bhel puri (1 serving)</item>
+        <item> Masala dosa (100 gms)</item>
+        <item> Dhokla (1 serving)</item>
+        <item> Upma (1 serving)</item>
+        <item> Sabudana wada (5 pieces)</item>
+        <item> Veg Pizza (6 pieces)</item>
+        <item> Veg burger (1 regular)</item>
+        <item> Chicken burger (1 regular)</item>
+        <item> Orange (1 medium sized)</item>
+        <item> Dates (12 gms)</item>
+        <item> Grapes (1 bunch)</item>
+        <item> Snickers (50 gms)</item>
+        <item> Pineapple (1 slice)</item>
+        <item> Gulab jamun (1 piece)</item>
+        <item> Rasgulla (1 piece)</item>
+        <item> Misal pav (1 serving)</item>
+        <item> Dabeli (1 piece)</item>
+        <item> Bhajia (100 gm)</item>
+        <item> Mixture (Haldiram) (25 gm)</item>
+        <item> Veg Macroni (1 serving)</item>
+        <item> Maggi masala noodles (1 pack)</item>
+        <item> Veg hakka noodles (1 serving)</item>
+        <item> Bhakarwadi (100 gms)</item>
+        <item> Chakli (75 gm)</item>
+        <item> Chicken Macroni (1 serving)</item>
+        <item> Lays classic potato (60 gm)</item>
+        <item> Bingo (tomato madness) (50 gm)</item>
+        <item> Doritos (50 gm)</item>
+        <item> Chicken lollipop (1 drumstick)</item>
+        <item> French fries (6 fries)</item>
+        <item> Potato croquettes (3 croquettes)</item>
+    </string-array>
     <string-array name="noofmeal">
         <item>3 Main Meals</item>
         <item>3 Main Meals, 1 Snack</item>

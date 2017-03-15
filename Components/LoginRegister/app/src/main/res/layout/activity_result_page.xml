@@ -58,7 +58,7 @@
         android:layout_marginTop="20dp"
         android:layout_below="@+id/tvExpertsMessage"
         android:id="@+id/btLW"
-        android:visibility="invisible"
+        android:visibility="gone"
         android:clickable="false" />
 
     <Button
@@ -67,7 +67,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:id="@+id/btMW"
-        android:visibility="invisible"
+        android:visibility="gone"
         android:clickable="false"
         android:layout_below="@+id/btLW" />
 
@@ -78,9 +78,17 @@
         android:layout_marginTop="20dp"
         android:id="@+id/btGW"
         android:layout_below="@+id/btMW"
-        android:visibility="invisible"
+        android:visibility="gone"
         android:clickable="false" />
 
+    <Button
+        android:text="Custom diet"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:id="@+id/btcustD"
+        android:layout_below="@+id/btGW"
+         />
 
 
 </RelativeLayout>

@@ -73,7 +73,7 @@
         android:layout_marginTop="12dp"
         android:id="@+id/numberPicker5"
         android:layout_below="@+id/textbf"
-        android:layout_above="@+id/textView5"
+        android:layout_above="@+id/tvSnack1"
         android:layout_marginStart="21dp"/>
 
     <Spinner
@@ -92,7 +92,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:id="@+id/textView5"
+        android:id="@+id/tvSnack1"
         android:layout_below="@+id/spinner1"
         android:layout_toEndOf="@+id/radioGroup"
         android:textStyle="bold"
@@ -103,7 +103,7 @@
         android:layout_height="wrap_content"
         android:inputType="numberSigned"
 
-        android:layout_below="@+id/textView5"
+        android:layout_below="@+id/tvSnack1"
         android:layout_alignStart="@+id/textView2"
         android:layout_marginTop="1dp"
         android:id="@+id/etWeight"
@@ -124,7 +124,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignRight="@+id/editText"
-        android:layout_below="@+id/textView5"
+        android:layout_below="@+id/tvSnack1"
         android:layout_marginTop="13dp"
         android:layout_marginStart="80dp"
         android:layout_alignStart="@+id/etWeight"

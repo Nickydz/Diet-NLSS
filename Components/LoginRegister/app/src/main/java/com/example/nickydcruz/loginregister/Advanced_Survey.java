@@ -33,7 +33,7 @@ public class Advanced_Survey extends AppCompatActivity {
     DBHelper myDb;
     String prommeal,prefdrink;
     int noofmeals;
-    int exerciselimit;
+    int exerciselimit =1;
     String activitylevel;
 
     @Override
@@ -41,6 +41,7 @@ public class Advanced_Survey extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_advanced__survey);
         pref = getSharedPreferences("login.conf", Context.MODE_PRIVATE);
+        editor = pref.edit();
         Spinner spnprommeal = (Spinner) findViewById(R.id.spnprommeal);
         Spinner spnofmeal = (Spinner) findViewById(R.id.spnofmeal);
         Spinner spdrink =(Spinner) findViewById(R.id.spndrink);
@@ -124,8 +125,8 @@ public class Advanced_Survey extends AppCompatActivity {
         spdrink.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                prefdrink = parent.getItemAtPosition(position).toString().trim();
-
+                Cursor ada = (Cursor)parent.getItemAtPosition(position);
+                prefdrink = ada.getString(1);
             }
 
             @Override
@@ -138,7 +139,7 @@ public class Advanced_Survey extends AppCompatActivity {
         spnexercise.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
+                activitylevel = parent.getItemAtPosition(position).toString().trim();
             }
 
             @Override
@@ -168,7 +169,7 @@ public class Advanced_Survey extends AppCompatActivity {
                                 editor.commit();
 
                                 Intent int1 = new Intent(getApplicationContext(), ResultPage.class);
-                                getApplicationContext().startActivity(int1);
+                                Advanced_Survey.this.startActivity(int1);
                             } else {
 
                             }

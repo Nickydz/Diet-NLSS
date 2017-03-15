@@ -11,11 +11,11 @@ import java.util.Map;
  */
 
 public class ASurveyRequest extends StringRequest {
-    private static final String BS_REQUEST_URL = "http://dietnlss.000webhostapp.com/ASRequest.php";
+    private static final String AS_REQUEST_URL = "http://dietnlss.000webhostapp.com/ASRequest.php";
     private Map<String, String> params;
 
     public ASurveyRequest(String username,String height,String prommeal,String noofmeal,String prefdrink,String activitylevel, Response.Listener<String> listener){
-        super(Method.POST, BS_REQUEST_URL, listener, null);
+        super(Method.POST, AS_REQUEST_URL, listener, null);
         params = new HashMap<>();
         params.put("username",username);
         params.put("prommeal",prommeal);

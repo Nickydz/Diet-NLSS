@@ -24,7 +24,7 @@ public class Homescreen extends AppCompatActivity  {
 
     SharedPreferences pref;
     SharedPreferences.Editor editor;
-    TextView tvbf1;
+    TextView tvbf1,tvSnack1,tvSnack2;
     TextView tvdat;
     TextView tvbf2;
     TextView tvbf3;
@@ -44,17 +44,19 @@ public class Homescreen extends AppCompatActivity  {
     DietContract.DietEntry de;
     DBHelper myDb;
 
-    int advancedone = pref.getInt("advancedone",0),bmrt;
+    int advancedone;int bmrt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homescreen);
         pref = getSharedPreferences("login.conf", Context.MODE_PRIVATE);
-
+        advancedone = pref.getInt("advancedone",0);
         de = new DietContract.DietEntry(pref.getString("username",""));
         myDb = new DBHelper(this,pref.getString("username",""));
 
+        tvSnack1=(TextView) findViewById(R.id.tvSnack1);
+        tvSnack2=(TextView) findViewById(R.id.tvSnack2);
         tvbf1 =(TextView) findViewById(R.id.textbf1);
         tvdat =(TextView) findViewById(R.id.tvdate);
         tvbf2 =(TextView) findViewById(R.id.textbf2);
@@ -376,10 +378,15 @@ public class Homescreen extends AppCompatActivity  {
                 }
             });
             tvCalbsn.setText(snack1.get("cal"));
+            tvCallsn.setVisibility(View.VISIBLE);
         }
         else {
 
+            tvbsn.setVisibility(View.GONE);
+            tvCalbsn.setVisibility(View.GONE);
+            tvSnack1.setVisibility(View.GONE);
         }
+
         if(!(snack2.get("name").equals("-") || snack2.get("cal").equals("-"))){
             tvlsn.setText(snack2.get("name"));
             tvlsn.setVisibility(View.VISIBLE);
@@ -394,9 +401,12 @@ public class Homescreen extends AppCompatActivity  {
                 }
             });
             tvCallsn.setText(snack2.get("cal"));
+            tvCallsn.setVisibility(View.VISIBLE);
         }
         else{
-
+            tvlsn.setVisibility(View.GONE);
+            tvCallsn.setVisibility(View.GONE);
+            tvSnack2.setVisibility(View.GONE);
         }
 
 

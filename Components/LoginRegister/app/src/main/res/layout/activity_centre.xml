@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.v4.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/activity_centre"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        tools:context="com.example.nlss.custom_diet.Centre">
+
+
+        <TextView
+            android:text="Breakfast"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:id="@+id/bf"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:text="TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/bfac"
+            android:layout_alignEnd="@+id/bf"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="64dp"
+            android:visibility="gone"
+            android:id="@+id/bftvdisp" />
+
+        <TextView
+            android:text="TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/bfac"
+            android:layout_alignStart="@+id/breakfastAddBT"
+            android:visibility="gone"
+            android:layout_marginTop="10dp"
+            android:id="@+id/bfcal" />
+
+        <ListView android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/bfListView"
+            android:layout_centerHorizontal="true"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:nestedScrollingEnabled="true"
+            android:layout_below="@+id/bftvdisp">
+        </ListView>
+
+        <ListView android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/lnListView"
+            android:layout_centerHorizontal="true"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:nestedScrollingEnabled="true"
+            android:layout_below="@+id/lntvdisp">
+        </ListView>
+
+        <ListView android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/dnListView"
+            android:layout_centerHorizontal="true"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:nestedScrollingEnabled="true"
+            android:layout_below="@+id/dntvdisp">
+        </ListView>
+
+        <ListView android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/snListView"
+            android:layout_centerHorizontal="true"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:nestedScrollingEnabled="true"
+            android:layout_below="@+id/sntvdisp">
+        </ListView>
+
+
+        <TextView
+            android:text="Lunch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/bfListView"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:id="@+id/ln" />
+
+        <AutoCompleteTextView
+            android:id="@+id/bfac"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/bf"
+            android:layout_marginTop="10dp"
+            android:hint="Select food" />
+
+        <AutoCompleteTextView
+            android:id="@+id/lnac"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/bfac"
+            android:layout_below="@+id/ln"
+            android:layout_marginTop="10dp"
+            android:layout_toStartOf="@+id/breakfastAddBT"
+            android:hint="Select food" />
+
+        <TextView
+            android:text="Dinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/lnListView"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:id="@+id/dn" />
+
+        <AutoCompleteTextView
+            android:id="@+id/dnac"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/lnac"
+            android:layout_alignStart="@+id/lnac"
+            android:layout_below="@+id/dn"
+            android:layout_marginTop="10dp"
+            android:hint="Select food" />
+
+        <TextView
+            android:text="TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/dnac"
+            android:visibility="gone"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:id="@+id/dntvdisp" />
+
+        <TextView
+            android:text="TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/dnac"
+            android:visibility="gone"
+            android:layout_alignStart="@+id/dinnerAddBT"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:id="@+id/dncal" />
+
+        <TextView
+            android:text="Snacks"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/dnListView"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:id="@+id/sn" />
+
+        <TextView
+            android:text="TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:id="@+id/lntvdisp"
+            android:layout_below="@+id/lnac"
+            android:layout_alignEnd="@+id/bf"
+            android:layout_marginTop="10dp" />
+
+        <TextView
+            android:text="TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:id="@+id/lncal"
+            android:layout_alignStart="@+id/LunchAddBT"
+            android:layout_below="@+id/lnac"
+            android:layout_marginTop="10dp" />
+
+        <AutoCompleteTextView
+            android:hint="Select food"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/snac"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/sn"
+            android:layout_alignStart="@+id/dnac"
+            android:layout_alignEnd="@+id/dnac" />
+
+        <TextView
+            android:text="TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/snac"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:visibility="gone"
+            android:id="@+id/sntvdisp" />
+
+        <TextView
+            android:text="TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/snac"
+            android:layout_alignStart="@+id/snacksAddBT"
+            android:layout_marginTop="10dp"
+            android:visibility="gone"
+            android:id="@+id/sncal" />
+
+        <Button
+            android:id="@+id/snacksAddBT"
+            android:layout_width="90dp"
+            android:layout_height="40dp"
+            android:layout_alignStart="@+id/dinnerAddBT"
+            android:layout_alignTop="@+id/snac"
+            android:text="Add"/>
+
+        <Button
+            android:id="@+id/LunchAddBT"
+            android:layout_width="90dp"
+            android:layout_height="40dp"
+            android:layout_alignStart="@+id/breakfastAddBT"
+            android:layout_alignTop="@+id/lnac"
+            android:text="Add" />
+
+        <Button
+            android:id="@+id/dinnerAddBT"
+            android:layout_width="90dp"
+            android:layout_height="40dp"
+            android:layout_alignStart="@+id/LunchAddBT"
+            android:layout_alignTop="@+id/dnac"
+            android:text="Add" />
+
+        <Button
+            android:id="@+id/breakfastAddBT"
+            android:layout_width="90dp"
+            android:layout_height="40dp"
+            android:layout_alignBottom="@+id/bfac"
+            android:layout_marginStart="14dp"
+            android:layout_toEndOf="@+id/bfac"
+            android:text="Add" />
+    </RelativeLayout>
+</android.support.v4.widget.NestedScrollView>

@@ -36,6 +36,7 @@ public class ResultPage extends AppCompatActivity {
         Button btLW =(Button)findViewById(R.id.btLW);
         Button btMW =(Button)findViewById(R.id.btMW);
         Button btGW =(Button)findViewById(R.id.btGW);
+        Button btcusD = (Button)findViewById(R.id.btcustD);
         pref = getSharedPreferences("login.conf", Context.MODE_PRIVATE);
         final String username = pref.getString("username","");
         int age = pref.getInt("age",0);
@@ -50,6 +51,14 @@ public class ResultPage extends AppCompatActivity {
         String expertsMessage = "";
         tvCategory.setText(category);
         tvBmr.setText("Your Basal metabolic rate (BMR) is " + bmr);
+
+        btcusD.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent cus = new Intent(ResultPage.this,Centre.class);
+                ResultPage.this.startActivity(cus);
+            }
+        });
 
         ActionBar actionBar =getSupportActionBar();
         actionBar.setLogo(R.mipmap.nlss_crop);
