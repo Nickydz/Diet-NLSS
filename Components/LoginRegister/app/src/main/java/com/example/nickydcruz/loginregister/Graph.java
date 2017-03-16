@@ -7,6 +7,7 @@ package com.example.nickydcruz.loginregister;
         import android.widget.Toast;
 
         import com.github.mikephil.charting.charts.PieChart;
+        import com.github.mikephil.charting.components.Description;
         import com.github.mikephil.charting.components.Legend;
         import com.github.mikephil.charting.data.Entry;
         import com.github.mikephil.charting.data.PieData;
@@ -28,12 +29,15 @@ public class Graph extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_graph);
         Log.d(TAG, "onCreate: starting to create chart");
 
         pieChart = (PieChart) findViewById(R.id.idPieChart);
 
-        pieChart.setDescription("Sales by employee (In Thousands $) ");
+        Description desc = new Description();
+        desc.setText("Class");
+
+        pieChart.setDescription(desc);
         pieChart.setRotationEnabled(true);
         //pieChart.setUsePercentValues(true);
         //pieChart.setHoleColor(Color.BLUE);
@@ -65,7 +69,7 @@ public class Graph extends AppCompatActivity {
                     }
                 }
                 String employee = xData[pos1 + 1];
-                Toast.makeText(MainActivity.this, "Employee " + employee + "\n" + "Sales: $" + sales + "K", Toast.LENGTH_LONG).show();
+                Toast.makeText(Graph.this, "Employee " + employee + "\n" + "Sales: $" + sales + "K", Toast.LENGTH_LONG).show();
             }
 
             @Override
