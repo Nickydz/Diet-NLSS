@@ -61,6 +61,17 @@ public class ExerciseCalculator extends AppCompatActivity {
         listView.setAdapter(adapter);
 
 
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                arrayList.remove(position);
+                adapter.notifyDataSetChanged();
+
+                Toast.makeText(ExerciseCalculator.this, "Item has been removed from your list", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        });
+
         final List<String> list = new ArrayList<String>();
 
         txtInput = (EditText)findViewById(R.id.activity);
@@ -126,13 +137,28 @@ public class ExerciseCalculator extends AppCompatActivity {
         calculate.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                float num2 = Float.parseFloat(e2.getText().toString());
-                float num3 = Float.parseFloat(e1.getText().toString());
-                float mul = (float) ((num1 * 3.5 * num2)/200);
-                float mul1 = num3 * mul;
-                String result = String.format("%.2f", mul);
-                String result1 = String.format("%.2f", mul1);
-                calv.setText("" + result1);
+                if (txtInput.getText().toString().length() == 0) {
+                    Toast.makeText(getApplicationContext(), "Activity cannot be Blank", Toast.LENGTH_LONG).show();
+                    txtInput.setError("Activity cannot be Blank");
+                    return;
+                }else if (e2.getText().toString().length() == 0) {
+                    Toast.makeText(getApplicationContext(), "Weight cannot be Blank", Toast.LENGTH_LONG).show();
+                    e2.setError("Weight cannot be Blank");
+                    return;
+                } else if(e1.getText().toString().length() == 0) {
+                    Toast.makeText(getApplicationContext(), "Duration cannot be blank", Toast.LENGTH_LONG).show();
+                    e1.setError("Duration cannot be blank");
+                    return;
+                }
+                else {
+                    float num2 = Float.parseFloat(e2.getText().toString());
+                    float num3 = Float.parseFloat(e1.getText().toString());
+                    float mul = (float) ((num1 * 3.5 * num2) / 200);
+                    float mul1 = num3 * mul;
+                    String result = String.format("%.2f", mul);
+                    String result1 = String.format("%.2f", mul1);
+                    calv.setText("" + result1);
+                }
 
             }
 
