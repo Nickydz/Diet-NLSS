@@ -32,7 +32,10 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:1.0.0-beta5'
     compile 'com.github.PhilJay:MPAndroidChart:v3.0.1'
     compile files('build/libs/GraphView-4.2.1.jar')
+    compile 'com.github.PhilJay:MPAndroidChart:v3.0.0-beta1'
+    compile 'com.android.support.constraint:constraint-layout:1.0.0-beta5'
+    compile 'com.github.PhilJay:MPAndroidChart:v3.0.1'
+    compile files('build/libs/GraphView-4.2.1.jar')
 }
 
-
-
+}

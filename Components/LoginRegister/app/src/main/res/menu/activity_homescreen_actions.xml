@@ -22,6 +22,11 @@
 
     </item>
 
+    <item android:id="@+id/activity_update_wtht" android:title="Update"  app:showAsAction="never"
+        android:icon="@mipmap/ic_import_contacts_black_24dp">
+
+    </item>
+
     <item android:id="@+id/logout" android:title="Logout"  app:showAsAction="never"
         android:icon="@mipmap/ic_import_contacts_black_24dp">
 
