@@ -38,4 +38,3 @@ dependencies {
     compile files('build/libs/GraphView-4.2.1.jar')
 }
 
-}
