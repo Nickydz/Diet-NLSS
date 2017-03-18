@@ -55,7 +55,7 @@ public class ResultPage extends AppCompatActivity {
         btcusD.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent cus = new Intent(ResultPage.this,Centre.class);
+                Intent cus = new Intent(ResultPage.this,CustomDiet.class);
                 ResultPage.this.startActivity(cus);
             }
         });
@@ -235,6 +235,17 @@ public class ResultPage extends AppCompatActivity {
         });
 
         tvExperts.setText(expertsMessage);
+
+
+        Button bt = (Button) findViewById(R.id.graph);
+        bt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(),Graph.class);
+                startActivity(i);
+            }
+        });
+
 
 
     }

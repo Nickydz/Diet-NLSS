@@ -1,18 +1,12 @@
 package com.example.nickydcruz.loginregister;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
-import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -29,15 +23,13 @@ import org.json.JSONObject;
 import java.lang.Override;
 import java.lang.String;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 
 /**
  * Created by Leo on 2/16/2017.
  */
 
-public class Centre extends Activity {
+public class CustomDiet extends Activity {
     DBaseHelper controller = new DBaseHelper(this);
     DBaseHelper Mydb;
 
@@ -164,7 +156,7 @@ public class Centre extends Activity {
                 //Toast.makeText(context, "" + bfpick, Toast.LENGTH_SHORT).show();
                 bftvdisp.setVisibility(View.VISIBLE);
                 bfcal.setVisibility(View.VISIBLE);
-                DBaseHelper dbasehelper = new DBaseHelper(Centre.this);
+                DBaseHelper dbasehelper = new DBaseHelper(CustomDiet.this);
                 String[] res = dbasehelper.selectfood(bfpick);
 //                ArrayList<HashMap<String, String>> userList = controller.selectfood();
                 bftvdisp.setText(res[0]);
@@ -214,7 +206,7 @@ public class Centre extends Activity {
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 selectedbf.remove(position);
                 listAdapter.notifyDataSetChanged();
-                Toast.makeText(Centre.this, "Item has been removed from your list", Toast.LENGTH_SHORT).show();
+                Toast.makeText(CustomDiet.this, "Item has been removed from your list", Toast.LENGTH_SHORT).show();
                 return false;
             }
         });
@@ -231,7 +223,7 @@ public class Centre extends Activity {
                 //Toast.makeText(context, "" + lnpick, Toast.LENGTH_SHORT).show();
                 lntvdisp.setVisibility(View.VISIBLE);
                 lncal.setVisibility(View.VISIBLE);
-                DBaseHelper dbasehelper = new DBaseHelper(Centre.this);
+                DBaseHelper dbasehelper = new DBaseHelper(CustomDiet.this);
                 String[] res = dbasehelper.selectfood(lnpick);
                 lntvdisp.setText(res[0]);
                 lncal.setText(res[1]);
@@ -260,7 +252,7 @@ public class Centre extends Activity {
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 selectedln.remove(position);
                 lnAdapter.notifyDataSetChanged();
-                Toast.makeText(Centre.this, "Item has been removed from your list", Toast.LENGTH_SHORT).show();
+                Toast.makeText(CustomDiet.this, "Item has been removed from your list", Toast.LENGTH_SHORT).show();
                 return false;
             }
         });
@@ -277,7 +269,7 @@ public class Centre extends Activity {
                 //Toast.makeText(context, "" + dnpick, Toast.LENGTH_SHORT).show();
                 dntvdisp.setVisibility(View.VISIBLE);
                 dncal.setVisibility(View.VISIBLE);
-                DBaseHelper dbasehelper = new DBaseHelper(Centre.this);
+                DBaseHelper dbasehelper = new DBaseHelper(CustomDiet.this);
                 String[] res = dbasehelper.selectfood(dnpick);
                 dntvdisp.setText(res[0]);
                 dncal.setText(res[1]);
@@ -306,7 +298,7 @@ public class Centre extends Activity {
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 selecteddn.remove(position);
                 dnAdapter.notifyDataSetChanged();
-                Toast.makeText(Centre.this, "Item has been removed from your list", Toast.LENGTH_SHORT).show();
+                Toast.makeText(CustomDiet.this, "Item has been removed from your list", Toast.LENGTH_SHORT).show();
                 return false;
             }
         });
@@ -323,7 +315,7 @@ public class Centre extends Activity {
                 //Toast.makeText(context, "" + snpick, Toast.LENGTH_SHORT).show();
                 sntvdisp.setVisibility(View.VISIBLE);
                 sncal.setVisibility(View.VISIBLE);
-                DBaseHelper dbasehelper = new DBaseHelper(Centre.this);
+                DBaseHelper dbasehelper = new DBaseHelper(CustomDiet.this);
                 String[] res = dbasehelper.selectfood(snpick);
                 sntvdisp.setText(res[0]);
                 sncal.setText(res[1]);
@@ -352,7 +344,7 @@ public class Centre extends Activity {
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 selectedsn.remove(position);
                 snAdapter.notifyDataSetChanged();
-                Toast.makeText(Centre.this, "Item has been removed from your list", Toast.LENGTH_SHORT).show();
+                Toast.makeText(CustomDiet.this, "Item has been removed from your list", Toast.LENGTH_SHORT).show();
                 return false;
             }
         });
@@ -371,10 +363,10 @@ public class Centre extends Activity {
                         for (int i = 0; i < key; i = i + 6)
                             Mydb.insertData(jsonResponse.getString(i + ""), jsonResponse.getString((i + 1) + ""), jsonResponse.getString((i + 2) + ""), jsonResponse.getString((i + 3) + ""), jsonResponse.getString((i + 4) + ""), jsonResponse.getString((i + 5) + ""));
 
-                        Toast.makeText(Centre.this, "Success", Toast.LENGTH_LONG).show();
+                        Toast.makeText(CustomDiet.this, "Success", Toast.LENGTH_LONG).show();
                         int i=1000;
                     } else {
-                        Toast.makeText(Centre.this, "Error", Toast.LENGTH_LONG).show();
+                        Toast.makeText(CustomDiet.this, "Error", Toast.LENGTH_LONG).show();
                     }
 
                 } catch (JSONException e) {
@@ -385,7 +377,7 @@ public class Centre extends Activity {
         };
 
         CustomRequest customRequest = new CustomRequest(responseListener);
-        RequestQueue queue = Volley.newRequestQueue(Centre.this);
+        RequestQueue queue = Volley.newRequestQueue(CustomDiet.this);
         queue.add(customRequest);
 
 
@@ -400,7 +392,7 @@ public class Centre extends Activity {
 //        HashMap<String, String> map = new HashMap<String, String>();
 //        for(int i=0; i<pickList.size();i++){
 //            String food_pick =pickList.get(i);
-//            DBaseHelper dbasehelper = new DBaseHelper(Centre.this);
+//            DBaseHelper dbasehelper = new DBaseHelper(CustomDiet.this);
 //            Cursor res = dbasehelper.selectfood(food_pick);
 //            map.put("foodname"+i,res.getString(0));
 //            map.put("foodcal"+i,res.getString(1));
@@ -415,7 +407,7 @@ public class Centre extends Activity {
 //        lncal.setText(map.get("foodcal1"));
 //        dncal.setText(map.get("foodcal2"));
 //        sncal.setText(map.get("foodcal3"));
-//        Toast.makeText(Centre.this, "" + selectQuery, Toast.LENGTH_LONG).show();
+//        Toast.makeText(CustomDiet.this, "" + selectQuery, Toast.LENGTH_LONG).show();
 //submit btn
 //        //HashMap<String, String> hashMap = new HashMap<String, String>();
 //        //hashMap.put("key", "value");

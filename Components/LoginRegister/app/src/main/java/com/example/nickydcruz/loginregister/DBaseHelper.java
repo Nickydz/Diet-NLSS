@@ -108,8 +108,11 @@ public class DBaseHelper extends SQLiteOpenHelper {
         else
             return true;
     }
+
     String foodname = "";
     String foodcal = "";
+
+
     public String[] selectfood(String food_pick){
         SQLiteDatabase db = this.getWritableDatabase();
         ArrayList<HashMap<String, String>> usersList;

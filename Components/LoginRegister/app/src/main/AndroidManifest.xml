@@ -34,9 +34,10 @@
         <activity android:name=".superfood_main" />
         <activity android:name=".FoodCravings" />
         <activity android:name=".ExerciseCalculator" />
-        <activity android:name=".Advanced_Survey"/>
-        <activity android:name=".Second"/>
-        <activity android:name=".Centre"/>
+        <activity android:name=".Advanced_Survey" />
+        <activity android:name=".Second" />
+        <activity android:name=".CustomDiet" />
+        <activity android:name=".Graph"></activity>
     </application>
 
 </manifest>

@@ -90,6 +90,15 @@
         android:layout_below="@+id/btGW"
          />
 
+    <Button
+        android:text="Graph"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:id="@+id/graph"
+        android:layout_below="@+id/btcustD"
+        />
+
 
 </RelativeLayout>
 </ScrollView>
