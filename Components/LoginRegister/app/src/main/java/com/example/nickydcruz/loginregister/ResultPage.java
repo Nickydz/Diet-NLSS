@@ -144,7 +144,7 @@ public class ResultPage extends AppCompatActivity {
                 int bmr1=bmr;
                 if(bmr > 1700)
                 bmr1 =bmr -500;
-                //to deaal with final stipulation in intent
+                //to deal with final stipulation in intent
                 final int bmr2=bmr1;
                 int a[] = f.bmrcal(bmr1*0.25);
                 int b[] = f.bmrcal(bmr1*0.125);
@@ -265,6 +265,10 @@ public class ResultPage extends AppCompatActivity {
 
             case R.id.advanceSurvey: i = new Intent(ResultPage.this, Advanced_Survey.class);
                 break;
+
+            case R.id.activity_update_wtht: i = new Intent(ResultPage.this, Update_wtht.class);
+                break;
+
             case R.id.logout: {
                 pref.edit().clear().commit();
                 i = new Intent(getApplicationContext(), LoginActivity.class);
