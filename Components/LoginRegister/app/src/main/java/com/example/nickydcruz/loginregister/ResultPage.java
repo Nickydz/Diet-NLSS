@@ -240,11 +240,12 @@ public class ResultPage extends AppCompatActivity {
         Button bt = (Button) findViewById(R.id.graph);
         bt.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(),Graph.class);
-                startActivity(i);
-            }
-        });
+           public void onClick(View v) {
+//                Intent i = new Intent(getApplicationContext(),Graph.class);
+//                startActivity(i);
+           }
+        }
+        );
 
 
 

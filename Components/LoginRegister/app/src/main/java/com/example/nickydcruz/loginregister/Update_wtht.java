@@ -44,6 +44,8 @@ public class Update_wtht extends AppCompatActivity {
         String weight = pref.getString("weight","0");
         final String username = pref.getString("username","");
 
+        //FOR UPDATING WEIGHT//
+
         updatewt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -79,10 +81,44 @@ public class Update_wtht extends AppCompatActivity {
             }
         });
 
+        //FOR UPDATING HEIGHT//
+
         updateht.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 updatedht = upht.getText().toString();
+                //Float b = 0.3048f * Float.parseFloat(a);
+                //updatedht = Float.toString(b);
+
+                Response.Listener<String> responseListener = new Response.Listener<String>() {
+
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject jsonResponse = new JSONObject(response);
+                            boolean success = jsonResponse.getBoolean("success");
+
+                            if (success) {
+//                                for (int i = 0; i < key; i = i + 6)
+//                                    Mydb.insertData(jsonResponse.getString(i + ""), jsonResponse.getString((i + 1) + ""), jsonResponse.getString((i + 2) + ""), jsonResponse.getString((i + 3) + ""), jsonResponse.getString((i + 4) + ""), jsonResponse.getString((i + 5) + ""));
+
+                                Toast.makeText(Update_wtht.this, "Success", Toast.LENGTH_LONG).show();
+//                                int i=1000;
+                            } else {
+                                Toast.makeText(Update_wtht.this, "Error", Toast.LENGTH_LONG).show();
+                            }
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                };
+
+                Update_htRequest update_htRequest = new Update_htRequest(username,updatedht,responseListener);
+                RequestQueue queue = Volley.newRequestQueue(Update_wtht.this);
+                queue.add(update_htRequest);
+
             }
         });
 
