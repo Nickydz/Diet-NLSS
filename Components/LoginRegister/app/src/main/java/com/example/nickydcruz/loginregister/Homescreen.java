@@ -14,6 +14,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.DatePicker;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.Calendar;
@@ -38,6 +39,7 @@ public class Homescreen extends AppCompatActivity  {
     DBHelper myDb;
 
     int advancedone;int bmrt;
+    int snackneedfortextviewgeneration;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -261,12 +263,15 @@ public class Homescreen extends AppCompatActivity  {
             dinner.put(j+"",dnres[j]);
         }
 
-        snack1.put("name",res.getString(11));
-        snack1.put("cal",res.getString(12));
+        snack1.put("sn",res.getString(11));
+        snack1.put("sncal",res.getString(12));
         snack1.put("snac",res.getString(13));
-        snack2.put("name",res.getString(14));
-        snack2.put("cal",res.getString(15));
+        int snack1count = Integer.parseInt(res.getString(20));
+        snack2.put("sn",res.getString(14));
+        snack2.put("sncal",res.getString(15));
         snack2.put("snac",res.getString(16));
+
+        int snack2count = Integer.parseInt(res.getString(21));
 
         if(breakfastcount == 2){
 
@@ -360,21 +365,77 @@ public class Homescreen extends AppCompatActivity  {
         tvCalbf.setText(breakfast.get("bfcal"));
         tvCalbf.setVisibility(View.VISIBLE);
 
-        if(!(snack1.get("name").equals("-") || snack1.get("cal").equals("-"))) {
-            tvbsn.setText(snack1.get("name"));
-            tvbsn.setVisibility(View.VISIBLE);
-            tvbsn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(Homescreen.this);
-                    builder.setMessage(snack1.get("snac"))
-                            .setNeutralButton("OK", null)
-                            .create()
-                            .show();
-                }
-            });
-            tvCalbsn.setText(snack1.get("cal"));
-            tvCallsn.setVisibility(View.VISIBLE);
+        if(!(snack1.get("sn").equals("-") || snack1.get("sncal").equals("-"))) {
+
+          if(snack1count == 0) {
+              tvbsn.setText(snack1.get("sn"));
+              tvbsn.setVisibility(View.VISIBLE);
+              tvbsn.setOnClickListener(new View.OnClickListener() {
+                  @Override
+                  public void onClick(View v) {
+                      AlertDialog.Builder builder = new AlertDialog.Builder(Homescreen.this);
+                      builder.setMessage(snack1.get("snac"))
+                              .setNeutralButton("OK", null)
+                              .create()
+                              .show();
+                  }
+              });
+              tvCalbsn.setText(snack1.get("sncal"));
+              tvCalbsn.setVisibility(View.VISIBLE);
+          }
+          else{
+              String[] snre = snack1.get("sn").split(";");
+              final String[] snres = snack1.get("snac").split(";");
+              for (int j=0;j<=snack1count;j++){
+                  snack1.put(j+"",snres[j]);
+              }
+              RelativeLayout layout = (RelativeLayout)findViewById(R.id.activity_homescreen);
+              tvbsn.setText(snre[0]);
+              tvbsn.setVisibility(View.VISIBLE);
+              tvbsn.setOnClickListener(new View.OnClickListener() {
+                  @Override
+                  public void onClick(View v) {
+                      AlertDialog.Builder builder = new AlertDialog.Builder(Homescreen.this);
+                      builder.setMessage(snres[0])
+                              .setNeutralButton("OK", null)
+                              .create()
+                              .show();
+                  }
+              });
+              int prevTextViewId = tvbsn.getId();
+              for(int j=1;j<=snack1count;j++){
+                  final TextView textView = new TextView(this);
+                  textView.setText(snre[j]);
+
+
+                  int curTextViewId = prevTextViewId + 1;
+                  textView.setId(curTextViewId);
+                  final RelativeLayout.LayoutParams params =
+                          new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.FILL_PARENT,
+                                  RelativeLayout.LayoutParams.WRAP_CONTENT);
+
+                  params.addRule(RelativeLayout.BELOW, prevTextViewId);
+                  textView.setLayoutParams(params);
+                  snackneedfortextviewgeneration = j;
+                  textView.setOnClickListener(new View.OnClickListener() {
+                      @Override
+                      public void onClick(View v) {
+                          AlertDialog.Builder builder = new AlertDialog.Builder(Homescreen.this);
+                          builder.setMessage(snres[snackneedfortextviewgeneration])
+                                  .setNeutralButton("OK", null)
+                                  .create()
+                                  .show();
+                      }
+                  });
+
+                  prevTextViewId = curTextViewId;
+                  layout.addView(textView, params);
+              }
+
+              tvCalbsn.setText(snack1.get("sncal"));
+              tvCalbsn.setVisibility(View.VISIBLE);
+
+          }
         }
         else {
 
@@ -383,21 +444,77 @@ public class Homescreen extends AppCompatActivity  {
             tvSnack1.setVisibility(View.GONE);
         }
 
-        if(!(snack2.get("name").equals("-") || snack2.get("cal").equals("-"))){
-            tvlsn.setText(snack2.get("name"));
-            tvlsn.setVisibility(View.VISIBLE);
-            tvlsn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(Homescreen.this);
-                    builder.setMessage(snack2.get("snac"))
-                            .setNeutralButton("OK",null)
-                            .create()
-                            .show();
+        if(!(snack2.get("sn").equals("-") || snack2.get("sncal").equals("-"))){
+
+            if(snack2count == 0) {
+                tvlsn.setText(snack2.get("sn"));
+                tvlsn.setVisibility(View.VISIBLE);
+                tvlsn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(Homescreen.this);
+                        builder.setMessage(snack2.get("snac"))
+                                .setNeutralButton("OK", null)
+                                .create()
+                                .show();
+                    }
+                });
+                tvCallsn.setText(snack2.get("sncal"));
+                tvCallsn.setVisibility(View.VISIBLE);
+            }
+            else{
+                String[] snre = snack2.get("sn").split(";");
+                final String[] snres = snack2.get("snac").split(";");
+                for (int j=0;j<=snack2count;j++){
+                    snack2.put(j+"",snres[j]);
                 }
-            });
-            tvCallsn.setText(snack2.get("cal"));
-            tvCallsn.setVisibility(View.VISIBLE);
+                RelativeLayout layout = (RelativeLayout)findViewById(R.id.activity_homescreen);
+                tvlsn.setText(snre[0]);
+                tvlsn.setVisibility(View.VISIBLE);
+                tvlsn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(Homescreen.this);
+                        builder.setMessage(snres[0])
+                                .setNeutralButton("OK", null)
+                                .create()
+                                .show();
+                    }
+                });
+                int prevTextViewId = tvlsn.getId();
+                for(int j=1;j<=snack1count;j++){
+                    final TextView textView = new TextView(this);
+                    textView.setText(snre[j]);
+
+
+                    int curTextViewId = prevTextViewId + 1;
+                    textView.setId(curTextViewId);
+                    final RelativeLayout.LayoutParams params =
+                            new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.FILL_PARENT,
+                                    RelativeLayout.LayoutParams.WRAP_CONTENT);
+
+                    params.addRule(RelativeLayout.BELOW, prevTextViewId);
+                    textView.setLayoutParams(params);
+                    snackneedfortextviewgeneration = j;
+                    textView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            AlertDialog.Builder builder = new AlertDialog.Builder(Homescreen.this);
+                            builder.setMessage(snres[snackneedfortextviewgeneration])
+                                    .setNeutralButton("OK", null)
+                                    .create()
+                                    .show();
+                        }
+                    });
+
+                    prevTextViewId = curTextViewId;
+                    layout.addView(textView, params);
+                }
+
+                tvCallsn.setText(snack2.get("sncal"));
+                tvCallsn.setVisibility(View.VISIBLE);
+            }
+
         }
         else{
             tvlsn.setVisibility(View.GONE);

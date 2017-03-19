@@ -160,6 +160,11 @@ public class DBHelper extends SQLiteOpenHelper {
                                       String lcount,String dcount,String s1count,String s2count,String TotalCal){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues con = new ContentValues();
+
+
+        db.delete(TableName,DietContract.DietEntry.COLUMN_Date+ "=" +Date,null);
+
+
         con.put(DietContract.DietEntry.COLUMN_Date,Date);
         con.put(DietContract.DietEntry.COLUMN_Breakfast,Breakfast);
         con.put(DietContract.DietEntry.COLUMN_Bcal,Bcal);
@@ -184,15 +189,18 @@ public class DBHelper extends SQLiteOpenHelper {
         con.put(DietContract.DietEntry.COLUMN_TotalCal, TotalCal);
 
         long result = db.insert(TableName,null,con);
+        db.close();
         if (result == -1)
             return false;
         else
             return true;
+
     }
 
     public boolean truncate(String table){
         SQLiteDatabase db = this.getWritableDatabase();
         long result = db.delete(table,null,null);
+        db.close();
         return true;
     }
 
@@ -208,7 +216,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 DietContract.DietEntry.COLUMN_Bcal, DietContract.DietEntry.COLUMN_Bxpl, DietContract.DietEntry.COLUMN_Lunch, DietContract.DietEntry.COLUMN_Lcal,
                 DietContract.DietEntry.COLUMN_Lxpl, DietContract.DietEntry.COLUMN_Dinner, DietContract.DietEntry.COLUMN_Dcal, DietContract.DietEntry.COLUMN_Dxpl, DietContract.DietEntry.COLUMN_Snacks1, DietContract.DietEntry.COLUMN_Scal1,
                 DietContract.DietEntry.COLUMN_Sxpl1, DietContract.DietEntry.COLUMN_Snacks2, DietContract.DietEntry.COLUMN_Scal2, DietContract.DietEntry.COLUMN_Sxpl2, DietContract.DietEntry.COLUMN_BCount, DietContract.DietEntry.COLUMN_LCount,
-                DietContract.DietEntry.COLUMN_DCount,DietContract.DietEntry.COLUMN_TotalCal};
+                DietContract.DietEntry.COLUMN_DCount,DietContract.DietEntry.COLUMN_S1Count,DietContract.DietEntry.COLUMN_S2Count,DietContract.DietEntry.COLUMN_TotalCal};
 
         String[] selectionargs = {date};
 

@@ -6,7 +6,9 @@
     tools:context="com.example.nickydcruz.loginregister.ExerciseCalculator"
     android:orientation="vertical"
     android:weightSum="1">
-
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="262dp"
@@ -144,9 +146,19 @@
             android:layout_alignTop="@+id/cb"
             android:hint="0" />
 
+        <Button
+            android:text="Confirm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btconfrm"
+            android:layout_alignTop="@+id/listv"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="118dp"
+            android:layout_alignParentEnd="true" />
+
 
     </RelativeLayout>
 
-
+</ScrollView>
 </LinearLayout>
 

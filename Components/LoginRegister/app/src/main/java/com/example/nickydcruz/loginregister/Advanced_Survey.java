@@ -33,7 +33,7 @@ public class Advanced_Survey extends AppCompatActivity {
     DBHelper myDb;
     String prommeal,prefdrink;
     int noofmeals;
-    int exerciselimit =1;
+    float exerciselimit =1.1f;
     String activitylevel;
 
     @Override

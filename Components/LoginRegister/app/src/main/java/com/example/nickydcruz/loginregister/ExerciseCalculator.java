@@ -1,6 +1,7 @@
 package com.example.nickydcruz.loginregister;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.List;
 
 public class ExerciseCalculator extends AppCompatActivity {
@@ -23,7 +25,7 @@ public class ExerciseCalculator extends AppCompatActivity {
     SharedPreferences pref;
     TextView calv;
     TextView totalcal;
-    private Button calculate;
+    private Button calculate,confirm;
     private ArrayList<String> arrayList;
     private ArrayList<String> arrayList1;
     private ArrayAdapter<String> adapter;
@@ -127,6 +129,7 @@ public class ExerciseCalculator extends AppCompatActivity {
         calculate = (Button) findViewById(R.id.calc);
         // e1 = (EditText) findViewById(R.id.editText);
         totalcal = (TextView) findViewById(R.id.total);
+        confirm =(Button) findViewById(R.id.btconfrm);
         e1 = (EditText) findViewById(R.id.Time);
         e2 = (EditText) findViewById(R.id.weight);
         e2.setText(pref.getString("weight","0"));
@@ -163,8 +166,24 @@ public class ExerciseCalculator extends AppCompatActivity {
             }
 
         });
+        confirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pref = getSharedPreferences("login.conf", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor=pref.edit();
+                Calendar cal = Calendar.getInstance();
+                editor.putString("calday",cal.get(Calendar.YEAR) + "-"
+                        + (cal.get(Calendar.MONTH)+1)
+                        + "-" + cal.get(Calendar.DAY_OF_MONTH));
+                editor.putInt("ExerciseCalc",Math.round(Float.parseFloat(totalcal.getText().toString())));
 
+                Intent i =new Intent(getApplicationContext(),ResultPage.class);
+                startActivity(i);
+
+            }
+        });
     }
+
 
 }
 

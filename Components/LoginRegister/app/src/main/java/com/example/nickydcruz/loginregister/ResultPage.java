@@ -21,10 +21,13 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Calendar;
+
 public class ResultPage extends AppCompatActivity {
 
     SharedPreferences pref;
     SharedPreferences.Editor editor;
+    int amr;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +41,7 @@ public class ResultPage extends AppCompatActivity {
         Button btGW =(Button)findViewById(R.id.btGW);
         Button btcusD = (Button)findViewById(R.id.btcustD);
         pref = getSharedPreferences("login.conf", Context.MODE_PRIVATE);
+        editor=pref.edit();
         final String username = pref.getString("username","");
         int age = pref.getInt("age",0);
         final DBHelper myDb= new DBHelper(this,username);
@@ -45,12 +49,25 @@ public class ResultPage extends AppCompatActivity {
         float height = 0.3048f * Float.parseFloat(pref.getString("height","0"));
         float weight = Float.parseFloat(pref.getString("weight","0"));
         float bmi = new FormulaClass().bmi(height,weight);
+        int calburned =0;
         final int bmr = new FormulaClass().bmr(pref.getString("gender",""),pref.getInt("age",0),weight, height*100);
+        Calendar cal = Calendar.getInstance();
+        if(pref.getString("calday",0+"").equals(cal.get(Calendar.YEAR) + "-"
+                + (cal.get(Calendar.MONTH)+1)
+                + "-" + (cal.get(Calendar.DAY_OF_MONTH)+1))){
+            calburned= pref.getInt("ExerciseCalc",0);
+            editor.apply();
+
+        }
+        amr=bmr;
+        if(pref.getInt("advancedone",0)==1){
+            amr = Math.round(bmr*Float.parseFloat(pref.getString("exerciselevel",1.1f+"")) + calburned);
+        }
         final FormulaClass f = new FormulaClass();
         String category = f.category(bmi);
         String expertsMessage = "";
         tvCategory.setText(category);
-        tvBmr.setText("Your Basal metabolic rate (BMR) is " + bmr);
+        tvBmr.setText("Your Calorie requirement for the day is " + amr);
 
         btcusD.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,7 +116,7 @@ public class ResultPage extends AppCompatActivity {
         btGW.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final int bmr1 = bmr + 500;
+                final int bmr1 = amr + 500;
                 int a[] = f.bmrcal(bmr1*0.25);
                 int b[] = f.bmrcal(bmr1*0.125);
 
@@ -141,9 +158,9 @@ public class ResultPage extends AppCompatActivity {
         btLW.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int bmr1=bmr;
-                if(bmr > 1700)
-                bmr1 =bmr -500;
+                int bmr1=amr;
+                if(amr > 1700)
+                bmr1 =amr -500;
                 //to deal with final stipulation in intent
                 final int bmr2=bmr1;
                 int a[] = f.bmrcal(bmr1*0.25);
@@ -188,8 +205,8 @@ public class ResultPage extends AppCompatActivity {
         btMW.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int a[] = f.bmrcal(bmr*0.25);
-                int b[] = f.bmrcal(bmr*0.125);
+                int a[] = f.bmrcal(amr*0.25);
+                int b[] = f.bmrcal(amr*0.125);
 
                 Response.Listener<String> listener = new Response.Listener<String>() {
                     @Override
@@ -209,7 +226,7 @@ public class ResultPage extends AppCompatActivity {
                                     Intent int1 = new Intent(ResultPage.this, Homescreen.class);
                                     int1.putExtra("diet",jsonresponse.toString());
                                     int1.putExtra("username",username);
-                                    int1.putExtra("bmr",bmr+"");
+                                    int1.putExtra("bmr",amr+"");
                                     DietInsert d =new DietInsert(username,myDb);
                                     d.dietDivider(jsonresponse);
                                     startActivity(int1);
