@@ -21,12 +21,18 @@ public class DBHelper extends SQLiteOpenHelper {
         super(context, Database_Name,null , Database_Version);
         this.username=username;
         d = new DietContract.DietEntry(username);
-
-
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+
+        final String SQL_CREATE_MEASURE_TABLE = "CREATE TABLE " +
+                d.MeasureTable +" (" +
+                DietContract.DietEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"+
+                DietContract.DietEntry.COLUMN_Weight +" INTEGER NOT NULL," +
+                DietContract.DietEntry.COLUMN_Height +" INTEGER NOT NULL," +
+                DietContract.DietEntry.COLUMN_Flags+" TEXT NOT NULL"+
+                ");";
 
         final String SQL_CREATE_BF_DIET_TABLE = "CREATE TABLE " +
                 d.BFTableName +" (" +
@@ -103,6 +109,7 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_CREATE_DN_DIET_TABLE);
         db.execSQL(SQL_CREATE_SN_DIET_TABLE);
         db.execSQL(SQL_CREATE_USER_DIET_TABLE);
+        db.execSQL(SQL_CREATE_MEASURE_TABLE);
     }
 
     @Override
@@ -113,6 +120,7 @@ public class DBHelper extends SQLiteOpenHelper {
             db.execSQL("DROP TABLE IF EXISTS " + d.DNTableName);
             db.execSQL("DROP TABLE IF EXISTS " + d.LNTableName);
             db.execSQL("DROP TABLE IF EXISTS " + d.DietTableName);
+            db.execSQL("DROP TABLE IF EXISTS " + d.MeasureTable);
             onCreate(db);
         }
         else if(oldVersion>newVersion) {
@@ -121,6 +129,7 @@ public class DBHelper extends SQLiteOpenHelper {
             db.execSQL("DROP TABLE IF EXISTS " + d.DNTableName);
             db.execSQL("DROP TABLE IF EXISTS " + d.LNTableName);
             db.execSQL("DROP TABLE IF EXISTS " + d.DietTableName);
+            db.execSQL("DROP TABLE IF EXISTS " + d.MeasureTable);
             onCreate(db);
         }
 

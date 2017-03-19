@@ -38,7 +38,7 @@ public class FoodCravings extends AppCompatActivity {
                             //startActivity(new Intent(MainActivity.this, one.class));
                             AlertDialog.Builder builder = new AlertDialog.Builder(FoodCravings.this);
                             builder.setMessage("1. Eating enough protein can also stabilize your blood sugar and help you feel more satisfied. \n\n" +
-                                    "2. Eat a lollypop it lasts longer in your mouth and will satisfy your craving with minimal calorie. \n\n" +
+                                    "2. Eat a lollipop it lasts longer in your mouth and will satisfy your craving with minimal calorie. \n\n" +
                                     "3. Serotonin, a.k.a. the happiness hormone, can be raised through diet, exercise, and the right sleep schedule. \n\n" + "4. You may sometimes think that your body is asking for sugar, when in fact it's dehydrated and really craving water! \n\n" +
                                     "5. Eat several small, healthy Body Ecology meals throughout your day instead of three large portions to avoid dips in blood sugar. \n\n" + "6.Loaded with nutrition, green drinks help boost your energy and reduce cravings for sugar and processed foods.\n\n" +
                                     "7. Fermented foods and drinks are perhaps the most important way to reduce or even eliminate cravings for sugar. \n\n" + "8. Digestion starts in the mouth. Digestive enzymes start the process of breaking down starches into sugar. \n\n" +

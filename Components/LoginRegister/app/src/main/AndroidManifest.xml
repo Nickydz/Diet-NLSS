@@ -37,6 +37,7 @@
         <activity android:name=".Advanced_Survey" />
         <activity android:name=".Second" />
         <activity android:name=".CustomDiet" />
+        <activity android:name=".Update_wtht" />
         <activity android:name=".Graph"></activity>
     </application>
 
