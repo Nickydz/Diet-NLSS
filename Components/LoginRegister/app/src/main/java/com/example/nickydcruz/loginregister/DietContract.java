@@ -50,6 +50,8 @@ public class DietContract {
         public static final String COLUMN_BCount = "BCount";
         public static final String COLUMN_LCount = "LCount";
         public static final String COLUMN_DCount = "DCount";
+        public static final String COLUMN_S1Count = "S1Count";
+        public static final String COLUMN_S2Count = "S2ount";
         public static final String COLUMN_TotalCal = "TotalCal";
 
     }

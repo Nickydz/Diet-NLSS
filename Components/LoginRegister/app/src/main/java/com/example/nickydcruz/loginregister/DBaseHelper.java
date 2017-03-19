@@ -111,24 +111,27 @@ public class DBaseHelper extends SQLiteOpenHelper {
 
     String foodname = "";
     String foodcal = "";
+    String foodxpl ="";
 
 
     public String[] selectfood(String food_pick){
         SQLiteDatabase db = this.getWritableDatabase();
         ArrayList<HashMap<String, String>> usersList;
         usersList = new ArrayList<HashMap<String, String>>();
-        Cursor res = db.rawQuery("SELECT food,calorie FROM food_table WHERE food = '"+food_pick+ "'",null);
-        String[] arr = new String[2];
+        Cursor res = db.rawQuery("SELECT food,calorie,protein,fat,carbohydrate FROM food_table WHERE food = '"+food_pick+ "'",null);
+        String[] arr = new String[3];
         if (res.moveToFirst()) {
             do {
                 foodname = res.getString(0);
                 foodcal = res.getString(1);
+                foodxpl =res.getString(0)+"\n"+"Proteins: "+res.getString(2)+"\n"+"Fats: "+res.getString(3)+"\n"+"Carbohydrates: "+res.getString(4)+"\n"+"Total Calories: "+res.getString(1);
 //                        HashMap<String, String> map = new HashMap<String, String>();
 //                        usersList.add(map);
             } while (res.moveToNext());
         }
         arr[0] = foodname;
         arr[1] = foodcal;
+        arr[2] = foodxpl;
         db.close();
 //        return (Cursor) usersList;
         return arr;

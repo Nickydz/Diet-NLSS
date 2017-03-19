@@ -25,10 +25,7 @@ public class Homescreen extends AppCompatActivity  {
     SharedPreferences pref;
     SharedPreferences.Editor editor;
     TextView tvbf1,tvSnack1,tvSnack2;
-    TextView tvdat;
-    TextView tvbf2;
-    TextView tvbf3;
-    TextView tvbsn;
+    TextView tvdat,tvbf2, tvbf3, tvbsn;
     TextView tvln1;
     TextView tvln2;
     TextView tvln3;
@@ -36,11 +33,7 @@ public class Homescreen extends AppCompatActivity  {
     TextView tvdn1;
     TextView tvdn2;
     TextView tvdn3;
-    TextView tvCalbf;
-    TextView tvCalln;
-    TextView tvCaldn;
-    TextView tvCalbsn;
-    TextView tvCallsn;
+    TextView tvCalbf, tvCalln, tvCaldn, tvCalbsn, tvCallsn;
     DietContract.DietEntry de;
     DBHelper myDb;
 
@@ -218,10 +211,13 @@ public class Homescreen extends AppCompatActivity  {
             s3 =s3 + ";"+ dinner.get(j+"");
         }
 
+        int s1count = Integer.parseInt(snack1.get("count"));
+        int s2count = Integer.parseInt(snack2.get("count"));
+
         myDb.insertUserDietData(de.DietTableName,date,breakfast.get("bf"),breakfast.get("bfcal"),s1,lunch.get("ln"),
-                lunch.get("lncal"),s2,dinner.get("dn"),dinner.get("dncal"), s3,snack1.get("name"),snack1.get("cal"),
-                snack1.get("snac"),snack2.get("name"),snack2.get("cal"),snack2.get("snac"),breakfastcount+"",lunchcount+"",
-                dinnercount+"",1700+"");
+                lunch.get("lncal"),s2,dinner.get("dn"),dinner.get("dncal"), s3,snack1.get("sn"),snack1.get("sncal"),
+                snack1.get("snac"),snack2.get("sn"),snack2.get("sncal"),snack2.get("snac"),breakfastcount+"",lunchcount+"",
+                dinnercount+"",s1count+"",s2count+"",1700+"");
 
         Cursor res1 = myDb.getDietData(de.DietTableName,date);
         return res1;

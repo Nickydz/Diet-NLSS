@@ -61,6 +61,8 @@ public class DBHelper extends SQLiteOpenHelper {
                 DietContract.DietEntry.COLUMN_BCount+ " TEXT NOT NULL,"+
                 DietContract.DietEntry.COLUMN_LCount+ " TEXT NOT NULL,"+
                 DietContract.DietEntry.COLUMN_DCount+ " TEXT NOT NULL,"+
+                DietContract.DietEntry.COLUMN_S1Count+ " TEXT NOT NULL,"+
+                DietContract.DietEntry.COLUMN_S2Count+ " TEXT NOT NULL,"+
                 DietContract.DietEntry.COLUMN_TotalCal+" TEXT NOT NULL"+
                 ");";
 
@@ -143,7 +145,10 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
 
-    public boolean insertUserDietData(String TableName,String Date,String Breakfast,String Bcal,String Bxpl,String Lunch,String Lcal,String Lxpl,String Dinner,String Dcal,String Dxpl,String Snacks1,String Scal1,String Sxpl1,String Snacks2,String Scal2,String Sxpl2,String bcount,String lcount,String dcount,String TotalCal){
+    public boolean insertUserDietData(String TableName,String Date,String Breakfast,String Bcal,String Bxpl,String Lunch,
+                                      String Lcal,String Lxpl,String Dinner,String Dcal,String Dxpl,String Snacks1,
+                                      String Scal1,String Sxpl1,String Snacks2,String Scal2,String Sxpl2,String bcount,
+                                      String lcount,String dcount,String s1count,String s2count,String TotalCal){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues con = new ContentValues();
         con.put(DietContract.DietEntry.COLUMN_Date,Date);
@@ -165,6 +170,8 @@ public class DBHelper extends SQLiteOpenHelper {
         con.put(DietContract.DietEntry.COLUMN_BCount, bcount);
         con.put(DietContract.DietEntry.COLUMN_LCount, lcount);
         con.put(DietContract.DietEntry.COLUMN_DCount, dcount);
+        con.put(DietContract.DietEntry.COLUMN_S1Count, s1count);
+        con.put(DietContract.DietEntry.COLUMN_S2Count, s2count);
         con.put(DietContract.DietEntry.COLUMN_TotalCal, TotalCal);
 
         long result = db.insert(TableName,null,con);

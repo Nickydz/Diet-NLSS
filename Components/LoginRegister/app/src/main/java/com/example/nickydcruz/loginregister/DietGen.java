@@ -477,6 +477,7 @@ public class DietGen {
             float bmr = bmr1 * scal;
             int a[] = new FormulaClass().bmrcal(bmr);
             Cursor res = dbHelper.getData(d1.SNTableName, a[0], a[1], a[2]);
+            int count=0;
 
             if (res.getCount() == 0) {
                 //error in data code
@@ -511,9 +512,10 @@ public class DietGen {
             String sna = snacks.get(p);
             String snacal = snacks.get(p + 4);
             String snac = snacks.get(p) + "\n Proteins: " + snacks.get(p + 1) + "\n Fats: " + snacks.get(p + 2) + "\n Carbohydrates: " + snacks.get(p + 3) + "\n Calories: " + snacks.get(p + 4);
-            snacking.put("name", sna);
-            snacking.put("cal", snacal);
+            snacking.put("sn", sna);
+            snacking.put("sncal", snacal);
             snacking.put("snac", snac);
+            snacking.put("count",0+"");
 //        /*
 //        Random r =new Random();
 //        int p = r.nextInt(i);
@@ -534,9 +536,10 @@ public class DietGen {
 //        */}
         }
         else{
-            snacking.put("name", "-");
-            snacking.put("cal", "-");
+            snacking.put("sn", "-");
+            snacking.put("sncal", "-");
             snacking.put("snac", "-");
+            snacking.put("count",0+"");
         }
 
         return snacking;
