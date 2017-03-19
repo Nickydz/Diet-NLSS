@@ -39,6 +39,16 @@ public class FormulaClass {
         return bmi;
     }
 
+    public float idealwtone(float hieght, float wieght){
+        float w1 = 18.5f * (hieght*hieght);
+        return w1;
+    }
+
+    public float idealwttwo(float hieght, float wieght){
+        float w2 = 24.9f * (hieght*hieght);
+        return w2;
+    }
+
     public String category(float bmi){
         String category;
         if(bmi >0 && bmi<16){

@@ -16,15 +16,19 @@ public class DietContract {
         String DNTableName ="";
         String SNTableName ="";
         String DietTableName ="";
+        String MeasureTable ="";
         public DietEntry(String tableName) {
+
             DietTableName = tableName+"_Diet_table";
             BFTableName = tableName+"_Breakfast";
+            MeasureTable = tableName+"_MeasureTable";
             LNTableName = tableName+"_Lunch";
             DNTableName = tableName+"_Dinner";
             SNTableName = tableName+"_Snacks";
         }
 
-
+        public static final String COLUMN_Height = "Height";
+        public static final String COLUMN_Weight = "Weight";
         public static final String COLUMN_Name = "Name";
         public static final String COLUMN_Proteins = "Proteins";
         public static final String COLUMN_Fats = "Fats";

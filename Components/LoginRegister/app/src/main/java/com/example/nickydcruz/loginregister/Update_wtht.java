@@ -23,7 +23,6 @@ import org.json.JSONObject;
 
 public class Update_wtht extends AppCompatActivity {
     SharedPreferences pref;
-    SharedPreferences.Editor editor;
     String updatedwt;
     String updatedht;
     String updatedage;

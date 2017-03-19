@@ -2,6 +2,7 @@ package com.example.nickydcruz.loginregister;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -14,6 +15,7 @@ import java.util.HashMap;
  */
 
 public class DBaseHelper extends SQLiteOpenHelper {
+
     public static final String DATABASE_NAME = "foodDatabase.db";
     public static final String TABLE_NAME = "food_table";
     public static final String COL_1 = "ID";
@@ -25,6 +27,7 @@ public class DBaseHelper extends SQLiteOpenHelper {
     public static final String COL_7 = "type";
 
 
+
     public DBaseHelper(Context context) {
         super(context, DATABASE_NAME, null, 1);
     }
@@ -32,6 +35,7 @@ public class DBaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+
         db.execSQL("create table " + TABLE_NAME + " ("+DietContract.DietEntry._ID+" INTEGER PRIMARY KEY AUTOINCREMENT,food TEXT NOT NULL,protein TEXT NOT NULL,fat TEXT NOT NULL,carbohydrate TEXT NOT NULL,calorie INTEGER NOT NULL,type TEXT NOT NULL)");
 
     }
