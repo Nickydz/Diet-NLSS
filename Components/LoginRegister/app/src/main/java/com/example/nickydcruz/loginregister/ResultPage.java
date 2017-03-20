@@ -258,8 +258,8 @@ public class ResultPage extends AppCompatActivity {
         bt.setOnClickListener(new View.OnClickListener() {
             @Override
            public void onClick(View v) {
-//                Intent i = new Intent(getApplicationContext(),Graph.class);
-//                startActivity(i);
+                Intent i = new Intent(getApplicationContext(),Piechart_Calories.class);
+                startActivity(i);
            }
         }
         );
