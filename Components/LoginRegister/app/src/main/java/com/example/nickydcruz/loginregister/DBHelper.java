@@ -141,7 +141,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     }
 
-    
+
 
     public void insertData(int count, String TableName, ArrayList<String> Name, ArrayList<String> Proteins, ArrayList<String> Fats, ArrayList<String> Carbs, ArrayList<String> Calories, ArrayList<String> Flags){
 //        SQLiteDatabase db = this.getWritableDatabase();
