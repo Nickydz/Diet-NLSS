@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteStatement;
 import android.support.design.widget.Snackbar;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Created by Nicky D. Cruz on 2/15/2017.
@@ -142,6 +143,25 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
 
+    public HashMap graphdatawt(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ArrayList<HashMap<String, String>> usersList;
+        usersList = new ArrayList<HashMap<String, String>>();
+        Cursor res = db.rawQuery("SELECT "+ DietContract.DietEntry.COLUMN_Date+", "+ DietContract.DietEntry.COLUMN_Weight+" FROM "+d.MeasureTable,null);
+        HashMap<String,String> arr =new HashMap<>();
+        int i=0;
+        if (res.moveToFirst()) {
+            do {
+                arr.put("Date"+i,res.getString(0));
+                arr.put("Weight"+i,res.getString(1));
+               i++;
+            } while (res.moveToNext());
+        }
+        arr.put("Count",i+"");
+        db.close();
+//        return (Cursor) usersList;
+        return arr;
+    }
 
     public void insertData(int count, String TableName, ArrayList<String> Name, ArrayList<String> Proteins, ArrayList<String> Fats, ArrayList<String> Carbs, ArrayList<String> Calories, ArrayList<String> Flags){
 //        SQLiteDatabase db = this.getWritableDatabase();

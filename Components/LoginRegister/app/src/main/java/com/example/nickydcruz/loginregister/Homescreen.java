@@ -17,7 +17,10 @@ import android.widget.DatePicker;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 
 public class Homescreen extends AppCompatActivity  {
@@ -49,7 +52,6 @@ public class Homescreen extends AppCompatActivity  {
         advancedone = pref.getInt("advancedone",0);
         de = new DietContract.DietEntry(pref.getString("username",""));
         myDb = new DBHelper(this,pref.getString("username",""));
-
         tvSnack1=(TextView) findViewById(R.id.tvSnack1);
         tvSnack2=(TextView) findViewById(R.id.tvSnack2);
         tvbf1 =(TextView) findViewById(R.id.textbf1);
