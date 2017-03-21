@@ -33,6 +33,9 @@ public class ExerciseCalculator extends AppCompatActivity {
     AutoCompleteTextView autoCompleteTextView;
     private EditText txtInput;
     float num1 = 0.0f;
+    float num2 = 0.0f;
+    float num3 = 0.0f;
+    float num4 = 0.0f;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,18 +66,31 @@ public class ExerciseCalculator extends AppCompatActivity {
         listView.setAdapter(adapter);
 
 
+        final List<String> list = new ArrayList<String>();
+
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                String a = (String) parent.getItemAtPosition(position);
+                String[] ser = a.split("calories burned - ");
+                float ser1 = Float.parseFloat(ser[1]);
+                num2 = ser1;
+                String b = totalcal.getText().toString();
+                float c = Float.parseFloat(b);
+                num3 = c;
+                num4 = num3 - num2;
                 arrayList.remove(position);
+                list.remove(position);
                 adapter.notifyDataSetChanged();
 
-                Toast.makeText(ExerciseCalculator.this, "Item has been removed from your list", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ExerciseCalculator.this, "Activity has been removed from your list", Toast.LENGTH_SHORT).show();
+                String s = new Float(num4).toString();
+                totalcal.setText(s);
                 return false;
             }
         });
 
-        final List<String> list = new ArrayList<String>();
+
 
         txtInput = (EditText)findViewById(R.id.activity);
         Button btAdd = (Button)findViewById(R.id.btadd);
@@ -101,6 +117,7 @@ public class ExerciseCalculator extends AppCompatActivity {
                     String newItem = txtInput.getText().toString();
                     String cb = calv.getText().toString();
 
+
                     arrayList.add(newItem + "   " + "calories burned" + " - " + cb);
                     //  arrayList1.add(cb);
                     adapter.notifyDataSetChanged();
@@ -111,8 +128,9 @@ public class ExerciseCalculator extends AppCompatActivity {
 
                     }
 
+                    String s = String.format("%.2f", sum);
 
-                    totalcal.setText("" + sum);
+                    totalcal.setText("" + s);
                     //  adapter1.notifyDataSetChanged();
                     txtInput.setText(null);
                     e2.setText(null);

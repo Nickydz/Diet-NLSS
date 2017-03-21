@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Toast;
-
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.data.Entry;
@@ -36,7 +35,6 @@ public class Piechart_Calories extends AppCompatActivity{
         Log.d(TAG, "onCreate: starting to create chart");
 
         pieChart = (PieChart) findViewById(R.id.PieChart);
-        pieChart.setUsePercentValues(true);
 
  //       pieChart.setDescription("Sales by employee (In Thousands $)");
         pieChart.setRotationEnabled(true);
@@ -45,16 +43,13 @@ public class Piechart_Calories extends AppCompatActivity{
         pieChart.setCenterText("Daily Calories");
         pieChart.setCenterTextSize(10);
         //  pieChart.setDrawEntryLabels(true);
-
         addDataSet();
-
         pieChart.setOnChartValueSelectedListener(new OnChartValueSelectedListener() {
             @Override
             public void onValueSelected(Entry e, Highlight h) {
                 Log.d(TAG, "onValueSelected: Value select from chart.");
                 Log.d(TAG, "onValueSelected: " + e.toString());
                 Log.d(TAG, "onValueSelected: " + h.toString());
-
                 int pos1 = e.toString().indexOf("(sum): ");
                 String sales = e.toString().substring(pos1 + 7);
 
@@ -65,9 +60,8 @@ public class Piechart_Calories extends AppCompatActivity{
                     }
                 }
                 String employee = xData[pos1 + 1];
-                Toast.makeText(Piechart_Calories.this, "Employee " + employee + "\n" + "Sales: $" + sales + "K", Toast.LENGTH_LONG).show();
-            }
-
+                Toast.makeText(Piechart_Calories.this, "Daily " + employee + "\n" + "Calories: $" + sales + "K", Toast.LENGTH_LONG).show();
+           }
             @Override
             public void onNothingSelected() {
 
@@ -88,19 +82,18 @@ public class Piechart_Calories extends AppCompatActivity{
            }
 
            //create the data set
-           PieDataSet pieDataSet = new PieDataSet(yEntry, "Employee Sales");
+           PieDataSet pieDataSet = new PieDataSet(yEntry, "calorie");
            pieDataSet.setSliceSpace(2);
            pieDataSet.setValueTextSize(12);
 
            //add colors to dataset
            ArrayList<Integer> colors = new ArrayList<>();
-           colors.add(Color.GRAY);
            colors.add(Color.BLUE);
            colors.add(Color.RED);
            colors.add(Color.GREEN);
-           colors.add(Color.CYAN);
-           colors.add(Color.YELLOW);
            colors.add(Color.MAGENTA);
+           colors.add(Color.YELLOW);
+
 
            pieDataSet.setColors(colors);
 
@@ -111,6 +104,7 @@ public class Piechart_Calories extends AppCompatActivity{
 
            //create pie data object
            PieData pieData = new PieData(pieDataSet);
+
            pieChart.setData(pieData);
            pieChart.invalidate();
 
