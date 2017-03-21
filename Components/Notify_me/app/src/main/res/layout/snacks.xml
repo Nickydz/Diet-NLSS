@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/sn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="87dp"
+        android:text="Snacks" />
+
+    <EditText
+        android:id="@+id/snac"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/sn"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:onClick="timeOnClick" />
+
+    <Button
+        android:id="@+id/snack1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/snac"
+        android:layout_below="@+id/snac"
+        android:layout_marginTop="45dp"
+        android:text="Notify me!" />
+
+    <Button
+        android:id="@+id/next1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/snack1"
+        android:layout_alignEnd="@+id/snac"
+        android:text="next" />
+</RelativeLayout>
