@@ -103,10 +103,19 @@
             android:layout_alignParentStart="true"
             android:id="@+id/spnexercise" />
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvgonewaala"
+            android:layout_below="@+id/spnexercise"
+            android:visibility="gone"
+            android:layout_marginTop="5dp"
+            />
+
         <Button
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/spnexercise"
+            android:layout_below="@+id/tvgonewaala"
             android:id="@+id/btasubmit"
             android:layout_marginTop="18dp"
             android:text="Submit"/>

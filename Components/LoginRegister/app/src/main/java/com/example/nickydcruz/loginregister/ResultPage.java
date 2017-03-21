@@ -1,27 +1,27 @@
 package com.example.nickydcruz.loginregister;
 
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
+        import android.content.Context;
+        import android.content.Intent;
+        import android.content.SharedPreferences;
+        import android.support.v7.app.ActionBar;
+        import android.support.v7.app.AlertDialog;
+        import android.support.v7.app.AppCompatActivity;
+        import android.os.Bundle;
+        import android.view.Menu;
+        import android.view.MenuInflater;
+        import android.view.MenuItem;
+        import android.view.View;
+        import android.widget.Button;
+        import android.widget.TextView;
 
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.toolbox.Volley;
+        import com.android.volley.RequestQueue;
+        import com.android.volley.Response;
+        import com.android.volley.toolbox.Volley;
 
-import org.json.JSONException;
-import org.json.JSONObject;
+        import org.json.JSONException;
+        import org.json.JSONObject;
 
-import java.util.Calendar;
+        import java.util.Calendar;
 
 public class ResultPage extends AppCompatActivity {
 
@@ -53,7 +53,7 @@ public class ResultPage extends AppCompatActivity {
         final int bmr = new FormulaClass().bmr(pref.getString("gender",""),pref.getInt("age",0),weight, height*100);
         Calendar cal = Calendar.getInstance();
         if(pref.getString("calday",0+"").equals(cal.get(Calendar.YEAR) + "-"
-                + (cal.get(Calendar.MONTH)+1)
+                + (cal.get(Calendar.MONTH)-1)
                 + "-" + (cal.get(Calendar.DAY_OF_MONTH)+1))){
             calburned= pref.getInt("ExerciseCalc",0);
             editor.apply();
@@ -160,7 +160,7 @@ public class ResultPage extends AppCompatActivity {
             public void onClick(View v) {
                 int bmr1=amr;
                 if(amr > 1700)
-                bmr1 =amr -500;
+                    bmr1 =amr -500;
                 //to deal with final stipulation in intent
                 final int bmr2=bmr1;
                 int a[] = f.bmrcal(bmr1*0.25);
@@ -256,12 +256,12 @@ public class ResultPage extends AppCompatActivity {
 
         Button bt = (Button) findViewById(R.id.graph);
         bt.setOnClickListener(new View.OnClickListener() {
-            @Override
-           public void onClick(View v) {
-//                Intent i = new Intent(getApplicationContext(),Graph.class);
-//                startActivity(i);
-           }
-        }
+                                  @Override
+                                  public void onClick(View v) {
+                                      Intent i = new Intent(getApplicationContext(),Piechart_Calories.class);
+                                      startActivity(i);
+                                  }
+                              }
         );
 
 

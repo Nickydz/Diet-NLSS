@@ -21,21 +21,29 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Calendar;
+
 public class Update_wtht extends AppCompatActivity {
     SharedPreferences pref;
     String updatedwt;
     String updatedht;
     String updatedage;
+    SharedPreferences.Editor editor;
+    DietContract.DietEntry de;
+    DBHelper myDb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_wtht);
         pref = getSharedPreferences("login.conf", Context.MODE_PRIVATE);
+        editor = pref.edit();
+        de = new DietContract.DietEntry(pref.getString("username",""));
+        myDb = new DBHelper(this,pref.getString("username",""));
         final EditText upwt = (EditText) findViewById(R.id.etupwt);
         final EditText upht = (EditText) findViewById(R.id.etupht);
         final EditText upage = (EditText) findViewById(R.id.etupage);
-        Button updatewt = (Button) findViewById(R.id.btupwt);
+        final Button updatewt = (Button) findViewById(R.id.btupwt);
         Button updateht = (Button) findViewById(R.id.btupht);
         Button updateage = (Button) findViewById(R.id.btupage);
 
@@ -58,6 +66,10 @@ public class Update_wtht extends AppCompatActivity {
                             boolean success = jsonResponse.getBoolean("success");
 
                             if (success) {
+                                Calendar cal = Calendar.getInstance();
+                                editor.putString("weight",updatedwt+"");
+                                editor.commit();
+                                myDb.insertMeasureData(de.MeasureTable,pref.getString("weight",updatedwt),pref.getString("height","5.5"),cal.get(Calendar.YEAR) + "-" + (cal.get(Calendar.MONTH)+1) + "-" + cal.get(Calendar.DAY_OF_MONTH));
 //                                for (int i = 0; i < key; i = i + 6)
 //                                    Mydb.insertData(jsonResponse.getString(i + ""), jsonResponse.getString((i + 1) + ""), jsonResponse.getString((i + 2) + ""), jsonResponse.getString((i + 3) + ""), jsonResponse.getString((i + 4) + ""), jsonResponse.getString((i + 5) + ""));
 
@@ -98,6 +110,12 @@ public class Update_wtht extends AppCompatActivity {
                             boolean success = jsonResponse.getBoolean("success");
 
                             if (success) {
+                                Calendar cal = Calendar.getInstance();
+                                editor.putString("height",updatedht+"");
+                                editor.commit();
+                                myDb.insertMeasureData(de.MeasureTable,pref.getString("weight","60"),pref.getString("height",updatedht),cal.get(Calendar.YEAR) + "-" + (cal.get(Calendar.MONTH)+1) + "-" + cal.get(Calendar.DAY_OF_MONTH));
+//                                for (int i = 0; i < key; i = i + 6)
+//                                    Mydb.insertData(jsonResponse.getString(i + ""), jsonResponse.getString((i + 1) + ""), jsonResponse.getString((i + 2) + ""), jsonResponse.getString((i + 3) + ""), jsonResponse.getString((i + 4) + ""), jsonResponse.getString((i + 5) + ""));
 //                                for (int i = 0; i < key; i = i + 6)
 //                                    Mydb.insertData(jsonResponse.getString(i + ""), jsonResponse.getString((i + 1) + ""), jsonResponse.getString((i + 2) + ""), jsonResponse.getString((i + 3) + ""), jsonResponse.getString((i + 4) + ""), jsonResponse.getString((i + 5) + ""));
 

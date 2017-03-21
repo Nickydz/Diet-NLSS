@@ -69,6 +69,8 @@ public class Advanced_Survey extends AppCompatActivity {
         SimpleCursorAdapter sca=new SimpleCursorAdapter(this, android.R.layout.simple_spinner_item, mycursor, cols,lbls,0);
         sca.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spdrink.setAdapter(sca);
+        final TextView gonewala = (TextView) findViewById(R.id.tvgonewaala);
+
 
 
         spnprommeal.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -96,6 +98,7 @@ public class Advanced_Survey extends AppCompatActivity {
             }
         });
 
+
         spnofmeal.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -122,6 +125,45 @@ public class Advanced_Survey extends AppCompatActivity {
             }
         });
 
+        spnexercise.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String item1 = parent.getItemAtPosition(position).toString().trim();
+                switch(item1)
+                {
+                    case "Sedentary Physical Activity Level *":
+                        gonewala.setText(R.string.sedex);
+                        exerciselimit=1.1f;
+                        gonewala.setVisibility(View.VISIBLE);
+                        break;
+
+                    case "Light Physical Activity Level *":
+                        gonewala.setText(R.string.ledex);
+                        exerciselimit=1.2f;
+                        gonewala.setVisibility(View.VISIBLE);
+                        break;
+
+                    case "Moderate Physical Activity Level *":
+                        gonewala.setText(R.string.medex);
+                        exerciselimit=1.3f;
+                        gonewala.setVisibility(View.VISIBLE);
+                        break;
+
+                    case "High Physical Activity Level *":
+                        gonewala.setText(R.string.hedex);
+                        exerciselimit=1.4f;
+                        gonewala.setVisibility(View.VISIBLE);
+                        break;
+
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
         spdrink.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -136,17 +178,6 @@ public class Advanced_Survey extends AppCompatActivity {
         });
 
 
-        spnexercise.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                activitylevel = parent.getItemAtPosition(position).toString().trim();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
 
         btasubmit.setOnClickListener(new View.OnClickListener() {
             @Override

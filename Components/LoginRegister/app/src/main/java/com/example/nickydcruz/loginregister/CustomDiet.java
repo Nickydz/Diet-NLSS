@@ -459,7 +459,7 @@ public class CustomDiet extends Activity {
         RequestQueue queue = Volley.newRequestQueue(CustomDiet.this);
         queue.add(customRequest);
 
-        Button btconfirm = (Button) findViewById(R.id.btConfirm);
+        final Button btconfirm = (Button) findViewById(R.id.btsaveDiet);
 
         btconfirm.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -535,6 +535,9 @@ public class CustomDiet extends Activity {
                         Intent i = new Intent(getApplicationContext(),Homescreen.class);
                         i.putExtra("bmr",1700+"");
                         startActivity(i);
+                    }
+                    else {
+                        Toast.makeText(getApplicationContext(),"kar raha kya hai abhi",Toast.LENGTH_LONG);
                     }
 
                 }

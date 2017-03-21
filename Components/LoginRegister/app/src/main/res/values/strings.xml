@@ -251,10 +251,17 @@
 
     </string-array>
 
+    <string name="sedex">* This indicates that you have a desk job or do some other kind of work that keeps you in your chair for most of the day.</string>
+    <string name="ledex">* This indicates that you on your feet and walking around for at least half the day. Stay-at-home parents, salespeople, and doctors fall into this category.</string>
+    <string name="medex">* This indicates that you\'re on the move pretty much all day, with a few limited periods of being sedentary. People in this category include gardeners, carpenters, and mail carriers.</string>
+    <string name="hedex">* This indicates that your job require being constantly on the move, and it entails significant amounts of manual labor.People in this category include construction workers, farm workers, and movers.</string>
+
+
     <string-array name="exercise">
-        <item>Mild Execise(Normal walking and daily activities)</item>
-        <item>Moderate Exercise(Running,working out,Casual sports)</item>
-        <item>Heavy Exercise(Gym training,Running for long periods,Heavy Physical activity,Extensive sports)</item>
+        <item>Sedentary Physical Activity Level *</item>
+        <item>Light Physical Activity Level *</item>
+        <item>Moderate Physical Activity Level *</item>
+        <item>High Physical Activity Level *</item>
 
     </string-array>
 </resources>

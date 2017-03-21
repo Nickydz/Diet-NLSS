@@ -216,13 +216,19 @@ public class Homescreen extends AppCompatActivity  {
         int s1count = Integer.parseInt(snack1.get("count"));
         int s2count = Integer.parseInt(snack2.get("count"));
 
-        myDb.insertUserDietData(de.DietTableName,date,breakfast.get("bf"),breakfast.get("bfcal"),s1,lunch.get("ln"),
+        boolean hgghghg = myDb.insertUserDietData(de.DietTableName,date,breakfast.get("bf"),breakfast.get("bfcal"),s1,lunch.get("ln"),
                 lunch.get("lncal"),s2,dinner.get("dn"),dinner.get("dncal"), s3,snack1.get("sn"),snack1.get("sncal"),
                 snack1.get("snac"),snack2.get("sn"),snack2.get("sncal"),snack2.get("snac"),breakfastcount+"",lunchcount+"",
                 dinnercount+"",s1count+"",s2count+"",1700+"");
 
-        Cursor res1 = myDb.getDietData(de.DietTableName,date);
-        return res1;
+        if(hgghghg) {
+            Cursor res1 = myDb.getDietData(de.DietTableName, date);
+            return res1;
+        }
+        else{
+            Cursor res1 = myDb.getDietData(de.DietTableName, date);
+            return res1;
+        }
 
     }
 
