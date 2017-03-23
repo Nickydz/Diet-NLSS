@@ -56,8 +56,9 @@ public class BasicSurvey1 extends AppCompatActivity implements NumberPicker.OnVa
 
 
         editor = pref.edit();
+        final DBHelper myDb = new DBHelper(this,pref.getString("username",""));
 
-
+        final DietContract.DietEntry de = new DietContract.DietEntry(pref.getString("username",""));;
         final FormulaClass f = new FormulaClass();
 
         final Intent intent = getIntent();
@@ -174,6 +175,12 @@ public class BasicSurvey1 extends AppCompatActivity implements NumberPicker.OnVa
                                     editor.putString("height",height);
                                     editor.putString("weight",weight);
                                     editor.commit();
+                                    Calendar cal = Calendar.getInstance();
+                                    myDb.insertMeasureData(de.MeasureTable,pref.getString("weight",weight),pref.getString("height",height),cal.get(Calendar.YEAR) + "-" + (cal.get(Calendar.MONTH)+1) + "-" + cal.get(Calendar.DAY_OF_MONTH));
+//                                for (int i = 0; i < key; i = i + 6)
+//                                    Mydb.insertData(jsonResponse.getString(i + ""), jsonResponse.getString((i + 1) + ""), jsonResponse.getString((i + 2) + ""), jsonResponse.getString((i + 3) + ""), jsonResponse.getString((i + 4) + ""), jsonResponse.getString((i + 5) + ""));
+//                                for (int i = 0; i < key; i = i + 6)
+//                                    Mydb.insertData(jsonResponse.getString(i + ""), jsonResponse.getString((i + 1) + ""), jsonResponse.getString((i + 2) + ""), jsonResponse.getString((i + 3) + ""), jsonResponse.getString((i + 4) + ""), jsonResponse.getString((i + 5) + ""));
 
                                     Intent int1 = new Intent(BasicSurvey1.this, ResultPage.class);
                                     BasicSurvey1.this.startActivity(int1);

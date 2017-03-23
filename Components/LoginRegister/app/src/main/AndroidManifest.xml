@@ -38,7 +38,9 @@
         <activity android:name=".Second" />
         <activity android:name=".CustomDiet" />
         <activity android:name=".Update_wtht" />
-        <activity android:name=".Piechart_Calories"></activity>
+        <activity android:name=".Piechart_Calories" />
+        <activity android:name=".Dates" />
+        <activity android:name=".Graphbyleo"></activity>
     </application>
 
 </manifest>

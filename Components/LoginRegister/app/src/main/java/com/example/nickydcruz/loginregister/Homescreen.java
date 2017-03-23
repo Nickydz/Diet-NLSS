@@ -49,7 +49,9 @@ public class Homescreen extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homescreen);
         pref = getSharedPreferences("login.conf", Context.MODE_PRIVATE);
+        editor=pref.edit();
         advancedone = pref.getInt("advancedone",0);
+        int aupdate=pref.getInt("aupdate",0);
         de = new DietContract.DietEntry(pref.getString("username",""));
         myDb = new DBHelper(this,pref.getString("username",""));
         tvSnack1=(TextView) findViewById(R.id.tvSnack1);
@@ -128,7 +130,13 @@ public class Homescreen extends AppCompatActivity  {
         Cursor resd = myDb.getDietData(de.DietTableName,sDate);
 
         if(resd.moveToFirst()){
+            if(aupdate==0)
             data(resd);
+            else if(aupdate==5){
+                editor.putInt("aupdate",0);
+                editor.commit();
+                data(insertDiet(sDate));
+            }
         }
         else{
             data(insertDiet(sDate));
@@ -138,7 +146,8 @@ public class Homescreen extends AppCompatActivity  {
     }
 
     private Cursor insertDiet(String date) {
-
+        String prefdrink= pref.getString("prefdrink","none");
+        myDb=new DBHelper(this,pref.getString("username",""));
         DietGen d2= new DietGen(pref.getString("username",""),myDb);
         final HashMap<String,String> breakfast,lunch,snack1,snack2,dinner;
         float bcal = 0.35f,scal=0.125f,dcal=0.15f,lcal=0.25f;
@@ -167,7 +176,7 @@ public class Homescreen extends AppCompatActivity  {
                 snack2 = d2.snackGen(bmrt, scal);
 
                 bmrt = Math.round(bmrt - (2*scal*bmrt));
-                breakfast = d2.breakfastGen(bmrt,bcal);
+                breakfast = d2.breakfastGen(bmrt,bcal,prefdrink);
                 lunch = d2.LunchGen(bmrt,lcal);
                 dinner = d2.DinGen(bmrt,dcal);
             }
@@ -175,21 +184,21 @@ public class Homescreen extends AppCompatActivity  {
                 snack1 = d2.snackGen(bmrt, scal);
                 snack2 = d2.snackGen(bmrt, 0);
                 bmrt = Math.round(bmrt - (scal*bmrt));
-                breakfast = d2.breakfastGen(bmrt,bcal);
+                breakfast = d2.breakfastGen(bmrt,bcal,prefdrink);
                 lunch = d2.LunchGen(bmrt,lcal);
                 dinner = d2.DinGen(bmrt,dcal);
             }
             else {
                 snack1 = d2.snackGen(bmrt, 0);
                 snack2 = d2.snackGen(bmrt, 0);
-                breakfast = d2.breakfastGen(bmrt,bcal);
+                breakfast = d2.breakfastGen(bmrt,bcal,prefdrink);
                 lunch = d2.LunchGen(bmrt,lcal);
                 dinner = d2.DinGen(bmrt,dcal);
             }
 
         }
         else {
-            breakfast = d2.breakfastGen(bmrt,bcal);
+            breakfast = d2.breakfastGen(bmrt,bcal,prefdrink);
             snack1 = d2.snackGen(bmrt,scal);
             lunch = d2.LunchGen(bmrt,lcal);
             snack2 = d2.snackGen(bmrt,scal);
@@ -223,6 +232,7 @@ public class Homescreen extends AppCompatActivity  {
                 snack1.get("snac"),snack2.get("sn"),snack2.get("sncal"),snack2.get("snac"),breakfastcount+"",lunchcount+"",
                 dinnercount+"",s1count+"",s2count+"",1700+"");
 
+        myDb=new DBHelper(this,pref.getString("username",""));
         if(hgghghg) {
             Cursor res1 = myDb.getDietData(de.DietTableName, date);
             return res1;

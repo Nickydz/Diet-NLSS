@@ -1,5 +1,7 @@
 package com.example.nickydcruz.loginregister;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.util.SparseArray;
 
@@ -24,11 +26,10 @@ public class DietGen {
         d1 = new DietContract.DietEntry(username);
     }
 
-    public HashMap<String, String> breakfastGen(int bmr1,float bcal){
+    public HashMap<String, String> breakfastGen(int bmr1,float bcal,String prefdrink){
         float bmr = bmr1 * bcal;
         int a[] = new FormulaClass().bmrcal(bmr);
         Cursor res = dbHelper.getData(d1.BFTableName,a[0],a[1],a[2]) ;
-
         if(res.getCount() == 0){
             //error in data code
         }
@@ -70,19 +71,30 @@ public class DietGen {
         }
         --d;--e;--s;--b;
         int cal =(int)Math.round(bmr * 0.5);
-        int i=5,u=cal,p=1;
+        int i=5,u=cal,p=1,drinkpref=1,fl=0;
         JSONObject jsonObject =new JSONObject();
         HashMap<String,String> breakfast = new HashMap<>();
         String bf ="";
         String bfcal="";
         int counter =0;
             if (d > 0){
-                while(d >= i){
-                    if (((cal - Integer.parseInt(drinks.get(i))) < u)&& cal>Integer.parseInt(drinks.get(i))){
-                        u=cal - Integer.parseInt(drinks.get(i));
-                        p=i-4;
+                if(!(prefdrink.equals("none"))){
+                    for(drinkpref=1;drinkpref <= d-4;drinkpref=drinkpref+5){
+                        if(prefdrink.equals(drinks.get(drinkpref))){
+                            p=drinkpref;
+                            fl=1;
+                            break;
+                        }
                     }
-                    i= i+5;
+                }
+                if(fl == 0) {
+                    while (d >= i) {
+                        if (((cal - Integer.parseInt(drinks.get(i))) < u) && cal > Integer.parseInt(drinks.get(i))) {
+                            u = cal - Integer.parseInt(drinks.get(i));
+                            p = i - 4;
+                        }
+                        i = i + 5;
+                    }
                 }
                 String drink = drinks.get(p)+"\n"+"Proteins: "+drinks.get(p+1)+"\n"+"Fats: "+drinks.get(p+2)+"\n"+"Carbohydrates: "+drinks.get(p+3)+"\n"+"Total Calories: "+drinks.get(p+4);
                 bf = drinks.get(p);

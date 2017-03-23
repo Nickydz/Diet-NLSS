@@ -188,6 +188,7 @@ public class Advanced_Survey extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         try {
+                            String response1=response;
                             JSONObject jsonResponse1 = new JSONObject(response);
                             boolean success = jsonResponse1.getBoolean("success");
                             if (success) {
@@ -197,12 +198,13 @@ public class Advanced_Survey extends AppCompatActivity {
                                 editor.putString("prefdrink",prefdrink);
                                 editor.putString("exerciselevel",exerciselimit+"");
                                 editor.putInt("advancedone",1);
+                                editor.putInt("aupdate",5);
                                 editor.commit();
 
                                 Intent int1 = new Intent(getApplicationContext(), ResultPage.class);
                                 Advanced_Survey.this.startActivity(int1);
                             } else {
-
+                                Toast.makeText(getApplicationContext(),"fdtgggn",Toast.LENGTH_LONG);
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -211,9 +213,9 @@ public class Advanced_Survey extends AppCompatActivity {
                     }
                 };
 
-                ASurveyRequest brequest = new ASurveyRequest(pref.getString("username",""), pref.getString("height",""),prommeal,noofmeals+"",prefdrink,activitylevel,listener);
-                RequestQueue queue1 = Volley.newRequestQueue(getApplicationContext());
-                queue1.add(brequest);
+                ASurveyRequest arequest = new ASurveyRequest(pref.getString("username",""), pref.getString("height",""),prommeal,noofmeals+"",prefdrink,exerciselimit+"",listener);
+                RequestQueue queue1 = Volley.newRequestQueue(Advanced_Survey.this);
+                queue1.add(arequest);
 
             }
         });

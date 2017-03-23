@@ -85,13 +85,13 @@ public class FormulaClass {
         return category;
     }
 
-    public int bmr(String gender, int age, float wieght, float hieght) {
+    public int bmr(String gender, int age, float wrt, float hieght) {
         Double bmr1;
         if (gender.equals("M")){
-            bmr1 = (10*wieght)+(6.25*hieght)+(5*age)+5;
+            bmr1 = (10*wrt)+(6.25*hieght)+(5*age)+5;
         }
         else {
-            bmr1 =(10*wieght)+(6.25*hieght)+(5*age)-161;
+            bmr1 =(10*wrt)+(6.25*hieght)+(5*age)-161;
         }
         int bmr = bmr1.intValue();
         return bmr;
