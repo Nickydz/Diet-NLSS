@@ -246,7 +246,5 @@
         android:id="@+id/tvCaldn" />
 
 
-
-
 </RelativeLayout>
 </ScrollView>

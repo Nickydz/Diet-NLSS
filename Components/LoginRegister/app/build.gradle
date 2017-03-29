@@ -31,11 +31,10 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.android.support.constraint:constraint-layout:1.0.0-beta5'
     compile 'com.github.PhilJay:MPAndroidChart:v3.0.1'
-    compile 'com.github.PhilJay:MPAndroidChart:v3.0.0-beta1'
-    compile 'com.android.support.constraint:constraint-layout:1.0.0-beta5'
-    compile 'com.github.PhilJay:MPAndroidChart:v3.0.1'
     compile 'com.jjoe64:graphview:4.2.1'
-    compile files('libs/GraphView-4.2.1.jar')
+    compile 'commons-io:commons-io:2.4'
+    compile 'com.felipecsl:gifimageview:2.1.0'
+
 
 }
 

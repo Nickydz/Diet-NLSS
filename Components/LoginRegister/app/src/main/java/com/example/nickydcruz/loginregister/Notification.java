@@ -1,6 +1,9 @@
 package com.example.nickydcruz.loginregister;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -9,6 +12,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
@@ -118,7 +122,109 @@ public class Notification extends AppCompatActivity {
         brButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+//                Calendar calendar = Calendar.getInstance();
+//                calendar.set(Calendar.HOUR_OF_DAY,12);
+//                calendar.set(Calendar.MINUTE,8);
+                String timeFormat = "hh:mm a";
+                SimpleDateFormat stf = new SimpleDateFormat(timeFormat, Locale.US);
+                try {
+                    stf.parse(brText.getText().toString());
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                Calendar calendar = stf.getCalendar();
+                Intent intent = new Intent(getApplicationContext(),NotificationReciever.class);
+                PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(),100,intent,PendingIntent.FLAG_UPDATE_CURRENT);
+                AlarmManager alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
+                alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(),AlarmManager.INTERVAL_DAY,pendingIntent);
+            }
+        });
 
+
+        snButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                Calendar calendar = Calendar.getInstance();
+//                calendar.set(Calendar.HOUR_OF_DAY,12);
+//                calendar.set(Calendar.MINUTE,8);
+                String timeFormat = "hh:mm a";
+                SimpleDateFormat stf = new SimpleDateFormat(timeFormat, Locale.US);
+                try {
+                    stf.parse(snText.getText().toString());
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                Calendar calendar = stf.getCalendar();
+                Intent intent = new Intent(getApplicationContext(),NotificationReciever.class);
+                PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(),100,intent,PendingIntent.FLAG_UPDATE_CURRENT);
+                AlarmManager alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
+                alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(),AlarmManager.INTERVAL_DAY,pendingIntent);
+            }
+        });
+
+
+        snButton1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                Calendar calendar = Calendar.getInstance();
+//                calendar.set(Calendar.HOUR_OF_DAY,12);
+//                calendar.set(Calendar.MINUTE,8);
+                String timeFormat = "hh:mm a";
+                SimpleDateFormat stf = new SimpleDateFormat(timeFormat, Locale.US);
+                try {
+                    stf.parse(snText1.getText().toString());
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                Calendar calendar = stf.getCalendar();
+                Intent intent = new Intent(getApplicationContext(),NotificationReciever.class);
+                PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(),100,intent,PendingIntent.FLAG_UPDATE_CURRENT);
+                AlarmManager alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
+                alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(),AlarmManager.INTERVAL_DAY,pendingIntent);
+            }
+        });
+
+
+        lnButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                Calendar calendar = Calendar.getInstance();
+//                calendar.set(Calendar.HOUR_OF_DAY,12);
+//                calendar.set(Calendar.MINUTE,8);
+                String timeFormat = "hh:mm a";
+                SimpleDateFormat stf = new SimpleDateFormat(timeFormat, Locale.US);
+                try {
+                    stf.parse(lnText.getText().toString());
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                Calendar calendar = stf.getCalendar();
+                Intent intent = new Intent(getApplicationContext(),NotificationReciever.class);
+                PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(),100,intent,PendingIntent.FLAG_UPDATE_CURRENT);
+                AlarmManager alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
+                alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(),AlarmManager.INTERVAL_DAY,pendingIntent);
+            }
+        });
+
+
+        dnButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                Calendar calendar = Calendar.getInstance();
+//                calendar.set(Calendar.HOUR_OF_DAY,12);
+//                calendar.set(Calendar.MINUTE,8);
+                String timeFormat = "hh:mm a";
+                SimpleDateFormat stf = new SimpleDateFormat(timeFormat, Locale.US);
+                try {
+                    stf.parse(dnText.getText().toString());
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                Calendar calendar = stf.getCalendar();
+                Intent intent = new Intent(getApplicationContext(),NotificationReciever.class);
+                PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(),100,intent,PendingIntent.FLAG_UPDATE_CURRENT);
+                AlarmManager alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
+                alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(),AlarmManager.INTERVAL_DAY,pendingIntent);
             }
         });
 
