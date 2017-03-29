@@ -36,5 +36,6 @@ dependencies {
     compile 'com.github.PhilJay:MPAndroidChart:v3.0.1'
     compile 'com.jjoe64:graphview:4.2.1'
     compile files('libs/GraphView-4.2.1.jar')
+
 }
 
