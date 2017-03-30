@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.nickydcruz.loginregister.Water_graph2">
+
+
+    <Button
+        android:id="@+id/bt_otf"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/otf"
+        android:layout_alignBottom="@+id/otf"
+        android:layout_toEndOf="@+id/otf"
+        android:text="Add" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="43dp"
+        android:text="Water consumed" />
+
+    <TextView
+        android:id="@+id/otf"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/textView"
+        android:layout_below="@+id/textView"
+        android:layout_marginEnd="88dp"
+        android:layout_marginTop="34dp"
+        android:text="125 ml" />
+
+    <TextView
+        android:id="@+id/osf"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/otf"
+        android:layout_below="@+id/otf"
+        android:layout_marginTop="34dp"
+        android:text="175 ml" />
+
+    <TextView
+        android:id="@+id/ttf"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/osf"
+        android:layout_below="@+id/osf"
+        android:layout_marginTop="34dp"
+        android:text="325 ml" />
+
+    <Button
+        android:id="@+id/bt_osf"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add"
+        android:layout_alignBaseline="@+id/osf"
+        android:layout_alignBottom="@+id/osf"
+        android:layout_alignStart="@+id/bt_otf" />
+
+    <Button
+        android:id="@+id/bt_ttf"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/ttf"
+        android:layout_alignBottom="@+id/ttf"
+        android:layout_alignStart="@+id/bt_osf"
+        android:text="Add" />
+
+    <com.felipecsl.gifimageview.library.GifImageView
+        android:id="@+id/gifwater"
+        android:scaleType="fitCenter"
+        android:layout_marginTop="220dp"
+        android:scaleX="0.6"
+        android:scaleY="0.6"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</RelativeLayout>

@@ -133,8 +133,11 @@ public class Notification extends AppCompatActivity {
                     e.printStackTrace();
                 }
                 Calendar calendar = stf.getCalendar();
+                calendar.set(Calendar.SECOND,0);
+                calendar.set(Calendar.MILLISECOND,0);
                 Intent intent = new Intent(getApplicationContext(),NotificationReciever.class);
-                PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(),100,intent,PendingIntent.FLAG_UPDATE_CURRENT);
+                intent.putExtra("id",109);
+                PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(),109,intent,PendingIntent.FLAG_UPDATE_CURRENT);
                 AlarmManager alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
                 alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(),AlarmManager.INTERVAL_DAY,pendingIntent);
             }
@@ -155,8 +158,11 @@ public class Notification extends AppCompatActivity {
                     e.printStackTrace();
                 }
                 Calendar calendar = stf.getCalendar();
+                calendar.set(Calendar.SECOND,0);
+                calendar.set(Calendar.MILLISECOND,0);
                 Intent intent = new Intent(getApplicationContext(),NotificationReciever.class);
-                PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(),100,intent,PendingIntent.FLAG_UPDATE_CURRENT);
+                intent.putExtra("id",115);
+                PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(),115,intent,PendingIntent.FLAG_UPDATE_CURRENT);
                 AlarmManager alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
                 alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(),AlarmManager.INTERVAL_DAY,pendingIntent);
             }
@@ -177,8 +183,11 @@ public class Notification extends AppCompatActivity {
                     e.printStackTrace();
                 }
                 Calendar calendar = stf.getCalendar();
+                calendar.set(Calendar.SECOND,0);
+                calendar.set(Calendar.MILLISECOND,0);
                 Intent intent = new Intent(getApplicationContext(),NotificationReciever.class);
-                PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(),100,intent,PendingIntent.FLAG_UPDATE_CURRENT);
+                intent.putExtra("id",114);
+                PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(),114,intent,PendingIntent.FLAG_UPDATE_CURRENT);
                 AlarmManager alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
                 alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(),AlarmManager.INTERVAL_DAY,pendingIntent);
             }
@@ -199,8 +208,11 @@ public class Notification extends AppCompatActivity {
                     e.printStackTrace();
                 }
                 Calendar calendar = stf.getCalendar();
+                calendar.set(Calendar.SECOND,0);
+                calendar.set(Calendar.MILLISECOND,0);
                 Intent intent = new Intent(getApplicationContext(),NotificationReciever.class);
-                PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(),100,intent,PendingIntent.FLAG_UPDATE_CURRENT);
+                intent.putExtra("id",113);
+                PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(),113,intent,PendingIntent.FLAG_UPDATE_CURRENT);
                 AlarmManager alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
                 alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(),AlarmManager.INTERVAL_DAY,pendingIntent);
             }
@@ -221,8 +233,11 @@ public class Notification extends AppCompatActivity {
                     e.printStackTrace();
                 }
                 Calendar calendar = stf.getCalendar();
+                calendar.set(Calendar.SECOND,0);
+                calendar.set(Calendar.MILLISECOND,0);
                 Intent intent = new Intent(getApplicationContext(),NotificationReciever.class);
-                PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(),100,intent,PendingIntent.FLAG_UPDATE_CURRENT);
+                intent.putExtra("id",112);
+                PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(),112,intent,PendingIntent.FLAG_UPDATE_CURRENT);
                 AlarmManager alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
                 alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(),AlarmManager.INTERVAL_DAY,pendingIntent);
             }
