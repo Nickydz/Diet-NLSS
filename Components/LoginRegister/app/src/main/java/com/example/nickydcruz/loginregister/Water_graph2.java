@@ -27,15 +27,17 @@ public class Water_graph2 extends AppCompatActivity {
         Button otf = (Button) findViewById(R.id.bt_otf);
         Button osf = (Button) findViewById(R.id.bt_osf);
         Button ttf = (Button) findViewById(R.id.bt_ttf);
-        SharedPreferences sharedPreferences = getSharedPreferences("sp",MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
+        final SharedPreferences sharedPreferences = getSharedPreferences("sp",MODE_PRIVATE);
+        final SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putInt("identifier",1);
         editor.commit();
 
         otf.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                calculated = 125f;
+                calculated = sharedPreferences.getFloat("calculated",0)+125f;
+                editor.putFloat("calculated",calculated);
+                editor.commit();
 
                 //Set GIFImageView resource
                 try{
@@ -57,6 +59,7 @@ public class Water_graph2 extends AppCompatActivity {
 //                        Bundle bundleone = new Bundle();
 //                        bundleone.putString("stuffone", Float.toString(calculated));
                         s.putExtra("calculatedvalue",calculated);
+
 //                        s.putExtra("stuffone", calculated);
                         startActivity(s);
                     }
@@ -67,8 +70,9 @@ public class Water_graph2 extends AppCompatActivity {
         osf.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                calculated = 175f;
-
+                calculated = sharedPreferences.getFloat("calculated",0)+175f;
+                editor.putFloat("calculated",calculated);
+                editor.commit();
                 //Set GIFImageView resource
                 try{
                     InputStream inputStream = getAssets().open("waterglasstwo.gif");
@@ -97,7 +101,10 @@ public class Water_graph2 extends AppCompatActivity {
         ttf.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                calculated = 325f;
+//                calculated = 325f;
+                calculated = sharedPreferences.getFloat("calculated",0)+325f;
+                editor.putFloat("calculated",calculated);
+                editor.commit();
 
                 //Set GIFImageView resource
                 try{

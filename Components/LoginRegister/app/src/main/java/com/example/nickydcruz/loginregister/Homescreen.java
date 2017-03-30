@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -108,9 +109,14 @@ public class Homescreen extends AppCompatActivity  {
 
                 if(resd.moveToFirst()){
                     data(resd);
+                    resd.close();
                 }
                 else{
-                    data(insertDiet(sDat));
+                    resd.close();
+                    insertDiet(sDat).close();
+                    resd = myDb.getDietData(de.DietTableName,sDat);
+                    if(resd.moveToFirst())
+                    data(resd);
                 }
             }
 
@@ -133,13 +139,21 @@ public class Homescreen extends AppCompatActivity  {
             if(aupdate==0)
             data(resd);
             else if(aupdate==5){
+                resd.close();
                 editor.putInt("aupdate",0);
                 editor.commit();
-                data(insertDiet(sDate));
+                insertDiet(sDate).close();
+                resd = myDb.getDietData(de.DietTableName,sDate);
+                if(resd.moveToFirst())
+                data(resd);
             }
         }
         else{
-            data(insertDiet(sDate));
+            resd.close();
+            insertDiet(sDate).close();
+            resd = myDb.getDietData(de.DietTableName,sDate);
+            if(resd.moveToFirst())
+            data(resd);
         }
 
 
@@ -147,7 +161,6 @@ public class Homescreen extends AppCompatActivity  {
 
     private Cursor insertDiet(String date) {
         String prefdrink= pref.getString("prefdrink","none");
-        myDb=new DBHelper(this,pref.getString("username",""));
         DietGen d2= new DietGen(pref.getString("username",""),myDb);
         final HashMap<String,String> breakfast,lunch,snack1,snack2,dinner;
         float bcal = 0.35f,scal=0.125f,dcal=0.15f,lcal=0.25f;
@@ -232,15 +245,17 @@ public class Homescreen extends AppCompatActivity  {
                 snack1.get("snac"),snack2.get("sn"),snack2.get("sncal"),snack2.get("snac"),breakfastcount+"",lunchcount+"",
                 dinnercount+"",s1count+"",s2count+"",1700+"");
 
-        myDb=new DBHelper(this,pref.getString("username",""));
-        if(hgghghg) {
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+            }
+        },1500); // 1500 = 1.5seconds
+
+
             Cursor res1 = myDb.getDietData(de.DietTableName, date);
             return res1;
-        }
-        else{
-            Cursor res1 = myDb.getDietData(de.DietTableName, date);
-            return res1;
-        }
+
 
     }
 

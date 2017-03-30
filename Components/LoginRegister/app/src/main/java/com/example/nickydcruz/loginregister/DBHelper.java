@@ -31,7 +31,7 @@ public class DBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        final String SQL_CREATE_MEASURE_TABLE = "CREATE TABLE " +
+        final String SQL_CREATE_MEASURE_TABLE = "CREATE TABLE IF NOT EXISTS " +
                 d.MeasureTable +" (" +
                 DietContract.DietEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"+
                 DietContract.DietEntry.COLUMN_Weight +" INTEGER," +
@@ -39,7 +39,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 DietContract.DietEntry.COLUMN_Date+" TEXT NOT NULL"+
                 ");";
 
-        final String SQL_CREATE_BF_DIET_TABLE = "CREATE TABLE " +
+        final String SQL_CREATE_BF_DIET_TABLE = "CREATE TABLE IF NOT EXISTS " +
                 d.BFTableName +" (" +
                 DietContract.DietEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"+
                 DietContract.DietEntry.COLUMN_Name +" TEXT NOT NULL," +
@@ -50,7 +50,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 DietContract.DietEntry.COLUMN_Flags+" TEXT NOT NULL"+
                 ");";
 
-        final String SQL_CREATE_USER_DIET_TABLE = "CREATE TABLE " +
+        final String SQL_CREATE_USER_DIET_TABLE = "CREATE TABLE IF NOT EXISTS " +
                 d.DietTableName +" (" +
                 DietContract.DietEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"+
                 DietContract.DietEntry.COLUMN_Date+" TEXT NOT NULL UNIQUE," +
@@ -77,7 +77,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 DietContract.DietEntry.COLUMN_TotalCal+" TEXT NOT NULL"+
                 ");";
 
-        final String SQL_CREATE_LN_DIET_TABLE = "CREATE TABLE " +
+        final String SQL_CREATE_LN_DIET_TABLE = "CREATE TABLE IF NOT EXISTS " +
                 d.LNTableName +" (" +
                 DietContract.DietEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"+
                 DietContract.DietEntry.COLUMN_Name +" TEXT NOT NULL," +
@@ -88,7 +88,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 DietContract.DietEntry.COLUMN_Flags+" TEXT NOT NULL"+
                 ");";
 
-        final String SQL_CREATE_DN_DIET_TABLE = "CREATE TABLE " +
+        final String SQL_CREATE_DN_DIET_TABLE = "CREATE TABLE IF NOT EXISTS " +
                 d.DNTableName +" (" +
                 DietContract.DietEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"+
                 DietContract.DietEntry.COLUMN_Name +" TEXT NOT NULL," +
@@ -99,7 +99,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 DietContract.DietEntry.COLUMN_Flags+" TEXT NOT NULL"+
                 ");";
 
-        final String SQL_CREATE_SN_DIET_TABLE = "CREATE TABLE " +
+        final String SQL_CREATE_SN_DIET_TABLE = "CREATE TABLE IF NOT EXISTS " +
                 d.SNTableName +" (" +
                 DietContract.DietEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"+
                 DietContract.DietEntry.COLUMN_Name +" TEXT NOT NULL," +
@@ -145,6 +145,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public HashMap graphdatawt(){
         SQLiteDatabase db = this.getWritableDatabase();
+        onCreate(db);
         ArrayList<HashMap<String, String>> usersList;
         usersList = new ArrayList<HashMap<String, String>>();
         Cursor res = db.rawQuery("SELECT "+ DietContract.DietEntry.COLUMN_Date+", "+ DietContract.DietEntry.COLUMN_Weight+" FROM "+d.MeasureTable,null);
@@ -177,6 +178,7 @@ public class DBHelper extends SQLiteOpenHelper {
 //            con.put(DietContract.DietEntry.COLUMN_Flags, Flags);
 //        }
         String sql;
+
         if(!(TableName.equals(d.SNTableName))) {
              sql = "INSERT INTO " + TableName + "(" + DietContract.DietEntry.COLUMN_Name + ", " + DietContract.DietEntry.COLUMN_Proteins + ", " + DietContract.DietEntry.COLUMN_Fats + ", " + DietContract.DietEntry.COLUMN_Carbs + ", " + DietContract.DietEntry.COLUMN_Calories + ", " + DietContract.DietEntry.COLUMN_Flags + ") values (?, ?, ?, ?, ?, ?);";
         }
@@ -184,6 +186,7 @@ public class DBHelper extends SQLiteOpenHelper {
              sql = "INSERT INTO " + TableName + "(" + DietContract.DietEntry.COLUMN_Name + ", " + DietContract.DietEntry.COLUMN_Proteins + ", " + DietContract.DietEntry.COLUMN_Fats + ", " + DietContract.DietEntry.COLUMN_Carbs + ", " + DietContract.DietEntry.COLUMN_Calories + ") values (?, ?, ?, ?, ?);";
         }
         SQLiteDatabase db = this.getWritableDatabase();
+        onCreate(db);
         db.beginTransaction();
         SQLiteStatement stmt = db.compileStatement(sql);
 //        long result = db.insert(TableName,null,con);
@@ -231,6 +234,7 @@ public class DBHelper extends SQLiteOpenHelper {
         String sql ="INSERT INTO " + d.MeasureTable  + "(" + DietContract.DietEntry.COLUMN_Weight + ", " + DietContract.DietEntry.COLUMN_Height + ", " + DietContract.DietEntry.COLUMN_Date + ") values (?, ?, ?);";
 
         SQLiteDatabase db0 = this.getWritableDatabase();
+        onCreate(db0);
         if(CheckIsDataAlreadyInDBorNot(TableName, DietContract.DietEntry.COLUMN_Date,Date)){
             db0.beginTransaction();
             db0.delete(TableName, DietContract.DietEntry.COLUMN_Date+" =?",new String[]{Date});
@@ -267,7 +271,7 @@ public class DBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues con = new ContentValues();
 
-
+        onCreate(db);
 
         if(CheckIsDataAlreadyInDBorNot(TableName, DietContract.DietEntry.COLUMN_Date,Date)){
             db.beginTransaction();
@@ -363,6 +367,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public boolean truncate(String table){
         SQLiteDatabase db = this.getWritableDatabase();
+        onCreate(db);
         long result = db.delete(table,null,null);
         db.close();
         return true;
@@ -370,12 +375,14 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public Cursor getData(String TableName,int carbs,int prots,int fats){
         SQLiteDatabase db = this.getWritableDatabase();
+        onCreate(db);
         Cursor res = db.rawQuery("select * from "+ TableName,null);
         return res;
     }
 
     public Cursor getDietData(String TableName,String date){
-        SQLiteDatabase db = this.getWritableDatabase();
+        SQLiteDatabase db = this.getReadableDatabase();
+        onCreate(db);
         String[] columns ={DietContract.DietEntry._ID,DietContract.DietEntry.COLUMN_Date,DietContract.DietEntry.COLUMN_Breakfast,
                 DietContract.DietEntry.COLUMN_Bcal, DietContract.DietEntry.COLUMN_Bxpl, DietContract.DietEntry.COLUMN_Lunch, DietContract.DietEntry.COLUMN_Lcal,
                 DietContract.DietEntry.COLUMN_Lxpl, DietContract.DietEntry.COLUMN_Dinner, DietContract.DietEntry.COLUMN_Dcal, DietContract.DietEntry.COLUMN_Dxpl, DietContract.DietEntry.COLUMN_Snacks1, DietContract.DietEntry.COLUMN_Scal1,
@@ -384,14 +391,14 @@ public class DBHelper extends SQLiteOpenHelper {
 
         String[] selectionargs = {date};
 
-
-        Cursor res = db.query(TableName,columns, DietContract.DietEntry.COLUMN_Date+" =?",selectionargs,null,null,null);
+        Cursor res = db.query(TableName,columns, DietContract.DietEntry.COLUMN_Date+" = ?",selectionargs,null,null,null);
         return res;
     }
 
     public Cursor getDrinks() {
 
         SQLiteDatabase db = this.getWritableDatabase();
+        onCreate(db);
         String[] columns = {"_id",DietContract.DietEntry.COLUMN_Name};
         String[] selectionargs = {"d"};
         Cursor res = db.query(d.BFTableName,columns, DietContract.DietEntry.COLUMN_Flags+" =?",selectionargs,null,null,null);
@@ -400,6 +407,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public boolean CheckIsDataAlreadyInDBorNot(String TableName,String dbfeild,String fieldValue){
         SQLiteDatabase db = this.getWritableDatabase();
+        onCreate(db);
         String Query = "Select * from " + TableName + " where " + dbfeild + " = ?";
         String[] array = {fieldValue};
         Cursor cursor = db.rawQuery(Query,array);

@@ -258,7 +258,7 @@ public class ResultPage extends AppCompatActivity {
         bt.setOnClickListener(new View.OnClickListener() {
             @Override
            public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(),Notification.class);
+                Intent i = new Intent(getApplicationContext(),Water_graph.class);
                 startActivity(i);
            }
         }

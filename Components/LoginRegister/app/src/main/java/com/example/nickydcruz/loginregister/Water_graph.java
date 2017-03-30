@@ -39,14 +39,14 @@ public class Water_graph extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_water_graph);
         Log.d(TAG, "onCreate: starting to create chart");
-        pref = getSharedPreferences("login.conf", Context.MODE_PRIVATE);
+        pref = getSharedPreferences("sp", Context.MODE_PRIVATE);
         pieChart = (PieChart) findViewById(R.id.water_chart);
         String wt = pref.getString("weight","");
 //        Float weight = Float.parseFloat(wt);
 //        float wateroz = weight*0.5f;
 //        waterltr = wateroz/33.814f;
         waterltr = 2000f;
-        SharedPreferences sharedPreferences = getSharedPreferences("sp",MODE_PRIVATE);
+//        SharedPreferences sharedPreferences = getSharedPreferences("sp",MODE_PRIVATE);
 
 
 
@@ -93,27 +93,27 @@ public class Water_graph extends AppCompatActivity {
             }
         });
 
-        int identify = sharedPreferences.getInt("identifier",0);
+        int identify = pref.getInt("identifier",0);
 
         if(identify == 1) {
             Intent intent = getIntent();
             Float stuffone = 0f;
             Float stufftwo = 0f;
             Float stuffthree = 0f;
-            SharedPreferences.Editor editor = sharedPreferences.edit();
+            SharedPreferences.Editor editor = pref.edit();
             editor.putInt("identifier",0);
             editor.commit();
             calculated = pref.getFloat("calculated",0);
             //Get the bundle
 //            Bundle bundle = getIntent().getExtras();
 //            stuffone = Float.parseFloat(bundle.getString("stuffone"));
-            stuffone = intent.getFloatExtra("calculatedvalue",0.0f);
+//            stuffone = intent.getFloatExtra("calculatedvalue",0.0f);
 //            stufftwo = Float.parseFloat(bundle.getString("stufftwo"));
 //            stuffthree = Float.parseFloat(bundle.getString("stuffthree"));
 
-            calculated = calculated + stuffone;
-            editor.putFloat("calculated",calculated);
-            editor.commit();
+//            calculated = calculated + stuffone;
+  //          editor.putFloat("calculated",calculated);
+//            editor.commit();
             //calculated = bundle.getInt("stuff");
 
         }
