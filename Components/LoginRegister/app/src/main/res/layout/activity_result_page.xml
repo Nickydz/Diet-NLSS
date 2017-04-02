@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    android:theme="@style/Theme"
 >
 <RelativeLayout
     android:id="@+id/activity_result_page"

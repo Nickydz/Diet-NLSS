@@ -8,6 +8,18 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="Theme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">#34AF23</item>
+        <item name="colorPrimaryDark">#34AF23</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="Resultpage" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">#85cf7b</item>
+        <item name="colorPrimaryDark">#85cf7b</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
@@ -16,5 +28,18 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="Theme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+
+
+
 
 </resources>

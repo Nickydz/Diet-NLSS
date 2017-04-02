@@ -26,13 +26,16 @@
             android:configChanges="orientation|keyboardHidden|screenSize" />
         <activity
             android:name=".Homescreen"
-            android:configChanges="orientation|keyboardHidden|screenSize" />
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:theme="@style/Theme"/>
         <activity
             android:name=".BasicSurvey1"
-            android:configChanges="orientation|keyboardHidden|screenSize" />
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:theme="@style/Resultpage"/>
         <activity
             android:name=".ResultPage"
-            android:configChanges="orientation|keyboardHidden|screenSize" />
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:theme="@style/Theme"/>
         <activity android:name=".superfood_main" />
         <activity android:name=".FoodCravings" />
         <activity android:name=".ExerciseCalculator" />
@@ -43,7 +46,8 @@
         <activity android:name=".Piechart_Calories" />
         <!--<activity android:name=".Dates" />-->
         <activity android:name=".Graphbyleo" />
-        <activity android:name=".Water_graph" />
+        <activity android:name=".Water_graph"
+            android:theme="@style/Theme"/>
         <activity android:name=".Water_graph2" />
         <receiver android:name=".NotificationReciever"/>
         <activity android:name=".Notification" />
