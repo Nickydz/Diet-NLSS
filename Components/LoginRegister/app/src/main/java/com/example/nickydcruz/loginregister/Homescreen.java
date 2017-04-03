@@ -41,6 +41,7 @@ public class Homescreen extends AppCompatActivity  {
     TextView tvCalbf, tvCalln, tvCaldn, tvCalbsn, tvCallsn;
     DietContract.DietEntry de;
     DBHelper myDb;
+    RelativeLayout rlas;
 
     int advancedone;int bmrt;
     int snackneedfortextviewgeneration;
@@ -49,6 +50,7 @@ public class Homescreen extends AppCompatActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homescreen);
+        rlas = (RelativeLayout) findViewById(R.id.activity_homescreen);
         pref = getSharedPreferences("login.conf", Context.MODE_PRIVATE);
         editor=pref.edit();
         advancedone = pref.getInt("advancedone",0);
@@ -107,7 +109,10 @@ public class Homescreen extends AppCompatActivity  {
                 String sDat = year+"-"+monthOfYear+"-"+dayOfMonth;
                 tvdat.setText(dayOfMonth+"-"+monthOfYear+"-"+year);
                 Cursor resd = myDb.getDietData(de.DietTableName,sDat);
-
+                if(pref.getInt("snackView",0)!= 0){
+                    editor.putInt("snackView",0);
+                    editor.commit();
+                }
                 if(resd.moveToFirst()){
                     data(resd);
                     resd.close();
@@ -137,6 +142,10 @@ public class Homescreen extends AppCompatActivity  {
         Cursor resd = myDb.getDietData(de.DietTableName,sDate);
 
         if(resd.moveToFirst()){
+            if(pref.getInt("snackView",0)!= 0){
+                editor.putInt("snackView",0);
+                editor.commit();
+            }
             if(aupdate==0)
             data(resd);
             else if(aupdate==5){
@@ -150,6 +159,10 @@ public class Homescreen extends AppCompatActivity  {
             }
         }
         else{
+            if(pref.getInt("snackView",0)!= 0){
+                editor.putInt("snackView",0);
+                editor.commit();
+            }
             resd.close();
             insertDiet(sDate).close();
             resd = myDb.getDietData(de.DietTableName,sDate);
@@ -306,6 +319,7 @@ public class Homescreen extends AppCompatActivity  {
         snack2.put("snac",res.getString(16));
 
         int snack2count = Integer.parseInt(res.getString(21));
+        int snackchange=0;
 
         if(breakfastcount == 2){
 
@@ -441,9 +455,11 @@ public class Homescreen extends AppCompatActivity  {
                   final TextView textView = new TextView(this);
                   textView.setText(snre[j]);
 
-
                   int curTextViewId = prevTextViewId + 1;
                   textView.setId(curTextViewId);
+
+                  editor.putInt("snackView",pref.getInt("snackView",0)+1);
+                  editor.commit();
                   final RelativeLayout.LayoutParams params =
                           new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.FILL_PARENT,
                                   RelativeLayout.LayoutParams.WRAP_CONTENT);
@@ -499,6 +515,7 @@ public class Homescreen extends AppCompatActivity  {
             else{
                 String[] snre = snack2.get("sn").split(";");
                 final String[] snres = snack2.get("snac").split(";");
+                snackchange=1;
                 for (int j=0;j<=snack2count;j++){
                     snack2.put(j+"",snres[j]);
                 }
@@ -540,10 +557,11 @@ public class Homescreen extends AppCompatActivity  {
                                     .show();
                         }
                     });
-
+                    params.addRule(RelativeLayout.BELOW,curTextViewId);
                     prevTextViewId = curTextViewId;
                     layout.addView(textView, params);
                 }
+
 
                 tvCallsn.setText(snack2.get("sncal"));
                 tvCallsn.setVisibility(View.VISIBLE);
