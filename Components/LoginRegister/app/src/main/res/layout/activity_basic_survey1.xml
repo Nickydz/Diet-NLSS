@@ -159,6 +159,7 @@
         android:layout_alignStart="@+id/etWeight"
         android:textStyle="bold"
         android:layout_marginBottom="5dp"
+        android:visibility="gone"
         />
 
     <EditText
@@ -169,6 +170,7 @@
         android:layout_alignStart="@+id/tv_bsWrist"
         android:layout_marginTop="2dp"
         android:id="@+id/etWristCir"
+        android:visibility="gone"
         android:layout_alignEnd="@+id/etWeight"
         android:text="5" />
 

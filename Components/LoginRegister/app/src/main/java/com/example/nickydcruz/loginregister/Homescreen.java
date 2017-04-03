@@ -74,11 +74,12 @@ public class Homescreen extends AppCompatActivity  {
         tvCaldn =(TextView) findViewById(R.id.tvCaldn);
         tvCalbsn =(TextView) findViewById(R.id.tvCalbsn);
         tvCallsn =(TextView) findViewById(R.id.tvCallsn);
+//
+////        Intent intent = getIntent();
+//
+//        bmrt = Integer.parseInt(intent.getStringExtra("bmr"));
 
-        Intent intent = getIntent();
-
-        bmrt = Integer.parseInt(intent.getStringExtra("bmr"));
-
+        bmrt = pref.getInt("amr",1700);
         ActionBar actionBar =getSupportActionBar();
         actionBar.setLogo(R.mipmap.nlss_crop);
         actionBar.setDisplayUseLogoEnabled(true);

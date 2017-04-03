@@ -55,14 +55,21 @@ public class ResultPage extends AppCompatActivity {
         if(pref.getString("calday",0+"").equals(cal.get(Calendar.YEAR) + "-"
                 + (cal.get(Calendar.MONTH)+1)
                 + "-" + (cal.get(Calendar.DAY_OF_MONTH)+1))){
-            calburned= pref.getInt("ExerciseCalc",0);
+            calburned= Math.round(pref.getInt("ExerciseCalc",0));
             editor.apply();
 
         }
         amr=bmr;
+        if(pref.getInt("amr",1700)!=amr) {
+            editor.putInt("aupdate",5);
+            editor.putInt("amr", amr);
+            editor.commit();
+        }
+
         if(pref.getInt("advancedone",0)==1){
             amr = Math.round(bmr*Float.parseFloat(pref.getString("exerciselevel",1.1f+"")) + calburned);
         }
+
         final FormulaClass f = new FormulaClass();
         String category = f.category(bmi);
         String expertsMessage = "";
@@ -131,7 +138,12 @@ public class ResultPage extends AppCompatActivity {
                                 Intent int1=new Intent(ResultPage.this,Homescreen.class);
                                 int1.putExtra("username",username);
                                 int1.putExtra("diet",jsonresponse.toString());
-                                int1.putExtra("bmr",bmr1+"");
+//                                int1.putExtra("bmr",bmr1+"");
+                                if(pref.getInt("amr",1700)!=bmr1) {
+                                    editor.putInt("aupdate",5);
+                                    editor.putInt("amr", bmr1);
+                                    editor.commit();
+                                }
                                 DietInsert d =new DietInsert(username,myDb);
                                 d.dietDivider(jsonresponse);
                                 startActivity(int1);
@@ -178,7 +190,12 @@ public class ResultPage extends AppCompatActivity {
                                 Intent int1=new Intent(ResultPage.this,Homescreen.class);
                                 int1.putExtra("diet",jsonresponse.toString());
                                 int1.putExtra("username",username);
-                                int1.putExtra("bmr",bmr2+"");
+//                                int1.putExtra("bmr",bmr2+"");
+                                if(pref.getInt("amr",1700)!=bmr2) {
+                                    editor.putInt("aupdate",5);
+                                    editor.putInt("amr", bmr2);
+                                    editor.commit();
+                                }
                                 DietInsert d =new DietInsert(username,myDb);
                                 d.dietDivider(jsonresponse);
                                 startActivity(int1);
@@ -226,7 +243,12 @@ public class ResultPage extends AppCompatActivity {
                                     Intent int1 = new Intent(ResultPage.this, Homescreen.class);
                                     int1.putExtra("diet",jsonresponse.toString());
                                     int1.putExtra("username",username);
-                                    int1.putExtra("bmr",amr+"");
+//                                    int1.putExtra("bmr",amr+"");
+                                    if(pref.getInt("amr",1700)!=amr) {
+                                    editor.putInt("aupdate",5);
+                                    editor.putInt("amr", amr);
+                                    editor.commit();
+                                }
                                     DietInsert d =new DietInsert(username,myDb);
                                     d.dietDivider(jsonresponse);
                                     startActivity(int1);

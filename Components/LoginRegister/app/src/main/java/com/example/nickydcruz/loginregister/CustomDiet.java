@@ -512,9 +512,9 @@ public class CustomDiet extends Activity {
                         snack.put("sncal",snca.get(0));
                         snack.put("snxpl",snxpl.get(0));
                         for(int i=1;i<sncount;i++){
-                            snack.put("sn",snac.get(i));
-                            snack.put("sncal",snca.get(i));
-                            snack.put("snxpl",snxpl.get(i));
+                            snack.put("sn",snack.get("sn")+";"+snac.get(i));
+                            snack.put("sncal",snack.get("sncal")+"\n"+snca.get(i));
+                            snack.put("snxpl",snack.get("snxpl")+";"+snxpl.get(i));
                         }
                         sncount--;
                     }
