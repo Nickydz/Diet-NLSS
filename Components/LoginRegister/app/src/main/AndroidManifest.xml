@@ -44,8 +44,7 @@
             android:theme="@style/Resultpage"/>
         <activity
             android:name=".ResultPage"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:theme="@style/Theme"/>
+            android:configChanges="orientation|keyboardHidden|screenSize" />
         <activity android:name=".superfood_main" />
         <activity android:name=".FoodCravings" />
         <activity android:name=".ExerciseCalculator" />

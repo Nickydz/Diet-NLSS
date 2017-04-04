@@ -20,8 +20,10 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="27dp"
+        android:fontFamily="serif"
         android:text="Basic Survey"
-        android:textSize="38px"
+        android:textColor="@android:color/black"
+        android:textSize="25dp"
 
         android:textStyle="bold" />
 
@@ -33,6 +35,9 @@
         android:layout_below="@+id/tv_bsSurvey"
         android:layout_marginLeft="23dp"
         android:layout_marginTop="26dp"
+        android:textSize="18dp"
+        android:fontFamily="serif"
+        android:textColor="@android:color/black"
         android:textStyle="bold"
         android:text="Gender" />
 
@@ -66,13 +71,16 @@
     </RadioGroup>
 
     <TextView
-        android:text="Please enter your height"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="33dp"
         android:id="@+id/tv_bsHeight"
         android:layout_below="@+id/radgrp"
-
+        android:layout_marginTop="20dp"
+        android:textSize="18dp"
+        android:fontFamily="serif"
+        android:text="Please enter your height"
+        android:textColor="@android:color/black"
         android:textStyle="bold"
         android:layout_marginStart="21dp" />
 
@@ -86,6 +94,8 @@
         android:layout_marginLeft="15dp"
         android:textSize="20sp"
         android:id="@+id/etht"
+        android:textColor="@android:color/black"
+        android:fontFamily="serif"
         android:textStyle="bold"
         android:layout_below="@+id/tv_bsHeight"
         android:layout_alignStart="@+id/tv_bsHeight"
@@ -107,10 +117,14 @@
         android:text="Please enter your weight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+
         android:id="@+id/tv_bsWeight"
         android:layout_below="@+id/spin_bsHeight"
 
+        android:layout_marginTop="30dp"
+        android:textSize="18dp"
+        android:fontFamily="serif"
+        android:textColor="@android:color/black"
         android:textStyle="bold"
         android:layout_marginStart="21dp" />
 
@@ -123,6 +137,7 @@
         android:layout_marginTop="1dp"
         android:id="@+id/etWeight"
         android:layout_alignEnd="@+id/etht"
+        android:fontFamily="serif"
         android:hint="in kg"
         android:text="60" />
 
@@ -194,6 +209,10 @@
         android:id="@+id/tv_bsFoodPref"
         android:layout_below="@+id/etWristCir"
         android:layout_alignStart="@+id/etWeight"
+        android:layout_marginTop="15dp"
+        android:fontFamily="serif"
+        android:textSize="18dp"
+        android:textColor="@android:color/black"
         android:textStyle="bold"
         android:layout_marginBottom="5dp"
         />
@@ -210,8 +229,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/btSubmit"
+        android:background="@android:drawable/dialog_holo_light_frame"
+        android:fontFamily="serif"
+        android:textStyle="bold"
+        android:paddingLeft="38dp"
+        android:paddingRight="38dp"
+        android:textColor="@android:color/black"
         android:layout_below="@+id/spinb"
-        android:layout_toEndOf="@+id/spin_bsWrist" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="13dp" />
 
     <Button
         android:text="Click"
@@ -221,7 +247,11 @@
         android:id="@+id/button2"
         android:layout_alignBaseline="@+id/etht"
         android:layout_alignBottom="@+id/etht"
-        android:layout_alignStart="@+id/spin_bsWeight" />
+        android:layout_alignStart="@+id/spin_bsWeight"
+        android:background="@android:drawable/dialog_holo_light_frame"
+        android:fontFamily="serif"
+        android:textStyle="bold"
+        android:textColor="@android:color/black"/>
 
     <Button
         android:text="\u003F"
@@ -233,7 +263,10 @@
         android:id="@+id/button3"
         android:layout_alignTop="@+id/button2"
         android:layout_alignStart="@+id/button2"
-        android:layout_marginLeft="88dp"/>
+        android:layout_marginLeft="88dp"
+        android:background="@android:drawable/dialog_holo_light_frame"
+        android:textColor="@android:color/black"
+        android:layout_alignEnd="@+id/tv_bsWeight" />
 
 
 </RelativeLayout>

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -46,6 +47,7 @@ public class BasicSurvey1 extends AppCompatActivity implements NumberPicker.OnVa
     static String s = "";
     SharedPreferences pref;
     SharedPreferences.Editor editor;
+    TextView t;
 
 
     @Override
@@ -53,6 +55,27 @@ public class BasicSurvey1 extends AppCompatActivity implements NumberPicker.OnVa
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_basic_survey1);
         pref = getSharedPreferences("login.conf", Context.MODE_PRIVATE);
+
+        t = (TextView) findViewById(R.id.tv_gender);
+        Typeface myCustomFont=Typeface.createFromAsset(getAssets(),"fonts/Zapf Humanist 601 Bold BT.ttf");
+        t.setTypeface(myCustomFont);
+
+        t = (TextView) findViewById(R.id.tv_bsHeight);
+        Typeface myCustomFont1=Typeface.createFromAsset(getAssets(),"fonts/Zapf Humanist 601 Bold BT.ttf");
+        t.setTypeface(myCustomFont1);
+
+        t = (TextView) findViewById(R.id.tv_bsWeight);
+        Typeface myCustomFont2=Typeface.createFromAsset(getAssets(),"fonts/Zapf Humanist 601 Bold BT.ttf");
+        t.setTypeface(myCustomFont2);
+
+        t = (TextView) findViewById(R.id.tv_bsFoodPref);
+        Typeface myCustomFont3=Typeface.createFromAsset(getAssets(),"fonts/Zapf Humanist 601 Bold BT.ttf");
+        t.setTypeface(myCustomFont3);
+
+        t = (TextView) findViewById(R.id.tv_bsSurvey);
+        Typeface myCustomFont4=Typeface.createFromAsset(getAssets(),"fonts/Zapf Humanist 601 Bold BT.ttf");
+        t.setTypeface(myCustomFont4);
+
 
 
         editor = pref.edit();

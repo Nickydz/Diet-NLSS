@@ -3,6 +3,7 @@ package com.example.nickydcruz.loginregister;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -28,10 +29,28 @@ public class ResultPage extends AppCompatActivity {
     SharedPreferences pref;
     SharedPreferences.Editor editor;
     int amr;
+    TextView t;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result_page);
+
+        t = (TextView) findViewById(R.id.tvCategory);
+        Typeface myCustomFont=Typeface.createFromAsset(getAssets(),"fonts/Zapf Humanist 601 Bold BT.ttf");
+        t.setTypeface(myCustomFont);
+
+        t = (TextView) findViewById(R.id.tvBmr);
+        Typeface myCustomFont1=Typeface.createFromAsset(getAssets(),"fonts/Zapf Humanist 601 Bold BT.ttf");
+        t.setTypeface(myCustomFont1);
+
+        t = (TextView) findViewById(R.id.tvIdealweiht);
+        Typeface myCustomFont2=Typeface.createFromAsset(getAssets(),"fonts/Zapf Humanist 601 Bold BT.ttf");
+        t.setTypeface(myCustomFont2);
+
+        t = (TextView) findViewById(R.id.tvExpertsMessage);
+        Typeface myCustomFont3=Typeface.createFromAsset(getAssets(),"fonts/Zapf Humanist 601 Bold BT.ttf");
+        t.setTypeface(myCustomFont3);
+
         TextView tvCategory =(TextView)findViewById(R.id.tvCategory);
         TextView tvBmr =(TextView)findViewById(R.id.tvBmr);
         TextView tvExperts = (TextView)findViewById(R.id.tvExpertsMessage);
