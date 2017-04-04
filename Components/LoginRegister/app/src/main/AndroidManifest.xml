@@ -15,7 +15,8 @@
 
         <activity
             android:name=".Start"
-            android:configChanges="orientation|keyboardHidden|screenSize">
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:theme="@style/Theme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -41,7 +42,7 @@
         <activity
             android:name=".BasicSurvey1"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:theme="@style/Resultpage"/>
+            android:theme="@style/Theme"/>
         <activity
             android:name=".ResultPage"
             android:configChanges="orientation|keyboardHidden|screenSize" />

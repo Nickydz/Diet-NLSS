@@ -21,6 +21,8 @@
         android:id="@+id/textView"
         android:text="@string/DietScreen"
         android:textStyle="bold"
+        android:textColor="@android:color/black"
+        android:fontFamily="serif"
         android:textSize="20sp"
         />
 
@@ -33,6 +35,8 @@
         android:layout_marginStart="14dp"
         android:textStyle="bold"
         android:textSize="20sp"
+        android:textColor="@android:color/black"
+        android:fontFamily="serif"
         android:id="@+id/tvdate"
         android:layout_alignParentTop="true" />
 
@@ -45,6 +49,8 @@
         android:id="@+id/textView3"
         android:layout_below="@+id/hr"
         android:textStyle="bold"
+        android:textColor="@android:color/black"
+        android:fontFamily="serif"
         android:textSize="20sp"
         />
 
@@ -91,6 +97,8 @@
         android:layout_below="@+id/textbf3"
         android:id="@+id/tvSnack1"
         android:textStyle="bold"
+        android:textColor="@android:color/black"
+        android:fontFamily="serif"
         android:textSize="20sp"/>
 
     <TextView
@@ -109,6 +117,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvCalbsn"
+        android:textColor="@android:color/black"
+        android:fontFamily="serif"
         android:id="@+id/textViewLunch"
         android:textStyle="bold"
         android:textSize="20sp"
@@ -152,6 +162,8 @@
         android:layout_below="@+id/textln3"
         android:id="@+id/tvSnack2"
         android:textStyle="bold"
+        android:textColor="@android:color/black"
+        android:fontFamily="serif"
         android:textSize="20sp"/>
 
     <TextView
@@ -171,6 +183,8 @@
         android:layout_below="@+id/textlsn"
         android:id="@+id/textView11"
         android:textStyle="bold"
+        android:textColor="@android:color/black"
+        android:fontFamily="serif"
         android:textSize="20sp"/>
 
     <TextView
