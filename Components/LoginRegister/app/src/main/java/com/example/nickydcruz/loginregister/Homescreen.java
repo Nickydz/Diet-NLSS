@@ -822,6 +822,9 @@ public class Homescreen extends AppCompatActivity  {
             case R.id.advanceSurvey: i = new Intent(Homescreen.this, Advanced_Survey.class);
                 break;
 
+            case R.id.activity_update_wtht: i = new Intent(Homescreen.this, Update_wtht.class);
+                break;
+
             case R.id.logout: {
                 pref.edit().clear().commit();
                 i = new Intent(getApplicationContext(), LoginActivity.class);

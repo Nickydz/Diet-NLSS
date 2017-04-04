@@ -180,6 +180,7 @@ public class FoodCravings extends AppCompatActivity {
 
         }
         FoodCravings.this.startActivity(i);
+        FoodCravings.this.finish();
         return super.onOptionsItemSelected(item);
     }
 

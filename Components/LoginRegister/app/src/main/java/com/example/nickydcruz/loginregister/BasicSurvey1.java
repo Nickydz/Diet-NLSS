@@ -184,6 +184,7 @@ public class BasicSurvey1 extends AppCompatActivity implements NumberPicker.OnVa
 
                                     Intent int1 = new Intent(BasicSurvey1.this, ResultPage.class);
                                     BasicSurvey1.this.startActivity(int1);
+                                    BasicSurvey1.this.finish();
                                 } else {
 
                                 }

@@ -95,6 +95,7 @@ public class Register extends AppCompatActivity {
                                     editor.apply();
 
                                     Register.this.startActivity(i);
+                                    Register.this.finish();
 
 
                                 } else {

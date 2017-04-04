@@ -85,6 +85,7 @@ public class LoginActivity extends AppCompatActivity implements CompoundButton.O
                                 editor.apply();
 
                                 LoginActivity.this.startActivity(intent);
+                                //LoginActivity.this.finish();
 
                             }
                             else {
@@ -92,6 +93,7 @@ public class LoginActivity extends AppCompatActivity implements CompoundButton.O
                                 Intent intent1   =new Intent(LoginActivity.this, BasicSurvey1.class);
                                 intent1.putExtra("dob", dob);
                                 LoginActivity.this.startActivity(intent1);
+                                //LoginActivity.this.finish();
 
                             }
                         }
@@ -120,6 +122,7 @@ public class LoginActivity extends AppCompatActivity implements CompoundButton.O
 
                 Intent registerIntent = new Intent(LoginActivity.this,Register.class);
                 LoginActivity.this.startActivity(registerIntent);
+                LoginActivity.this.finish();
 
             }
         });
@@ -178,12 +181,14 @@ public class LoginActivity extends AppCompatActivity implements CompoundButton.O
                                     editor.putString("gender",gender);
                                     editor.apply();
                                     LoginActivity.this.startActivity(intent);
+                                    LoginActivity.this.finish();
                                 }
                                 else {
                                     Intent intent1   =new Intent(LoginActivity.this, BasicSurvey1.class);
                                     intent1.putExtra("username", username);
                                     intent1.putExtra("dob", dob);
                                     LoginActivity.this.startActivity(intent1);
+                                    LoginActivity.this.finish();
 
                                 }
                             }

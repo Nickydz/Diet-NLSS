@@ -200,6 +200,7 @@ public class superfood_main extends AppCompatActivity {
 
         }
         superfood_main.this.startActivity(i);
+        superfood_main.this.finish();
         return super.onOptionsItemSelected(item);
     }
 

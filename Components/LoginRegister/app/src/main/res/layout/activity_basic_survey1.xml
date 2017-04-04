@@ -224,7 +224,7 @@
         android:layout_alignStart="@+id/spin_bsWeight" />
 
     <Button
-        android:text="\u0241"
+        android:text="\u003F"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="button3"
