@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
@@ -39,6 +40,8 @@ public class CustomDiet extends Activity {
     DBaseHelper Mydb;
     DBHelper myDb;
     DietContract.DietEntry de;
+    TextView t;
+
 
     //for breakfast
     ArrayList <String> selectedbf = new ArrayList<String>();
@@ -87,6 +90,23 @@ public class CustomDiet extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_centre);
         pref = getSharedPreferences("login.conf", Context.MODE_PRIVATE);
+
+        t = (TextView) findViewById(R.id.bf);
+        Typeface myCustomFont=Typeface.createFromAsset(getAssets(),"fonts/Zapf Humanist 601 Bold BT.ttf");
+        t.setTypeface(myCustomFont);
+
+        t = (TextView) findViewById(R.id.ln);
+        Typeface myCustomFont1=Typeface.createFromAsset(getAssets(),"fonts/Zapf Humanist 601 Bold BT.ttf");
+        t.setTypeface(myCustomFont1);
+
+        t = (TextView) findViewById(R.id.sn);
+        Typeface myCustomFont2=Typeface.createFromAsset(getAssets(),"fonts/Zapf Humanist 601 Bold BT.ttf");
+        t.setTypeface(myCustomFont2);
+
+        t = (TextView) findViewById(R.id.dn);
+        Typeface myCustomFont3=Typeface.createFromAsset(getAssets(),"fonts/Zapf Humanist 601 Bold BT.ttf");
+        t.setTypeface(myCustomFont3);
+
         de = new DietContract.DietEntry(pref.getString("username",""));
         myDb = new DBHelper(this,pref.getString("username",""));
         Mydb = new DBaseHelper(context);

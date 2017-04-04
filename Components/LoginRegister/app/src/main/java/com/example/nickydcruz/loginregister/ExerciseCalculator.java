@@ -3,6 +3,7 @@ package com.example.nickydcruz.loginregister;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -25,6 +26,7 @@ public class ExerciseCalculator extends AppCompatActivity {
     SharedPreferences pref;
     TextView calv;
     TextView totalcal;
+    TextView t;
     private Button calculate,confirm;
     private ArrayList<String> arrayList;
     private ArrayList<String> arrayList1;
@@ -41,6 +43,32 @@ public class ExerciseCalculator extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         pref = getSharedPreferences("login.conf", Context.MODE_PRIVATE);
+
+        t = (TextView) findViewById(R.id.textView9);
+        Typeface myCustomFont=Typeface.createFromAsset(getAssets(),"fonts/Zapf Humanist 601 Bold BT.ttf");
+        t.setTypeface(myCustomFont);
+
+        t = (TextView) findViewById(R.id.textView);
+        Typeface myCustomFont1=Typeface.createFromAsset(getAssets(),"fonts/Zapf Humanist 601 Bold BT.ttf");
+        t.setTypeface(myCustomFont1);
+
+        t = (TextView) findViewById(R.id.textView5);
+        Typeface myCustomFont2=Typeface.createFromAsset(getAssets(),"fonts/Zapf Humanist 601 Bold BT.ttf");
+        t.setTypeface(myCustomFont2);
+
+        t = (TextView) findViewById(R.id.textView11);
+        Typeface myCustomFont3=Typeface.createFromAsset(getAssets(),"fonts/Zapf Humanist 601 Bold BT.ttf");
+        t.setTypeface(myCustomFont3);
+
+        t = (TextView) findViewById(R.id.cb);
+        Typeface myCustomFont4=Typeface.createFromAsset(getAssets(),"fonts/Zapf Humanist 601 Bold BT.ttf");
+        t.setTypeface(myCustomFont4);
+
+        t = (TextView) findViewById(R.id.textView4);
+        Typeface myCustomFont5=Typeface.createFromAsset(getAssets(),"fonts/Zapf Humanist 601 Bold BT.ttf");
+        t.setTypeface(myCustomFont5);
+
+
 
         //AutoComplete textView
         autoCompleteTextView = (AutoCompleteTextView) findViewById(R.id.activity);

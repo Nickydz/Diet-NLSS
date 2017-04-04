@@ -25,7 +25,8 @@
         </activity>
         <activity
             android:name=".LoginActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize">
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -34,7 +35,8 @@
         </activity>
         <activity
             android:name=".Register"
-            android:configChanges="orientation|keyboardHidden|screenSize" />
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".Homescreen"
             android:configChanges="orientation|keyboardHidden|screenSize"
@@ -48,7 +50,9 @@
             android:configChanges="orientation|keyboardHidden|screenSize" />
         <activity android:name=".superfood_main" />
         <activity android:name=".FoodCravings" />
-        <activity android:name=".ExerciseCalculator" />
+        <activity android:name=".ExerciseCalculator"
+            android:theme="@style/Theme"
+            android:screenOrientation="portrait"/>
         <activity android:name=".Advanced_Survey" />
         <activity android:name=".Second" />
         <activity android:name=".CustomDiet" />

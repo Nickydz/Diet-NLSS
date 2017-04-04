@@ -25,7 +25,11 @@
             android:layout_marginTop="10dp"
             android:id="@+id/bf"
             android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true" />
+            android:fontFamily="serif"
+            android:textColor="@android:color/black"
+            android:layout_centerHorizontal="true"
+            android:textStyle="bold"
+            android:textSize="18dp"/>
 
         <TextView
             android:text="TextView"
@@ -34,6 +38,7 @@
             android:layout_below="@+id/bfac"
             android:layout_alignEnd="@+id/bf"
             android:layout_marginTop="10dp"
+
             android:layout_marginLeft="64dp"
             android:visibility="gone"
             android:id="@+id/bftvdisp" />
@@ -54,6 +59,7 @@
             android:layout_centerHorizontal="true"
             android:scrollbarAlwaysDrawVerticalTrack="true"
             android:nestedScrollingEnabled="true"
+
             android:layout_below="@+id/bftvdisp">
         </ListView>
 
@@ -92,7 +98,11 @@
             android:layout_below="@+id/bfListView"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
-            android:id="@+id/ln" />
+            android:fontFamily="serif"
+            android:textColor="@android:color/black"
+            android:id="@+id/ln"
+            android:textStyle="bold"
+            android:textSize="18dp"/>
 
         <AutoCompleteTextView
             android:id="@+id/bfac"
@@ -100,6 +110,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/bf"
             android:layout_marginTop="10dp"
+            android:fontFamily="serif"
             android:hint="Select food" />
 
         <AutoCompleteTextView
@@ -109,6 +120,7 @@
             android:layout_alignStart="@+id/bfac"
             android:layout_below="@+id/ln"
             android:layout_marginTop="10dp"
+            android:fontFamily="serif"
             android:layout_toStartOf="@+id/breakfastAddBT"
             android:hint="Select food" />
 
@@ -119,7 +131,11 @@
             android:layout_below="@+id/lnListView"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
-            android:id="@+id/dn" />
+            android:fontFamily="serif"
+            android:textColor="@android:color/black"
+            android:id="@+id/dn"
+            android:textStyle="bold"
+            android:textSize="18dp"/>
 
         <AutoCompleteTextView
             android:id="@+id/dnac"
@@ -129,6 +145,7 @@
             android:layout_alignStart="@+id/lnac"
             android:layout_below="@+id/dn"
             android:layout_marginTop="10dp"
+            android:fontFamily="serif"
             android:hint="Select food" />
 
         <TextView
@@ -139,6 +156,7 @@
             android:visibility="gone"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
+
             android:id="@+id/dntvdisp" />
 
         <TextView
@@ -159,7 +177,11 @@
             android:layout_below="@+id/dnListView"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
-            android:id="@+id/sn" />
+            android:fontFamily="serif"
+            android:textColor="@android:color/black"
+            android:id="@+id/sn"
+            android:textStyle="bold"
+            android:textSize="18dp"/>
 
         <TextView
             android:text="TextView"
@@ -217,6 +239,7 @@
             android:layout_height="40dp"
             android:layout_alignStart="@+id/dinnerAddBT"
             android:layout_alignTop="@+id/snac"
+            android:background="@android:drawable/dialog_holo_light_frame"
             android:text="Add"/>
 
         <Button
@@ -225,6 +248,7 @@
             android:layout_height="40dp"
             android:layout_alignStart="@+id/breakfastAddBT"
             android:layout_alignTop="@+id/lnac"
+            android:background="@android:drawable/dialog_holo_light_frame"
             android:text="Add" />
 
         <Button
@@ -233,6 +257,7 @@
             android:layout_height="40dp"
             android:layout_alignStart="@+id/LunchAddBT"
             android:layout_alignTop="@+id/dnac"
+            android:background="@android:drawable/dialog_holo_light_frame"
             android:text="Add" />
 
         <Button
@@ -242,6 +267,7 @@
             android:layout_alignBottom="@+id/bfac"
             android:layout_marginStart="14dp"
             android:layout_toEndOf="@+id/bfac"
+            android:background="@android:drawable/dialog_holo_light_frame"
             android:text="Add" />
 
         <Button
@@ -250,6 +276,7 @@
             android:layout_height="40dp"
             android:layout_below="@+id/snListView"
             android:layout_marginTop="15dp"
+            android:background="@android:drawable/dialog_holo_light_frame"
             android:text="Save"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true" />

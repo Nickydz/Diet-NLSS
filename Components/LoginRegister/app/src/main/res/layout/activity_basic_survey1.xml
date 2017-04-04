@@ -266,7 +266,7 @@
         android:layout_marginLeft="88dp"
         android:background="@android:drawable/dialog_holo_light_frame"
         android:textColor="@android:color/black"
-        android:layout_alignEnd="@+id/tv_bsWeight" />
+        android:layout_alignEnd="@+id/btSubmit" />
 
 
 </RelativeLayout>

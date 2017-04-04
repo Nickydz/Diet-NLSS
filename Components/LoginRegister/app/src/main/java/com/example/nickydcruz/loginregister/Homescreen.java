@@ -55,6 +55,7 @@ public class Homescreen extends AppCompatActivity  {
         rlas = (RelativeLayout) findViewById(R.id.activity_homescreen);
         pref = getSharedPreferences("login.conf", Context.MODE_PRIVATE);
 
+        //fonts
         t = (TextView) findViewById(R.id.textView);
         Typeface myCustomFont=Typeface.createFromAsset(getAssets(),"fonts/Zapf Humanist 601 Bold BT.ttf");
         t.setTypeface(myCustomFont);
