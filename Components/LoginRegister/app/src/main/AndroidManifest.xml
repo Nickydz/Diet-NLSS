@@ -47,15 +47,17 @@
             android:name=".ResultPage"
             android:configChanges="orientation|keyboardHidden|screenSize" />
         <activity android:name=".superfood_main" />
-        <activity android:name=".FoodCravings" />
-        <activity
-            android:name=".ExerciseCalculator"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme" />
+
+        <activity android:name=".FoodCravings"
+            android:theme="@style/Theme"/>
+        <activity android:name=".ExerciseCalculator"
+            android:theme="@style/Theme"
+            android:screenOrientation="portrait"/>
         <activity android:name=".Advanced_Survey" />
         <activity android:name=".Second" />
         <activity android:name=".CustomDiet" />
-        <activity android:name=".Update_wtht" />
+        <activity android:name=".Update_wtht"
+            android:theme="@style/Theme"/>
         <activity android:name=".Piechart_Calories" />
         <!-- <activity android:name=".Dates" /> -->
         <activity android:name=".Graphbyleo" />

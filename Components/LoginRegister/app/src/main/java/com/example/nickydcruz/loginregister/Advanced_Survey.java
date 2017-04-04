@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
+import android.graphics.Typeface;
 import android.support.v4.widget.CursorAdapter;
 import android.support.v4.widget.SimpleCursorAdapter;
 import android.support.v7.app.AppCompatActivity;
@@ -35,12 +36,34 @@ public class Advanced_Survey extends AppCompatActivity {
     int noofmeals;
     float exerciselimit =1.1f;
     String activitylevel;
+    TextView t;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_advanced__survey);
         pref = getSharedPreferences("login.conf", Context.MODE_PRIVATE);
+
+        t = (TextView) findViewById(R.id.textview1);
+        Typeface myCustomFont=Typeface.createFromAsset(getAssets(),"fonts/Zapf Humanist 601 Bold BT.ttf");
+        t.setTypeface(myCustomFont);
+
+        t = (TextView) findViewById(R.id.question1);
+        Typeface myCustomFont1=Typeface.createFromAsset(getAssets(),"fonts/Zapf Humanist 601 Bold BT.ttf");
+        t.setTypeface(myCustomFont1);
+
+        t = (TextView) findViewById(R.id.question2);
+        Typeface myCustomFont2=Typeface.createFromAsset(getAssets(),"fonts/Zapf Humanist 601 Bold BT.ttf");
+        t.setTypeface(myCustomFont2);
+
+        t = (TextView) findViewById(R.id.question3);
+        Typeface myCustomFont3=Typeface.createFromAsset(getAssets(),"fonts/Zapf Humanist 601 Bold BT.ttf");
+        t.setTypeface(myCustomFont3);
+
+        t = (TextView) findViewById(R.id.question4);
+        Typeface myCustomFont4=Typeface.createFromAsset(getAssets(),"fonts/Zapf Humanist 601 Bold BT.ttf");
+        t.setTypeface(myCustomFont4);
+
         editor = pref.edit();
         Spinner spnprommeal = (Spinner) findViewById(R.id.spnprommeal);
         Spinner spnofmeal = (Spinner) findViewById(R.id.spnofmeal);

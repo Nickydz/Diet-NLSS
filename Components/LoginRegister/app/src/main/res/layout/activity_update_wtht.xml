@@ -16,12 +16,12 @@
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:ems="10"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="31dp"
-        android:layout_marginTop="139dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="140dp"
         android:id="@+id/etupwt"
-        android:hint="Update weight" />
+        android:hint="Update weight"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -53,7 +53,11 @@
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="0dp"
         android:id="@+id/btupwt"
-        android:elevation="0dp" />
+        android:elevation="0dp"
+        android:fontFamily="serif"
+        android:textColor="@android:color/black"
+        android:textStyle="bold"
+        android:background="@android:drawable/dialog_holo_light_frame"/>
 
     <Button
         android:text="Update"
@@ -61,7 +65,12 @@
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/etupht"
         android:layout_alignEnd="@+id/btupwt"
-        android:id="@+id/btupht" />
+        android:id="@+id/btupht"
+        android:fontFamily="serif"
+        android:textColor="@android:color/black"
+        android:textStyle="bold"
+        android:background="@android:drawable/dialog_holo_light_frame"/>
+    />
 
     <Button
         android:text="Update"
@@ -69,5 +78,10 @@
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/etupage"
         android:layout_alignStart="@+id/btupht"
-        android:id="@+id/btupage" />
+        android:id="@+id/btupage"
+        android:fontFamily="serif"
+        android:textColor="@android:color/black"
+        android:textStyle="bold"
+        android:background="@android:drawable/dialog_holo_light_frame"/>
+    />
 </RelativeLayout>
