@@ -175,6 +175,9 @@ public class Update_wtht extends AppCompatActivity {
             case R.id.advanceSurvey: i = new Intent(Update_wtht.this, Advanced_Survey.class);
                 break;
 
+            case R.id.activity_update_wtht: i = new Intent(getApplicationContext(), Update_wtht.class);
+                break;
+
             case R.id.logout: {
                 pref.edit().clear().commit();
                 i = new Intent(getApplicationContext(), LoginActivity.class);
@@ -183,6 +186,7 @@ public class Update_wtht extends AppCompatActivity {
 
         }
         Update_wtht.this.startActivity(i);
+        Update_wtht.this.finish();
         return super.onOptionsItemSelected(item);
     }
 }
