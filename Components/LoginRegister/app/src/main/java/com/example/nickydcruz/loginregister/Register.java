@@ -73,46 +73,62 @@ public class Register extends AppCompatActivity {
                 boolean ev = isValidEmaillId(etEmail.getText().toString().trim());
                 if (!(username.equals("")|| password.equals("")||dob.equals(""))) {
                     if (confirmpassword.equals(password) && ev) {
-                        Response.Listener<String> listner = new Response.Listener<String>() {
 
+                        Response.Listener<String> ulistener = new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {
+                                if(!response.contains("Username Found")){
+                                    Response.Listener<String> listner = new Response.Listener<String>() {
 
-                                if (response.contains("Successfully Registered")) {
-                                    Toast.makeText(Register.this, "Registration Successful", Toast.LENGTH_SHORT).show();
-                                    Intent i = new Intent(Register.this, BasicSurvey1.class);
-                                    i.putExtra("username",username);
-                                    i.putExtra("dob",dob+"");
-                                    int age = new FormulaClass().calculateAge(dob);
+                                        @Override
+                                        public void onResponse(String response) {
 
-                                    //Using Shared Preferences to maintain session
-                                    SharedPreferences pref = getSharedPreferences("login.conf", Context.MODE_PRIVATE);
-                                    SharedPreferences .Editor editor = pref.edit();
-                                    editor.putString("username",username);
-                                    editor.putString("password",password);
-                                    editor.putInt("age",age);
-                                    editor.putString("cf","0");
-                                    editor.apply();
+                                            if (response.contains("Successfully Registered")) {
+                                                Toast.makeText(Register.this, "Registration Successful", Toast.LENGTH_SHORT).show();
+                                                Intent i = new Intent(Register.this, BasicSurvey1.class);
+                                                i.putExtra("username", username);
+                                                i.putExtra("dob", dob + "");
+                                                int age = new FormulaClass().calculateAge(dob);
 
-                                    Register.this.startActivity(i);
-                                    Register.this.finish();
+                                                //Using Shared Preferences to maintain session
+                                                SharedPreferences pref = getSharedPreferences("login.conf", Context.MODE_PRIVATE);
+                                                SharedPreferences.Editor editor = pref.edit();
+                                                editor.putString("username", username);
+                                                editor.putString("password", password);
+                                                editor.putInt("age", age);
+                                                editor.putString("cf", "0");
+                                                editor.apply();
+
+                                                Register.this.startActivity(i);
+                                                Register.this.finish();
 
 
-                                } else {
-                                    AlertDialog.Builder builder = new AlertDialog.Builder(Register.this);
-                                    builder.setMessage("Registration failed")
-                                            .setNegativeButton("Retry", null)
-                                            .create()
-                                            .show();
+                                            } else {
+                                                AlertDialog.Builder builder = new AlertDialog.Builder(Register.this);
+                                                builder.setMessage("Registration failed")
+                                                        .setNegativeButton("Retry", null)
+                                                        .create()
+                                                        .show();
+                                            }
+
+
+                                        }
+
+                                    };
+                                    RegisterRequest registerRequest = new RegisterRequest(username, email, password, dob, listner);
+                                    RequestQueue queue = Volley.newRequestQueue(Register.this);
+                                    queue.add(registerRequest);
                                 }
-
-
+                                else {
+                                    Toast.makeText(getApplicationContext(),"Username already taken.Please select another username",Toast.LENGTH_LONG).show();
+                                }
                             }
-
                         };
-                        RegisterRequest registerRequest = new RegisterRequest(username, email, password, dob, listner);
-                        RequestQueue queue = Volley.newRequestQueue(Register.this);
-                        queue.add(registerRequest);
+
+
+                        UsernameExists usernameExists = new UsernameExists(username,ulistener);
+                        RequestQueue qu = Volley.newRequestQueue(Register.this);
+                        qu.add(usernameExists);
 
                     } else if (!ev) {
                         Toast.makeText(getApplicationContext(), "Invalid Email Address.", Toast.LENGTH_SHORT).show();

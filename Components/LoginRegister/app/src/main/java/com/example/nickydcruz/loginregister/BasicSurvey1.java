@@ -48,6 +48,7 @@ public class BasicSurvey1 extends AppCompatActivity implements NumberPicker.OnVa
     SharedPreferences pref;
     SharedPreferences.Editor editor;
     TextView t;
+    String type;
 
 
     @Override
@@ -197,6 +198,7 @@ public class BasicSurvey1 extends AppCompatActivity implements NumberPicker.OnVa
 
                                     editor.putString("height",height);
                                     editor.putString("weight",weight);
+                                    editor.putString("type",type);
                                     editor.commit();
                                     Calendar cal = Calendar.getInstance();
                                     myDb.insertMeasureData(de.MeasureTable,pref.getString("weight",weight),pref.getString("height",height),cal.get(Calendar.YEAR) + "-" + (cal.get(Calendar.MONTH)+1) + "-" + cal.get(Calendar.DAY_OF_MONTH));
@@ -218,7 +220,7 @@ public class BasicSurvey1 extends AppCompatActivity implements NumberPicker.OnVa
                         }
                     };
 
-                    BSurveyRequest brequest = new BSurveyRequest(username, dob, gender, height, weight, wristCir, listener);
+                    BSurveyRequest brequest = new BSurveyRequest(username, dob, gender, height, weight, wristCir, type, listener);
                     RequestQueue queue1 = Volley.newRequestQueue(BasicSurvey1.this);
                     queue1.add(brequest);
                 }
@@ -318,7 +320,13 @@ public class BasicSurvey1 extends AppCompatActivity implements NumberPicker.OnVa
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         String item = parent.getItemAtPosition(position).toString();
-        Toast.makeText(getApplicationContext(),item,Toast.LENGTH_LONG).show();
+        if(item.equals("Vegetarian")){
+            type = "v";
+        }
+        else{
+            type = "n";
+        }
+        Toast.makeText(getApplicationContext(),type,Toast.LENGTH_LONG).show();
     }
 
     @Override

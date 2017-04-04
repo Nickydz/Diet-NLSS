@@ -13,7 +13,7 @@ public class BSurveyRequest extends StringRequest {
     private static final String BS_REQUEST_URL = "http://dietnlss.000webhostapp.com/BSRequest.php";
     private Map<String, String> params;
 
-    public BSurveyRequest(String username,String dob,String gender,String height,String weight,String wristCir, Response.Listener<String> listener){
+    public BSurveyRequest(String username,String dob,String gender,String height,String weight,String wristCir,String type, Response.Listener<String> listener){
         super(Method.POST, BS_REQUEST_URL, listener, null);
         params = new HashMap<>();
         params.put("username",username);
@@ -22,6 +22,7 @@ public class BSurveyRequest extends StringRequest {
         params.put("weight",weight);
         params.put("wristCir",wristCir);
         params.put("dob", dob);
+        params.put("type", type);
     }
 
     @Override

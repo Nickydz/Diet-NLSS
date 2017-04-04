@@ -128,7 +128,11 @@ public class Water_graph extends AppCompatActivity {
         ArrayList<String> xEntrys = new ArrayList<>();
 
         calculated = pref.getFloat("calculated",0);
-        yEntrys.add(new PieEntry(waterltr, 1));
+        if(waterltr>calculated)
+            yEntrys.add(new PieEntry(waterltr-calculated, 1));
+        else
+            yEntrys.add(new PieEntry(calculated-waterltr, 1));
+
         yEntrys.add(new PieEntry(calculated,2));
 
 
@@ -137,7 +141,7 @@ public class Water_graph extends AppCompatActivity {
         }
 
         //create the data set
-        PieDataSet pieDataSet = new PieDataSet(yEntrys, "Employee Sales");
+        PieDataSet pieDataSet = new PieDataSet(yEntrys, "intake Water ");
         pieDataSet.setSliceSpace(2);
         pieDataSet.setValueTextSize(12);
 

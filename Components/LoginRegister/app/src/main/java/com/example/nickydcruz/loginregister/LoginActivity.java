@@ -78,10 +78,12 @@ public class LoginActivity extends AppCompatActivity implements CompoundButton.O
                                 String height = jsonResponse.getString("height");
                                 String weight = jsonResponse.getString("weight");
                                 String gender = jsonResponse.getString("gender");
+                                String type = jsonResponse.getString("type");
 
                                 editor.putString("height",height);
                                 editor.putString("weight",weight);
                                 editor.putString("gender",gender);
+                                editor.putString("type",type);
                                 editor.apply();
 
                                 LoginActivity.this.startActivity(intent);
@@ -176,9 +178,11 @@ public class LoginActivity extends AppCompatActivity implements CompoundButton.O
                                     String height = jsonResponse.getString("height");
                                     String weight = jsonResponse.getString("weight");
                                     String gender = jsonResponse.getString("gender");
+                                    String type = jsonResponse.getString("type");
                                     editor.putString("height",height);
                                     editor.putString("weight",weight);
                                     editor.putString("gender",gender);
+                                    editor.putString("type",type);
                                     editor.apply();
                                     LoginActivity.this.startActivity(intent);
                                     LoginActivity.this.finish();

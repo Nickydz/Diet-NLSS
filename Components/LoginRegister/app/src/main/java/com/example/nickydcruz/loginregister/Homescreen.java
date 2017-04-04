@@ -137,10 +137,17 @@ public class Homescreen extends AppCompatActivity  {
                 String sDat = year+"-"+monthOfYear+"-"+dayOfMonth;
                 tvdat.setText(dayOfMonth+"-"+monthOfYear+"-"+year);
                 Cursor resd = myDb.getDietData(de.DietTableName,sDat);
+                TextView tvbsnas;
+                for(int i=1;i<=pref.getInt("snackView",0);i++){
+                    tvbsnas = (TextView) findViewById(tvbsn.getId()+i) ;
+                    rlas.removeView(tvbsnas);
+                }
+                editor.putInt("snackView",0);
                 if(pref.getInt("snackView",0)!= 0){
                     editor.putInt("snackView",0);
                     editor.commit();
                 }
+
                 if(resd.moveToFirst()){
                     data(resd);
                     resd.close();
@@ -466,7 +473,8 @@ public class Homescreen extends AppCompatActivity  {
                   snack1.put(j+"",snres[j]);
               }
               RelativeLayout layout = (RelativeLayout)findViewById(R.id.activity_homescreen);
-              tvbsn.setText(snre[0]);
+              String stre= snre[0]+"\n";
+              tvbsn.setText(stre);
               tvbsn.setVisibility(View.VISIBLE);
               tvbsn.setOnClickListener(new View.OnClickListener() {
                   @Override
