@@ -84,7 +84,7 @@ public class ExerciseCalculator extends AppCompatActivity {
                 adapter.notifyDataSetChanged();
 
                 Toast.makeText(ExerciseCalculator.this, "Activity has been removed from your list", Toast.LENGTH_SHORT).show();
-                String s = new Float(num4).toString();
+                String s = Float.toString(num4);
                 totalcal.setText(s);
                 return false;
             }
@@ -190,11 +190,13 @@ public class ExerciseCalculator extends AppCompatActivity {
                 pref = getSharedPreferences("login.conf", Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor=pref.edit();
                 Calendar cal = Calendar.getInstance();
-                editor.putString("calday",cal.get(Calendar.YEAR) + "-"
+                String x123=cal.get(Calendar.YEAR) + "-"
                         + (cal.get(Calendar.MONTH)+1)
-                        + "-" + cal.get(Calendar.DAY_OF_MONTH));
-                editor.putInt("ExerciseCalc",Math.round(Float.parseFloat(totalcal.getText().toString())));
-
+                        + "-" + cal.get(Calendar.DAY_OF_MONTH);
+                editor.putString("calday",x123);
+                int calburnes= Math.round(Float.parseFloat(totalcal.getText().toString()));
+                editor.putInt("ExerciseCalc",calburnes);
+                editor.commit();
                 Intent i =new Intent(getApplicationContext(),ResultPage.class);
                 startActivity(i);
 

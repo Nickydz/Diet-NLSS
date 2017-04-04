@@ -199,6 +199,7 @@ public class Advanced_Survey extends AppCompatActivity {
                                 editor.putString("exerciselevel",exerciselimit+"");
                                 editor.putInt("advancedone",1);
                                 editor.putInt("aupdate",5);
+                                editor.putInt("Updateamr",3);
                                 editor.commit();
 
                                 Intent int1 = new Intent(getApplicationContext(), ResultPage.class);

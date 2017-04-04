@@ -51,30 +51,49 @@ public class ResultPage extends AppCompatActivity {
         float bmi = new FormulaClass().bmi(height,weight);
         int calburned =0;
         final int bmr = new FormulaClass().bmr(pref.getString("gender",""),pref.getInt("age",0),weight, height*100);
-        Calendar cal = Calendar.getInstance();
-        if(pref.getString("calday",0+"").equals(cal.get(Calendar.YEAR) + "-"
-                + (cal.get(Calendar.MONTH)+1)
-                + "-" + (cal.get(Calendar.DAY_OF_MONTH)+1))){
-            calburned= Math.round(pref.getInt("ExerciseCalc",0));
-            editor.apply();
 
-        }
-        amr=bmr;
-        if(pref.getInt("amr",1700)!=amr) {
-            editor.putInt("aupdate",5);
-            editor.putInt("amr", amr);
+        Calendar cal = Calendar.getInstance();
+        if(!(pref.getString("SystemDate",0+"").equals(cal.get(Calendar.YEAR) + "-"
+                + (cal.get(Calendar.MONTH)+1)
+                + "-" + cal.get(Calendar.DAY_OF_MONTH)))){
+            editor.putInt("Updateamr",1);
+            editor.remove("amr");
+            editor.putString("SystemDate",cal.get(Calendar.YEAR) + "-" + (cal.get(Calendar.MONTH)+1) + "-" + cal.get(Calendar.DAY_OF_MONTH));
             editor.commit();
         }
 
-        if(pref.getInt("advancedone",0)==1){
-            amr = Math.round(bmr*Float.parseFloat(pref.getString("exerciselevel",1.1f+"")) + calburned);
+        if(pref.getInt("advancedone",0)==1 && (pref.getInt("Updateamr",0)==1 || pref.getInt("Updateamr",0)==3)){
+            editor.putInt("amr",Math.round(bmr*Float.parseFloat(pref.getString("exerciselevel",1+""))));
+            if(pref.getInt("Updateamr",0)==3)
+            editor.putInt("Updateamr",1);
+            editor.commit();
         }
+
+
+        if(pref.getString("calday",0+"").equals(cal.get(Calendar.YEAR) + "-"
+                + (cal.get(Calendar.MONTH)+1)
+                + "-" + (cal.get(Calendar.DAY_OF_MONTH)-1)) && (pref.getInt("Updateamr",0)==1 || pref.getInt("Updateamr",0)==3)){
+            calburned= Math.round(pref.getInt("ExerciseCalc",0));
+            amr =pref.getInt("amr", Math.round(bmr*Float.parseFloat(pref.getString("exerciselevel",1+""))));
+            editor.putInt("amr",amr+calburned);
+            editor.putInt("aupdate",5);
+            editor.putInt("Updateamr",0);
+            editor.apply();
+        }
+
+
+
+
 
         final FormulaClass f = new FormulaClass();
         String category = f.category(bmi);
         String expertsMessage = "";
         tvCategory.setText(category);
-        tvBmr.setText("Your Calorie requirement for the day is " + amr);
+        amr =pref.getInt("amr", Math.round(bmr*Float.parseFloat(pref.getString("exerciselevel",1+""))));
+        String dailyintake = "Your Calorie requirement for the day is " + amr;
+        editor.putInt("Updateamr",1);
+        editor.apply();
+        tvBmr.setText(dailyintake);
 
         btcusD.setOnClickListener(new View.OnClickListener() {
             @Override
