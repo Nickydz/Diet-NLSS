@@ -44,6 +44,6 @@ public class Start extends AppCompatActivity {
                 // close this activity
                 finish();
             }
-        }, 5*1000); // wait for 5 seconds
+        }, 4*1000); // wait for 5 seconds
     }
 }

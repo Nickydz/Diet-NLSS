@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:id="@+id/textView"
-        android:src="@mipmap/nlss_crop"
+        android:src="@mipmap/crop1"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
         android:textSize="80sp" />
