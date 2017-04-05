@@ -97,6 +97,7 @@ public class ResultPage extends AppCompatActivity {
             editor.putInt("amr",amr+calburned);
             editor.putInt("aupdate",5);
             editor.putInt("Updateamr",0);
+            editor.putString("calday",0+"");
             editor.apply();
         }
 
@@ -198,10 +199,16 @@ public class ResultPage extends AppCompatActivity {
                         }
                     }
                 };
-
-                RpRequest rp = new RpRequest(a[0]+"",a[1]+"",a[2]+"",b[0]+ "",b[1]+"",b[2]+"",listener);
-                RequestQueue queue2 = Volley.newRequestQueue(ResultPage.this);
-                queue2.add(rp);
+                if(pref.getString("type","n").equals("v")) {
+                    RpRequestveg rp = new RpRequestveg(a[0] + "", a[1] + "", a[2] + "", b[0] + "", b[1] + "", b[2] + "", listener);
+                    RequestQueue queue2 = Volley.newRequestQueue(ResultPage.this);
+                    queue2.add(rp);
+                }
+                else {
+                    RpRequest rp = new RpRequest(a[0] + "", a[1] + "", a[2] + "", b[0] + "", b[1] + "", b[2] + "", listener);
+                    RequestQueue queue2 = Volley.newRequestQueue(ResultPage.this);
+                    queue2.add(rp);
+                }
             }
         });
 
@@ -251,9 +258,16 @@ public class ResultPage extends AppCompatActivity {
                     }
                 };
 
-                RpRequest rp = new RpRequest(a[0]+"",a[1]+"",a[2]+"",b[0]+"",+b[1]+"",b[2]+"",listener);
-                RequestQueue queue2 = Volley.newRequestQueue(ResultPage.this);
-                queue2.add(rp);
+                if(pref.getString("type","n").equals("v")) {
+                    RpRequestveg rp = new RpRequestveg(a[0] + "", a[1] + "", a[2] + "", b[0] + "", b[1] + "", b[2] + "", listener);
+                    RequestQueue queue2 = Volley.newRequestQueue(ResultPage.this);
+                    queue2.add(rp);
+                }
+                else {
+                    RpRequest rp = new RpRequest(a[0] + "", a[1] + "", a[2] + "", b[0] + "", b[1] + "", b[2] + "", listener);
+                    RequestQueue queue2 = Volley.newRequestQueue(ResultPage.this);
+                    queue2.add(rp);
+                }
             }
         });
 
@@ -304,9 +318,16 @@ public class ResultPage extends AppCompatActivity {
                     }
                 };
 
-                RpRequest rp = new RpRequest(a[0]+"",a[1]+"",a[2]+"",b[0]+"",b[1]+"",b[2]+"",listener);
-                RequestQueue queue2 = Volley.newRequestQueue(ResultPage.this);
-                queue2.add(rp);
+                if(pref.getString("type","n").equals("v")) {
+                    RpRequestveg rp = new RpRequestveg(a[0] + "", a[1] + "", a[2] + "", b[0] + "", b[1] + "", b[2] + "", listener);
+                    RequestQueue queue2 = Volley.newRequestQueue(ResultPage.this);
+                    queue2.add(rp);
+                }
+                else {
+                    RpRequest rp = new RpRequest(a[0] + "", a[1] + "", a[2] + "", b[0] + "", b[1] + "", b[2] + "", listener);
+                    RequestQueue queue2 = Volley.newRequestQueue(ResultPage.this);
+                    queue2.add(rp);
+                }
 
             }
         });

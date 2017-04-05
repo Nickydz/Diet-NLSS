@@ -13,6 +13,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -24,6 +25,7 @@ import org.json.JSONObject;
 public class LoginActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener {
 
     private CheckBox chRem ;
+    DBaseHelper Mydb;
     SharedPreferences pref;
     SharedPreferences.Editor editor;
     boolean checkFlag;
@@ -33,6 +35,37 @@ public class LoginActivity extends AppCompatActivity implements CompoundButton.O
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        Mydb = new DBaseHelper(getApplicationContext());
+
+
+        Response.Listener<String> responseListenerc = new Response.Listener<String>() {
+
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject jsonResponse = new JSONObject(response);
+                    boolean success = jsonResponse.getBoolean("success");
+                    int key = jsonResponse.getInt("key");
+                    if (success) {
+                        for (int i = 0; i < key; i = i + 6)
+                            Mydb.insertData(jsonResponse.getString(i + ""), jsonResponse.getString((i + 1) + ""), jsonResponse.getString((i + 2) + ""), jsonResponse.getString((i + 3) + ""), jsonResponse.getString((i + 4) + ""), jsonResponse.getString((i + 5) + ""));
+
+                        Toast.makeText(LoginActivity.this, "Success", Toast.LENGTH_LONG).show();
+                        int i=1000;
+                    } else {
+                        Toast.makeText(LoginActivity.this, "Error", Toast.LENGTH_LONG).show();
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        };
+
+        CustomRequest customRequest = new CustomRequest(responseListenerc);
+        RequestQueue queuec = Volley.newRequestQueue(LoginActivity.this);
+        queuec.add(customRequest);
 
         final EditText etUsername = (EditText) findViewById(R.id.etUsername);
         final EditText etPassword =(EditText) findViewById(R.id.etPassword);

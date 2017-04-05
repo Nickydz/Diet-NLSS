@@ -476,6 +476,7 @@ public class Homescreen extends AppCompatActivity  {
               String stre= snre[0]+"\n";
               tvbsn.setText(stre);
               tvbsn.setVisibility(View.VISIBLE);
+              tvSnack1.setVisibility(View.VISIBLE);
               tvbsn.setOnClickListener(new View.OnClickListener() {
                   @Override
                   public void onClick(View v) {
@@ -535,6 +536,7 @@ public class Homescreen extends AppCompatActivity  {
             if(snack2count == 0) {
                 tvlsn.setText(snack2.get("sn"));
                 tvlsn.setVisibility(View.VISIBLE);
+                tvSnack2.setVisibility(View.VISIBLE);
                 tvlsn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
