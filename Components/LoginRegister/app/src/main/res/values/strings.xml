@@ -1,4 +1,4 @@
-<resources>
+﻿<resources>
     <string name="app_name">Diet NLSS</string>
     <string name="title_activity_homescreen">Homescreen</string>
     <string name="emailerror">Enter a valid email</string>
@@ -117,9 +117,91 @@
         <item>ice hockey(light), MET:6 </item>
         <item>ice hockey(moderate), MET:8 </item>
         <item>ice hockey(heavy), MET:10 </item>
-
-
-    </string-array>
+<item>conducting orchestra, standing MET value:2.3</item>
+<item>drums, sitting MET value:3.8</item>
+<item>drumming (e.g., bongo, conga, benbe), moderate, sitting MET value: 3.0</item>
+<item>flute, sitting MET value: 2.0</item>
+<item>horn, standing MET value: 1.8</item>
+<item>piano, sitting MET value: 2.3</item>
+<item>playing musical instruments, general MET value:2</item>
+<item>organ, sitting MET value:2</item>
+<item>trombone, standing MET value:3.5</item>
+<item>trumpet, standing MET value:1.8</item>
+<item>violin, sitting MET value:2.5</item>
+<item>woodwind, sitting MET value:1.8</item>
+<item>guitar, classical, folk, sitting MET value:2</item>
+<item>guitar, rock and roll band, standing MET value:3</item>
+<item>marching band, baton twirling, walking, moderate pace, general MET value:4</item>
+<item>marching band, playing an instrument, walking, brisk pace, general MET value:5.5</item>	
+<item>marching band, drum major, walking MET value:3.5</item>
+<item>Sexual Activity, active, vigorous effort MET value: 2.8</item>
+<item>Sexual Activity,general, moderate effort, MET value:1.8</item>
+<item>Sexual Activity,passive, light effort, kissing, hugging MET value:1.3</item>
+<item>Alaska Native Games, Eskimo Olympics, general MET value:5.5</item>
+<item>archery, non-hunting MET value:4.3</item>
+<item>badminton, competitive ( 450) MET value:7</item>
+<item>badminton, social singles and doubles, general MET value:5.5</item>
+<item>basketball, game (490) MET value:8</item>
+<item>basketball, non-game, general ( 480) MET value:6</item>
+<item>basketball, general MET value:6.5</item>
+<item>basketball, officiating ( 500) MET value:7</item>
+<item>basketball, shooting baskets MET value:4.5</item>
+<item>basketball, drills, practice MET value:9.3</item>
+<item>basketball, wheelchair MET value:7.8</item>
+<item>Billiards MET value:2.5</item>
+<item>bowling ( 390) MET value:3</item>
+<item>bowling, indoor, bowling alley MET value:3.8</item>
+<item>boxing, in ring, general MET value:12.8</item>
+<item>boxing, punching bag MET value:5.5</item>
+<item>boxing, sparring MET value:7.8</item>
+<item>Broomball MET value:7</item>
+<item>cheerleading, gymnastic moves, competitive MET value:6</item>
+<item>coaching, football, soccer, basketball, baseball, swimming, etc. MET value:4</item>
+<item>coaching, actively playing sport with players MET value:8</item>
+<item>cricket, batting, bowling, fielding MET value:4.8</item>
+<item>Croquet MET value:3.3</item>
+<item>Curling MET value:4</item>
+<item>darts, wall or lawn MET value:2.5</item>
+<item>drag racing, pushing or driving a car MET value:6.0</item>
+<item>auto racing, open wheel MET value:8.5</item>
+<item>Fencing MET value:6</item>
+<item>football, competitive MET value:8</item>
+<item>football, touch, flag, general ( 510) MET value:8</item>
+<item>football, touch, flag, light effort MET value:4</item>
+<item>football or baseball, playing catch MET value:2.5</item>
+<item>frisbee playing, general MET value:3</item>
+<item>frisbee, ultimate MET value:8</item>
+<item>golf, general MET value:4.8</item>
+<item>golf, walking, carrying clubs MET value:4.3</item>
+<item>golf, miniature, driving range MET value:3</item>
+<item>golf, walking, pulling clubs MET value:5.3</item>
+<item>golf, using power cart ( 070) MET value:3.5</item>
+<item>gymnastics, general MET value:3.8</item>
+<item>squash ( 530) MET value:12.0</item>
+<item>squash, general MET value:7.3</item>
+<item>table tennis, ping pong ( 410) MET value:4</item>
+<item>tai chi, qi gong, general MET value:3</item>
+<item>tai chi, qi gong, sitting, light effort MET value:1.5</item>
+<item>tennis, general MET value:7.3</item>
+<item>tennis, doubles ( 430) MET value:6</item>
+<item>tennis, doubles MET value:4.5</item>
+<item>tennis, singles ( 420) MET value:8</item>
+<item>tennis, hitting balls, non-game play, moderate effort MET value:5</item>
+<item>trampoline, recreational MET value:3.5</item>
+<item>trampoline, competitive MET value:4.5</item>
+<item>volleyball ( 400) MET value:4</item>
+<item>volleyball, competitive, in gymnasium MET value:6</item>
+<item>volleyball, non-competitive, 6 - 9 member team, general MET value:3</item>
+<item>volleyball, beach, in sand MET value:8</item>
+<item>wrestling (one match = 5 minutes) MET value:6</item>
+<item>wallyball, general MET value:7</item>
+<item>track and field (e.g., shot, discus, hammer throw) MET value:4</item>
+<item>track and field (e.g., high jump, long jump, triple  jump, javelin, pole vault) MET value:6</item>
+<item>track and field (e.g., steeplechase, hurdles) MET value:10</item>
+<item>automobile or light truck (not a semi) driving MET value:2.5</item>
+<item>riding in a car or truck MET value:1.3</item>
+<item>riding in a bus or train MET value:1.3</item>
+	  </string-array>
 
     <string-array name="foods">
         <item>Dal (0.5 cup)</item>
