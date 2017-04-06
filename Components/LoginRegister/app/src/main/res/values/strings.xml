@@ -204,16 +204,47 @@
 	  </string-array>
 
     <string-array name="foods">
+        <item>Bread, white 1 slice (25 g)</item>
+        <item>Bread, multi-grain 1 slice regular (26 g)</item>
+        <item>Dosa</item>
+        <item>Paratha, homemade</item>
+        <item>Aalo paratha, homemade</item>
+        <item>Chapati with oil</item>
+        <item>Chapati without oil(Roti)</item>
+        <item>Boiled egg </item>
+        <item>1 egg omlet with onion,bell pepper,tomato</item>
+        <item>Butter 1 tbsp (14.2 g)</item>
+        <item>Peanut butter, smooth style 2 tbsp (32 g)</item>
+        <item>Milk, whole 1 cup (244 g)</item>
+        <item>Milk, nonfat 1 cup (245 g)</item>
+        <item>Hot chocolate 1 cup (250 g)</item>
+        <item>Green Tea (1 cup)</item>
+        <item>idli(1 piece)</item>
+        <item>upma(120g)</item>
+        <item>poha(100g)</item>
+        <item>vegetable sandwich (1 serving)</item>
+        <item>vada pav (1 regular)</item>
+        <item>parle g (1 pc)</item>
+        <item>monaco (9 pcs)</item>
+        <item>medu wada(2 pcs, 60g)</item>
+        <item>samosa (40g)</item>
+        <item>Masala dosa(1 serving)</item>
+        <item>amul cheese slice (1 slice)</item>
+        <item>Onion rava dosa (1 dosa)</item>
+        <item>Rava idli (1 idli)</item>
+        <item>muli paratha (1 serving)</item>
+        <item>sabudana khichadi(1 bowl(150g))</item>
+        <item>Methi thepla (1 serving)</item>
         <item>Dal (0.5 cup)</item>
         <item>White rice,medium grain(1 cup)</item>
         <item>Coconut chicken curry(1 serving)</item>
-        <item>Chapati with oil</item>
-        <item>Chapati without oil (Roti)</item>
+        <item>Chapati with oil(1 chapati)</item>
+        <item>Chapati without oil (Roti)(2 chapatis)</item>
         <item>1 egg omlet with onions, tomato, bell pepper</item>
         <item>white rice, large grain(1 cup)</item>
-        <item>Palak paneer,1/2 cup</item>
+        <item>Palak paneer,1/2 cup </item>
         <item>aloo mutter(1 cup cooked)</item>
-        <item>Dal khichdi ,1 cup</item>
+        <item>chana Dal dry khichdi ,1 cup </item>
         <item>Mutter paneer</item>
         <item>Paneer malai</item>
         <item>Paneer darbari</item>
@@ -229,14 +260,13 @@
         <item>Fried cod fish</item>
         <item>Mutton curry</item>
         <item>Paneer chettinad</item>
-        <item>Fried cod fish</item>
         <item>Mutton curry</item>
         <item>Mutton biryani</item>
         <item>Mutton roast</item>
         <item>Mutton pulao</item>
         <item>Mutton sausage</item>
         <item>Mutton soup</item>
-        <item>Mutton biryani</item>
+        <item>Rice and Dal khichdi</item>
         <item>Tomato basil soup</item>
         <item>Veg manchow soup</item>
         <item>Carrot and orange soup</item>
@@ -248,32 +278,16 @@
         <item>Mushroom soup</item>
         <item>Chicken noodle soup</item>
         <item>Parmesan (chicken)</item>
+        <item>Chicken noodle soup</item>
         <item>Chicken tandoori</item>
         <item>Chicken 65</item>
         <item>Butter chicken</item>
         <item>Chicken makhani</item>
-        <item>Paneer makhani</item>
         <item>Chicken tandoori</item>
         <item>Paneer makhani</item>
         <item>Vegetable makhani</item>
         <item>Dal makhani</item>
         <item>Corn soup</item>
-        <item>Wheat, bread(white)</item>
-        <item>Wheat, bread(brown)</item>
-        <item>Dosa</item>
-        <item>Paratha, homemade</item>
-        <item>Aalo paratha, homemade</item>
-        <item>Boiled egg</item>
-        <item>Dal (0.5 cup)</item>
-        <item>White rice,medium grain(1 cup)</item>
-        <item>Palak (1 cup)</item>
-        <item>Coconut chicken curry</item>
-        <item>1 egg omlet with onions, tomato, bell pepper</item>
-        <item>white rice, large grain(1 cup)</item>
-        <item>Palak paneer,1/2 cup (kitchens of India)</item>
-        <item>aloo mutter, 1/2 pack serving (truly indian)</item>
-        <item>pav bhaji, 1 serving</item>
-        <item>Khichdi ,1 cup</item>
         <item>Cheetos (60 gms)</item>
         <item>Oreo (120 gms)</item>
         <item>Banana (1 medium sized)</item>
@@ -282,42 +296,42 @@
         <item>Mango (1 medium sized)</item>
         <item>Masala munch (Kurkure) (50 gms)</item>
         <item>Popcorn (30 gms)</item>
-        <item> Banana chips (100 gms)</item>
+        <item>Banana chips (100 gms)</item>
         <item>Pav bhaji (1 serving)</item>
-        <item>Wada pav (single)</item>
         <item>Paani puri (1 piece)</item>
         <item>Samosa (single)</item>
         <item>Bhel puri (1 serving)</item>
-        <item> Masala dosa (100 gms)</item>
-        <item> Dhokla (1 serving)</item>
-        <item> Upma (1 serving)</item>
-        <item> Sabudana wada (5 pieces)</item>
-        <item> Veg Pizza (6 pieces)</item>
-        <item> Veg burger (1 regular)</item>
-        <item> Chicken burger (1 regular)</item>
-        <item> Orange (1 medium sized)</item>
-        <item> Dates (12 gms)</item>
-        <item> Grapes (1 bunch)</item>
-        <item> Snickers (50 gms)</item>
-        <item> Pineapple (1 slice)</item>
-        <item> Gulab jamun (1 piece)</item>
-        <item> Rasgulla (1 piece)</item>
-        <item> Misal pav (1 serving)</item>
-        <item> Dabeli (1 piece)</item>
-        <item> Bhajia (100 gm)</item>
-        <item> Mixture (Haldiram) (25 gm)</item>
-        <item> Veg Macroni (1 serving)</item>
-        <item> Maggi masala noodles (1 pack)</item>
-        <item> Veg hakka noodles (1 serving)</item>
-        <item> Bhakarwadi (100 gms)</item>
-        <item> Chakli (75 gm)</item>
-        <item> Chicken Macroni (1 serving)</item>
-        <item> Lays classic potato (60 gm)</item>
-        <item> Bingo (tomato madness) (50 gm)</item>
-        <item> Doritos (50 gm)</item>
-        <item> Chicken lollipop (1 drumstick)</item>
-        <item> French fries (6 fries)</item>
-        <item> Potato croquettes (3 croquettes)</item>
+        <item>Masala dosa (100 gms)</item>
+        <item>Dhokla (1 serving)</item>
+        <item>Upma (1 serving)</item>
+        <item>Sabudana wada (5 pieces)</item>
+        <item>Veg Pizza (6 pieces)</item>
+        <item>Veg burger (1 regular)</item>
+        <item>Chicken burger (1 regular)</item>
+        <item>Orange (1 medium sized)</item>
+        <item>Dates (12 gms)</item>
+        <item>Grapes (1 bunch)</item>
+        <item>Snickers (50 gms)</item>
+        <item>Pineapple (1 slice)</item>
+        <item>Gulab jamun (1 piece)</item>
+        <item>Rasgulla (1 piece)</item>
+        <item>Misal pav (1 serving)</item>
+        <item>Dabeli (1 piece)</item>
+        <item>Bhajia (100 gm)</item>
+        <item>Mixture (Haldiram) (25 gm)</item>
+        <item>Jackfruit chips (100 gm)</item>
+        <item>Veg Macroni (1 serving)</item>
+        <item>Maggi masala noodles (1 pack)</item>
+        <item>Veg hakka noodles (1 serving)</item>
+        <item>Bhakarwadi (100 gms)</item>
+        <item>Chakli (75 gm)</item>
+        <item>Chicken Macroni (1 serving)</item>
+        <item>Lays classic potato (60 gm)</item>
+        <item>Bingo (tomato madness) (50 gm)</item>
+        <item>Doritos (50 gm)</item>
+        <item>Chicken lollipop (1 drumstick)</item>
+        <item>French fries (6 fries)</item>
+        <item>Potato croquettes (3 croquettes)</item>
     </string-array>
     <string-array name="noofmeal">
         <item>3 Main Meals</item>
