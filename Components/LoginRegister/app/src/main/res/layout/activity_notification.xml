@@ -74,16 +74,17 @@
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:ems="10"
-        android:layout_below="@+id/sn1"
-        android:layout_alignStart="@+id/sn1"
         android:layout_marginTop="15dp"
-        android:id="@+id/snText1" />
+        android:id="@+id/snText1"
+        android:layout_below="@+id/sn1"
+        android:layout_alignStart="@+id/sn1" />
 
     <Button
         android:text="notify me!"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/snText1"
+        android:layout_alignBottom="@+id/snText1"
+        android:layout_alignBaseline="@+id/snText1"
         android:layout_alignStart="@+id/lnButton"
         android:id="@+id/snButton1" />
 
@@ -93,7 +94,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/snButton1"
         android:layout_alignStart="@+id/snText1"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="13dp"
         android:id="@+id/dn" />
 
     <Button
@@ -101,6 +102,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/dnText"
+        android:layout_alignBaseline="@+id/dnText"
         android:layout_alignEnd="@+id/snButton1"
         android:id="@+id/dnButton" />
 
