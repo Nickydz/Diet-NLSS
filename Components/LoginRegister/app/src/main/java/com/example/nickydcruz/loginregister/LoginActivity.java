@@ -22,6 +22,8 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Calendar;
+
 public class LoginActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener {
 
     private CheckBox chRem ;
@@ -105,7 +107,17 @@ public class LoginActivity extends AppCompatActivity implements CompoundButton.O
                             editor.apply();
 
                             if(basicDone.equals("1")) {
-                                Intent intent = new Intent(LoginActivity.this, BasicSurvey1.class);
+                                Intent intent;
+                                Calendar cal = Calendar.getInstance();
+                                if(!(pref.getString("SystemDate",0+"").equals(cal.get(Calendar.YEAR) + "-"
+                                        + (cal.get(Calendar.MONTH)+1)
+                                        + "-" + cal.get(Calendar.DAY_OF_MONTH)))){
+                                     intent = new Intent(LoginActivity.this, ResultPage.class);
+                                    editor.commit();
+                                }
+                                else {
+                                     intent = new Intent(LoginActivity.this, ResultPage.class);
+                                }
                                 intent.putExtra("dob", dob);
 
                                 String height = jsonResponse.getString("height");
@@ -205,7 +217,17 @@ public class LoginActivity extends AppCompatActivity implements CompoundButton.O
 
                                 //To check if basic survey already done
                                 if(basicDone.equals("1")) {
-                                    Intent intent = new Intent(LoginActivity.this, BasicSurvey1.class);
+                                    Intent intent;
+                                    Calendar cal = Calendar.getInstance();
+                                    if(!(pref.getString("SystemDate",0+"").equals(cal.get(Calendar.YEAR) + "-"
+                                            + (cal.get(Calendar.MONTH)+1)
+                                            + "-" + cal.get(Calendar.DAY_OF_MONTH)))){
+                                        intent = new Intent(LoginActivity.this, ResultPage.class);
+                                        editor.commit();
+                                    }
+                                    else {
+                                        intent = new Intent(LoginActivity.this, ResultPage.class);
+                                    }
                                     intent.putExtra("username", username);
                                     intent.putExtra("dob", dob);
                                     String height = jsonResponse.getString("height");

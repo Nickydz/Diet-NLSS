@@ -176,7 +176,7 @@ public class superfood_main extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        Intent i = new Intent(getApplicationContext(),Homescreen.class);
+        Intent i = new Intent(getApplicationContext(),superfood_main.class);
         switch (item.getItemId()) {
             case R.id.foodcravings: i = new Intent(getApplicationContext(), FoodCravings.class);
                 break;
@@ -196,6 +196,9 @@ public class superfood_main extends AppCompatActivity {
             case R.id.activity_update_wtht: i = new Intent(getApplicationContext(), Update_wtht.class);
                 break;
 
+            case R.id.Graphs: i = new Intent(getApplicationContext(), Graphs.class);
+                break;
+
             case R.id.logout: {
                 pref.edit().clear().commit();
                 i = new Intent(getApplicationContext(), LoginActivity.class);
@@ -203,9 +206,7 @@ public class superfood_main extends AppCompatActivity {
             }
 
         }
-        superfood_main.this.startActivity(i);
-        superfood_main.this.finish();
+        startActivity(i);
         return super.onOptionsItemSelected(item);
     }
-
 }

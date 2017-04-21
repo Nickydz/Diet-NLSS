@@ -34,6 +34,7 @@ public class FormulaClass {
 
 
     public float bmi(float hieght, float wieght) {
+
         float bmi = wieght/(hieght*hieght);
 
         return bmi;
@@ -70,7 +71,7 @@ public class FormulaClass {
             category = "You are Overweight";
         }
         else if (bmi >= 30 && bmi < 35){
-            category = "You are Moderately obese";
+            category = "You are obese";
         }
         else if (bmi >= 35 && bmi < 40){
             category = "You are Severely obese";
@@ -88,10 +89,10 @@ public class FormulaClass {
     public int bmr(String gender, int age, float wrt, float hieght) {
         Double bmr1;
         if (gender.equals("M")){
-            bmr1 = (10*wrt)+(6.25*hieght)+(5*age)+5;
+            bmr1 = 66+(13.7*wrt)+(5*hieght)-(6.8*age);
         }
         else {
-            bmr1 =(10*wrt)+(6.25*hieght)+(5*age)-161;
+            bmr1 =655+(9.6*wrt)+(1.8*hieght)-(4.7*age);
         }
         int bmr = bmr1.intValue();
         return bmr;

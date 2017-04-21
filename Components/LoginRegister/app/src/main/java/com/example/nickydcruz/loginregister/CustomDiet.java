@@ -421,8 +421,8 @@ public class CustomDiet extends Activity {
 
 //                breakfast.get("bfname" + bfcount[0])
                 if(!(sntvdisp.getText().toString().equals("TextView") && sncal.getText().toString().equals("TextView"))){
-                    snac.add(sncount,e[0]);
-                    snca.add(sncount,f[0]);
+                    snac.add(sncount,g[0]);
+                    snca.add(sncount,h[0]);
                     snxpl.add(sncount,dnf[0]);
                     sncount++;
 
@@ -525,6 +525,7 @@ public class CustomDiet extends Activity {
                         Intent i = new Intent(getApplicationContext(),Homescreen.class);
                         i.putExtra("bmr",1700+"");
                         startActivity(i);
+                        finish();
                     }
                     else {
                         Toast.makeText(getApplicationContext(),"kar raha kya hai abhi",Toast.LENGTH_LONG);

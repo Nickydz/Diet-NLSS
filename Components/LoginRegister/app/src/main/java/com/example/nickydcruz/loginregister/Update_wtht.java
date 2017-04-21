@@ -158,24 +158,27 @@ public class Update_wtht extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        Intent i = new Intent(Update_wtht.this,Homescreen.class);
+        Intent i = new Intent(getApplicationContext(),Homescreen.class);
         switch (item.getItemId()) {
-            case R.id.foodcravings: i = new Intent(Update_wtht.this, FoodCravings.class);
+            case R.id.foodcravings: i = new Intent(getApplicationContext(), FoodCravings.class);
                 break;
 
-            case R.id.superfood: i = new Intent(Update_wtht.this, superfood_main.class);
+            case R.id.superfood: i = new Intent(getApplicationContext(), superfood_main.class);
                 break;
 
-            case R.id.excal: i = new Intent(Update_wtht.this, ExerciseCalculator.class);
+            case R.id.excal: i = new Intent(getApplicationContext(), ExerciseCalculator.class);
                 break;
 
-            case R.id.diet: i = new Intent(Update_wtht.this, Homescreen.class);
+            case R.id.diet: i = new Intent(getApplicationContext(), Homescreen.class);
                 break;
 
-            case R.id.advanceSurvey: i = new Intent(Update_wtht.this, Advanced_Survey.class);
+            case R.id.advanceSurvey: i = new Intent(getApplicationContext(), Advanced_Survey.class);
                 break;
 
             case R.id.activity_update_wtht: i = new Intent(getApplicationContext(), Update_wtht.class);
+                break;
+
+            case R.id.Graphs: i = new Intent(getApplicationContext(), Graphs.class);
                 break;
 
             case R.id.logout: {
@@ -185,8 +188,7 @@ public class Update_wtht extends AppCompatActivity {
             }
 
         }
-        Update_wtht.this.startActivity(i);
-        Update_wtht.this.finish();
+        startActivity(i);
         return super.onOptionsItemSelected(item);
     }
 }

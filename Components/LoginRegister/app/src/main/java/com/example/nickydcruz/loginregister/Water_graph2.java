@@ -62,6 +62,7 @@ public class Water_graph2 extends AppCompatActivity {
 
 //                        s.putExtra("stuffone", calculated);
                         startActivity(s);
+                        finish();
                     }
                 },1500); // 1500 = 1.5seconds
             }
@@ -93,6 +94,7 @@ public class Water_graph2 extends AppCompatActivity {
 //                        bundletwo.putString("stuffone", Float.toString(calculated));
                         t.putExtra("calculatedvalue",calculated);
                         startActivity(t);
+                        finish();
                     }
                 },1500); // 1500 = 1.5seconds
             }
@@ -126,6 +128,7 @@ public class Water_graph2 extends AppCompatActivity {
 //                        bundlethree.putString("stuffone", Float.toString(calculated));
                         q.putExtra("calculatedvalue",calculated);
                         startActivity(q);
+                        finish();
                     }
                 },1500); // 1500 = 1.5seconds
             }

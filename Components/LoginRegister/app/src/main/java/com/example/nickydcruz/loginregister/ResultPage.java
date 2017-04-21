@@ -65,7 +65,7 @@ public class ResultPage extends AppCompatActivity {
         int age = pref.getInt("age",0);
         final DBHelper myDb= new DBHelper(this,username);
 
-        float height = 0.3048f * Float.parseFloat(pref.getString("height","0"));
+        float height =Float.parseFloat(pref.getString("height","0"));
         float weight = Float.parseFloat(pref.getString("weight","0"));
         float bmi = new FormulaClass().bmi(height,weight);
         int calburned =0;
@@ -153,7 +153,7 @@ public class ResultPage extends AppCompatActivity {
             expertsMessage = "Since your weight is more than ideal we recommend you decrease your weight.";
             btLW.setVisibility(View.VISIBLE);
             btLW.setClickable(true);
-            if (bmi >= 25 && bmi < 26) {
+            if (bmi >= 25 && bmi < 27) {
                 expertsMessage = expertsMessage + "Alternatively .You could also maintain the same weight";
                 btMW.setVisibility(View.VISIBLE);
                 btMW.setClickable(true);
@@ -339,7 +339,7 @@ public class ResultPage extends AppCompatActivity {
         bt.setOnClickListener(new View.OnClickListener() {
             @Override
            public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(),CalorieGraph.class);
+                Intent i = new Intent(getApplicationContext(),Graphs.class);
                 startActivity(i);
            }
         }
@@ -349,46 +349,6 @@ public class ResultPage extends AppCompatActivity {
 
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.activity_homescreen_actions,menu);
-        return super.onCreateOptionsMenu(menu);
-
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        Intent i = new Intent(ResultPage.this,Homescreen.class);
-        switch (item.getItemId()) {
-            case R.id.foodcravings: i = new Intent(ResultPage.this, FoodCravings.class);
-                break;
-
-            case R.id.superfood: i = new Intent(ResultPage.this, superfood_main.class);
-                break;
-
-            case R.id.excal: i = new Intent(ResultPage.this, ExerciseCalculator.class);
-                break;
-
-            case R.id.diet: i = new Intent(ResultPage.this, Homescreen.class);
-                break;
-
-            case R.id.advanceSurvey: i = new Intent(ResultPage.this, Advanced_Survey.class);
-                break;
-
-            case R.id.activity_update_wtht: i = new Intent(ResultPage.this, Update_wtht.class);
-                break;
-
-            case R.id.logout: {
-                pref.edit().clear().commit();
-                i = new Intent(getApplicationContext(), LoginActivity.class);
-                break;
-            }
-
-        }
-        ResultPage.this.startActivity(i);
-        return super.onOptionsItemSelected(item);
-    }
 
 }
 

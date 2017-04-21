@@ -16,6 +16,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.DatePicker;
+import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -54,7 +55,14 @@ public class Homescreen extends AppCompatActivity  {
         setContentView(R.layout.activity_homescreen);
         rlas = (RelativeLayout) findViewById(R.id.activity_homescreen);
         pref = getSharedPreferences("login.conf", Context.MODE_PRIVATE);
-
+        ImageButton btnotify = (ImageButton) findViewById(R.id.notifyImageButton);
+        btnotify.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent notify = new Intent(getApplicationContext(),Notification.class);
+                startActivity(notify);
+            }
+        });
         //fonts
         t = (TextView) findViewById(R.id.textView);
         Typeface myCustomFont=Typeface.createFromAsset(getAssets(),"fonts/Zapf Humanist 601 Bold BT.ttf");
@@ -845,22 +853,25 @@ public class Homescreen extends AppCompatActivity  {
     public boolean onOptionsItemSelected(MenuItem item) {
         Intent i = new Intent(Homescreen.this,Homescreen.class);
         switch (item.getItemId()) {
-            case R.id.foodcravings: i = new Intent(Homescreen.this, FoodCravings.class);
+            case R.id.foodcravings: i = new Intent(getApplicationContext(), FoodCravings.class);
                 break;
 
-            case R.id.superfood: i = new Intent(Homescreen.this, superfood_main.class);
+            case R.id.superfood: i = new Intent(getApplicationContext(), superfood_main.class);
                 break;
 
-            case R.id.excal: i = new Intent(Homescreen.this, ExerciseCalculator.class);
+            case R.id.excal: i = new Intent(getApplicationContext(), ExerciseCalculator.class);
                 break;
 
-            case R.id.diet: i = new Intent(Homescreen.this, Homescreen.class);
+            case R.id.diet: i = new Intent(getApplicationContext(), Homescreen.class);
                 break;
 
-            case R.id.advanceSurvey: i = new Intent(Homescreen.this, Advanced_Survey.class);
+            case R.id.advanceSurvey: i = new Intent(getApplicationContext(), Advanced_Survey.class);
                 break;
 
-            case R.id.activity_update_wtht: i = new Intent(Homescreen.this, Update_wtht.class);
+            case R.id.activity_update_wtht: i = new Intent(getApplicationContext(), Update_wtht.class);
+                break;
+
+            case R.id.Graphs: i = new Intent(getApplicationContext(), Graphs.class);
                 break;
 
             case R.id.logout: {
@@ -870,7 +881,7 @@ public class Homescreen extends AppCompatActivity  {
             }
 
         }
-        Homescreen.this.startActivity(i);
+        startActivity(i);
         return super.onOptionsItemSelected(item);
     }
 /*

@@ -18,16 +18,17 @@ public class NotificationReciever extends BroadcastReceiver {
         Intent intent1 = new Intent(context,Notification.class);
         intent1.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         int uniqueid = intent.getIntExtra("id",100);
+        String msg = intent.getStringExtra("msg");
 //        //if we want ring on notifcation then uncomment below line//
-//        Uri alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+          Uri alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
 
-        Uri alarmSound = Uri.parse("android.resource://"+context.getPackageName()+"/"+R.raw.sherlocker_xmeo4wao);
-        PendingIntent pendingIntent = PendingIntent.getActivity(context,100,intent1,PendingIntent.FLAG_UPDATE_CURRENT);
+//        Uri alarmSound = Uri.parse("android.resource://"+context.getPackageName()+"/"+R.raw.sherlocker_xmeo4wao);
+        PendingIntent pendingIntent = PendingIntent.getActivity(context,uniqueid,intent1,PendingIntent.FLAG_UPDATE_CURRENT);
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context).
                 setSmallIcon(R.mipmap.nlss_crop).
                 setContentIntent(pendingIntent).
-                setContentText("this is my notification").
-                setContentTitle("my notificaton").
+                setContentText(msg).
+                setContentTitle("Diet Nlss").
                 setSound(alarmSound).
         setAutoCancel(true);
         notificationManager.notify(uniqueid,builder.build());

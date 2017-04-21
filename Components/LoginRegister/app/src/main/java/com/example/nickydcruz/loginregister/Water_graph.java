@@ -41,11 +41,17 @@ public class Water_graph extends AppCompatActivity {
         Log.d(TAG, "onCreate: starting to create chart");
         pref = getSharedPreferences("sp", Context.MODE_PRIVATE);
         pieChart = (PieChart) findViewById(R.id.water_chart);
-        String wt = pref.getString("weight","");
-//        Float weight = Float.parseFloat(wt);
-//        float wateroz = weight*0.5f;
+        String wt = pref.getString("weight",60+"");
+        Float weight = Float.parseFloat(wt);
+        weight =weight*2.2046f;
+        float wateroz = weight*0.5f;
+        wateroz = wateroz/29.574f;
+        wateroz = wateroz*1000;
+
+
 //        waterltr = wateroz/33.814f;
-        waterltr = 2000f;
+        waterltr = wateroz;
+        waterltr = waterltr -(0.2f*waterltr);
 //        SharedPreferences sharedPreferences = getSharedPreferences("sp",MODE_PRIVATE);
 
 
@@ -70,6 +76,7 @@ public class Water_graph extends AppCompatActivity {
             public void onValueSelected(Entry e, Highlight h) {
                 Intent m = new Intent(Water_graph.this,Water_graph2.class);
                 startActivity(m);
+                finish();
 //                Log.d(TAG, "onValueSelected: Value select from chart.");
 //                Log.d(TAG, "onValueSelected: " + e.toString());
 //                Log.d(TAG, "onValueSelected: " + h.toString());
@@ -128,10 +135,17 @@ public class Water_graph extends AppCompatActivity {
         ArrayList<String> xEntrys = new ArrayList<>();
 
         calculated = pref.getFloat("calculated",0);
-        if(waterltr>calculated)
+        ArrayList<Integer> colors = new ArrayList<>();
+        if(waterltr>calculated){
             yEntrys.add(new PieEntry(waterltr-calculated, 1));
-        else
-            yEntrys.add(new PieEntry(calculated-waterltr, 1));
+            colors.add(Color.RED);
+
+        }
+        else {
+            yEntrys.add(new PieEntry(calculated - waterltr, 1));
+            colors.add(Color.BLUE);
+
+        }
 
         yEntrys.add(new PieEntry(calculated,2));
 
@@ -146,10 +160,8 @@ public class Water_graph extends AppCompatActivity {
         pieDataSet.setValueTextSize(12);
 
         //add colors to dataset
-        ArrayList<Integer> colors = new ArrayList<>();
 //        colors.add(Color.GRAY);
 //        colors.add(Color.BLUE);
-        colors.add(Color.RED);
         colors.add(Color.GREEN);
 //        colors.add(Color.CYAN);
 //        colors.add(Color.YELLOW);

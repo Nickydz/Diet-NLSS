@@ -156,24 +156,27 @@ public class FoodCravings extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        Intent i = new Intent(FoodCravings.this,Homescreen.class);
+        Intent i = new Intent(getApplicationContext(),Homescreen.class);
         switch (item.getItemId()) {
-            case R.id.foodcravings: i = new Intent(FoodCravings.this, FoodCravings.class);
+            case R.id.foodcravings: i = new Intent(getApplicationContext(), FoodCravings.class);
                 break;
 
-            case R.id.superfood: i = new Intent(FoodCravings.this, superfood_main.class);
+            case R.id.superfood: i = new Intent(getApplicationContext(), superfood_main.class);
                 break;
 
-            case R.id.excal: i = new Intent(FoodCravings.this, ExerciseCalculator.class);
+            case R.id.excal: i = new Intent(getApplicationContext(), ExerciseCalculator.class);
                 break;
 
-            case R.id.diet: i = new Intent(FoodCravings.this, Homescreen.class);
+            case R.id.diet: i = new Intent(getApplicationContext(), Homescreen.class);
                 break;
 
-            case R.id.advanceSurvey: i = new Intent(FoodCravings.this, Advanced_Survey.class);
+            case R.id.advanceSurvey: i = new Intent(getApplicationContext(), Advanced_Survey.class);
                 break;
 
             case R.id.activity_update_wtht: i = new Intent(getApplicationContext(), Update_wtht.class);
+                break;
+
+            case R.id.Graphs: i = new Intent(getApplicationContext(), Graphs.class);
                 break;
 
             case R.id.logout: {
@@ -183,10 +186,8 @@ public class FoodCravings extends AppCompatActivity {
             }
 
         }
-        FoodCravings.this.startActivity(i);
-        FoodCravings.this.finish();
+        startActivity(i);
         return super.onOptionsItemSelected(item);
     }
-
 }
 

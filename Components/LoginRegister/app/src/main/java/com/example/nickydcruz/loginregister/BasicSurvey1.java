@@ -49,6 +49,8 @@ public class BasicSurvey1 extends AppCompatActivity implements NumberPicker.OnVa
     SharedPreferences.Editor editor;
     TextView t;
     String type;
+    int heightfeet,heightinch;
+
 
 
     @Override
@@ -169,7 +171,7 @@ public class BasicSurvey1 extends AppCompatActivity implements NumberPicker.OnVa
                 if (!(height.equals("")||weight.equals("")||wristCir.equals(""))) {
                     int wristcri = Integer.parseInt(wristCir);
                     float wieght = Float.parseFloat(weight);
-                    float hieght = 0.3048f * Float.parseFloat(height);
+                    final float hieght = ((heightfeet*12)+heightinch)*0.0254f;
 
 
                     int selectedId = radioSexGroup.getCheckedRadioButtonId();
@@ -184,8 +186,6 @@ public class BasicSurvey1 extends AppCompatActivity implements NumberPicker.OnVa
                         editor.putString("gender", gender);
                     }
 
-                    final float BMI = f.bmi(hieght, wieght);
-                    final int BMR = f.bmr(gender, age, wieght, hieght * 100);
 
                     Response.Listener<String> listener = new Response.Listener<String>() {
 
@@ -196,7 +196,7 @@ public class BasicSurvey1 extends AppCompatActivity implements NumberPicker.OnVa
                                 boolean success = jsonResponse1.getBoolean("success");
                                 if (success) {
 
-                                    editor.putString("height",height);
+                                    editor.putString("height",hieght+"");
                                     editor.putString("weight",weight);
                                     editor.putString("type",type);
                                     editor.commit();
@@ -220,7 +220,7 @@ public class BasicSurvey1 extends AppCompatActivity implements NumberPicker.OnVa
                         }
                     };
 
-                    BSurveyRequest brequest = new BSurveyRequest(username, dob, gender, height, weight, wristCir, type, listener);
+                    BSurveyRequest brequest = new BSurveyRequest(username, dob, gender, hieght+"", weight, wristCir, type, listener);
                     RequestQueue queue1 = Volley.newRequestQueue(BasicSurvey1.this);
                     queue1.add(brequest);
                 }
@@ -297,10 +297,14 @@ public class BasicSurvey1 extends AppCompatActivity implements NumberPicker.OnVa
             public void onClick(View v) {
                 s = np.getValue() + "." + np1.getValue();
                 tv.setText(s);
+                heightfeet= np.getValue();
+                heightinch= np1.getValue();
                 //tv.setText(String.valueOf(np.getValue()+"."+np1.getValue())); //set the value to textview
                 d.dismiss();
             }
         });
+
+
         b2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
