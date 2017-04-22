@@ -49,7 +49,7 @@ public class BasicSurvey1 extends AppCompatActivity implements NumberPicker.OnVa
     SharedPreferences.Editor editor;
     TextView t;
     String type;
-    int heightfeet,heightinch;
+    int heightfeet= 5,heightinch= 7;
 
 
 
@@ -201,7 +201,7 @@ public class BasicSurvey1 extends AppCompatActivity implements NumberPicker.OnVa
                                     editor.putString("type",type);
                                     editor.commit();
                                     Calendar cal = Calendar.getInstance();
-                                    myDb.insertMeasureData(de.MeasureTable,pref.getString("weight",weight),pref.getString("height",height),cal.get(Calendar.YEAR) + "-" + (cal.get(Calendar.MONTH)+1) + "-" + cal.get(Calendar.DAY_OF_MONTH));
+                                    myDb.insertMeasureData(de.MeasureTable,pref.getString("weight",weight),pref.getString("height",hieght+""),cal.get(Calendar.YEAR) + "-" + (cal.get(Calendar.MONTH)+1) + "-" + cal.get(Calendar.DAY_OF_MONTH));
 //                                for (int i = 0; i < key; i = i + 6)
 //                                    Mydb.insertData(jsonResponse.getString(i + ""), jsonResponse.getString((i + 1) + ""), jsonResponse.getString((i + 2) + ""), jsonResponse.getString((i + 3) + ""), jsonResponse.getString((i + 4) + ""), jsonResponse.getString((i + 5) + ""));
 //                                for (int i = 0; i < key; i = i + 6)
