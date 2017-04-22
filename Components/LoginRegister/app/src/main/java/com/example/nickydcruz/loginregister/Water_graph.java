@@ -26,6 +26,7 @@ import java.util.ArrayList;
 
 public class Water_graph extends AppCompatActivity {
     SharedPreferences pref;
+    SharedPreferences pr;
     float waterltr;
     static float calculated;
     private static String TAG = "MainActivity";
@@ -40,12 +41,13 @@ public class Water_graph extends AppCompatActivity {
         setContentView(R.layout.activity_water_graph);
         Log.d(TAG, "onCreate: starting to create chart");
         pref = getSharedPreferences("sp", Context.MODE_PRIVATE);
+        pr = getSharedPreferences("login.conf", Context.MODE_PRIVATE);
         pieChart = (PieChart) findViewById(R.id.water_chart);
-        String wt = pref.getString("weight",60+"");
+        String wt = pr.getString("weight",60+"");
         Float weight = Float.parseFloat(wt);
         weight =weight*2.2046f;
         float wateroz = weight*0.5f;
-        wateroz = wateroz/29.574f;
+        wateroz = wateroz*0.02957f;
         wateroz = wateroz*1000;
 
 

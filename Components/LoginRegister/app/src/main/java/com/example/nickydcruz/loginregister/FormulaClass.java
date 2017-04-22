@@ -52,10 +52,10 @@ public class FormulaClass {
 
     public String category(float bmi){
         String category;
-        if(bmi >0 && bmi<16){
+        if(bmi >0 && bmi<15){
             category = "You are Very Severely Underweight";
         }
-        else if (bmi >= 16 && bmi < 17){
+        else if (bmi >= 15 && bmi < 16){
             category = "You are Severely Underweight";
         }
         else if (bmi >= 16 && bmi < 17){
