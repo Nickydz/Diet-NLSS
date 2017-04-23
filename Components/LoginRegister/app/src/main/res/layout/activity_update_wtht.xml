@@ -34,17 +34,6 @@
         android:id="@+id/etupht"
         android:hint="Update height" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:layout_below="@+id/etupht"
-        android:layout_alignStart="@+id/etupht"
-        android:layout_marginTop="19dp"
-        android:id="@+id/etupage"
-        android:hint="Update age" />
-
     <Button
         android:text="Update"
         android:layout_width="wrap_content"
@@ -69,19 +58,9 @@
         android:fontFamily="serif"
         android:textColor="@android:color/black"
         android:textStyle="bold"
-        android:background="@android:drawable/dialog_holo_light_frame"/>
+        android:background="@android:drawable/dialog_holo_light_frame"/><![CDATA[
     />
 
-    <Button
-        android:text="Update"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/etupage"
-        android:layout_alignStart="@+id/btupht"
-        android:id="@+id/btupage"
-        android:fontFamily="serif"
-        android:textColor="@android:color/black"
-        android:textStyle="bold"
-        android:background="@android:drawable/dialog_holo_light_frame"/>
     />
+]]>
 </RelativeLayout>

@@ -104,7 +104,7 @@ public class LoginActivity extends AppCompatActivity implements CompoundButton.O
                             String basicDone = jsonResponse.getString("basicDone");
                             int age = new FormulaClass().calculateAge(dob);
                             editor.putInt("age",age);
-                            editor.apply();
+                            editor.commit();
 
                             if(basicDone.equals("1")) {
                                 Intent intent;
@@ -134,10 +134,10 @@ public class LoginActivity extends AppCompatActivity implements CompoundButton.O
                                 if(prefere.getInt("dayoftheyear",0 ) == 0){
                                     Calendar cal123 = Calendar.getInstance();
                                     int dayoftheyear = cal123.get(Calendar.DAY_OF_YEAR);
-                                    prefere.edit().putInt("dayoftheyear",dayoftheyear).apply();
+                                    prefere.edit().putInt("dayoftheyear",dayoftheyear).commit();
                                 }
 
-                                editor.apply();
+                                editor.commit();
 
                                 LoginActivity.this.startActivity(intent);
                                 //LoginActivity.this.finish();
@@ -251,7 +251,7 @@ public class LoginActivity extends AppCompatActivity implements CompoundButton.O
                                     if(prefere.getInt("dayoftheyear",0 ) == 0){
                                         Calendar cal123 = Calendar.getInstance();
                                         int dayoftheyear = cal123.get(Calendar.DAY_OF_YEAR);
-                                        prefere.edit().putInt("dayoftheyear",dayoftheyear).apply();
+                                        prefere.edit().putInt("dayoftheyear",dayoftheyear).commit();
                                     }
                                     editor.apply();
                                     LoginActivity.this.startActivity(intent);

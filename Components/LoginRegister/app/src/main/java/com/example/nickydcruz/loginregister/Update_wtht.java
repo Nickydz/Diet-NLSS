@@ -48,13 +48,9 @@ public class Update_wtht extends AppCompatActivity {
         final EditText upwt = (EditText) findViewById(R.id.etupwt);
         final EditText upht = (EditText) findViewById(R.id.etupht);
         upht.setVisibility(View.VISIBLE);
-        final EditText upage = (EditText) findViewById(R.id.etupage);
-        upage.setVisibility(View.VISIBLE);
         final Button updatewt = (Button) findViewById(R.id.btupwt);
         Button updateht = (Button) findViewById(R.id.btupht);
         updateht.setVisibility(View.VISIBLE);
-        Button updateage = (Button) findViewById(R.id.btupage);
-        updateage.setVisibility(View.VISIBLE);
 
 
         final String weight = pref.getString("weight","0");
@@ -65,9 +61,7 @@ public class Update_wtht extends AppCompatActivity {
         final int fromResultPage = prefere.getInt("fromResultPage",0);
         if(fromResultPage==1){
             upht.setVisibility(View.GONE);
-            upage.setVisibility(View.GONE);
             updateht.setVisibility(View.GONE);
-            updateage.setVisibility(View.GONE);
 
         }
 
@@ -111,10 +105,10 @@ public class Update_wtht extends AppCompatActivity {
                                                         Calendar cal1 = Calendar.getInstance();
                                                         String m = prefere.getString("need","m");
                                                         if(diff<0&& (m.equals("m")|| m.equals("g"))){
-                                                            prefere.edit().putInt("addbmr",-500).apply();
+                                                            prefere.edit().putInt("addbmr",500).apply();
                                                         }
                                                         else if(diff>0&& (m.equals("m")|| m.equals("l"))){
-                                                            prefere.edit().putInt("addbmr",500).apply();
+                                                            prefere.edit().putInt("addbmr",-500).apply();
                                                         }
 
 
@@ -212,12 +206,6 @@ public class Update_wtht extends AppCompatActivity {
             }
         });
 
-        updateage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                updatedage = upage.getText().toString();
-            }
-        });
 
     }
 

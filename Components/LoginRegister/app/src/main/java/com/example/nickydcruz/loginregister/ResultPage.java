@@ -88,7 +88,15 @@ public class ResultPage extends AppCompatActivity {
                         public void onClick(DialogInterface dialog, int which) {
                             // redirect to update page
                             prefere.edit().putInt("fromResultPage",1).apply();
-                            prefere.edit().putString("expweight",weight+"").apply();
+                            if(prefere.getString("need","m").equals("l")) {
+                                prefere.edit().putString("expweight", weight-0.5 + "").apply();
+                            }
+                            else if(prefere.getString("need","m").equals("g")){
+                                prefere.edit().putString("expweight", weight+0.5 + "").apply();
+                            }
+                            else{
+                                prefere.edit().putString("expweight", weight + "").apply();
+                            }
                             Intent inupdate = new Intent(getApplicationContext(),Update_wtht.class);
                             startActivity(inupdate);
 
@@ -130,7 +138,7 @@ public class ResultPage extends AppCompatActivity {
             editor.putInt("aupdate",5);
             editor.putInt("Updateamr",0);
             editor.putString("calday",0+"");
-            editor.apply();
+            editor.commit();
         }
 
 

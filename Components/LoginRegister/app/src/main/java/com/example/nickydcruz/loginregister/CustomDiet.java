@@ -455,13 +455,13 @@ public class CustomDiet extends Activity {
             @Override
             public void onClick(View v) {
                 if(cobf == 0){
-                    Toast.makeText(getApplicationContext(),"please select atleast one item in breakfast",Toast.LENGTH_LONG);
+                    Toast.makeText(getApplicationContext(),"please select atleast one item in breakfast",Toast.LENGTH_LONG).show();
                 }
                 else if(lncount == 0){
-                    Toast.makeText(getApplicationContext(),"please select atleast one item in lunch",Toast.LENGTH_LONG);
+                    Toast.makeText(getApplicationContext(),"please select atleast one item in lunch",Toast.LENGTH_LONG).show();
                 }
                 else if(dncount == 0){
-                    Toast.makeText(getApplicationContext(),"please select atleast one item in dinner",Toast.LENGTH_LONG);
+                    Toast.makeText(getApplicationContext(),"please select atleast one item in dinner",Toast.LENGTH_LONG).show();
                 }
 
                 else{
