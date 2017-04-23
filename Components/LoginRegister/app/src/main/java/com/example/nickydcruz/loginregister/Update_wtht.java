@@ -1,10 +1,14 @@
 package com.example.nickydcruz.loginregister;
-
+import static java.lang.Math.sqrt;
+import static java.lang.Math.abs;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.view.ContextThemeWrapper;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -37,21 +41,39 @@ public class Update_wtht extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_wtht);
         pref = getSharedPreferences("login.conf", Context.MODE_PRIVATE);
+
         editor = pref.edit();
         de = new DietContract.DietEntry(pref.getString("username",""));
         myDb = new DBHelper(this,pref.getString("username",""));
         final EditText upwt = (EditText) findViewById(R.id.etupwt);
         final EditText upht = (EditText) findViewById(R.id.etupht);
+        upht.setVisibility(View.VISIBLE);
         final EditText upage = (EditText) findViewById(R.id.etupage);
+        upage.setVisibility(View.VISIBLE);
         final Button updatewt = (Button) findViewById(R.id.btupwt);
         Button updateht = (Button) findViewById(R.id.btupht);
+        updateht.setVisibility(View.VISIBLE);
         Button updateage = (Button) findViewById(R.id.btupage);
+        updateage.setVisibility(View.VISIBLE);
 
 
-        String weight = pref.getString("weight","0");
+        final String weight = pref.getString("weight","0");
         final String username = pref.getString("username","");
 
+
+        final SharedPreferences prefere = getSharedPreferences(username+"update.conf",Context.MODE_PRIVATE);
+        final int fromResultPage = prefere.getInt("fromResultPage",0);
+        if(fromResultPage==1){
+            upht.setVisibility(View.GONE);
+            upage.setVisibility(View.GONE);
+            updateht.setVisibility(View.GONE);
+            updateage.setVisibility(View.GONE);
+
+        }
+
+
         //FOR UPDATING WEIGHT//
+
 
         updatewt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,6 +97,57 @@ public class Update_wtht extends AppCompatActivity {
 
                                 Toast.makeText(Update_wtht.this, "Success", Toast.LENGTH_LONG).show();
 //                                int i=1000;
+
+                                if(fromResultPage == 1){
+                                    Float expWeight =  Float.parseFloat(prefere.getString("expweight",updatedwt));
+                                    final double diff = Float.parseFloat(updatedwt)-expWeight;
+                                    if(sqrt(abs(diff)) >0.5){
+                                        new AlertDialog.Builder(new ContextThemeWrapper(Update_wtht.this, R.style.Resultpage))
+                                                .setTitle("Update Weight")
+                                                .setMessage("Did you follow the diet properly with appropriate calorie values mentioned?")
+                                                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                                                    public void onClick(DialogInterface dialog, int which) {
+                                                        // redirect to update page
+                                                        Calendar cal1 = Calendar.getInstance();
+                                                        String m = prefere.getString("need","m");
+                                                        if(diff<0&& (m.equals("m")|| m.equals("g"))){
+                                                            prefere.edit().putInt("addbmr",-500).apply();
+                                                        }
+                                                        else if(diff>0&& (m.equals("m")|| m.equals("l"))){
+                                                            prefere.edit().putInt("addbmr",500).apply();
+                                                        }
+
+
+                                                        prefere.edit().putInt("dayoftheyear",cal1.get(Calendar.DAY_OF_YEAR)).apply();
+                                                        prefere.edit().putInt("fromResultPage",0).apply();
+                                                        Intent iresult = new Intent(getApplicationContext(),ResultPage.class);
+                                                        startActivity(iresult);
+                                                    }
+                                                })
+                                                .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                                                    public void onClick(DialogInterface dialog, int which) {
+                                                        // do nothing
+
+                                                        Calendar cal1 = Calendar.getInstance();
+                                                        prefere.edit().putInt("dayoftheyear",cal1.get(Calendar.DAY_OF_YEAR)).apply();
+                                                        prefere.edit().putInt("fromResultPage",0).apply();
+                                                        Intent iresult = new Intent(getApplicationContext(),ResultPage.class);
+                                                        startActivity(iresult);
+                                                    }
+                                                })
+                                                .setIcon(android.R.drawable.ic_dialog_alert)
+                                                .show();
+                                    }
+                                    else {
+                                        prefere.edit().putInt("dayoftheyear", cal.get(Calendar.DAY_OF_YEAR)).apply();
+                                        prefere.edit().putInt("fromResultPage", 0).apply();
+                                        Intent iresult = new Intent(getApplicationContext(), ResultPage.class);
+                                        startActivity(iresult);
+                                    }
+
+                                }
+
+
                             } else {
                                 Toast.makeText(Update_wtht.this, "Error", Toast.LENGTH_LONG).show();
                             }

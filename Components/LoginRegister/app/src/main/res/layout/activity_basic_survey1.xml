@@ -21,7 +21,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="27dp"
         android:fontFamily="serif"
-        android:text="Basic Survey"
+        android:text="Basic Information"
         android:textColor="@android:color/black"
         android:textSize="25dp"
 

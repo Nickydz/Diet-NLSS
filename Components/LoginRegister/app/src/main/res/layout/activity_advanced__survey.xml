@@ -18,7 +18,7 @@
             android:id="@+id/textview1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Advanced Survey"
+            android:text="Preferences"
             android:textSize="25dp"
             android:textColor="@android:color/black"
             android:textStyle="bold"

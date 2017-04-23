@@ -51,8 +51,8 @@ public class LoginActivity extends AppCompatActivity implements CompoundButton.O
                     if (success) {
                         for (int i = 0; i < key; i = i + 6)
                             Mydb.insertData(jsonResponse.getString(i + ""), jsonResponse.getString((i + 1) + ""), jsonResponse.getString((i + 2) + ""), jsonResponse.getString((i + 3) + ""), jsonResponse.getString((i + 4) + ""), jsonResponse.getString((i + 5) + ""));
-
-                        Toast.makeText(LoginActivity.this, "Success", Toast.LENGTH_LONG).show();
+//
+//                        Toast.makeText(LoginActivity.this, "Success", Toast.LENGTH_LONG).show();
                         int i=1000;
                     } else {
                         Toast.makeText(LoginActivity.this, "Error", Toast.LENGTH_LONG).show();
@@ -129,6 +129,14 @@ public class LoginActivity extends AppCompatActivity implements CompoundButton.O
                                 editor.putString("weight",weight);
                                 editor.putString("gender",gender);
                                 editor.putString("type",type);
+
+                                SharedPreferences prefere = getSharedPreferences(pUsername+"update.conf",Context.MODE_PRIVATE);
+                                if(prefere.getInt("dayoftheyear",0 ) == 0){
+                                    Calendar cal123 = Calendar.getInstance();
+                                    int dayoftheyear = cal123.get(Calendar.DAY_OF_YEAR);
+                                    prefere.edit().putInt("dayoftheyear",dayoftheyear).apply();
+                                }
+
                                 editor.apply();
 
                                 LoginActivity.this.startActivity(intent);
@@ -238,6 +246,13 @@ public class LoginActivity extends AppCompatActivity implements CompoundButton.O
                                     editor.putString("weight",weight);
                                     editor.putString("gender",gender);
                                     editor.putString("type",type);
+
+                                    SharedPreferences prefere = getSharedPreferences(username+"update.conf",Context.MODE_PRIVATE);
+                                    if(prefere.getInt("dayoftheyear",0 ) == 0){
+                                        Calendar cal123 = Calendar.getInstance();
+                                        int dayoftheyear = cal123.get(Calendar.DAY_OF_YEAR);
+                                        prefere.edit().putInt("dayoftheyear",dayoftheyear).apply();
+                                    }
                                     editor.apply();
                                     LoginActivity.this.startActivity(intent);
                                     LoginActivity.this.finish();

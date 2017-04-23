@@ -1,6 +1,7 @@
 package com.example.nickydcruz.loginregister;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
@@ -8,6 +9,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.view.ContextThemeWrapper;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -66,12 +68,41 @@ public class ResultPage extends AppCompatActivity {
         final DBHelper myDb= new DBHelper(this,username);
 
         float height =Float.parseFloat(pref.getString("height","0"));
-        float weight = Float.parseFloat(pref.getString("weight","0"));
+        final float weight = Float.parseFloat(pref.getString("weight","0"));
         float bmi = new FormulaClass().bmi(height,weight);
         int calburned =0;
         final int bmr = new FormulaClass().bmr(pref.getString("gender",""),pref.getInt("age",0),weight, height*100);
 
+
+
+
         Calendar cal = Calendar.getInstance();
+        int dayoftheyear = cal.get(Calendar.DAY_OF_YEAR);
+
+        final SharedPreferences prefere = getSharedPreferences(username+"update.conf",Context.MODE_PRIVATE);
+        if(prefere.getInt("dayoftheyear",366)+6 < dayoftheyear){
+            new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.Resultpage))
+                    .setTitle("Update Weight")
+                    .setMessage("It's been a while since you last updated your weight . Would you like to update your weight?")
+                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            // redirect to update page
+                            prefere.edit().putInt("fromResultPage",1).apply();
+                            prefere.edit().putString("expweight",weight+"").apply();
+                            Intent inupdate = new Intent(getApplicationContext(),Update_wtht.class);
+                            startActivity(inupdate);
+
+                        }
+                    })
+                    .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            // do nothing
+                        }
+                    })
+                    .setIcon(android.R.drawable.ic_dialog_alert)
+                    .show();
+        }
+
         if(!(pref.getString("SystemDate",0+"").equals(cal.get(Calendar.YEAR) + "-"
                 + (cal.get(Calendar.MONTH)+1)
                 + "-" + cal.get(Calendar.DAY_OF_MONTH)))){
@@ -80,6 +111,7 @@ public class ResultPage extends AppCompatActivity {
             editor.putString("SystemDate",cal.get(Calendar.YEAR) + "-" + (cal.get(Calendar.MONTH)+1) + "-" + cal.get(Calendar.DAY_OF_MONTH));
             editor.commit();
         }
+
 
         if(pref.getInt("advancedone",0)==1 && (pref.getInt("Updateamr",0)==1 || pref.getInt("Updateamr",0)==3)){
             editor.putInt("amr",Math.round(bmr*Float.parseFloat(pref.getString("exerciselevel",1+""))));
@@ -110,6 +142,7 @@ public class ResultPage extends AppCompatActivity {
         String expertsMessage = "";
         tvCategory.setText(category);
         amr =pref.getInt("amr", Math.round(bmr*Float.parseFloat(pref.getString("exerciselevel",1+""))));
+        amr = amr + prefere.getInt("addbmr",0);
         String dailyintake = "Your Calorie requirement for the day is " + amr;
         editor.putInt("Updateamr",1);
         editor.apply();
@@ -149,6 +182,7 @@ public class ResultPage extends AppCompatActivity {
             btMW.setClickable(true);
         }
 
+
         else if(bmi >=25 ) {
             expertsMessage = "Since your weight is more than ideal we recommend you decrease your weight.";
             btLW.setVisibility(View.VISIBLE);
@@ -185,6 +219,7 @@ public class ResultPage extends AppCompatActivity {
                                 }
                                 DietInsert d =new DietInsert(username,myDb);
                                 d.dietDivider(jsonresponse);
+                                prefere.edit().putString("need","g").apply();
                                 startActivity(int1);
                             }
                             else {
@@ -241,6 +276,7 @@ public class ResultPage extends AppCompatActivity {
                                     editor.putInt("amr", bmr2);
                                     editor.commit();
                                 }
+                                prefere.edit().putString("need","l").apply();
                                 DietInsert d =new DietInsert(username,myDb);
                                 d.dietDivider(jsonresponse);
                                 startActivity(int1);
@@ -302,6 +338,7 @@ public class ResultPage extends AppCompatActivity {
                                     editor.commit();
                                 }
                                     DietInsert d =new DietInsert(username,myDb);
+                                    prefere.edit().putString("need","m").apply();
                                     d.dietDivider(jsonresponse);
                                     startActivity(int1);
                                 } else {

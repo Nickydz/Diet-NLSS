@@ -206,7 +206,11 @@ public class BasicSurvey1 extends AppCompatActivity implements NumberPicker.OnVa
 //                                    Mydb.insertData(jsonResponse.getString(i + ""), jsonResponse.getString((i + 1) + ""), jsonResponse.getString((i + 2) + ""), jsonResponse.getString((i + 3) + ""), jsonResponse.getString((i + 4) + ""), jsonResponse.getString((i + 5) + ""));
 //                                for (int i = 0; i < key; i = i + 6)
 //                                    Mydb.insertData(jsonResponse.getString(i + ""), jsonResponse.getString((i + 1) + ""), jsonResponse.getString((i + 2) + ""), jsonResponse.getString((i + 3) + ""), jsonResponse.getString((i + 4) + ""), jsonResponse.getString((i + 5) + ""));
-
+                                    SharedPreferences prefere = getSharedPreferences(username+"update.conf",Context.MODE_PRIVATE);
+                                    Calendar cal1 = Calendar.getInstance();
+                                    int dayoftheyear = cal1.get(Calendar.DAY_OF_YEAR);
+                                    SharedPreferences.Editor e11 = prefere.edit();
+                                    e11.putInt("dayoftheyear",dayoftheyear);
                                     Intent int1 = new Intent(BasicSurvey1.this, ResultPage.class);
                                     BasicSurvey1.this.startActivity(int1);
 //                                    BasicSurvey1.this.finish();
