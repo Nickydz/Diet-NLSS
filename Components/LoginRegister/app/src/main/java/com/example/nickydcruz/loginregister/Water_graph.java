@@ -23,9 +23,11 @@ import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class Water_graph extends AppCompatActivity {
     SharedPreferences pref;
+    SharedPreferences.Editor editor;
     SharedPreferences pr;
     float waterltr;
     static float calculated;
@@ -49,7 +51,16 @@ public class Water_graph extends AppCompatActivity {
         float wateroz = weight*0.5f;
         wateroz = wateroz*0.02957f;
         wateroz = wateroz*1000;
+        editor = pref.edit();
 
+        Calendar cal = Calendar.getInstance();
+        if(!(pref.getString("SystemDate",0+"").equals(cal.get(Calendar.YEAR) + "-"
+                + (cal.get(Calendar.MONTH)+1)
+                + "-" + cal.get(Calendar.DAY_OF_MONTH)))){
+            editor.putFloat("calculated",0f);
+            editor.putString("SystemDate",cal.get(Calendar.YEAR) + "-" + (cal.get(Calendar.MONTH)+1) + "-" + cal.get(Calendar.DAY_OF_MONTH));
+            editor.commit();
+        }
 
 //        waterltr = wateroz/33.814f;
         waterltr = wateroz;

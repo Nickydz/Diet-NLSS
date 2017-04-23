@@ -142,18 +142,20 @@ public class ResultPage extends AppCompatActivity {
         }
 
 
-
-
-
         final FormulaClass f = new FormulaClass();
         String category = f.category(bmi);
         String expertsMessage = "";
         tvCategory.setText(category);
-        amr =pref.getInt("amr", Math.round(bmr*Float.parseFloat(pref.getString("exerciselevel",1+""))));
+        amr =pref.getInt("amr", 0);
+        if(amr == 0 ){
+            editor.putInt("amr",Math.round(bmr*Float.parseFloat(pref.getString("exerciselevel",1+"")))).commit();
+            amr =pref.getInt("amr", 0);
+        }
+
         amr = amr + prefere.getInt("addbmr",0);
         String dailyintake = "Your Calorie requirement for the day is " + amr;
         editor.putInt("Updateamr",1);
-        editor.apply();
+        editor.commit();
         tvBmr.setText(dailyintake);
 
         btcusD.setOnClickListener(new View.OnClickListener() {

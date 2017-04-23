@@ -1,12 +1,16 @@
 package com.example.nickydcruz.loginregister;
 
+import static java.lang.Math.sqrt;
+import static java.lang.Math.abs;
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.view.ContextThemeWrapper;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -83,7 +87,9 @@ public class CustomDiet extends Activity {
     int dncount =0;
     int sncount =0;
     SharedPreferences pref;
-
+    TextView totcal;
+    int totcalval=0;
+    int totalamr=0;
     private Context context = this;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -126,11 +132,21 @@ public class CustomDiet extends Activity {
         AutoCompleteTextView ln;
         AutoCompleteTextView dn;
         AutoCompleteTextView sn;
+        TextView tvbmrs = (TextView) findViewById(R.id.tvbmrs);
         bf = (AutoCompleteTextView) findViewById(R.id.bfac);
         ln = (AutoCompleteTextView) findViewById(R.id.lnac);
         dn = (AutoCompleteTextView) findViewById(R.id.dnac);
         sn = (AutoCompleteTextView) findViewById(R.id.snac);
+        totalamr =  pref.getInt("amr",1700);
 
+        SharedPreferences prefere = getSharedPreferences(pref.getString("username","")+"update.conf",Context.MODE_PRIVATE);
+        totalamr = totalamr + prefere.getInt("addbmr",0);
+        String bmrs = "Calorie Intake for the day : "+totalamr;
+        tvbmrs.setText(bmrs);
+        totcal = (TextView) findViewById(R.id.totcal);
+
+        String vcal = "Total calories : "+totcalval;
+        totcal.setText(vcal);
         //Listviews
         //for breakfast
         bfListView = (ListView) findViewById( R.id.bfListView );
@@ -244,6 +260,9 @@ public class CustomDiet extends Activity {
 //                    }
                     bfac.add(cobf,a[0]);
                     bfca.add(cobf,b[0]);
+                    totcalval = totcalval+Integer.parseInt(b[0]);
+                    String vcal = "Total calories : "+totcalval;
+                    totcal.setText(vcal);
                     bfxpl.add(cobf,bfc[0]);
                     selectedbf.add(bfadd[0]);
                     cobf++;
@@ -271,6 +290,9 @@ public class CustomDiet extends Activity {
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 cobf--;
                 bfac.remove(position);
+                totcalval = totcalval-Integer.parseInt(bfca.get(position));
+                String vcal = "Total calories : "+totcalval;
+                totcal.setText(vcal);
                 bfca.remove(position);
                 bfxpl.remove(position);
                 selectedbf.remove(position);
@@ -312,6 +334,9 @@ public class CustomDiet extends Activity {
 
                     lnac.add(lncount,c[0]);
                     lnca.add(lncount,d[0]);
+                    totcalval = totcalval+Integer.parseInt(d[0]);
+                    String vcal = "Total calories : "+totcalval;
+                    totcal.setText(vcal);
                     lnxpl.add(lncount,lnd[0]);
                     lncount++;
                     lnadd[0] = lntvdisp.getText().toString();
@@ -327,6 +352,10 @@ public class CustomDiet extends Activity {
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 lncount--;
                 lnac.remove(position);
+                totcalval = totcalval-Integer.parseInt(lnca.get(position));
+                String vcal = "Total calories : "+totcalval;
+                totcal.setText(vcal);
+
                 lnca.remove(position);
                 lnxpl.remove(position);
                 selectedln.remove(position);
@@ -368,6 +397,9 @@ public class CustomDiet extends Activity {
 
                     dnac.add(dncount,e[0]);
                     dnca.add(dncount,f[0]);
+                    totcalval = totcalval+Integer.parseInt(d[0]);
+                    String vcal = "Total calories : "+totcalval;
+                    totcal.setText(vcal);
                     dnxpl.add(dncount,dnf[0]);
                     dncount++;
                     dnadd[0] = dntvdisp.getText().toString();
@@ -383,6 +415,9 @@ public class CustomDiet extends Activity {
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 dncount--;
                 dnac.remove(position);
+                totcalval = totcalval-Integer.parseInt(dnca.get(position));
+                String vcal = "Total calories : "+totcalval;
+                totcal.setText(vcal);
                 dnca.remove(position);
                 dnxpl.remove(position);
                 selecteddn.remove(position);
@@ -423,7 +458,10 @@ public class CustomDiet extends Activity {
                 if(!(sntvdisp.getText().toString().equals("TextView") && sncal.getText().toString().equals("TextView"))){
                     snac.add(sncount,g[0]);
                     snca.add(sncount,h[0]);
-                    snxpl.add(sncount,dnf[0]);
+                    totcalval = totcalval+Integer.parseInt(h[0]);
+                    String vcal = "Total calories : "+totcalval;
+                    totcal.setText(vcal);
+                    snxpl.add(sncount,snh[0]);
                     sncount++;
 
                     snadd[0] = sntvdisp.getText().toString();
@@ -439,6 +477,9 @@ public class CustomDiet extends Activity {
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 sncount--;
                 snac.remove(position);
+                totcalval = totcalval-Integer.parseInt(snca.get(position));
+                String vcal = "Total calories : "+totcalval;
+                totcal.setText(vcal);
                 snca.remove(position);
                 snxpl.remove(position);
                 selectedsn.remove(position);
@@ -451,87 +492,278 @@ public class CustomDiet extends Activity {
 
         final Button btconfirm = (Button) findViewById(R.id.btsaveDiet);
 
+
         btconfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(cobf == 0){
-                    Toast.makeText(getApplicationContext(),"please select atleast one item in breakfast",Toast.LENGTH_LONG).show();
-                }
-                else if(lncount == 0){
-                    Toast.makeText(getApplicationContext(),"please select atleast one item in lunch",Toast.LENGTH_LONG).show();
-                }
-                else if(dncount == 0){
-                    Toast.makeText(getApplicationContext(),"please select atleast one item in dinner",Toast.LENGTH_LONG).show();
-                }
+                int asde = totcalval - totalamr;
+                if (asde > 250|| asde < -250) {
+                    if (asde < 0) {
+                        new AlertDialog.Builder(new ContextThemeWrapper(CustomDiet.this, R.style.Resultpage))
+                                .setTitle("Value low")
+                                .setMessage("It is recommended that you add more" + asde + " calories to your diet")
+                                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        // redirect to update page
 
-                else{
-                    breakfast.put("bf",bfac.get(0));
-                    breakfast.put("bfcal",bfca.get(0));
-                    breakfast.put("bfxpl",bfxpl.get(0));
-                    for(int i=1;i<cobf;i++){
-                        breakfast.put("bf",";"+bfac.get(i));
-                        breakfast.put("bfcal","\n"+bfca.get(i));
-                        breakfast.put("bfxpl",";"+bfxpl.get(i));
+                                    }
+                                })
+                                .setNegativeButton("Save anyway?", new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        // do nothing
+                                        if(cobf == 0){
+                                            Toast.makeText(getApplicationContext(),"please select atleast one item in breakfast",Toast.LENGTH_LONG).show();
+                                        }
+                                        else if(lncount == 0){
+                                            Toast.makeText(getApplicationContext(),"please select atleast one item in lunch",Toast.LENGTH_LONG).show();
+                                        }
+                                        else if(dncount == 0){
+                                            Toast.makeText(getApplicationContext(),"please select atleast one item in dinner",Toast.LENGTH_LONG).show();
+                                        }
+
+                                        else{
+                                            breakfast.put("bf",bfac.get(0));
+                                            breakfast.put("bfcal",bfca.get(0));
+                                            breakfast.put("bfxpl",bfxpl.get(0));
+                                            for(int i=1;i<cobf;i++){
+                                                breakfast.put("bf",breakfast.get("bf")+";"+bfac.get(i));
+                                                breakfast.put("bfcal",breakfast.get("bfcal")+"\n\n"+bfca.get(i));
+                                                breakfast.put("bfxpl",breakfast.get("bfxpl")+";"+bfxpl.get(i));
+                                            }
+                                            cobf--;
+                                            lunch.put("ln",lnac.get(0));
+                                            lunch.put("lncal",lnca.get(0));
+                                            lunch.put("lnxpl",lnxpl.get(0));
+                                            for(int i=1;i<lncount;i++){
+                                                lunch.put("ln",lunch.get("ln")+";"+lnac.get(i));
+                                                lunch.put("lncal",lunch.get("lncal")+"\n\n"+lnca.get(i));
+                                                lunch.put("lnxpl",lunch.get("lnxpl")+";"+lnxpl.get(i));
+                                            }
+                                            lncount--;
+                                            dinner.put("dn",dnac.get(0));
+                                            dinner.put("dncal",dnca.get(0));
+                                            dinner.put("dnxpl",dnxpl.get(0));
+                                            for(int i=1;i<dncount;i++){
+                                                dinner.put("dn",dinner.get("dn")+";"+dnac.get(i));
+                                                dinner.put("dncal",dinner.get("dncal")+"\n\n"+dnca.get(i));
+                                                dinner.put("dnxpl",dinner.get("dnxpl")+";"+dnxpl.get(i));
+                                            }
+                                            dncount--;
+                                            if(sncount==0){
+                                                snack.put("sn","-");
+                                                snack.put("sncal","-");
+                                                snack.put("snxpl","-");
+                                            }
+                                            else {
+                                                snack.put("sn",snac.get(0));
+                                                snack.put("sncal",snca.get(0));
+                                                snack.put("snxpl",snxpl.get(0));
+                                                for(int i=1;i<sncount;i++){
+                                                    snack.put("sn",snack.get("sn")+";"+snac.get(i));
+                                                    snack.put("sncal",snack.get("sncal")+"\n\n"+snca.get(i));
+                                                    snack.put("snxpl",snack.get("snxpl")+";"+snxpl.get(i));
+                                                }
+                                                sncount--;
+                                            }
+
+                                            Calendar cal = Calendar.getInstance();
+                                            String date=cal.get(Calendar.YEAR) + "-"
+                                                    + (cal.get(Calendar.MONTH)+1)
+                                                    + "-" + cal.get(Calendar.DAY_OF_MONTH);
+
+                                            boolean acds= myDb.insertUserDietData(de.DietTableName,date,
+                                                    breakfast.get("bf"),breakfast.get("bfcal"),breakfast.get("bfxpl"),lunch.get("ln"),
+                                                    lunch.get("lncal"),lunch.get("lnxpl"),dinner.get("dn"),
+                                                    dinner.get("dncal"), dinner.get("dnxpl"),snack.get("sn"),snack.get("sncal"),
+                                                    snack.get("snxpl"),"-","-","-",cobf+"",lncount+"",
+                                                    dncount+"",sncount+"",0+"",totcalval+"");
+
+                                            if(acds){
+                                                Intent i = new Intent(getApplicationContext(),Homescreen.class);
+                                                i.putExtra("bmr",1700+"");
+                                                startActivity(i);
+                                                finish();
+                                            }
+                                            else {
+                                                Toast.makeText(getApplicationContext(),"kar raha kya hai abhi",Toast.LENGTH_LONG);
+                                            }
+
+                                        }
+                                    }
+                                })
+                                .setIcon(android.R.drawable.ic_dialog_alert)
+                                .show();
+                    } else {
+                        new AlertDialog.Builder(new ContextThemeWrapper(CustomDiet.this, R.style.Resultpage))
+                                .setTitle("Value too high")
+                                .setMessage("It is recommended that you reduce" + asde + " calories from your diet")
+                                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        // redirect to update page
+
+                                    }
+                                })
+                                .setNegativeButton("Save anyway?", new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        // do nothing
+                                        if(cobf == 0){
+                                            Toast.makeText(getApplicationContext(),"please select atleast one item in breakfast",Toast.LENGTH_LONG).show();
+                                        }
+                                        else if(lncount == 0){
+                                            Toast.makeText(getApplicationContext(),"please select atleast one item in lunch",Toast.LENGTH_LONG).show();
+                                        }
+                                        else if(dncount == 0){
+                                            Toast.makeText(getApplicationContext(),"please select atleast one item in dinner",Toast.LENGTH_LONG).show();
+                                        }
+
+                                        else{
+                                            breakfast.put("bf",bfac.get(0));
+                                            breakfast.put("bfcal",bfca.get(0));
+                                            breakfast.put("bfxpl",bfxpl.get(0));
+                                            for(int i=1;i<cobf;i++){
+                                                breakfast.put("bf",breakfast.get("bf")+";"+bfac.get(i));
+                                                breakfast.put("bfcal",breakfast.get("bfcal")+"\n\n"+bfca.get(i));
+                                                breakfast.put("bfxpl",breakfast.get("bfxpl")+";"+bfxpl.get(i));
+                                            }
+                                            cobf--;
+                                            lunch.put("ln",lnac.get(0));
+                                            lunch.put("lncal",lnca.get(0));
+                                            lunch.put("lnxpl",lnxpl.get(0));
+                                            for(int i=1;i<lncount;i++){
+                                                lunch.put("ln",lunch.get("ln")+";"+lnac.get(i));
+                                                lunch.put("lncal",lunch.get("lncal")+"\n\n"+lnca.get(i));
+                                                lunch.put("lnxpl",lunch.get("lnxpl")+";"+lnxpl.get(i));
+                                            }
+                                            lncount--;
+                                            dinner.put("dn",dnac.get(0));
+                                            dinner.put("dncal",dnca.get(0));
+                                            dinner.put("dnxpl",dnxpl.get(0));
+                                            for(int i=1;i<dncount;i++){
+                                                dinner.put("dn",dinner.get("dn")+";"+dnac.get(i));
+                                                dinner.put("dncal",dinner.get("dncal")+"\n\n"+dnca.get(i));
+                                                dinner.put("dnxpl",dinner.get("dnxpl")+";"+dnxpl.get(i));
+                                            }
+                                            dncount--;
+                                            if(sncount==0){
+                                                snack.put("sn","-");
+                                                snack.put("sncal","-");
+                                                snack.put("snxpl","-");
+                                            }
+                                            else {
+                                                snack.put("sn",snac.get(0));
+                                                snack.put("sncal",snca.get(0));
+                                                snack.put("snxpl",snxpl.get(0));
+                                                for(int i=1;i<sncount;i++){
+                                                    snack.put("sn",snack.get("sn")+";"+snac.get(i));
+                                                    snack.put("sncal",snack.get("sncal")+"\n\n"+snca.get(i));
+                                                    snack.put("snxpl",snack.get("snxpl")+";"+snxpl.get(i));
+                                                }
+                                                sncount--;
+                                            }
+
+                                            Calendar cal = Calendar.getInstance();
+                                            String date=cal.get(Calendar.YEAR) + "-"
+                                                    + (cal.get(Calendar.MONTH)+1)
+                                                    + "-" + cal.get(Calendar.DAY_OF_MONTH);
+
+                                            boolean acds= myDb.insertUserDietData(de.DietTableName,date,
+                                                    breakfast.get("bf"),breakfast.get("bfcal"),breakfast.get("bfxpl"),lunch.get("ln"),
+                                                    lunch.get("lncal"),lunch.get("lnxpl"),dinner.get("dn"),
+                                                    dinner.get("dncal"), dinner.get("dnxpl"),snack.get("sn"),snack.get("sncal"),
+                                                    snack.get("snxpl"),"-","-","-",cobf+"",lncount+"",
+                                                    dncount+"",sncount+"",0+"",totcalval+"");
+
+                                            if(acds){
+                                                Intent i = new Intent(getApplicationContext(),Homescreen.class);
+                                                i.putExtra("bmr",1700+"");
+                                                startActivity(i);
+                                                finish();
+                                            }
+                                            else {
+                                                Toast.makeText(getApplicationContext(),"kar raha kya hai abhi",Toast.LENGTH_LONG);
+                                            }
+
+                                        }
+                                    }
+                                })
+                                .setIcon(android.R.drawable.ic_dialog_alert)
+                                .show();
                     }
-                    cobf--;
-                    lunch.put("ln",lnac.get(0));
-                    lunch.put("lncal",lnca.get(0));
-                    lunch.put("lnxpl",lnxpl.get(0));
-                    for(int i=1;i<lncount;i++){
-                        lunch.put("ln",lnac.get(i));
-                        lunch.put("lncal",lnca.get(i));
-                        lunch.put("lnxpl",lnxpl.get(i));
-                    }
-                    lncount--;
-                    dinner.put("dn",dnac.get(0));
-                    dinner.put("dncal",dnca.get(0));
-                    dinner.put("dnxpl",dnxpl.get(0));
-                    for(int i=1;i<dncount;i++){
-                        dinner.put("dn",dnac.get(i));
-                        dinner.put("dncal",dnca.get(i));
-                        dinner.put("dnxpl",dnxpl.get(i));
-                    }
-                    dncount--;
-                    if(sncount==0){
-                        snack.put("sn","-");
-                        snack.put("sncal","-");
-                        snack.put("snxpl","-");
-                    }
-                    else {
-                        snack.put("sn",snac.get(0));
-                        snack.put("sncal",snca.get(0));
-                        snack.put("snxpl",snxpl.get(0));
-                        for(int i=1;i<sncount;i++){
-                            snack.put("sn",snack.get("sn")+";"+snac.get(i));
-                            snack.put("sncal",snack.get("sncal")+"\n\n"+snca.get(i));
-                            snack.put("snxpl",snack.get("snxpl")+";"+snxpl.get(i));
+                } else {
+                    if (cobf == 0) {
+                        Toast.makeText(getApplicationContext(), "please select atleast one item in breakfast", Toast.LENGTH_LONG).show();
+                    } else if (lncount == 0) {
+                        Toast.makeText(getApplicationContext(), "please select atleast one item in lunch", Toast.LENGTH_LONG).show();
+                    } else if (dncount == 0) {
+                        Toast.makeText(getApplicationContext(), "please select atleast one item in dinner", Toast.LENGTH_LONG).show();
+                    } else {
+                        breakfast.put("bf", bfac.get(0));
+                        breakfast.put("bfcal", bfca.get(0));
+                        breakfast.put("bfxpl", bfxpl.get(0));
+                        for (int i = 1; i < cobf; i++) {
+                            breakfast.put("bf", breakfast.get("bf") + ";" + bfac.get(i));
+                            breakfast.put("bfcal", breakfast.get("bfcal") + "\n\n" + bfca.get(i));
+                            breakfast.put("bfxpl", breakfast.get("bfxpl") + ";" + bfxpl.get(i));
                         }
-                        sncount--;
+                        cobf--;
+                        lunch.put("ln", lnac.get(0));
+                        lunch.put("lncal", lnca.get(0));
+                        lunch.put("lnxpl", lnxpl.get(0));
+                        for (int i = 1; i < lncount; i++) {
+                            lunch.put("ln", lunch.get("ln") + ";" + lnac.get(i));
+                            lunch.put("lncal", lunch.get("lncal") + "\n\n" + lnca.get(i));
+                            lunch.put("lnxpl", lunch.get("lnxpl") + ";" + lnxpl.get(i));
+                        }
+                        lncount--;
+                        dinner.put("dn", dnac.get(0));
+                        dinner.put("dncal", dnca.get(0));
+                        dinner.put("dnxpl", dnxpl.get(0));
+                        for (int i = 1; i < dncount; i++) {
+                            dinner.put("dn", dinner.get("dn") + ";" + dnac.get(i));
+                            dinner.put("dncal", dinner.get("dncal") + "\n\n" + dnca.get(i));
+                            dinner.put("dnxpl", dinner.get("dnxpl") + ";" + dnxpl.get(i));
+                        }
+                        dncount--;
+                        if (sncount == 0) {
+                            snack.put("sn", "-");
+                            snack.put("sncal", "-");
+                            snack.put("snxpl", "-");
+                        } else {
+                            snack.put("sn", snac.get(0));
+                            snack.put("sncal", snca.get(0));
+                            snack.put("snxpl", snxpl.get(0));
+                            for (int i = 1; i < sncount; i++) {
+                                snack.put("sn", snack.get("sn") + ";" + snac.get(i));
+                                snack.put("sncal", snack.get("sncal") + "\n\n" + snca.get(i));
+                                snack.put("snxpl", snack.get("snxpl") + ";" + snxpl.get(i));
+                            }
+                            sncount--;
+                        }
+
+                        Calendar cal = Calendar.getInstance();
+                        String date = cal.get(Calendar.YEAR) + "-"
+                                + (cal.get(Calendar.MONTH) + 1)
+                                + "-" + cal.get(Calendar.DAY_OF_MONTH);
+
+                        boolean acds = myDb.insertUserDietData(de.DietTableName, date,
+                                breakfast.get("bf"), breakfast.get("bfcal"), breakfast.get("bfxpl"), lunch.get("ln"),
+                                lunch.get("lncal"), lunch.get("lnxpl"), dinner.get("dn"),
+                                dinner.get("dncal"), dinner.get("dnxpl"), snack.get("sn"), snack.get("sncal"),
+                                snack.get("snxpl"), "-", "-", "-", cobf + "", lncount + "",
+                                dncount + "", sncount + "", 0 + "", totcalval + "");
+
+                        if (acds) {
+                            Intent i = new Intent(getApplicationContext(), Homescreen.class);
+                            i.putExtra("bmr", 1700 + "");
+                            startActivity(i);
+                            finish();
+                        } else {
+                            Toast.makeText(getApplicationContext(), "kar raha kya hai abhi", Toast.LENGTH_LONG);
+                        }
+
                     }
-
-                    Calendar cal = Calendar.getInstance();
-                    String date=cal.get(Calendar.YEAR) + "-"
-                            + (cal.get(Calendar.MONTH)+1)
-                            + "-" + cal.get(Calendar.DAY_OF_MONTH);
-
-                    boolean acds= myDb.insertUserDietData(de.DietTableName,date,
-                            breakfast.get("bf"),breakfast.get("bfcal"),breakfast.get("bfxpl"),lunch.get("ln"),
-                            lunch.get("lncal"),lunch.get("lnxpl"),dinner.get("dn"),
-                            dinner.get("dncal"), dinner.get("dnxpl"),snack.get("sn"),snack.get("sncal"),
-                            snack.get("snxpl"),"-","-","-",cobf+"",lncount+"",
-                            dncount+"",sncount+"",0+"",2700+"");
-
-                    if(acds){
-                        Intent i = new Intent(getApplicationContext(),Homescreen.class);
-                        i.putExtra("bmr",1700+"");
-                        startActivity(i);
-                        finish();
-                    }
-                    else {
-                        Toast.makeText(getApplicationContext(),"kar raha kya hai abhi",Toast.LENGTH_LONG);
-                    }
-
                 }
+
 
             }
         });

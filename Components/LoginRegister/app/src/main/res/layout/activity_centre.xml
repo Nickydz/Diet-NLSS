@@ -17,6 +17,31 @@
         android:paddingTop="@dimen/activity_vertical_margin"
         tools:context="com.example.nlss.custom_diet.Centre">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:id="@+id/tvbmrs"
+            android:layout_alignParentTop="true"
+            android:fontFamily="serif"
+            android:textColor="@android:color/black"
+            android:layout_centerHorizontal="true"
+            android:textStyle="bold"
+            android:textSize="18dp"/>
+
+        <TextView
+            android:text="Breakfast"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:id="@+id/totcal"
+            android:layout_below="@+id/tvbmrs"
+            android:fontFamily="serif"
+            android:textColor="@android:color/black"
+            android:layout_centerHorizontal="true"
+            android:textStyle="bold"
+            android:textSize="18dp"/>
+
 
         <TextView
             android:text="Breakfast"
@@ -24,7 +49,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:id="@+id/bf"
-            android:layout_alignParentTop="true"
+            android:layout_below="@+id/totcal"
             android:fontFamily="serif"
             android:textColor="@android:color/black"
             android:layout_centerHorizontal="true"
@@ -154,9 +179,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/dnac"
             android:visibility="gone"
-            android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
-
+            android:layout_marginLeft="64dp"
             android:id="@+id/dntvdisp" />
 
         <TextView
@@ -166,7 +190,6 @@
             android:layout_below="@+id/dnac"
             android:visibility="gone"
             android:layout_alignStart="@+id/dinnerAddBT"
-            android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
             android:id="@+id/dncal" />
 
@@ -191,6 +214,7 @@
             android:id="@+id/lntvdisp"
             android:layout_below="@+id/lnac"
             android:layout_alignEnd="@+id/bf"
+            android:layout_marginLeft="64dp"
             android:layout_marginTop="10dp" />
 
         <TextView
@@ -218,8 +242,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/snac"
-            android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
+            android:layout_marginLeft="64dp"
+
             android:visibility="gone"
             android:id="@+id/sntvdisp" />
 

@@ -1,4 +1,6 @@
 package com.example.nickydcruz.loginregister;
+
+
 import static java.lang.Math.sqrt;
 import static java.lang.Math.abs;
 import android.content.Context;
