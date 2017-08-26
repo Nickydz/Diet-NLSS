@@ -5,6 +5,19 @@
     <string name="tab">\u0009</string>
     <string name="DietScreen">Your Diet for </string>
 
+
+    <!--For preferences page-->
+    <string name="prom">What is your most prominent meal?</string>
+    <string name="pref">Preferences</string>
+    <string name="meals">How many main meals do you have in a day?</string>
+    <string name="drinks">What is your prefered drink for breakfast?</string>
+    <string name="activity">How much is your activity level in a day?</string>
+    <string name="prom">What is your most prominent meal?</string>
+    <string name="prom">What is your most prominent meal?</string>
+    <!--end-->
+
+
+
     <string name="beve">Choice of beverage</string>
     <string name="title_activity_bbbf">bbbf</string>
     <string-array name="names">

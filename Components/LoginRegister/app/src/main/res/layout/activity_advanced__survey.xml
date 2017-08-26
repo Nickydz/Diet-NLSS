@@ -18,7 +18,7 @@
             android:id="@+id/textview1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Preferences"
+            android:text="@string/pref"
             android:textSize="25dp"
             android:textColor="@android:color/black"
             android:textStyle="bold"
@@ -38,7 +38,7 @@
             android:textStyle="bold"
             android:layout_below="@+id/textview1"
             android:layout_marginTop="23dp"
-            android:text="What is your most prominent meal?" />
+            android:text="@string/prom" />
 
         <TextView
             android:id="@+id/question2"
@@ -51,7 +51,7 @@
             android:fontFamily="serif"
             android:textStyle="bold"
             android:textColor="@android:color/black"
-            android:text="How many main meals do you have in a day?" />
+            android:text="@string/meals" />
 
         <Spinner
             android:layout_width="match_parent"
@@ -81,7 +81,7 @@
             android:fontFamily="serif"
             android:textStyle="bold"
             android:textColor="@android:color/black"
-            android:text="What is your prefered drink for breakfast?" />
+            android:text="@string/drinks" />
 
         <Spinner
             android:layout_width="match_parent"
@@ -102,7 +102,7 @@
             android:fontFamily="serif"
             android:textColor="@android:color/black"
             android:textStyle="bold"
-            android:text="How much is your activity level in a day?" />
+            android:text="@string/activity" />
 
         <Spinner
             android:layout_width="match_parent"
