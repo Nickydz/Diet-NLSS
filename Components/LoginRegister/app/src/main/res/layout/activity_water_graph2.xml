@@ -14,7 +14,7 @@
         android:layout_alignBaseline="@+id/otf"
         android:layout_alignBottom="@+id/otf"
         android:layout_toEndOf="@+id/otf"
-        android:text="Add" />
+        android:text="@string/ad" />
 
     <TextView
         android:id="@+id/textView"
@@ -23,7 +23,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="43dp"
-        android:text="Water consumed" />
+        android:text="@string/wc" />
 
     <TextView
         android:id="@+id/otf"
@@ -57,7 +57,7 @@
         android:id="@+id/bt_osf"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add"
+        android:text="@string/ad"
         android:layout_alignBaseline="@+id/osf"
         android:layout_alignBottom="@+id/osf"
         android:layout_alignStart="@+id/bt_otf" />
@@ -69,7 +69,7 @@
         android:layout_alignBaseline="@+id/ttf"
         android:layout_alignBottom="@+id/ttf"
         android:layout_alignStart="@+id/bt_osf"
-        android:text="Add" />
+        android:text="@string/ad" />
 
     <com.felipecsl.gifimageview.library.GifImageView
         android:id="@+id/gifwater"

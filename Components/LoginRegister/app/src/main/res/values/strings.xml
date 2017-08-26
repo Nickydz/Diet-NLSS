@@ -69,6 +69,17 @@
 
     <!--For update_wtht page-->
     <string name="up">Update</string>
+    <!--end-->
+
+    <!--For water_graph2 page-->
+    <string name="ad">Add</string>
+    <string name="wc">Water consumed</string>
+    <!--end-->
+
+    <!--For numpick page-->
+    <string name="cl">Cancel</string>
+    <string name="st">Set</string>
+    <!--end-->
 
     <string name="beve">Choice of beverage</string>
     <string name="title_activity_bbbf">bbbf</string>

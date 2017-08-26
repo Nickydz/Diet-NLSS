@@ -15,7 +15,7 @@
         android:id="@+id/btset"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Set"
+        android:text="@string/st"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="20dp"
         android:layout_below="@+id/numpick2_bs"
@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="50dp"
         android:layout_marginTop="20dp"
-        android:text="Cancel"
+        android:text="@string/cl"
         android:layout_alignBaseline="@+id/btset"
         android:layout_alignBottom="@+id/btset"
         android:layout_alignEnd="@+id/numpick_bs" />
