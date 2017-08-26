@@ -20,7 +20,7 @@
         android:id="@+id/adbf" />
 
     <TextView
-        android:text="Lunch"
+        android:text="@string/lunch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/adbf"
@@ -38,7 +38,7 @@
         android:layout_alignStart="@+id/lun" />
 
     <TextView
-        android:text="Dinner"
+        android:text="@string/dinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/adlun"
@@ -56,7 +56,7 @@
         android:id="@+id/addin" />
 
     <TextView
-        android:text="Snack"
+        android:text="@string/snacks"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/addin"
@@ -74,7 +74,7 @@
         android:id="@+id/dissnac" />
 
     <TextView
-        android:text="Breakfast"
+        android:text="@string/bf"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="33dp"

@@ -21,7 +21,7 @@
         android:layout_alignStart="@+id/br" />
 
     <Button
-        android:text="Notify ME!"
+        android:text="@string/not"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/brButton"
@@ -42,7 +42,7 @@
         android:id="@+id/snText" />
 
     <Button
-        android:text="Notify me!"
+        android:text="@string/not"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/snButton"
@@ -61,7 +61,7 @@
         android:id="@+id/lnText" />
 
     <Button
-        android:text="notify me!"
+        android:text="@string/not"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/lnButton"
@@ -80,7 +80,7 @@
         android:layout_alignStart="@+id/sn1" />
 
     <Button
-        android:text="notify me!"
+        android:text="@string/not"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/snText1"
@@ -89,7 +89,7 @@
         android:id="@+id/snButton1" />
 
     <TextView
-        android:text="Dinner"
+        android:text="@string/dinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/snButton1"
@@ -98,7 +98,7 @@
         android:id="@+id/dn" />
 
     <Button
-        android:text="notify me!"
+        android:text="@string/not"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/dnText"
@@ -107,7 +107,7 @@
         android:id="@+id/dnButton" />
 
     <TextView
-        android:text="BreakFast"
+        android:text="@string/bf"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="13dp"
@@ -117,7 +117,7 @@
         android:layout_alignParentStart="true" />
 
     <TextView
-        android:text="Snacks"
+        android:text="@string/snacks"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="17dp"
@@ -126,7 +126,7 @@
         android:layout_alignStart="@+id/brText" />
 
     <TextView
-        android:text="Lunch"
+        android:text="@string/lunch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="18dp"
@@ -135,7 +135,7 @@
         android:layout_alignStart="@+id/lnText" />
 
     <TextView
-        android:text="Snacks"
+        android:text="@string/snacks"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="14dp"

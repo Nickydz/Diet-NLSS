@@ -47,7 +47,7 @@
         android:layout_alignParentEnd="true" />
 
     <Button
-        android:text="Login"
+        android:text="@string/login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/btLogin"
@@ -57,7 +57,7 @@
         android:layout_alignStart="@+id/tvRegisterhere" />
 
     <TextView
-        android:text="Register Here"
+        android:text="@string/reg"
         android:layout_height="wrap_content"
         android:textColor="@color/white"
         android:textStyle="bold"
@@ -71,7 +71,7 @@
         android:layout_marginBottom="37dp" />
 
     <CheckBox
-        android:text="Remember Me"
+        android:text="@string/rem"
         android:textColor="@color/white"
 
         android:layout_width="wrap_content"

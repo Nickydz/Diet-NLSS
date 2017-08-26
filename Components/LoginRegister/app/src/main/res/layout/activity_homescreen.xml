@@ -50,7 +50,7 @@
 
     <View android:layout_height="1px" android:layout_marginTop="7dp" android:layout_width="fill_parent" android:background="#000000" android:id="@+id/hr" android:layout_below="@+id/textView"/>
     <TextView
-        android:text="Breakfast"
+        android:text="@string/bf"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="7dp"
@@ -98,7 +98,7 @@
 
 
     <TextView
-        android:text="Snacks"
+        android:text="@string/snacks"
         android:paddingTop="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -119,7 +119,7 @@
         android:visibility="gone"/>
 
     <TextView
-        android:text="Lunch"
+        android:text="@string/lunch"
         android:paddingTop="10dp"
         android:layout_marginTop="10dp"
         android:layout_width="wrap_content"
@@ -163,7 +163,7 @@
         android:visibility="gone"/>
 
     <TextView
-        android:text="Snacks"
+        android:text="@string/snacks"
         android:paddingTop="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -184,7 +184,7 @@
         android:visibility="gone"/>
 
     <TextView
-        android:text="Dinner"
+        android:text="@string/dinner"
         android:paddingTop="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

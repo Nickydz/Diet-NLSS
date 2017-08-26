@@ -21,7 +21,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="27dp"
         android:fontFamily="serif"
-        android:text="Basic Information"
+        android:text="@string/basic"
         android:textColor="@android:color/black"
         android:textSize="25dp"
 
@@ -39,7 +39,7 @@
         android:fontFamily="serif"
         android:textColor="@android:color/black"
         android:textStyle="bold"
-        android:text="Gender" />
+        android:text="@string/gender" />
 
     <RadioGroup
         android:id="@+id/radgrp"
@@ -57,11 +57,11 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv_gender"
             android:layout_toStartOf="@+id/tv_gender"
-            android:text="Male"
+            android:text="@string/male"
             android:checked="true"/>
 
         <RadioButton
-            android:text="Female"
+            android:text="@string/female"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/radgrp"
@@ -79,7 +79,7 @@
         android:layout_marginTop="20dp"
         android:textSize="18dp"
         android:fontFamily="serif"
-        android:text="Please enter your height"
+        android:text="@string/height"
         android:textColor="@android:color/black"
         android:textStyle="bold"
         android:layout_marginStart="21dp" />
@@ -114,7 +114,7 @@
         android:visibility="invisible"/>
 
     <TextView
-        android:text="Please enter your weight"
+        android:text="@string/weight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
@@ -203,7 +203,7 @@
 
 
     <TextView
-        android:text="What kinds of food do you prefer?"
+        android:text="@string/food"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/tv_bsFoodPref"

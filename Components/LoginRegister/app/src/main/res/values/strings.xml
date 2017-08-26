@@ -12,11 +12,63 @@
     <string name="meals">How many main meals do you have in a day?</string>
     <string name="drinks">What is your prefered drink for breakfast?</string>
     <string name="activity">How much is your activity level in a day?</string>
-    <string name="prom">What is your most prominent meal?</string>
-    <string name="prom">What is your most prominent meal?</string>
     <!--end-->
 
+    <!--For Basic_survey page-->
+    <string name="basic">Basic Information</string>
+    <string name="gender">Gender</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="height">Please enter your height</string>
+    <string name="weight">Please enter your weight</string>
+    <string name="food">What kinds of food do you prefer?</string>
+    <!--end-->
 
+    <!--For Custom_diet page-->
+    <string name="bf">Breakfast</string>
+    <string name="lunch">Lunch</string>
+    <string name="dinner">Dinner</string>
+    <string name="snacks">Snacks</string>
+    <!--end-->
+
+    <!--For graphs_main page-->
+    <string name="graphs">Graphs:</string>
+    <string name="w_graph">Water Graph</string>
+    <string name="cal_dist_graph">Calorie Distributon Pie Graph</string>
+    <string name="we_graph">Weight Graph</string>
+    <!--end-->
+
+    <!--For login page-->
+    <string name="login">Login</string>
+    <string name="reg">Register Here</string>
+    <string name="rem">Remember Me</string>
+    <!--end-->
+
+    <!--For exercise page-->
+    <string name="exe">+ Exercise</string>
+    <string name="dur">Duration[min]</string>
+    <string name="act">Activity</string>
+    <string name="cal_b">Calories Burned</string>
+    <string name="calc">Calculate</string>
+    <!--end-->
+
+    <!--For register page-->
+    <string name="regh">Register</string>
+
+    <!--For notification page-->
+    <string name="not">Notify ME!</string>
+    <!--end-->
+
+    <!--For result page-->
+    <string name="cu">Custom diet</string>
+    <string name="gr">Graph</string>
+    <string name="m_weight">Maintain Weight</string>
+    <string name="g_weight">Gain Weight</string>
+    <string name="l_weight">Gain Weight</string>
+    <!--end-->
+
+    <!--For update_wtht page-->
+    <string name="up">Update</string>
 
     <string name="beve">Choice of beverage</string>
     <string name="title_activity_bbbf">bbbf</string>

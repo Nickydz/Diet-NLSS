@@ -61,7 +61,7 @@
         android:id="@+id/tvExpertsMessage" />
 
     <Button
-        android:text="Lose Weight"
+        android:text="@string/l_weight"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -72,7 +72,7 @@
         android:clickable="false" />
 
     <Button
-        android:text="Maintain Weight"
+        android:text="@string/m_weight"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -83,7 +83,7 @@
         android:layout_below="@+id/btLW" />
 
     <Button
-        android:text="Gain Weight"
+        android:text="@string/g_weight"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -94,7 +94,7 @@
         android:clickable="false" />
 
     <Button
-        android:text="Custom diet"
+        android:text="@string/cu"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -104,7 +104,7 @@
          />
 
     <Button
-        android:text="Graph"
+        android:text="@string/gr"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"

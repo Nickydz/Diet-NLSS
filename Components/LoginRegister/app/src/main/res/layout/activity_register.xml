@@ -109,7 +109,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="37dp"
         android:background="@android:drawable/dialog_holo_light_frame"
-        android:text="Register" />
+        android:text="@string/regh" />
 
     <ImageView
         android:id="@+id/imageView2"
