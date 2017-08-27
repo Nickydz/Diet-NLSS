@@ -244,6 +244,9 @@ public class Update_wtht extends AppCompatActivity {
             case R.id.Graphs: i = new Intent(getApplicationContext(), Graphs.class);
                 break;
 
+            case R.id.help: i = new Intent(getApplicationContext(), Help.class);
+                break;
+
             case R.id.logout: {
                 pref.edit().clear().commit();
                 i = new Intent(getApplicationContext(), LoginActivity.class);

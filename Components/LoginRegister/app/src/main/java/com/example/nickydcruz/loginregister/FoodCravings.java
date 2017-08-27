@@ -179,6 +179,9 @@ public class FoodCravings extends AppCompatActivity {
             case R.id.Graphs: i = new Intent(getApplicationContext(), Graphs.class);
                 break;
 
+            case R.id.activity_help: i = new Intent(getApplicationContext(), Help.class);
+                break;
+
             case R.id.logout: {
                 pref.edit().clear().commit();
                 i = new Intent(getApplicationContext(), LoginActivity.class);

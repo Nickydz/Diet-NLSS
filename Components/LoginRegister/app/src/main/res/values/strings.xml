@@ -81,6 +81,18 @@
     <string name="st">Set</string>
     <!--end-->
 
+    <!--For help page-->
+    <string name="help">Help</string>
+    <string name="log">1. Login page</string>
+    <string name="logd">After you login using remember me checkbox ticked, the app automatically logins the next time you open the app.</string>
+    <string name="rep">Result page</string>
+    <string name="repd1">This page shows the category of BMI in which you lie. </string>
+    <string name="repd2">It also shows the BMR(Basal Metabolic Rate) ie. the amount of energy expressed in calories that a person needs to keep the body functioning at rest.</string>
+    <string name="res">2. Result page</string>
+    <string name="dip">3. Diet page</string>
+    <string name="dipd">On clicking each food item, you get to know the basic nutrients contained in it.</string>
+    <!--end-->
+
     <string name="beve">Choice of beverage</string>
     <string name="title_activity_bbbf">bbbf</string>
     <string-array name="names">
